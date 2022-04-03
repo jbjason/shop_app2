@@ -12,23 +12,24 @@ class HomeScreen extends StatelessWidget {
     final productsData = Provider.of<Products>(context);
     final products = productsData.items;
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: size.height * .1),
-          // SearchBar Container
-          const SearchBarContainer(),
-          // Category Container
-          const CategoryContainer(),
-          // GridView Container
-          Container(
-            height: 380,
-            margin: const EdgeInsets.only(bottom: 5),
-            color: Colors.blue,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: size.height * .1),
+            // SearchBar Container
+            const SearchBarContainer(),
+            // Category Container
+            const CategoryContainer(),
+            // GridView Container
+            Container(
+              height: 380,
+              margin: const EdgeInsets.only(bottom: 5),
+              color: Colors.blue,
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
 
