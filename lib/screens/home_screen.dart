@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
           // SearchBar Container
           const SearchBarContainer(),
           // Category Container
-          CategoryContainer(),
+          const CategoryContainer(),
           // GridView Container
           Container(
             height: 380,
@@ -61,9 +61,14 @@ class SearchBarContainer extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class CategoryContainer extends StatelessWidget {
-  CategoryContainer({Key? key}) : super(key: key);
+class CategoryContainer extends StatefulWidget {
+  const CategoryContainer({Key? key}) : super(key: key);
 
+  @override
+  State<CategoryContainer> createState() => _CategoryContainerState();
+}
+
+class _CategoryContainerState extends State<CategoryContainer> {
   final List<String> _category = [
     'All Products',
     'Favorites',
@@ -72,55 +77,49 @@ class CategoryContainer extends StatelessWidget {
     'Groceries',
     'Cloths'
   ];
+
   int selectedIndex = 0;
-  final ValueNotifier<int> pageIndex = ValueNotifier(0);
+
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: pageIndex,
-      builder: ((BuildContext context, int value, child) => SizedBox(
-            height: 50,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: _category.length,
-              itemBuilder: (ctx, index) => InkWell(
-                onTap: () {
-                  ValueNotifier<int>(index);
-                  selectedIndex = value;
-                  // setState(() {
-                  //   selectedIndex = index;
-                  //   productsData.setSelectedCategoryIndex(selectedIndex);
-                  //   _isCategory = true;
-                  // });
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                      left: 3, right: index == _category.length - 1 ? 20 : 20),
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black12),
-                    color: index == selectedIndex
-                        ? const Color(0xFFFEE16D)
-                        : Colors.white,
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: Row(children: [
-                    const Icon(
-                      Icons.donut_small_sharp,
-                      color: Colors.black12,
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      _category[index],
-                      style: const TextStyle(
-                          color: Colors.black87, fontWeight: FontWeight.w600),
-                    ),
-                  ]),
-                ),
-              ),
+    return SizedBox(
+      height: 50,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: _category.length,
+        itemBuilder: (ctx, index) => InkWell(
+          onTap: () {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+          child: Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(
+                left: 3, right: index == _category.length - 1 ? 20 : 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black12),
+              color: index == selectedIndex
+                  ? const Color(0xFFFEE16D)
+                  : Colors.white,
+              borderRadius: BorderRadius.circular(7),
             ),
-          )),
+            child: Row(children: [
+              const Icon(
+                Icons.donut_small_sharp,
+                color: Colors.black12,
+              ),
+              const SizedBox(width: 10),
+              Text(
+                _category[index],
+                style: const TextStyle(
+                    color: Colors.black87, fontWeight: FontWeight.w600),
+              ),
+            ]),
+          ),
+        ),
+      ),
     );
   }
 }
