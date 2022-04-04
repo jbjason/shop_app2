@@ -11,27 +11,29 @@ class HomeScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final productsData = Provider.of<Products>(context);
     final products = productsData.items;
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: size.height * .1),
-            // SearchBar Container
-            const SearchBarContainer(),
-            // Category Container
-            const CategoryContainer(),
-            // GridView Container
-            Container(
-              height: 380,
-              margin: const EdgeInsets.only(bottom: 5),
-              color: Colors.blue,
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              // SearchBar Container
+              const SearchBarContainer(),
+              // Category Container
+              const CategoryContainer(),
+              // GridView Container
+              Container(
+                height: 380,
+                margin: const EdgeInsets.only(bottom: 5),
+                color: Colors.blue,
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
 
 class SearchBarContainer extends StatelessWidget {
   const SearchBarContainer({
