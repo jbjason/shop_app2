@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/products.dart';
+import 'package:shop_app2/widgets/home_widgets/product_item.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
@@ -18,13 +19,20 @@ class HomeScreen extends StatelessWidget {
             children: [
               // SearchBar Container
               const SearchBarContainer(),
+              const SizedBox(height: 30),
               // Category Container
               const CategoryContainer(),
+              const SizedBox(height: 30),
               // GridView Container
               Container(
                 height: 380,
                 margin: const EdgeInsets.only(bottom: 5),
-                color: Colors.blue,
+                width: size.width,
+                child: ListView.builder(
+                //  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      ProductItem(product: products[index]),
+                ),
               ),
             ],
           ),
@@ -33,7 +41,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
 
 class SearchBarContainer extends StatelessWidget {
   const SearchBarContainer({
