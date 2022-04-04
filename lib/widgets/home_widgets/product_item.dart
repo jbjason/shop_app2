@@ -9,137 +9,76 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context, listen: false);
     return Stack(
       children: [
-        Card(
-          elevation: 5,
-          child: Container(
-            margin: const EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 2.0),
-            height: 180.0,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(100.0, 5.0, 5.0, 0.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // title
-                  SizedBox(
-                    width: 120.0,
-                    child: Text(
-                      product.title,
-                      style: const TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ),
-                  // reviews
-                  Row(children: [
-                    const Icon(
-                      Icons.location_on_sharp,
-                      size: 10.0,
-                      color: Colors.black,
-                    ),
-                    const SizedBox(width: 5.0),
-                    Text(
-                      '${product.isReview} reviews',
-                      // style: const TextStyle(
-                      //     fontFamily: 'Quicksand',
-                      //     fontWeight: FontWeight.bold,
-                      //     fontSize: 14.0,
-                      //     color: Colors.grey),
-                    ),
-                  ]),
-                  // ratings
-                  _buildRatingStars(product.isRating.toInt()),
-                  const SizedBox(height: 5),
-                  // Price
-                  Text(
-                    ' \$${product.price}',
-                    // style: const TextStyle(
-                    //     fontFamily: 'Montserrat',
-                    //     fontWeight: FontWeight.bold,
-                    //     fontSize: 23.0,
-                    //     color: Color(0xFFFDD34A)),
-                  ),
-                  // favorite & cart Icons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                            product.isFavorite
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: Colors.brown),
-                        onPressed: () => product.toggleFavoriteStatus(),
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.shopping_cart,
-                          color: Colors.brown,
-                        ),
-                        onPressed: () {
-                          // cart.addItem(productId, price, imageUrl, title, keyId, quan);
-                          ScaffoldMessenger.of(context)
-                            ..hideCurrentSnackBar()
-                            ..showSnackBar(SnackBar(
-                              content: const Text('Added item to Cart!'),
-                              duration: const Duration(seconds: 1),
-                              action: SnackBarAction(
-                                label: 'UNDO',
-                                onPressed: () {
-                                  cart.removeSingleItem(product.id);
-                                },
-                              ),
-                            ));
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        RightSideOfContainer(product: product),
         // image
-        Positioned(
-          left: 20.0,
-          top: 15.0,
-          bottom: 15.0,
-          child: Container(
-            decoration:
-                BoxDecoration(border: Border.all(color: Colors.black26)),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: InkWell(
-                onTap: () {},
-                child: Hero(
-                  tag: product.id,
-                  child: FadeInImage(
-                    placeholder: const AssetImage(
-                        'assets/placeholder.png'),
-                    image: NetworkImage(product.imageUrl),
-                    width: 110.0,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
+        ImageContainer(product: product),
       ],
     );
   }
+}
 
+class RightSideOfContainer extends StatelessWidget {
+  const RightSideOfContainer({Key? key, required this.product})
+      : super(key: key);
+
+  final Product product;
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 2.0),
+        height: 180.0,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(100.0, 5.0, 5.0, 0.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // title
+              SizedBox(
+                width: 120.0,
+                child: Text(
+                  product.title,
+                  style: const TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
+              ),
+              // reviews
+              Row(
+                children: [
+                  const Icon(
+                    Icons.location_on_sharp,
+                    size: 10.0,
+                    color: Colors.black,
+                  ),
+                  const SizedBox(width: 5.0),
+                  Text('${product.isReview} reviews'),
+                ],
+              ),
+              // ratings
+              _buildRatingStars(product.isRating.toInt()),
+              const SizedBox(height: 5),
+              // Price
+              Text(' \$${product.price}'),
+              // favorite & cart Icons
+              AddAndFavoriteButtons(product: product),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
   Text _buildRatingStars(int rating) {
     String stars = '';
     for (int i = 0; i < rating; i++) {
@@ -147,5 +86,84 @@ class ProductItem extends StatelessWidget {
     }
     stars.trim();
     return Text(stars);
+  }
+}
+
+class AddAndFavoriteButtons extends StatelessWidget {
+  const AddAndFavoriteButtons({Key? key, required this.product})
+      : super(key: key);
+
+  final Product product;
+
+  @override
+  Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context, listen: false);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        IconButton(
+          icon:
+              Icon(product.isFavorite ? Icons.favorite : Icons.favorite_border),
+          onPressed: () => product.toggleFavoriteStatus(),
+        ),
+        IconButton(
+          icon: const Icon(
+            Icons.shopping_cart,
+            color: Colors.brown,
+          ),
+          onPressed: () {
+            // cart.addItem(productId, price, imageUrl, title, keyId, quan);
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(SnackBar(
+                content: const Text('Added item to Cart!'),
+                duration: const Duration(seconds: 1),
+                action: SnackBarAction(
+                  label: 'UNDO',
+                  onPressed: () {
+                    cart.removeSingleItem(product.id);
+                  },
+                ),
+              ));
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class ImageContainer extends StatelessWidget {
+  const ImageContainer({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  final Product product;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      left: 20.0,
+      top: 15.0,
+      bottom: 15.0,
+      child: Container(
+        decoration: BoxDecoration(border: Border.all(color: Colors.black26)),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: InkWell(
+            onTap: () {},
+            child: Hero(
+              tag: product.id,
+              child: FadeInImage(
+                placeholder: const AssetImage('assets/placeholder.png'),
+                image: NetworkImage(product.imageUrl),
+                width: 110.0,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
