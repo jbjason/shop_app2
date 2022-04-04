@@ -11,6 +11,7 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // title ,price, review
         RightSideOfContainer(product: product),
         // image
         ImageContainer(product: product),
@@ -29,56 +30,53 @@ class RightSideOfContainer extends StatelessWidget {
     return Card(
       child: Container(
         margin: const EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 2.0),
+        padding: const EdgeInsets.fromLTRB(100.0, 5.0, 5.0, 0.0),
         height: 180.0,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(100.0, 5.0, 5.0, 0.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // title
-              SizedBox(
-                width: 120.0,
-                child: Text(
-                  product.title,
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+            color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // title
+            SizedBox(
+              width: 120.0,
+              child: Text(
+                product.title,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
                 ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
-              // reviews
-              Row(
-                children: [
-                  const Icon(
-                    Icons.location_on_sharp,
-                    size: 10.0,
-                    color: Colors.black,
-                  ),
-                  const SizedBox(width: 5.0),
-                  Text('${product.isReview} reviews'),
-                ],
-              ),
-              // ratings
-              _buildRatingStars(product.isRating.toInt()),
-              const SizedBox(height: 5),
-              // Price
-              Text(' \$${product.price}'),
-              // favorite & cart Icons
-              AddAndFavoriteButtons(product: product),
-            ],
-          ),
+            ),
+            // reviews
+            Row(
+              children: [
+                const Icon(
+                  Icons.location_on_sharp,
+                  size: 10.0,
+                  color: Colors.black,
+                ),
+                const SizedBox(width: 5.0),
+                Text('${product.isReview} reviews'),
+              ],
+            ),
+            // ratings
+            _buildRatingStars(product.isRating.toInt()),
+            const SizedBox(height: 5),
+            // Price
+            Text(' \$${product.price}'),
+            // favorite & cart Icons
+            AddAndFavoriteButtons(product: product),
+          ],
         ),
       ),
     );
   }
+
   Text _buildRatingStars(int rating) {
     String stars = '';
     for (int i = 0; i < rating; i++) {
@@ -94,7 +92,6 @@ class AddAndFavoriteButtons extends StatelessWidget {
       : super(key: key);
 
   final Product product;
-
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
@@ -139,7 +136,6 @@ class ImageContainer extends StatelessWidget {
   }) : super(key: key);
 
   final Product product;
-
   @override
   Widget build(BuildContext context) {
     return Positioned(
