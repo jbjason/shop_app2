@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         title: 'Shop App',
         theme: AppTheme.light(),
         themeMode: ThemeMode.light,
-        home:  HomeScreen(),
+        home:  const HomeScreen(),
         routes: const {},
       ),
     );

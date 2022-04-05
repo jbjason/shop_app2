@@ -1,41 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app2/providers/products.dart';
-import 'package:shop_app2/widgets/home_widgets/product_item.dart';
+import 'package:shop_app2/widgets/home_widgets/product_all.dart';
+import 'package:shop_app2/widgets/home_widgets/recommend_all.dart';
 
-// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final productsData = Provider.of<Products>(context);
-    final products = productsData.items;
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              // SearchBar Container
-              const SearchBarContainer(),
-              const SizedBox(height: 30),
-              // Category Container
-              const CategoryContainer(),
-              const SizedBox(height: 30),
-              // GridView Container
-              Container(
-                height: 380,
-                margin: const EdgeInsets.only(bottom: 5),
-                width: size.width,
-                child: ListView.builder(
-                //  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) =>
-                      ProductItem(product: products[index]),
-                ),
-              ),
-            ],
-          ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 40),
+            // SearchBar Container
+            const SearchBarContainer(),
+            const SizedBox(height: 30),
+            // Category Container
+            const CategoryContainer(),
+            const SizedBox(height: 30),
+            // all Proudcts
+            ProductAll(size: size),
+            RecommendAll(size: size),
+          ],
         ),
       ),
     );
@@ -98,11 +85,7 @@ class _CategoryContainerState extends State<CategoryContainer> {
         scrollDirection: Axis.horizontal,
         itemCount: _category.length,
         itemBuilder: (ctx, index) => InkWell(
-          onTap: () {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
+          onTap: () => setState(() => selectedIndex = index),
           child: Container(
             alignment: Alignment.center,
             margin: EdgeInsets.only(
@@ -115,18 +98,17 @@ class _CategoryContainerState extends State<CategoryContainer> {
                   : Colors.white,
               borderRadius: BorderRadius.circular(7),
             ),
-            child: Row(children: [
-              const Icon(
-                Icons.donut_small_sharp,
-                color: Colors.black12,
-              ),
-              const SizedBox(width: 10),
-              Text(
-                _category[index],
-                style: const TextStyle(
-                    color: Colors.black87, fontWeight: FontWeight.w600),
-              ),
-            ]),
+            child: Row(
+              children: [
+                const Icon(Icons.donut_small_sharp, color: Colors.black12),
+                const SizedBox(width: 10),
+                Text(
+                  _category[index],
+                  style: const TextStyle(
+                      color: Colors.black87, fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
           ),
         ),
       ),

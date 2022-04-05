@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/providers/product.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/cart.dart';
-import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/providers/products.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({Key? key, required this.product}) : super(key: key);
+class RecommendAll extends StatelessWidget {
+  const RecommendAll({Key? key, required this.size}) : super(key: key);
+  final Size size;
+  @override
+  Widget build(BuildContext context) {
+    final products = Provider.of<Products>(context).items;
+    final int length = products.length;
+    return SizedBox(
+      height: length < 3 ? length * 185.0 : size.height * .6,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemBuilder: (context, index) =>
+            RecommendItem(product: products[index]),
+      ),
+    );
+  }
+}
+
+class RecommendItem extends StatelessWidget {
+  const RecommendItem({Key? key, required this.product}) : super(key: key);
   final Product product;
-
   @override
   Widget build(BuildContext context) {
     return Stack(
