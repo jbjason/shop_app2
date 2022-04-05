@@ -11,13 +11,16 @@ class RecommendAll extends StatelessWidget {
   Widget build(BuildContext context) {
     final products = Provider.of<Products>(context).items;
     final int length = products.length;
-    return SizedBox(
-      height: length < 3 ? length * 185.0 : size.height * .6,
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemBuilder: (context, index) =>
-            RecommendItem(product: products[index]),
-      ),
+    return  SizedBox(
+        height: length < 3 ? length * 165.0 : size.height * 0.6,
+        width: size.width,
+        child: ListView.builder(
+          padding: const EdgeInsets.only(left: 20,right: 20,bottom: 50),
+          itemCount: products.length,
+          itemBuilder: (context, index) =>
+              RecommendItem(product: products[index]),
+        ),
+     
     );
   }
 }
@@ -27,13 +30,22 @@ class RecommendItem extends StatelessWidget {
   final Product product;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // title ,price, review
-        RightSideOfContainer(product: product),
-        // image
-        ImageContainer(product: product),
-      ],
+    return Container(
+      height: 150,
+      padding: const EdgeInsets.only(left: 10, right: 10),
+      margin: const EdgeInsets.only(bottom: 15),
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.horizontal(
+              right: Radius.circular(40), left: Radius.circular(10))),
+      child: Row(
+        children: [
+          // image
+          ImageContainer(product: product),
+          // title ,price, review
+          Expanded(child: RightSideOfContainer(product: product)),
+        ],
+      ),
     );
   }
 }
@@ -45,52 +57,34 @@ class RightSideOfContainer extends StatelessWidget {
   final Product product;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        margin: const EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 2.0),
-        padding: const EdgeInsets.fromLTRB(100.0, 5.0, 5.0, 0.0),
-        height: 180.0,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // title
-            SizedBox(
-              width: 120.0,
-              child: Text(
-                product.title,
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // title
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Text(product.title,
                 style: const TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
                 ),
                 overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-            ),
-            // reviews
-            Row(
-              children: [
-                const Icon(
-                  Icons.location_on_sharp,
-                  size: 10.0,
-                  color: Colors.black,
-                ),
-                const SizedBox(width: 5.0),
-                Text('${product.isReview} reviews'),
-              ],
-            ),
-            // ratings
-            _buildRatingStars(product.isRating.toInt()),
-            const SizedBox(height: 5),
+                maxLines: 1),
             // Price
-            Text(' \$${product.price}'),
-            // favorite & cart Icons
-            AddAndFavoriteButtons(product: product),
-          ],
-        ),
+            Text(' \$${product.price}')
+          ]),
+          // reviews
+          Row(children: [
+            const Icon(Icons.location_on_sharp,
+                size: 10.0, color: Colors.black),
+            Text('${product.isReview} reviews'),
+          ]),
+          // ratings
+          _buildRatingStars(product.isRating.toInt()),
+          // favorite & cart Icons
+          AddAndFavoriteButtons(product: product),
+        ],
       ),
     );
   }
@@ -136,7 +130,7 @@ class AddAndFavoriteButtons extends StatelessWidget {
                 action: SnackBarAction(
                   label: 'UNDO',
                   onPressed: () {
-                    cart.removeSingleItem(product.id);
+                    // cart.removeSingleItem(product.id);
                   },
                 ),
               ));
@@ -156,25 +150,17 @@ class ImageContainer extends StatelessWidget {
   final Product product;
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 20.0,
-      top: 15.0,
-      bottom: 15.0,
-      child: Container(
-        decoration: BoxDecoration(border: Border.all(color: Colors.black26)),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: InkWell(
-            onTap: () {},
-            child: Hero(
-              tag: product.id,
-              child: FadeInImage(
-                placeholder: const AssetImage('assets/placeholder.png'),
-                image: NetworkImage(product.imageUrl),
-                width: 110.0,
-                fit: BoxFit.contain,
-              ),
-            ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(30.0),
+      child: InkWell(
+        onTap: () {},
+        child: Hero(
+          tag: product.id,
+          child: FadeInImage(
+            placeholder: const AssetImage('assets/placeholder.png'),
+            image: NetworkImage(product.imageUrl),
+            width: 120.0,
+            fit: BoxFit.contain,
           ),
         ),
       ),
