@@ -67,8 +67,7 @@ class CategoryContainer extends StatefulWidget {
 
 class _CategoryContainerState extends State<CategoryContainer> {
   final List<String> _category = [
-    'All Products',
-    'Favorites',
+    'All',
     'Electronics',
     'Sports',
     'Groceries',
@@ -89,26 +88,16 @@ class _CategoryContainerState extends State<CategoryContainer> {
           child: Container(
             alignment: Alignment.center,
             margin: EdgeInsets.only(
-                left: 3, right: index == _category.length - 1 ? 20 : 20),
+                left: 3, right: index == _category.length - 1 ? 10 : 10),
             padding: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black12),
-              color: index == selectedIndex
-                  ? const Color(0xFFFEE16D)
-                  : Colors.white,
-              borderRadius: BorderRadius.circular(7),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.donut_small_sharp, color: Colors.black12),
-                const SizedBox(width: 10),
-                Text(
-                  _category[index],
-                  style: const TextStyle(
-                      color: Colors.black87, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
+                border: Border.all(color: Colors.black12),
+                color: index == selectedIndex
+                    ? const Color(0xFFFEE16D)
+                    : Colors.white,
+                borderRadius: BorderRadius.circular(10)),
+            child: Text(
+              _category[index]),
           ),
         ),
       ),

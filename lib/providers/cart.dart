@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:shop_app2/providers/product.dart';
 
 class CartItem {
   final String id, title, imageUrl;
@@ -30,17 +31,19 @@ class Cart with ChangeNotifier {
     return a;
   }
 
-  void addItem(CartItem cartItem) {
-    _items.add(
-      CartItem(
-        id: DateTime.now().toString(),
-        title: cartItem.title,
-        imageUrl: cartItem.imageUrl,
-        price: cartItem.price,
-        quantity: cartItem.quantity,
-      ),
-    );
-
+  void addItem(Product product) {
+    final int i = _items.indexWhere((element) => element.id == product.id);
+    if (i == -1) {
+      _items.add(
+        CartItem(
+          id: product.id,
+          title: product.title,
+          imageUrl: product.imageUrl,
+          price: product.price,
+          quantity: 1,
+        ),
+      );
+    }
     notifyListeners();
   }
 
