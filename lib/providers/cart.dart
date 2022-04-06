@@ -3,9 +3,9 @@ import 'package:shop_app2/providers/product.dart';
 
 class CartItem {
   final String id, title, imageUrl;
-  final int quantity;
+  int quantity;
   final double price;
-  const CartItem({
+  CartItem({
     required this.id,
     required this.title,
     required this.quantity,
@@ -21,8 +21,6 @@ class Cart with ChangeNotifier {
     return [..._items];
   }
 
-  int get itemCount => _items.length;
-
   double get totalAmount {
     double a = 0.0;
     for (var cart in _items) {
@@ -31,8 +29,10 @@ class Cart with ChangeNotifier {
     return a;
   }
 
+  int getIndex(String id) => _items.indexWhere((element) => element.id == id);
+
   void addItem(Product product) {
-    final int i = _items.indexWhere((element) => element.id == product.id);
+    final int i = getIndex(product.id);
     if (i == -1) {
       _items.add(
         CartItem(
@@ -47,17 +47,13 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  void update(String productId, int quan) {
-    // _items.update(
-    //   productId,
-    //   (existingItem) => CartItem(
-    //     id: existingItem.id,
-    //     title: existingItem.title,
-    //     imageUrl: existingItem.imageUrl,
-    //     price: existingItem.price,
-    //     quantity: quan,
-    //   ),
-    // );
+  void update(CartItem cart, String s) {
+    final f = getIndex(cart.id);
+    if (s == 'plus') {
+      _items[f].quantity += 1;
+    } else {
+      _items[f].quantity -= 1;
+    }
     notifyListeners();
   }
 
