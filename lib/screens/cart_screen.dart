@@ -11,6 +11,9 @@ class CartScreen extends StatelessWidget {
     final cartItems = Provider.of<Cart>(context).items;
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: const Text('cart'),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -42,22 +45,26 @@ class CartSingleItem extends StatefulWidget {
 class _CartSingleItemState extends State<CartSingleItem> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 70,
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.white,
+      margin: const EdgeInsets.only(bottom: 20),
+      height: 80,
       child: ListTile(
         leading: CircleAvatar(
-          radius: 23,
+          radius: 30,
           backgroundColor: Colors.grey[300],
           child: CircleAvatar(
-            radius: 20,
-            child: Image.network(widget.item.imageUrl, fit: BoxFit.cover),
+            radius: 24,
+            backgroundImage: NetworkImage(widget.item.imageUrl),
           ),
         ),
         title: Text(widget.item.title),
         trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(widget.item.price.toString()),
-            const Icon(Icons.abc, size: 15),
+            const Icon(Icons.badge, size: 15),
           ],
         ),
       ),

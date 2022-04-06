@@ -51,7 +51,7 @@ class _NavPaniter extends CustomPainter {
       ..lineTo(w5, h)
       ..lineTo(0, h);
     canvas.drawShadow(path, Colors.black26, 10, false);
-    canvas.drawPath(path, Paint()..color = Colors.grey[500]!);
+    canvas.drawPath(path, Paint()..color =  const Color(0xFFEBF3FE));
   }
 
   @override
