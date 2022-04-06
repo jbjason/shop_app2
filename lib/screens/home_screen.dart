@@ -7,21 +7,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            const SizedBox(height: 40),
+          children: const [
+            SizedBox(height: 40),
             // SearchBar Container
-            const SearchBarContainer(),
-            const SizedBox(height: 30),
+            SearchBarContainer(),
+            SizedBox(height: 30),
             // Category Container
-            const CategoryContainer(),
-            const SizedBox(height: 30),
+            CategoryContainer(),
+            SizedBox(height: 30),
             // all Proudcts
-            ProductAll(size: size),
-            RecommendAll(size: size),
+            ProductAll(),
+            RecommendAll(),
           ],
         ),
       ),

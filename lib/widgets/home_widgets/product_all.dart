@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/products.dart';
 
 class ProductAll extends StatefulWidget {
-  const ProductAll({Key? key, required this.size}) : super(key: key);
-  final Size size;
+  const ProductAll({Key? key}) : super(key: key);
+  
   @override
   State<ProductAll> createState() => _ProductAllState();
 }
@@ -16,8 +16,9 @@ class _ProductAllState extends State<ProductAll> {
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
     final products = productsData.items;
+    final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: widget.size.height * .42,
+      height: size.height * .42,
       child: PageView.builder(
         controller: PageController(viewportFraction: 0.85, initialPage: 1),
         onPageChanged: (value) => setState(() => _currentIndex = value),

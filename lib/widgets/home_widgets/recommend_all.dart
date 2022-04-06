@@ -5,12 +5,12 @@ import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/products.dart';
 
 class RecommendAll extends StatelessWidget {
-  const RecommendAll({Key? key, required this.size}) : super(key: key);
-  final Size size;
+  const RecommendAll({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<Products>(context).items;
     final int length = products.length;
+    final size = MediaQuery.of(context).size;
     return SizedBox(
       height: length < 3 ? length * 140.0 : size.height * 0.6,
       width: size.width,
