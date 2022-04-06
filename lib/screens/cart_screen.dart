@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/cart.dart';
 
 class CartScreen extends StatelessWidget {
+  static const routeName = '/cart-screen';
   const CartScreen({Key? key}) : super(key: key);
 
   @override
@@ -53,11 +54,12 @@ class _CartSingleItemState extends State<CartSingleItem> {
           ),
         ),
         title: Text(widget.item.title),
-        
-        trailing: Column(children: [
-          Text(widget.item.price.toString()),
-          const Icon(Icons.abc,size: 15),
-        ],),
+        trailing: Column(
+          children: [
+            Text(widget.item.price.toString()),
+            const Icon(Icons.abc, size: 15),
+          ],
+        ),
       ),
     );
   }

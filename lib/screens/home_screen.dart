@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app2/screens/cart_screen.dart';
+import 'package:shop_app2/widgets/home_widgets/navigation_cbar.dart';
 import 'package:shop_app2/widgets/home_widgets/product_all.dart';
 import 'package:shop_app2/widgets/home_widgets/recommend_all.dart';
 
@@ -24,6 +27,15 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      extendBody: true,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed(CartScreen.routeName);
+        },
+        child: const Icon(CupertinoIcons.shopping_cart),
+      ),
+      bottomNavigationBar: const NavigationCBar(),
     );
   }
 }
@@ -95,8 +107,7 @@ class _CategoryContainerState extends State<CategoryContainer> {
                     ? const Color(0xFFFEE16D)
                     : Colors.white,
                 borderRadius: BorderRadius.circular(10)),
-            child: Text(
-              _category[index]),
+            child: Text(_category[index]),
           ),
         ),
       ),
