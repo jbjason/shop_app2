@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/cart.dart';
@@ -8,14 +9,14 @@ class RecommendAll extends StatelessWidget {
   const RecommendAll({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<Products>(context).items;
+    final products = Provider.of<Products>(context,listen: false).items;
     final int length = products.length;
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: length < 3 ? length * 140.0 : size.height * 0.6,
+      height: length < 3 ? length * 120.0 : size.height * 0.5,
       width: size.width,
       child: ListView.builder(
-        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 50),
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 70),
         itemCount: length,
         itemBuilder: (context, index) =>
             RecommendItem(product: products[index]),
@@ -30,13 +31,17 @@ class RecommendItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130,
-      padding: const EdgeInsets.only(left: 10, right: 10),
+      height: 110,
+      padding: const EdgeInsets.only(left: 10),
       margin: const EdgeInsets.only(bottom: 10),
       decoration: const BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.horizontal(
-              right: Radius.circular(40), left: Radius.circular(10))),
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(40),
+            topLeft: Radius.circular(10),
+            bottomLeft: Radius.circular(40),
+            bottomRight: Radius.circular(10),
+          )),
       child: Row(
         children: [
           // image
@@ -56,9 +61,29 @@ class RightSideOfContainer extends StatelessWidget {
   final Product product;
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        _titlePriceContainer(),
+        // favorite & cart Icons
+        Expanded(child: AddAndFavoriteButtons(product: product)),
+      ],
+    );
+  }
+
+  Text _buildRatingStars(int rating) {
+    String stars = '';
+    for (int i = 0; i < rating; i++) {
+      stars += '⭐ ';
+    }
+    stars.trim();
+    return Text(stars, style: const TextStyle(fontSize: 8));
+  }
+
+  Widget _titlePriceContainer() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // title
@@ -81,20 +106,9 @@ class RightSideOfContainer extends StatelessWidget {
           ]),
           // ratings
           _buildRatingStars(product.isRating.toInt()),
-          // favorite & cart Icons
-          AddAndFavoriteButtons(product: product),
         ],
       ),
     );
-  }
-
-  Text _buildRatingStars(int rating) {
-    String stars = '';
-    for (int i = 0; i < rating; i++) {
-      stars += '⭐ ';
-    }
-    stars.trim();
-    return Text(stars, style: const TextStyle(fontSize: 8));
   }
 }
 
@@ -106,27 +120,34 @@ class AddAndFavoriteButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        IconButton(
-          icon: Icon(
-              product.isFavorite ? Icons.favorite : Icons.favorite_border,
-              size: 20),
-          onPressed: () => product.toggleFavoriteStatus(),
-        ),
-        IconButton(
-          icon: const Icon(Icons.shopping_cart, size: 20),
-          onPressed: () {
-            cart.addItem(product);
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(const SnackBar(
-                  content: Text('Added item to Cart!'),
-                  duration: Duration(seconds: 1)));
-          },
-        ),
-      ],
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(left: 80),
+      decoration: BoxDecoration(
+          color: AppColors.accent.withOpacity(0.3),
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(50))),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(
+            icon: Icon(
+                product.isFavorite ? Icons.favorite : Icons.favorite_border,
+                size: 15),
+            onPressed: () => product.toggleFavoriteStatus(),
+          ),
+          IconButton(
+            icon: const Icon(Icons.shopping_cart, size: 15),
+            onPressed: () {
+              cart.addItem(product);
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(const SnackBar(
+                    content: Text('Added item to Cart!'),
+                    duration: Duration(seconds: 1)));
+            },
+          ),
+        ],
+      ),
     );
   }
 }
