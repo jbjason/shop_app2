@@ -16,7 +16,7 @@ class RecommendAll extends StatelessWidget {
       height: length < 3 ? length * 120.0 : size.height * 0.5,
       width: size.width,
       child: ListView.builder(
-        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 70),
+        padding: const EdgeInsets.only(bottom: 70),
         itemCount: length,
         itemBuilder: (context, index) =>
             RecommendItem(product: products[index]),
@@ -26,22 +26,15 @@ class RecommendAll extends StatelessWidget {
 }
 
 class RecommendItem extends StatelessWidget {
-  const RecommendItem({Key? key, required this.product}) : super(key: key);
+  RecommendItem({Key? key, required this.product}) : super(key: key);
   final Product product;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
+      height: 115,
       padding: const EdgeInsets.only(left: 10),
-      margin: const EdgeInsets.only(bottom: 10),
-      decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(40),
-            topLeft: Radius.circular(10),
-            bottomLeft: Radius.circular(40),
-            bottomRight: Radius.circular(10),
-          )),
+      margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+      decoration: _decoration,
       child: Row(
         children: [
           // image
@@ -52,6 +45,29 @@ class RecommendItem extends StatelessWidget {
       ),
     );
   }
+
+  final _decoration = BoxDecoration(
+    color: Colors.grey[300],
+    borderRadius: const BorderRadius.only(
+        topRight: Radius.circular(15),
+        topLeft: Radius.circular(10),
+        bottomLeft: Radius.circular(10),
+        bottomRight: Radius.circular(50)),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey.shade500,
+        offset: const Offset(4, 4),
+        blurRadius: 5,
+        spreadRadius: 3,
+      ),
+      const BoxShadow(
+        color: Colors.white,
+        offset: Offset(-4, -4),
+        blurRadius: 5,
+        spreadRadius: 1,
+      ),
+    ],
+  );
 }
 
 class RightSideOfContainer extends StatelessWidget {
@@ -125,7 +141,8 @@ class AddAndFavoriteButtons extends StatelessWidget {
       margin: const EdgeInsets.only(left: 80),
       decoration: BoxDecoration(
           color: AppColors.accent.withOpacity(0.3),
-          borderRadius: const BorderRadius.only(topLeft: Radius.circular(50))),
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(50), bottomRight: Radius.circular(40))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -161,17 +178,20 @@ class ImageContainer extends StatelessWidget {
   final Product product;
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(30.0),
-      child: InkWell(
-        onTap: () {},
-        child: Hero(
-          tag: product.id,
-          child: FadeInImage(
-            placeholder: const AssetImage('assets/placeholder.png'),
-            image: NetworkImage(product.imageUrl),
-            width: 120.0,
-            fit: BoxFit.contain,
+    return Padding(
+      padding: const EdgeInsets.only(top: 5, bottom: 5),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30.0),
+        child: InkWell(
+          onTap: () {},
+          child: Hero(
+            tag: product.id,
+            child: FadeInImage(
+              placeholder: const AssetImage('assets/placeholder.png'),
+              image: NetworkImage(product.imageUrl),
+              width: 120.0,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
       ),

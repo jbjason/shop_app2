@@ -25,7 +25,7 @@ abstract class AppTheme {
         textTheme:
             GoogleFonts.mulishTextTheme().apply(bodyColor: AppColors.textDark),
         backgroundColor: Colors.white,
-        scaffoldBackgroundColor: Colors.grey[200],
+        scaffoldBackgroundColor: Colors.grey[300],
         cardColor: AppColors.cardLight,
         primaryTextTheme: const TextTheme(
           headline6: TextStyle(color: AppColors.textDark),
