@@ -16,43 +16,58 @@ class CartSingleItem extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       height: 80,
       decoration: _decoration,
-      child: ListTile(
-        leading: CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.grey[300],
-          child: CircleAvatar(
-            radius: 24,
-            backgroundImage: NetworkImage(item.imageUrl),
-          ),
-        ),
-        title: Text(item.title),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text('\$ ${item.price}'),
-            const SizedBox(height: 5),
-            SizedBox(
-              width: 60,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  InkWell(
-                      onTap: () {
-                        if (item.quantity != 1) {
-                          cartData.update(item, 'm');
-                        }
-                      },
-                      child: const Icon(CupertinoIcons.minus_circle, size: 20)),
-                  Text('${item.quantity < 10 ? 0 : ''}${item.quantity}'),
-                  InkWell(
-                      onTap: () => cartData.update(item, 'plus'),
-                      child: const Icon(CupertinoIcons.plus_circle, size: 20)),
-                ],
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          ListTile(
+            leading: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.grey[300],
+              child: CircleAvatar(
+                radius: 24,
+                backgroundImage: NetworkImage(item.imageUrl),
               ),
-            )
-          ],
-        ),
+            ),
+            title: Text(item.title),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text('\$ ${item.price}'),
+                const SizedBox(height: 5),
+                SizedBox(
+                  width: 60,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                          onTap: () {
+                            if (item.quantity != 1) {
+                              cartData.update(item, 'm');
+                            }
+                          },
+                          child: const Icon(CupertinoIcons.minus_circle,
+                              size: 20)),
+                      Text('${item.quantity < 10 ? 0 : ''}${item.quantity}'),
+                      InkWell(
+                          onTap: () => cartData.update(item, 'plus'),
+                          child:
+                              const Icon(CupertinoIcons.plus_circle, size: 20)),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: -10,
+            right: 0,
+            left: 40,
+            child: InkWell(
+                onTap: () => cartData.removeItem(item),
+                child: const Icon(CupertinoIcons.delete)),
+          )
+        ],
       ),
     );
   }
