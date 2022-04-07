@@ -32,7 +32,6 @@ class RecommendItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 115,
-      padding: const EdgeInsets.only(left: 10),
       margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
       decoration: _decoration,
       child: Row(
@@ -57,13 +56,13 @@ class RecommendItem extends StatelessWidget {
       BoxShadow(
         color: Colors.grey.shade500,
         offset: const Offset(4, 4),
-        blurRadius: 5,
+        blurRadius: 15,
         spreadRadius: 3,
       ),
       const BoxShadow(
         color: Colors.white,
         offset: Offset(-4, -4),
-        blurRadius: 5,
+        blurRadius: 15,
         spreadRadius: 1,
       ),
     ],
