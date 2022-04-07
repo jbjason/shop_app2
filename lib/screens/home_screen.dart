@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/screens/cart_screen.dart';
 import 'package:shop_app2/widgets/home_widgets/navigation_cbar.dart';
 import 'package:shop_app2/widgets/home_widgets/product_all.dart';
@@ -89,27 +90,35 @@ class _CategoryContainerState extends State<CategoryContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 50,
+      padding: const EdgeInsets.only(left: 10),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: _category.length,
-        itemBuilder: (ctx, index) => InkWell(
-          onTap: () => setState(() => selectedIndex = index),
-          child: Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(
-                left: 3, right: index == _category.length - 1 ? 10 : 10),
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black12),
-                color: index == selectedIndex
-                    ? const Color(0xFFFEE16D)
-                    : Colors.white,
-                borderRadius: BorderRadius.circular(10)),
-            child: Text(_category[index]),
-          ),
-        ),
+        itemBuilder: (ctx, index) {
+          final bool f = index == selectedIndex;
+          return InkWell(
+            onTap: () => setState(() => selectedIndex = index),
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              margin: EdgeInsets.only(
+                  left: 3, right: index == _category.length - 1 ? 10 : 5),
+              decoration: BoxDecoration(
+                color:
+                    f ? AppColors.accent.withOpacity(0.5) : Colors.transparent,
+                borderRadius: BorderRadius.only(
+                  topRight: const Radius.circular(10),
+                  bottomLeft: const Radius.circular(10),
+                  topLeft: f ? const Radius.circular(40) : const Radius.circular(10),
+                  bottomRight: f ? const Radius.circular(40) : const Radius.circular(10),
+                ),
+              ),
+              child: Text(_category[index]),
+            ),
+          );
+        },
       ),
     );
   }
