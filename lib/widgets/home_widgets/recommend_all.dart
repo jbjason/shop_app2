@@ -16,11 +16,10 @@ class RecommendAll extends StatelessWidget {
       height: length < 3 ? length * 120.0 : size.height * 0.5,
       width: size.width,
       child: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 70),
-        itemCount: length,
-        itemBuilder: (context, index) =>
-            RecommendItem(product: products[index]),
-      ),
+          padding: const EdgeInsets.only(bottom: 70),
+          itemCount: length,
+          itemBuilder: (context, index) =>
+              RecommendItem(product: products[index])),
     );
   }
 }
@@ -37,10 +36,31 @@ class RecommendItem extends StatelessWidget {
       child: Row(
         children: [
           // image
-          ImageContainer(product: product),
+          _imageContainer(),
           // title ,price, review
           Expanded(child: RightSideOfContainer(product: product)),
         ],
+      ),
+    );
+  }
+
+  Widget _imageContainer() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 5, bottom: 5),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30.0),
+        child: InkWell(
+          onTap: () {},
+          child: Hero(
+            tag: product.id,
+            child: FadeInImage(
+              placeholder: const AssetImage('assets/placeholder.png'),
+              image: NetworkImage(product.imageUrl),
+              width: 120.0,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -163,36 +183,6 @@ class AddAndFavoriteButtons extends StatelessWidget {
             },
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ImageContainer extends StatelessWidget {
-  const ImageContainer({
-    Key? key,
-    required this.product,
-  }) : super(key: key);
-
-  final Product product;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 5, bottom: 5),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30.0),
-        child: InkWell(
-          onTap: () {},
-          child: Hero(
-            tag: product.id,
-            child: FadeInImage(
-              placeholder: const AssetImage('assets/placeholder.png'),
-              image: NetworkImage(product.imageUrl),
-              width: 120.0,
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
       ),
     );
   }
