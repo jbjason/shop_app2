@@ -9,7 +9,7 @@ class RecommendAll extends StatelessWidget {
   const RecommendAll({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<Products>(context,listen: false).items;
+    final products = Provider.of<Products>(context, listen: false).items;
     final int length = products.length;
     final size = MediaQuery.of(context).size;
     return SizedBox(
@@ -70,15 +70,6 @@ class RightSideOfContainer extends StatelessWidget {
     );
   }
 
-  Text _buildRatingStars(int rating) {
-    String stars = '';
-    for (int i = 0; i < rating; i++) {
-      stars += '⭐ ';
-    }
-    stars.trim();
-    return Text(stars, style: const TextStyle(fontSize: 8));
-  }
-
   Widget _titlePriceContainer() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
@@ -109,6 +100,15 @@ class RightSideOfContainer extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Text _buildRatingStars(int rating) {
+    String stars = '';
+    for (int i = 0; i < rating; i++) {
+      stars += '⭐ ';
+    }
+    stars.trim();
+    return Text(stars, style: const TextStyle(fontSize: 8));
   }
 }
 
