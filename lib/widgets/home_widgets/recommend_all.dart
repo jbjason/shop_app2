@@ -31,7 +31,7 @@ class RecommendItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 115,
-      margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+      margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
       decoration: _decoration,
       child: Row(
         children: [
@@ -159,9 +159,9 @@ class AddAndFavoriteButtons extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.only(left: 80),
       decoration: BoxDecoration(
-          color: AppColors.accent.withOpacity(0.3),
+          color: AppColors.accent.withOpacity(0.4),
           borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(50), bottomRight: Radius.circular(40))),
+              topLeft: Radius.circular(50), bottomRight: Radius.circular(50))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

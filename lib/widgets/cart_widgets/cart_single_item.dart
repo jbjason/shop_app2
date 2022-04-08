@@ -21,56 +21,78 @@ class CartSingleItem extends StatelessWidget {
 
   Widget _cartBody(BuildContext context) {
     final cartData = Provider.of<Cart>(context, listen: false);
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        ListTile(
-          leading: CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.grey[300],
-            child: CircleAvatar(
-                radius: 24, backgroundImage: NetworkImage(item.imageUrl)),
-          ),
-          title: Text(item.title),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text('\$ ${item.price}'),
-              const SizedBox(height: 5),
-              SizedBox(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        if (item.quantity != 1) {
-                          cartData.update(item, 'm');
-                        }
-                      },
-                      child: const Icon(CupertinoIcons.minus_circle, size: 20),
-                    ),
-                    Text('${item.quantity < 10 ? 0 : ''}${item.quantity}'),
-                    InkWell(
-                      onTap: () => cartData.update(item, 'plus'),
-                      child: const Icon(CupertinoIcons.plus_circle, size: 20),
-                    ),
-                  ],
-                ),
-              )
+    return Dismissible(
+      key: ValueKey(item.id),
+      background: Container(
+        color: Theme.of(context).errorColor,
+        child: const Icon(Icons.delete, color: Colors.white, size: 40),
+        alignment: Alignment.centerRight,
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        padding: const EdgeInsets.only(right: 20),
+      ),
+      direction: DismissDirection.endToStart,
+      confirmDismiss: (direction) {
+        return showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: const Text('Alert !'),
+            content: const Text('Do you want to remove the item?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: const Text('Yes'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('No'),
+              ),
             ],
           ),
-        ),
-        Positioned(
-          bottom: -10,
-          right: 0,
-          left: 40,
-          child: InkWell(
-              onTap: () => cartData.removeItem(item),
-              child: const Icon(CupertinoIcons.delete)),
-        ),
-      ],
+        );
+      },
+      onDismissed: (direction) => cartData.removeItem(item),
+      child: _cartItem(cartData),
+    );
+  }
+
+  Widget _cartItem(Cart cartData) {
+    return ListTile(
+      leading: CircleAvatar(
+        radius: 30,
+        backgroundColor: Colors.grey[300],
+        child: CircleAvatar(
+            radius: 24, backgroundImage: NetworkImage(item.imageUrl)),
+      ),
+      title: Text(item.title),
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text('\$ ${item.price}'),
+          const SizedBox(height: 5),
+          SizedBox(
+            width: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () {
+                    if (item.quantity != 1) {
+                      cartData.update(item, 'm');
+                    }
+                  },
+                  child: const Icon(CupertinoIcons.minus_circle, size: 20),
+                ),
+                Text('${item.quantity < 10 ? 0 : ''}${item.quantity}'),
+                InkWell(
+                  onTap: () => cartData.update(item, 'plus'),
+                  child: const Icon(CupertinoIcons.plus_circle, size: 20),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
