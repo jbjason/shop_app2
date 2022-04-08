@@ -29,6 +29,8 @@ class Cart with ChangeNotifier {
     return a;
   }
 
+  int get itemCount => _items.length;
+  
   int getIndex(String id) => _items.indexWhere((element) => element.id == id);
 
   void addItem(Product product) {
