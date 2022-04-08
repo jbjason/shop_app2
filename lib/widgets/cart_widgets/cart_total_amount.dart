@@ -17,7 +17,7 @@ class CartTotalAmount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      margin: const EdgeInsets.only(left: 17, right: 17),
+      margin: const EdgeInsets.only(left: 14, right: 14),
       padding: const EdgeInsets.only(left: 20, right: 5),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),

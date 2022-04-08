@@ -70,7 +70,7 @@ class _OrderSingleItemState extends State<OrderSingleItem> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       height:
-          _expanded ? min(widget.order.products.length * 20.0 + 110, 200) : 95,
+          _expanded ? min(widget.order.products.length * 25.0 + 110, 230) : 95,
       child: Card(
         margin: const EdgeInsets.all(10),
         child: Column(
@@ -91,7 +91,7 @@ class _OrderSingleItemState extends State<OrderSingleItem> {
               duration: const Duration(milliseconds: 300),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
               height: _expanded
-                  ? min(widget.order.products.length * 20.0 + 10, 100)
+                  ? min(widget.order.products.length * 25.0 + 10, 150)
                   : 0,
               child: ListView(
                 children: widget.order.products
