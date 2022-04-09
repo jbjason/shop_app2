@@ -17,7 +17,7 @@ class RecommendAll extends StatelessWidget {
       height: length < 3 ? length * 120.0 : size.height * 0.5,
       width: size.width,
       child: ListView.builder(
-          padding: const EdgeInsets.only(bottom: 70),
+          padding: const EdgeInsets.only(bottom: 70,top: 10),
           itemCount: length,
           itemBuilder: (context, index) =>
               RecommendItem(product: products[index])),
@@ -159,33 +159,32 @@ class _AddAndFavoriteButtonsState extends State<AddAndFavoriteButtons> {
           color: AppColors.accent.withOpacity(0.4),
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(50), bottomRight: Radius.circular(50))),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(
-            icon: Icon(
-                widget.product.isFavorite
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                size: 15),
-            onPressed: () {
-              widget.product.toggleFavoriteStatus();
-              setState(() {});
-            },
-          ),
-          IconButton(
-            icon: const Icon(CupertinoIcons.cart, size: 15),
-            onPressed: () {
-              cart.addItem(widget.product);
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(const SnackBar(
-                    content: Text('Added item to Cart!'),
-                    duration: Duration(seconds: 1)));
-            },
-          ),
-        ],
-      ),
+      child:  Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              icon: Icon(
+                  widget.product.isFavorite
+                      ? Icons.favorite
+                      : Icons.favorite_border,size: 20),
+              onPressed: () {
+                widget.product.toggleFavoriteStatus();
+                setState(() {});
+              },
+            ),
+            IconButton(
+              icon: const Icon(CupertinoIcons.cart,size: 20),
+              onPressed: () {
+                cart.addItem(widget.product);
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(const SnackBar(
+                      content: Text('Added item to Cart!'),
+                      duration: Duration(seconds: 1)));
+              },
+            ),
+          ],
+        ),
     );
   }
 }
