@@ -5,7 +5,6 @@ import 'package:shop_app2/providers/products.dart';
 
 class ProductAll extends StatefulWidget {
   const ProductAll({Key? key}) : super(key: key);
-  
   @override
   State<ProductAll> createState() => _ProductAllState();
 }
@@ -41,7 +40,7 @@ class ProductItem extends StatelessWidget {
     return AnimatedContainer(
       duration: kThemeAnimationDuration,
       margin: EdgeInsets.only(
-          right: 10, top: isSelected ? 5 : 25, bottom: isSelected ? 25 : 5),
+          right: 7, top: isSelected ? 3 : 20, bottom: isSelected ? 3 : 20),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,

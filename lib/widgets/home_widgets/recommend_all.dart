@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
@@ -31,14 +32,22 @@ class RecommendItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 115,
-      margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       decoration: _decoration,
       child: Row(
         children: [
           // image
           _imageContainer(),
           // title ,price, review
-          Expanded(child: RightSideOfContainer(product: product)),
+          Expanded(
+            child: Column(
+              children: [
+                _titlePriceContainer(),
+                // favorite & cart Icons
+                Expanded(child: AddAndFavoriteButtons(product: product)),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -62,46 +71,6 @@ class RecommendItem extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  final _decoration = BoxDecoration(
-    color: Colors.grey[300],
-    borderRadius: const BorderRadius.only(
-        topRight: Radius.circular(15),
-        topLeft: Radius.circular(10),
-        bottomLeft: Radius.circular(10),
-        bottomRight: Radius.circular(50)),
-    boxShadow: [
-      BoxShadow(
-        color: Colors.grey.shade500,
-        offset: const Offset(4, 4),
-        blurRadius: 15,
-        spreadRadius: 3,
-      ),
-      const BoxShadow(
-        color: Colors.white,
-        offset: Offset(-4, -4),
-        blurRadius: 15,
-        spreadRadius: 1,
-      ),
-    ],
-  );
-}
-
-class RightSideOfContainer extends StatelessWidget {
-  const RightSideOfContainer({Key? key, required this.product})
-      : super(key: key);
-
-  final Product product;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _titlePriceContainer(),
-        // favorite & cart Icons
-        Expanded(child: AddAndFavoriteButtons(product: product)),
-      ],
     );
   }
 
@@ -145,13 +114,41 @@ class RightSideOfContainer extends StatelessWidget {
     stars.trim();
     return Text(stars, style: const TextStyle(fontSize: 8));
   }
+
+  final _decoration = BoxDecoration(
+    color: Colors.grey[300],
+    borderRadius: const BorderRadius.only(
+        topRight: Radius.circular(15),
+        topLeft: Radius.circular(10),
+        bottomLeft: Radius.circular(10),
+        bottomRight: Radius.circular(50)),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey.shade500,
+        offset: const Offset(4, 4),
+        blurRadius: 15,
+        spreadRadius: 3,
+      ),
+      const BoxShadow(
+        color: Colors.white,
+        offset: Offset(-4, -4),
+        blurRadius: 15,
+        spreadRadius: 1,
+      ),
+    ],
+  );
 }
 
-class AddAndFavoriteButtons extends StatelessWidget {
+class AddAndFavoriteButtons extends StatefulWidget {
   const AddAndFavoriteButtons({Key? key, required this.product})
       : super(key: key);
-
   final Product product;
+
+  @override
+  State<AddAndFavoriteButtons> createState() => _AddAndFavoriteButtonsState();
+}
+
+class _AddAndFavoriteButtonsState extends State<AddAndFavoriteButtons> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
@@ -167,14 +164,19 @@ class AddAndFavoriteButtons extends StatelessWidget {
         children: [
           IconButton(
             icon: Icon(
-                product.isFavorite ? Icons.favorite : Icons.favorite_border,
+                widget.product.isFavorite
+                    ? Icons.favorite
+                    : Icons.favorite_border,
                 size: 15),
-            onPressed: () => product.toggleFavoriteStatus(),
+            onPressed: () {
+              widget.product.toggleFavoriteStatus();
+              setState(() {});
+            },
           ),
           IconButton(
-            icon: const Icon(Icons.shopping_cart, size: 15),
+            icon: const Icon(CupertinoIcons.cart, size: 15),
             onPressed: () {
-              cart.addItem(product);
+              cart.addItem(widget.product);
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(const SnackBar(
