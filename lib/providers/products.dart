@@ -9,7 +9,7 @@ class Products with ChangeNotifier {
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
       imageUrl:
-          'https://images-na.ssl-images-amazon.com/images/I/51c%2BT7XynwL._AC_UX679_.jpg',
+          'https://source.unsplash.com/random?sig=${1}',
     ),
     Product(
       id: 'p2',
@@ -17,7 +17,7 @@ class Products with ChangeNotifier {
       description: 'this is a pan for helping home chores',
       price: 20.45,
       imageUrl:
-          'https://i.pinimg.com/474x/e4/ed/45/e4ed45ddf937abb7c3862469a15372c8.jpg',
+          'https://source.unsplash.com/random?sig=${2}',
     ),
     Product(
       id: 'p3',
@@ -25,7 +25,7 @@ class Products with ChangeNotifier {
       description: 'this is a pan for helping home chores',
       price: 20.45,
       imageUrl:
-          'https://www.grandrivershotokan.ca/wp-content/uploads/2018/12/1029.40.png',
+          'https://source.unsplash.com/random?sig=${3}',
     ),
     Product(
       id: 'p4',
@@ -33,7 +33,7 @@ class Products with ChangeNotifier {
       description: 'this is a pan for helping home chores',
       price: 20.45,
       imageUrl:
-          'https://static01.nyt.com/images/2011/01/26/business/pan2/pan2-blog480.jpg',
+          'https://source.unsplash.com/random?sig=${4}',
     ),
   ];
 
