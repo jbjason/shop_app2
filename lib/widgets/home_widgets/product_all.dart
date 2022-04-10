@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/products.dart';
+import 'package:shop_app2/screens/details_screen.dart';
 
 class ProductAll extends StatefulWidget {
   const ProductAll({Key? key}) : super(key: key);
@@ -63,12 +64,25 @@ class _ProductItemState extends State<ProductItem> {
   }
 
   Widget _imageContainer() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30),
-        image: DecorationImage(
-            image: NetworkImage(widget.product.imageUrl), fit: BoxFit.cover),
+    final List<String> _images = [
+      'https://source.unsplash.com/random?sig=${5}',
+      'https://source.unsplash.com/random?sig=${6}',
+      'https://source.unsplash.com/random?sig=${7}',
+      'https://source.unsplash.com/random?sig=${8}',
+    ];
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => DetailsScreen(
+                size: MediaQuery.of(context).size, images: _images)));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30),
+          image: DecorationImage(
+              image: NetworkImage(widget.product.imageUrl), fit: BoxFit.cover),
+        ),
       ),
     );
   }
