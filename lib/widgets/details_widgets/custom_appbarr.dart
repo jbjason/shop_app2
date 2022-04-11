@@ -20,45 +20,32 @@ class _CustomAppBarrState extends State<CustomAppBarr> {
     return Container(
       margin: EdgeInsets.only(top: topPadding),
       decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(bottomRight: Radius.circular(260))),
+          borderRadius: BorderRadius.only(bottomRight: Radius.circular(60))),
       child: Stack(
         children: [
           //! basic Appbar
-          Opacity(
-            opacity: widget.percent,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Image.network(widget.images[_currentIndex], fit: BoxFit.cover),
-              ],
-            ),
-          ),
-          //! _custom AppBar
-          Opacity(
-            opacity: 1 - widget.percent,
-            child: PageView.builder(
-              controller: PageController(
-                  viewportFraction: .9, initialPage: _currentIndex),
-              itemCount: widget.images.length,
-              onPageChanged: (value) => setState(() => _currentIndex = value),
-              itemBuilder: (context, index) {
-                final bool _isSelected = _currentIndex == index;
-                return AnimatedContainer(
-                  duration: kThemeAnimationDuration,
-                  margin: EdgeInsets.only(
-                    right: 10,
-                    top: _isSelected ? 5 : 30,
-                    bottom: _isSelected ? 5 : 30,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
-                        image: NetworkImage(widget.images[index]),
-                        fit: BoxFit.cover),
-                  ),
-                );
-              },
-            ),
+          PageView.builder(
+            controller: PageController(
+                viewportFraction: .9, initialPage: _currentIndex),
+            itemCount: widget.images.length,
+            onPageChanged: (value) => setState(() => _currentIndex = value),
+            itemBuilder: (context, index) {
+              final bool _isSelected = _currentIndex == index;
+              return AnimatedContainer(
+                duration: kThemeAnimationDuration,
+                margin: EdgeInsets.only(
+                  right: 10,
+                  top: _isSelected ? 5 : 30,
+                  bottom: _isSelected ? 5 : 30,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                      image: NetworkImage(widget.images[index]),
+                      fit: BoxFit.cover),
+                ),
+              );
+            },
           ),
           Positioned(
             top: 10,
