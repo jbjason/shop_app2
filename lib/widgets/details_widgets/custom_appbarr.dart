@@ -65,13 +65,21 @@ class _CustomAppBarrState extends State<CustomAppBarr> {
             left: 10,
             child: InkWell(
               onTap: () => Navigator.pop(context),
-              child: const Icon(CupertinoIcons.back),
+              child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      color: Colors.grey[400]),
+                  child: const Icon(CupertinoIcons.back)),
             ),
           ),
-          const Positioned(
+          Positioned(
             top: 10,
             right: 10,
-            child: Icon(CupertinoIcons.heart, color: Colors.red),
+            child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    color: Colors.grey[400]),
+                child: const Icon(CupertinoIcons.heart)),
           ),
         ],
       ),
