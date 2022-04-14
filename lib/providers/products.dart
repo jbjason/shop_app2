@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class Products with ChangeNotifier {
@@ -14,7 +15,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p2',
       title: 'Trowser',
-      description: 'this is a pan for helping home chores',
+      description: detailString,
       price: 20.45,
       imageUrl:
           'https://source.unsplash.com/random?sig=${2}',
@@ -22,7 +23,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p3',
       title: 'Yellow Scarf',
-      description: 'this is a pan for helping home chores',
+      description: detailString,
       price: 20.45,
       imageUrl:
           'https://source.unsplash.com/random?sig=${3}',
@@ -30,7 +31,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p4',
       title: 'A Pan',
-      description: 'this is a pan for helping home chores',
+      description: detailString,
       price: 20.45,
       imageUrl:
           'https://source.unsplash.com/random?sig=${4}',

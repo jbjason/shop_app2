@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/products.dart';
@@ -64,17 +65,14 @@ class _ProductItemState extends State<ProductItem> {
   }
 
   Widget _imageContainer() {
-    final List<String> _images = [
-      'https://source.unsplash.com/random?sig=${5}',
-      'https://source.unsplash.com/random?sig=${6}',
-      'https://source.unsplash.com/random?sig=${7}',
-      'https://source.unsplash.com/random?sig=${8}',
-    ];
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).push(
+          MaterialPageRoute(
             builder: (_) => DetailsScreen(
-                size: MediaQuery.of(context).size, images: _images)));
+                size: MediaQuery.of(context).size, product: widget.product),
+          ),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -136,27 +134,13 @@ class _ProductItemState extends State<ProductItem> {
   }
 
   final _decoration = BoxDecoration(
-    color: Colors.grey[300],
-    borderRadius: BorderRadius.circular(40),
-    gradient: const LinearGradient(colors: [
-      Color(0xFFeae4e9),
-      Color(0xFFfff1e6),
-      Color(0xFFf0efeb),
-      Color(0xFFf0efeb),
-    ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-    boxShadow: [
-      BoxShadow(
-        color: Colors.grey.shade500,
-        offset: const Offset(4, 4),
-        blurRadius: 15,
-        spreadRadius: 3,
-      ),
-      const BoxShadow(
-        color: Colors.white,
-        offset: Offset(-4, -4),
-        blurRadius: 15,
-        spreadRadius: 1,
-      ),
-    ],
-  );
+      color: Colors.grey[300],
+      borderRadius: BorderRadius.circular(40),
+      gradient: const LinearGradient(colors: [
+        Color(0xFFeae4e9),
+        Color(0xFFfff1e6),
+        Color(0xFFf0efeb),
+        Color(0xFFf0efeb),
+      ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+      boxShadow: getShadowBox(Colors.grey.shade500, Colors.white));
 }

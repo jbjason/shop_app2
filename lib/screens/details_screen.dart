@@ -1,47 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/widgets/details_widgets/comments.dart';
 import 'package:shop_app2/widgets/details_widgets/custom_appbarr.dart';
+import 'package:shop_app2/widgets/details_widgets/details_body.dart';
 
 class DetailsScreen extends StatelessWidget {
   static const routeName = '/details-screen';
-  const DetailsScreen({Key? key, required this.size, required this.images})
+  const DetailsScreen({Key? key, required this.size, required this.product})
       : super(key: key);
   final Size size;
-  final List<String> images;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
+        controller: ScrollController(initialScrollOffset: 500),
         slivers: [
           SliverPersistentHeader(
             pinned: true,
             delegate: PersistentDelegate(
-                maxExtend: size.height, minExtend: size.height*.4, images: images),
+              maxExtend: size.height,
+              minExtend: size.height * .45,
+              product: product,
+            ),
           ),
-          const SliverToBoxAdapter(child: Placeholder(color: Colors.transparent)),
-          const SliverToBoxAdapter(child: Placeholder(color: Colors.transparent)),
+          SliverToBoxAdapter(child: DetailsBody(product: product)),
         ],
       ),
+       bottomNavigationBar: const CommentsContainer(),
     );
   }
 }
 
 class PersistentDelegate extends SliverPersistentHeaderDelegate {
   final double _maxExtend, _minExtend;
-  final List<String> _images;
+  final Product product;
   PersistentDelegate({
     required double maxExtend,
     required double minExtend,
-    required List<String> images,
+    required this.product,
   })  : _maxExtend = maxExtend,
-        _minExtend = minExtend,
-        _images = images;
+        _minExtend = minExtend;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return CustomAppBarr(percent: shrinkOffset / _maxExtend, images: _images);
+    final percent = shrinkOffset / _maxExtend;
+    return CustomAppBarr(
+      topPercent: ((1 - percent) / .7).clamp(0.0, 1.0),
+      bottomPercent: (percent / .3).clamp(0.0, 1.0),
+      product: product,
+    );
   }
 
   @override
