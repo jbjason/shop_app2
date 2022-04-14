@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/details_widgets/comments.dart';
 import 'package:shop_app2/widgets/details_widgets/custom_appbarr.dart';
 import 'package:shop_app2/widgets/details_widgets/details_body.dart';
 
 class DetailsScreen extends StatelessWidget {
   static const routeName = '/details-screen';
-  const DetailsScreen({Key? key, required this.size, required this.product})
-      : super(key: key);
-  final Size size;
-  final Product product;
+  const DetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final f = ModalRoute.of(context)!.settings.arguments as List<String>;
+    final double height = double.parse(f[0]);
+    final Product product =
+        Provider.of<Products>(context, listen: false).findById(f[1]);
     return Scaffold(
       body: CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
-        controller: ScrollController(initialScrollOffset: size.height * .48),
+        controller: ScrollController(initialScrollOffset: height * .48),
         slivers: [
           SliverPersistentHeader(
             pinned: true,
             delegate: PersistentDelegate(
-              maxExtend: size.height,
-              minExtend: size.height * .45,
+              maxExtend: height,
+              minExtend: height * .45,
               product: product,
             ),
           ),

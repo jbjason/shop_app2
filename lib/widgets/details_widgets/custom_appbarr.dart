@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/screens/details_screen.dart';
 
 class CustomAppBarr extends StatelessWidget {
   const CustomAppBarr({
@@ -37,7 +36,7 @@ class CustomAppBarr extends StatelessWidget {
         top: topPadding,
         left: -60 * (1 - bottomPercent) + 15,
         child: InkWell(
-          onTap: () => Navigator.of(context).pushNamed(DetailsScreen.routeName),
+          onTap: () => Navigator.pop(context),
           child: Container(
             padding:
                 const EdgeInsets.only(top: 10, left: 10, right: 0, bottom: 10),

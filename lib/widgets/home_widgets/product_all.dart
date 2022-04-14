@@ -67,12 +67,10 @@ class _ProductItemState extends State<ProductItem> {
   Widget _imageContainer() {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => DetailsScreen(
-                size: MediaQuery.of(context).size, product: widget.product),
-          ),
-        );
+        Navigator.of(context).pushNamed(DetailsScreen.routeName, arguments: [
+          MediaQuery.of(context).size.height.toString(),
+          widget.product.id,
+        ]);
       },
       child: Container(
         decoration: BoxDecoration(
