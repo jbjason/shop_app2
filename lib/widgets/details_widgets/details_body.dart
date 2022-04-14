@@ -61,6 +61,8 @@ class _DetailsBodyState extends State<DetailsBody> {
           ],
         ),
       );
+    } else if (widget.product.description.length < 190) {
+      return Text(widget.product.description);
     } else {
       return RichText(
         text: TextSpan(

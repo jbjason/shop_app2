@@ -33,11 +33,11 @@ class CustomAppBarr extends StatelessWidget {
     );
   }
 
-  Widget _backButton(double topPadding, BuildContext context) => InkWell(
-        onTap: () => Navigator.of(context).pushNamed(DetailsScreen.routeName),
-        child: Positioned(
-          top: topPadding,
-          left: -60 * (1 - bottomPercent) + 15,
+  Widget _backButton(double topPadding, BuildContext context) => Positioned(
+        top: topPadding,
+        left: -60 * (1 - bottomPercent) + 15,
+        child: InkWell(
+          onTap: () => Navigator.of(context).pushNamed(DetailsScreen.routeName),
           child: Container(
             padding:
                 const EdgeInsets.only(top: 10, left: 10, right: 0, bottom: 10),

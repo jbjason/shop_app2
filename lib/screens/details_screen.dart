@@ -16,7 +16,7 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
-        controller: ScrollController(initialScrollOffset: size.height * .45),
+        controller: ScrollController(initialScrollOffset: size.height * .48),
         slivers: [
           SliverPersistentHeader(
             pinned: true,
