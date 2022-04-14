@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class DetailsBody extends StatefulWidget {
@@ -22,19 +23,21 @@ class _DetailsBodyState extends State<DetailsBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Text('Details', style: TextStyle(fontSize: 18)),
+          const SizedBox(height: 5),
           _detailsText(),
           const SizedBox(height: 25),
-          const Text('SIZE', style: TextStyle(fontSize: 18)),
+          const Text('Size', style: TextStyle(fontSize: 18)),
           const SizedBox(height: 5),
           _sizeContainer(),
           const SizedBox(height: 15),
-          const Text('COLOR', style: TextStyle(fontSize: 18)),
+          const Text('Color', style: TextStyle(fontSize: 18)),
           const SizedBox(height: 5),
           _colorContainer(),
           const SizedBox(height: 30),
           _addToCartButton(),
           const SizedBox(height: 25),
-          const Text('Related Items', style: TextStyle(fontSize: 20)),
+          const Text('Related Items', style: TextStyle(fontSize: 18)),
           const SizedBox(height: 10),
           _relatedPlaces(),
         ],
@@ -47,14 +50,14 @@ class _DetailsBodyState extends State<DetailsBody> {
       return RichText(
         text: TextSpan(
           text: widget.product.description.substring(0, 190 + 1) + '.',
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(color: AppColors.textDark),
           children: [
             TextSpan(
-                text: '...Read more',
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () => setState(() => _isExpanded = true),
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.black))
+              text: '...Read more',
+              recognizer: TapGestureRecognizer()
+                ..onTap = () => setState(() => _isExpanded = true),
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            )
           ],
         ),
       );
@@ -66,8 +69,7 @@ class _DetailsBodyState extends State<DetailsBody> {
             children: [
               TextSpan(
                 text: '  ...Show less',
-                style: const TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () => setState(() => _isExpanded = false),
               )
@@ -181,7 +183,11 @@ class _DetailsBodyState extends State<DetailsBody> {
             color: Colors.grey[300],
             alignment: Alignment.center,
             child: const Text('ADD TO CART',
-                style: TextStyle(fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5,
+                  wordSpacing: 1.5,
+                )),
           ),
         ),
       ),

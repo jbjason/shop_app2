@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/screens/details_screen.dart';
 
 class CustomAppBarr extends StatelessWidget {
   const CustomAppBarr({
@@ -27,21 +28,24 @@ class CustomAppBarr extends StatelessWidget {
             bottomPercent: bottomPercent,
             topPadding: topPadding),
         TitleSplashContainer(topPercent: topPercent, product: product),
-        _backButton(topPadding),
+        _backButton(topPadding, context),
       ],
     );
   }
 
-  Widget _backButton(double topPadding) => Positioned(
-        top: topPadding,
-        left: -60 * (1 - bottomPercent) + 15,
-        child: Container(
-          padding:
-              const EdgeInsets.only(top: 10, left: 10, right: 0, bottom: 10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              color: Colors.white.withOpacity(0.3)),
-          child: const Icon(Icons.arrow_back_ios),
+  Widget _backButton(double topPadding, BuildContext context) => InkWell(
+        onTap: () => Navigator.of(context).pushNamed(DetailsScreen.routeName),
+        child: Positioned(
+          top: topPadding,
+          left: -60 * (1 - bottomPercent) + 15,
+          child: Container(
+            padding:
+                const EdgeInsets.only(top: 10, left: 10, right: 0, bottom: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                color: Colors.white.withOpacity(0.3)),
+            child: const Icon(Icons.arrow_back_ios),
+          ),
         ),
       );
 }
