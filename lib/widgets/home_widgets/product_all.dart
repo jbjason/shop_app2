@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/products.dart';
+import 'dart:math' as math;
 import 'package:shop_app2/screens/details_screen.dart';
 
 class ProductAll extends StatefulWidget {
@@ -12,50 +13,78 @@ class ProductAll extends StatefulWidget {
 }
 
 class _ProductAllState extends State<ProductAll> {
-  int _currentIndex = 1;
+  int _currentIndex = 0;
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(viewportFraction: 0.77, initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final productsData = Provider.of<Products>(context);
-    final products = productsData.items;
     final size = MediaQuery.of(context).size;
-    return SizedBox(
+    final products = Provider.of<Products>(context).items;
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
       height: size.height * .42,
       child: PageView.builder(
-        controller: PageController(viewportFraction: 0.8, initialPage: 1),
+        controller: _pageController,
+        physics: const ClampingScrollPhysics(),
         onPageChanged: (value) => setState(() => _currentIndex = value),
         itemCount: products.length,
-        itemBuilder: (context, index) => ProductItem(
-            product: products[index], isSelected: _currentIndex == index),
+        itemBuilder: (context, index) =>
+            buildMovieSlider(products[index], index),
       ),
     );
   }
+
+  Widget buildMovieSlider(Product product, int i) => AnimatedBuilder(
+        animation: _pageController,
+        builder: (context, child) {
+          double value = 0;
+          if (_pageController.position.haveDimensions) {
+            value = i - _pageController.page!;
+            // We use 0.038 because 180*0.038 = 7 almost and we need to rotate our poster 7 degree
+            // we use clamp so that our value vary from -1 to 1
+            value = (value * 0.038).clamp(-1, 1);
+          }
+          return AnimatedOpacity(
+            duration: const Duration(milliseconds: 350),
+            opacity: _currentIndex == i ? 1 : 0.5,
+            child: Transform.rotate(
+              angle: math.pi * value,
+              child: ProductItem(product: product, currentIndex: i),
+            ),
+          );
+        },
+      );
 }
 
-class ProductItem extends StatefulWidget {
-  const ProductItem({Key? key, required this.product, required this.isSelected})
+class ProductItem extends StatelessWidget {
+  ProductItem({Key? key, required this.product, required this.currentIndex})
       : super(key: key);
   final Product product;
-  final bool isSelected;
+  final int currentIndex;
 
-  @override
-  State<ProductItem> createState() => _ProductItemState();
-}
-
-class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: kThemeAnimationDuration,
-      margin: EdgeInsets.only(
-          right: 15,
-          top: widget.isSelected ? 5 : 25,
-          bottom: widget.isSelected ? 15 : 30),
+      margin: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 18),
       padding: const EdgeInsets.all(10),
       decoration: _decoration,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(child: _imageContainer()),
+          Expanded(child: _imageContainer(context)),
           const SizedBox(height: 7),
           _titleAndPrice(),
           _reviewsRatingsFavorite(),
@@ -64,12 +93,12 @@ class _ProductItemState extends State<ProductItem> {
     );
   }
 
-  Widget _imageContainer() {
+  Widget _imageContainer(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(DetailsScreen.routeName, arguments: [
           MediaQuery.of(context).size.height.toString(),
-          widget.product.id,
+          product.id,
         ]);
       },
       child: Container(
@@ -77,25 +106,19 @@ class _ProductItemState extends State<ProductItem> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(30),
           image: DecorationImage(
-              image: NetworkImage(widget.product.imageUrl), fit: BoxFit.cover),
+              image: NetworkImage(imageList[currentIndex]), fit: BoxFit.cover),
         ),
       ),
     );
   }
 
   Widget _titleAndPrice() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            widget.product.title,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
-          ),
-          Text('\$ ${widget.product.price}'),
-        ],
+    return const Padding(
+      padding: EdgeInsets.only(left: 10, right: 10),
+      child: Text(
+        'Blue Chocolate',
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -104,28 +127,16 @@ class _ProductItemState extends State<ProductItem> {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const Text('⭐ 4.5', style: TextStyle(fontSize: 11)),
+          const SizedBox(width: 6),
           Row(
-            children: [
-              const Icon(Icons.location_on_sharp, size: 10.0),
-              Text('${widget.product.isReview} reviews',
-                  style: const TextStyle(fontSize: 11)),
+            children: const [
+              Icon(Icons.location_on_sharp, size: 10.0),
+              Text('10 reviews', style: TextStyle(fontSize: 11)),
             ],
           ),
-          InkWell(
-            child: Icon(
-                widget.product.isFavorite
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                size: 18),
-            onTap: () {
-              widget.product.toggleFavoriteStatus();
-              setState(() {});
-            },
-          ),
-          Text('⭐ ${widget.product.isRating}',
-              style: const TextStyle(fontSize: 11)),
         ],
       ),
     );
@@ -140,5 +151,5 @@ class _ProductItemState extends State<ProductItem> {
         Color(0xFFf0efeb),
         Color(0xFFf0efeb),
       ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-      boxShadow: getShadowBox(Colors.grey.shade500, Colors.white));
+      boxShadow: getShadowBox(Colors.grey.shade600, Colors.white));
 }
