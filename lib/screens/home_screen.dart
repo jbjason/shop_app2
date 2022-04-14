@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 40),
             // SearchBar Container
             SearchBarContainer(),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
             // Category Container
             CategoryContainer(),
             SizedBox(height: 30),

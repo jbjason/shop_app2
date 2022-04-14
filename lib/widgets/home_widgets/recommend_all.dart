@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:provider/provider.dart';
@@ -14,10 +15,10 @@ class RecommendAll extends StatelessWidget {
     final int length = products.length;
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: length < 3 ? length * 120.0 : size.height * 0.5,
+      height: length < 3 ? length * 118.0 : size.height * 0.5,
       width: size.width,
       child: ListView.builder(
-          padding: const EdgeInsets.only(bottom: 70,top: 10),
+          padding: const EdgeInsets.only(bottom: 20,top: 10),
           itemCount: length,
           itemBuilder: (context, index) =>
               RecommendItem(product: products[index])),
@@ -32,7 +33,7 @@ class RecommendItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 115,
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
       decoration: _decoration,
       child: Row(
         children: [
@@ -116,26 +117,12 @@ class RecommendItem extends StatelessWidget {
   }
 
   final _decoration = BoxDecoration(
-    color: Colors.grey[300],
     borderRadius: const BorderRadius.only(
         topRight: Radius.circular(15),
         topLeft: Radius.circular(10),
         bottomLeft: Radius.circular(10),
         bottomRight: Radius.circular(50)),
-    boxShadow: [
-      BoxShadow(
-        color: Colors.grey.shade500,
-        offset: const Offset(4, 4),
-        blurRadius: 15,
-        spreadRadius: 3,
-      ),
-      const BoxShadow(
-        color: Colors.white,
-        offset: Offset(-4, -4),
-        blurRadius: 15,
-        spreadRadius: 1,
-      ),
-    ],
+    boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
   );
 }
 
@@ -159,32 +146,33 @@ class _AddAndFavoriteButtonsState extends State<AddAndFavoriteButtons> {
           color: AppColors.accent.withOpacity(0.4),
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(50), bottomRight: Radius.circular(50))),
-      child:  Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(
-                  widget.product.isFavorite
-                      ? Icons.favorite
-                      : Icons.favorite_border,size: 20),
-              onPressed: () {
-                widget.product.toggleFavoriteStatus();
-                setState(() {});
-              },
-            ),
-            IconButton(
-              icon: const Icon(CupertinoIcons.cart,size: 20),
-              onPressed: () {
-                cart.addItem(widget.product);
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(const SnackBar(
-                      content: Text('Added item to Cart!'),
-                      duration: Duration(seconds: 1)));
-              },
-            ),
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          IconButton(
+            icon: Icon(
+                widget.product.isFavorite
+                    ? Icons.favorite
+                    : Icons.favorite_border,
+                size: 20),
+            onPressed: () {
+              widget.product.toggleFavoriteStatus();
+              setState(() {});
+            },
+          ),
+          IconButton(
+            icon: const Icon(CupertinoIcons.cart, size: 20),
+            onPressed: () {
+              cart.addItem(widget.product);
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(const SnackBar(
+                    content: Text('Added item to Cart!'),
+                    duration: Duration(seconds: 1)));
+            },
+          ),
+        ],
+      ),
     );
   }
 }

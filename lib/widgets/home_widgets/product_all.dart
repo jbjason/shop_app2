@@ -32,8 +32,7 @@ class _ProductAllState extends State<ProductAll> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final products = Provider.of<Products>(context).items;
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
+    return SizedBox(
       height: size.height * .42,
       child: PageView.builder(
         controller: _pageController,
@@ -113,12 +112,12 @@ class ProductItem extends StatelessWidget {
   }
 
   Widget _titleAndPrice() {
-    return const Padding(
-      padding: EdgeInsets.only(left: 10, right: 10),
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Text(
-        'Blue Chocolate',
+        product.title,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
+        style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -129,12 +128,12 @@ class ProductItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('⭐ 4.5', style: TextStyle(fontSize: 11)),
+          Text('⭐ ${product.isRating}', style: const TextStyle(fontSize: 11)),
           const SizedBox(width: 6),
           Row(
-            children: const [
-              Icon(Icons.location_on_sharp, size: 10.0),
-              Text('10 reviews', style: TextStyle(fontSize: 11)),
+            children: [
+              const Icon(Icons.location_on_sharp, size: 10.0),
+              Text('10 ${product.isReview}', style: const TextStyle(fontSize: 11)),
             ],
           ),
         ],
