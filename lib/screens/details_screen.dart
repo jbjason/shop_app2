@@ -16,7 +16,7 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
-        controller: ScrollController(initialScrollOffset: 500),
+        controller: ScrollController(initialScrollOffset: size.height * .45),
         slivers: [
           SliverPersistentHeader(
             pinned: true,
@@ -29,7 +29,7 @@ class DetailsScreen extends StatelessWidget {
           SliverToBoxAdapter(child: DetailsBody(product: product)),
         ],
       ),
-       bottomNavigationBar: const CommentsContainer(),
+      bottomNavigationBar: const CommentsContainer(),
     );
   }
 }
