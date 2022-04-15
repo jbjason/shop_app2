@@ -4,8 +4,8 @@ class Product with ChangeNotifier {
   final String id, title, description;
   final double price;
   final List<String> imageUrl;
-  final List<String> size;
-  final List<Color> color;
+   List<String> size;
+   List<Color> color;
   double isRating;
   int isReview;
   bool isFavorite;
