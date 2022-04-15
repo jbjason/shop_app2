@@ -10,6 +10,8 @@ class Products with ChangeNotifier {
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
       imageUrl: imageList,
+      size: sizeList,
+      color: colorsList,
     ),
     Product(
       id: 'p2',
@@ -17,6 +19,8 @@ class Products with ChangeNotifier {
       description: detailString,
       price: 20.45,
       imageUrl: imageList,
+      size: sizeList,
+      color: colorsList,
     ),
     Product(
       id: 'p3',
@@ -24,6 +28,8 @@ class Products with ChangeNotifier {
       description: detailString,
       price: 20.45,
       imageUrl: imageList,
+      size: sizeList,
+      color: colorsList,
     ),
     Product(
       id: 'p4',
@@ -31,6 +37,8 @@ class Products with ChangeNotifier {
       description: detailString,
       price: 20.45,
       imageUrl: imageList,
+      size: sizeList,
+      color: colorsList,
     ),
   ];
 
@@ -53,6 +61,8 @@ class Products with ChangeNotifier {
       price: product.price,
       imageUrl: product.imageUrl,
       id: product.id,
+      color: product.color,
+      size: product.size,
     );
     _items.add(newProduct);
     notifyListeners();

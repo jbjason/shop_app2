@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
+import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class DetailsBody extends StatefulWidget {
@@ -34,7 +36,7 @@ class _DetailsBodyState extends State<DetailsBody> {
           const SizedBox(height: 5),
           _colorContainer(),
           const SizedBox(height: 30),
-          _addToCartButton(),
+          _addToCartButton(context),
           const SizedBox(height: 25),
           _titlePortion('Related Items'),
           const SizedBox(height: 10),
@@ -86,20 +88,24 @@ class _DetailsBodyState extends State<DetailsBody> {
       height: 40,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: sizeList.length,
+        itemCount: widget.product.size.length,
         itemBuilder: (context, index) {
           final bool f = _selectedSize == index;
           return InkWell(
             onTap: () => setState(() => _selectedSize = index),
             child: Container(
               child: Center(
-                child: Text(sizeList[index],
-                    style: TextStyle(
-                        color: (f &&
-                                colorsList[_selectedColor].computeLuminance() <
-                                    .5)
-                            ? colorsList[_selectedColor]
-                            : Colors.black)),
+                child: Text(
+                  widget.product.size[index],
+                  style: TextStyle(
+                    color: (f &&
+                            widget.product.color[_selectedColor]
+                                    .computeLuminance() <
+                                .5)
+                        ? widget.product.color[_selectedColor]
+                        : Colors.black,
+                  ),
+                ),
               ),
               margin: const EdgeInsets.symmetric(horizontal: 10),
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -107,8 +113,11 @@ class _DetailsBodyState extends State<DetailsBody> {
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.grey[300],
                 border: Border.all(
-                    color: f ? colorsList[_selectedColor] : Colors.transparent,
-                    width: 2),
+                  color: f
+                      ? widget.product.color[_selectedColor]
+                      : Colors.transparent,
+                  width: 2,
+                ),
                 boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
               ),
             ),
@@ -123,7 +132,7 @@ class _DetailsBodyState extends State<DetailsBody> {
       height: 35,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: colorsList.length,
+        itemCount: widget.product.color.length,
         itemBuilder: ((context, index) => InkWell(
               onTap: () => setState(() => _selectedColor = index),
               child: Container(
@@ -131,12 +140,12 @@ class _DetailsBodyState extends State<DetailsBody> {
                 width: 30,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: colorsList[index],
+                  color: widget.product.color[index],
                   border: Border.all(
                       width: 4,
                       color: _selectedColor == index
                           ? Colors.white
-                          : colorsList[index]),
+                          : widget.product.color[index]),
                   boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
                 ),
               ),
@@ -145,21 +154,34 @@ class _DetailsBodyState extends State<DetailsBody> {
     );
   }
 
-  Widget _addToCartButton() {
+  Widget _addToCartButton(BuildContext context) {
     return Center(
       child: getButtonDecoration(
         70,
         250,
         BoxShape.rectangle,
         getShadowBox(Colors.grey.shade900, Colors.white),
-        Container(
-          color: Colors.grey[300],
-          alignment: Alignment.center,
-          child: const Text('ADD TO CART',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
-                  wordSpacing: 1.5)),
+        InkWell(
+          onTap: () {
+            Provider.of<Cart>(context, listen: false).addItem(
+                widget.product,
+                widget.product.color[_selectedColor],
+                widget.product.size[_selectedSize]);
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(const SnackBar(
+                  content: Text('Added item to Cart!'),
+                  duration: Duration(seconds: 1)));
+          },
+          child: Container(
+            color: Colors.grey[300],
+            alignment: Alignment.center,
+            child: const Text('ADD TO CART',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.5,
+                    wordSpacing: 1.5)),
+          ),
         ),
       ),
     );

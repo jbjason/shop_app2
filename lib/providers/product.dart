@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 class Product with ChangeNotifier {
   final String id, title, description;
   final double price;
-  final List<String> imageUrl ;
+  final List<String> imageUrl;
+  final List<String> size;
+  final List<Color> color;
   double isRating;
   int isReview;
   bool isFavorite;
@@ -13,6 +15,8 @@ class Product with ChangeNotifier {
     required this.description,
     required this.price,
     required this.imageUrl,
+    required this.color,
+    required this.size,
     this.isFavorite = false,
     this.isRating = 5.0,
     this.isReview = 10,
