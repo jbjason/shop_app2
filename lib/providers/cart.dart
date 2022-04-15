@@ -30,7 +30,7 @@ class Cart with ChangeNotifier {
   }
 
   int get itemCount => _items.length;
-  
+
   int getIndex(String id) => _items.indexWhere((element) => element.id == id);
 
   void addItem(Product product) {
@@ -40,7 +40,7 @@ class Cart with ChangeNotifier {
         CartItem(
           id: product.id,
           title: product.title,
-          imageUrl: product.imageUrl,
+          imageUrl: product.imageUrl[0],
           price: product.price,
           quantity: 1,
         ),

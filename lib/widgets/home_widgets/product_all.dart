@@ -60,7 +60,7 @@ class _ProductAllState extends State<ProductAll> {
             opacity: _currentIndex == i ? 1 : 0.5,
             child: Transform.rotate(
               angle: math.pi * value,
-              child: ProductItem(product: product, currentIndex: i),
+              child: ProductItem(product: product),
             ),
           );
         },
@@ -68,10 +68,9 @@ class _ProductAllState extends State<ProductAll> {
 }
 
 class ProductItem extends StatelessWidget {
-  ProductItem({Key? key, required this.product, required this.currentIndex})
+  ProductItem({Key? key, required this.product})
       : super(key: key);
   final Product product;
-  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +104,7 @@ class ProductItem extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(30),
           image: DecorationImage(
-              image: NetworkImage(imageList[currentIndex]), fit: BoxFit.cover),
+              image: NetworkImage(product.imageUrl[0]), fit: BoxFit.cover),
         ),
       ),
     );
@@ -133,7 +132,8 @@ class ProductItem extends StatelessWidget {
           Row(
             children: [
               const Icon(Icons.location_on_sharp, size: 10.0),
-              Text('${product.isReview} review', style: const TextStyle(fontSize: 11)),
+              Text('${product.isReview} review',
+                  style: const TextStyle(fontSize: 11)),
             ],
           ),
         ],

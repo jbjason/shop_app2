@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class CustomAppBarr extends StatelessWidget {
@@ -25,7 +24,8 @@ class CustomAppBarr extends StatelessWidget {
         ImagesPreview(
             topPercent: topPercent,
             bottomPercent: bottomPercent,
-            topPadding: topPadding),
+            topPadding: topPadding,
+            product: product),
         TitleSplashContainer(topPercent: topPercent, product: product),
         _backButton(topPadding, context),
       ],
@@ -132,13 +132,16 @@ class TitleSplashContainer extends StatelessWidget {
 }
 
 class ImagesPreview extends StatefulWidget {
-  const ImagesPreview({
-    Key? key,
-    required this.topPercent,
-    required this.bottomPercent,
-    required this.topPadding,
-  }) : super(key: key);
+  const ImagesPreview(
+      {Key? key,
+      required this.topPercent,
+      required this.bottomPercent,
+      required this.topPadding,
+      required this.product})
+      : super(key: key);
   final double topPercent, bottomPercent, topPadding;
+  final Product product;
+
   @override
   State<ImagesPreview> createState() => _ImagesPreviewState();
 }
@@ -169,9 +172,8 @@ class _ImagesPreviewState extends State<ImagesPreview> {
             children: [
               Expanded(
                 child: PageView.builder(
-                  //physics: const EaseIn(),
                   controller: pageController,
-                  itemCount: imageList.length,
+                  itemCount: widget.product.imageUrl.length,
                   onPageChanged: (value) =>
                       setState(() => _currentIndex = value),
                   itemBuilder: (context, index) {
@@ -194,7 +196,7 @@ class _ImagesPreviewState extends State<ImagesPreview> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
-                            image: NetworkImage(imageList[index]),
+                            image: NetworkImage(widget.product.imageUrl[index]),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -208,7 +210,7 @@ class _ImagesPreviewState extends State<ImagesPreview> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
-                  imageList.length,
+                  widget.product.imageUrl.length,
                   (index) => AnimatedContainer(
                     duration: kThemeAnimationDuration,
                     height: 4,

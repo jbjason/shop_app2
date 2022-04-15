@@ -18,7 +18,7 @@ class RecommendAll extends StatelessWidget {
       height: length < 3 ? length * 118.0 : size.height * 0.5,
       width: size.width,
       child: ListView.builder(
-          padding: const EdgeInsets.only(bottom: 20,top: 10),
+          padding: const EdgeInsets.only(bottom: 20, top: 10),
           itemCount: length,
           itemBuilder: (context, index) =>
               RecommendItem(product: products[index])),
@@ -65,7 +65,7 @@ class RecommendItem extends StatelessWidget {
             tag: product.id,
             child: FadeInImage(
               placeholder: const AssetImage('assets/placeholder.png'),
-              image: NetworkImage(product.imageUrl),
+              image: NetworkImage(product.imageUrl[0]),
               width: 120.0,
               fit: BoxFit.contain,
             ),

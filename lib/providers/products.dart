@@ -9,32 +9,28 @@ class Products with ChangeNotifier {
       title: 'Red Shirt',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
-      imageUrl:
-          'https://source.unsplash.com/random?sig=${1}',
+      imageUrl: imageList,
     ),
     Product(
       id: 'p2',
       title: 'Trowser',
       description: detailString,
       price: 20.45,
-      imageUrl:
-          'https://source.unsplash.com/random?sig=${2}',
+      imageUrl: imageList,
     ),
     Product(
       id: 'p3',
       title: 'Yellow Scarf',
       description: detailString,
       price: 20.45,
-      imageUrl:
-          'https://source.unsplash.com/random?sig=${3}',
+      imageUrl: imageList,
     ),
     Product(
       id: 'p4',
       title: 'A Pan',
       description: detailString,
       price: 20.45,
-      imageUrl:
-          'https://source.unsplash.com/random?sig=${4}',
+      imageUrl: imageList,
     ),
   ];
 

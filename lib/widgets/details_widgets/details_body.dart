@@ -23,20 +23,20 @@ class _DetailsBodyState extends State<DetailsBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Details', style: TextStyle(fontSize: 18)),
+          _titlePortion('Details'),
           Padding(padding: const EdgeInsets.all(8.0), child: _detailsText()),
           const SizedBox(height: 20),
-          const Text('Size', style: TextStyle(fontSize: 18)),
+          _titlePortion('Size'),
           const SizedBox(height: 5),
           _sizeContainer(),
           const SizedBox(height: 15),
-          const Text('Color', style: TextStyle(fontSize: 18)),
+          _titlePortion('Color'),
           const SizedBox(height: 5),
           _colorContainer(),
           const SizedBox(height: 30),
           _addToCartButton(),
           const SizedBox(height: 25),
-          const Text('Related Items', style: TextStyle(fontSize: 18)),
+          _titlePortion('Related Items'),
           const SizedBox(height: 10),
           _relatedPlaces(),
         ],
@@ -44,6 +44,8 @@ class _DetailsBodyState extends State<DetailsBody> {
     );
   }
 
+  Widget _titlePortion(String s) =>
+      Text(s, style: const TextStyle(fontSize: 18));
   Widget _detailsText() {
     if (widget.product.description.length > 190 && !_isExpanded) {
       return RichText(
@@ -143,29 +145,6 @@ class _DetailsBodyState extends State<DetailsBody> {
     );
   }
 
-  Widget _relatedPlaces() {
-    return SizedBox(
-      height: 180,
-      child: ListView.builder(
-        itemCount: imageList.length,
-        scrollDirection: Axis.horizontal,
-        itemExtent: 150,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                imageList[imageList.length - 1 - index],
-                fit: BoxFit.cover,
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
-
   Widget _addToCartButton() {
     return Center(
       child: getButtonDecoration(
@@ -182,6 +161,30 @@ class _DetailsBodyState extends State<DetailsBody> {
                   letterSpacing: 1.5,
                   wordSpacing: 1.5)),
         ),
+      ),
+    );
+  }
+
+  Widget _relatedPlaces() {
+    final length = widget.product.imageUrl.length;
+    return SizedBox(
+      height: 180,
+      child: ListView.builder(
+        itemCount: length,
+        scrollDirection: Axis.horizontal,
+        itemExtent: 150,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.network(
+                widget.product.imageUrl[length - 1 - index],
+                fit: BoxFit.cover,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
