@@ -5,8 +5,8 @@ class CartItem {
   final String id, title, imageUrl;
   int quantity;
   final double price;
-  final List<Color> colors;
-  final List<String> sizes;
+   List<Color> colors;
+   List<String> sizes;
   CartItem({
     required this.id,
     required this.title,
@@ -41,10 +41,12 @@ class Cart with ChangeNotifier {
     final int i = getIndex(product.id);
     if (i == -1) {
       // putting the selected color & size at index 0
-      product.color.remove(_sColor);
-      product.color.insert(0, _sColor);
-      product.size.remove(_sSize);
-      product.size.insert(0, _sSize);
+      // List<Color> f = product.color ;
+      // List<String> g = product.size;
+      // f.remove(_sColor);
+      // f.insert(0, _sColor);
+      // g.remove(_sSize);
+      // g.insert(0, _sSize);
       _items.add(
         CartItem(
           id: product.id,
