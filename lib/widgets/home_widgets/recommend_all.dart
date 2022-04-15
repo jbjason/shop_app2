@@ -138,7 +138,6 @@ class AddAndFavoriteButtons extends StatefulWidget {
 class _AddAndFavoriteButtonsState extends State<AddAndFavoriteButtons> {
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context, listen: false);
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(left: 80),
@@ -163,13 +162,12 @@ class _AddAndFavoriteButtonsState extends State<AddAndFavoriteButtons> {
           IconButton(
             icon: const Icon(CupertinoIcons.cart, size: 20),
             onPressed: () {
-              cart.addItem(widget.product,
-                  widget.product.color[0], widget.product.size[0]);
+              final s = Provider.of<Cart>(context, listen: false)
+                  .addItem(widget.product, 0, widget.product.size[0]);
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
-                ..showSnackBar(const SnackBar(
-                    content: Text('Added item to Cart!'),
-                    duration: Duration(seconds: 1)));
+                ..showSnackBar(
+                    SnackBar(content: Text(s), duration: const Duration(seconds: 1)));
             },
           ),
         ],

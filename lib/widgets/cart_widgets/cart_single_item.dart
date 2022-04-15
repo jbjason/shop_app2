@@ -58,8 +58,6 @@ class CartSingleItem extends StatelessWidget {
   }
 
   Widget _cartItem(Cart cartData) {
-    final s = item.colors[0];
-    print(s);
     return ListTile(
       leading: CircleAvatar(
         radius: 30,
@@ -68,7 +66,13 @@ class CartSingleItem extends StatelessWidget {
             radius: 24, backgroundImage: NetworkImage(item.imageUrl)),
       ),
       title: Text(item.title),
-      //subtitle: Text('${s[0]}     ${item.sizes[0]}'),
+      subtitle: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(width: 10, color: item.colors[0]),
+          Text(item.sizes[0]),
+        ],
+      ),
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,

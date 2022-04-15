@@ -5,8 +5,8 @@ class CartItem {
   final String id, title, imageUrl;
   int quantity;
   final double price;
-   List<Color> colors;
-   List<String> sizes;
+  List<Color> colors;
+  List<String> sizes;
   CartItem({
     required this.id,
     required this.title,
@@ -37,29 +37,34 @@ class Cart with ChangeNotifier {
 
   int getIndex(String id) => _items.indexWhere((element) => element.id == id);
 
-  void addItem(Product product, Color _sColor, String _sSize) {
+  String addItem(Product product, int _sColorIndex, String _sSize) {
     final int i = getIndex(product.id);
     if (i == -1) {
       // putting the selected color & size at index 0
-      // List<Color> f = product.color ;
-      // List<String> g = product.size;
-      // f.remove(_sColor);
-      // f.insert(0, _sColor);
-      // g.remove(_sSize);
-      // g.insert(0, _sSize);
+      List<Color> _colors = product.color;
+      if (_sColorIndex != 0) {
+        _colors.removeAt(_sColorIndex);
+        _colors.insert(0, product.color[_sColorIndex]);
+        product.size.remove(_sSize);
+        product.size.insert(0, _sSize);
+      }
       _items.add(
         CartItem(
           id: product.id,
           title: product.title,
           imageUrl: product.imageUrl[0],
           price: product.price,
-          colors: product.color,
+          colors: _colors,
           sizes: product.size,
           quantity: 1,
         ),
       );
+      notifyListeners();
+      return 'Added item to Cart!';
+    }else{
+      return 'Item already in Cart !';
     }
-    notifyListeners();
+    
   }
 
   void update(CartItem cart, String s) {

@@ -163,15 +163,14 @@ class _DetailsBodyState extends State<DetailsBody> {
         getShadowBox(Colors.grey.shade900, Colors.white),
         InkWell(
           onTap: () {
-            Provider.of<Cart>(context, listen: false).addItem(
+            final s = Provider.of<Cart>(context, listen: false).addItem(
                 widget.product,
-                widget.product.color[_selectedColor],
+                _selectedColor,
                 widget.product.size[_selectedSize]);
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
-              ..showSnackBar(const SnackBar(
-                  content: Text('Added item to Cart!'),
-                  duration: Duration(seconds: 1)));
+              ..showSnackBar(
+                  SnackBar(content: Text(s), duration: const Duration(seconds: 1)));
           },
           child: Container(
             color: Colors.grey[300],
