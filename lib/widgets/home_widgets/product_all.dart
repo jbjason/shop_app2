@@ -133,7 +133,7 @@ class ProductItem extends StatelessWidget {
           Row(
             children: [
               const Icon(Icons.location_on_sharp, size: 10.0),
-              Text('10 ${product.isReview}', style: const TextStyle(fontSize: 11)),
+              Text('${product.isReview} review', style: const TextStyle(fontSize: 11)),
             ],
           ),
         ],

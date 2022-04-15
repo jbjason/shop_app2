@@ -24,9 +24,8 @@ class _DetailsBodyState extends State<DetailsBody> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Details', style: TextStyle(fontSize: 18)),
-          const SizedBox(height: 5),
-          _detailsText(),
-          const SizedBox(height: 25),
+          Padding(padding: const EdgeInsets.all(8.0), child: _detailsText()),
+          const SizedBox(height: 20),
           const Text('Size', style: TextStyle(fontSize: 18)),
           const SizedBox(height: 5),
           _sizeContainer(),
@@ -169,28 +168,19 @@ class _DetailsBodyState extends State<DetailsBody> {
 
   Widget _addToCartButton() {
     return Center(
-      child: Container(
-        height: 70,
-        width: 250,
-        decoration: BoxDecoration(
-          gradient: SweepGradient(
-            startAngle: 2,
-            colors: [Colors.grey[850]!, Colors.blue[200]!],
-          ),
-          boxShadow: getShadowBox(Colors.grey.shade900, Colors.white),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Container(
-            color: Colors.grey[300],
-            alignment: Alignment.center,
-            child: const Text('ADD TO CART',
-                style: TextStyle(
+      child: getButtonDecoration(
+        70,
+        250,
+        BoxShape.rectangle,
+        getShadowBox(Colors.grey.shade900, Colors.white),
+        Container(
+          color: Colors.grey[300],
+          alignment: Alignment.center,
+          child: const Text('ADD TO CART',
+              style: TextStyle(
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.5,
-                  wordSpacing: 1.5,
-                )),
-          ),
+                  wordSpacing: 1.5)),
         ),
       ),
     );

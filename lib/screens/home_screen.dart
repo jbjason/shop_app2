@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/screens/cart_screen.dart';
 import 'package:shop_app2/widgets/home_widgets/badge.dart';
@@ -47,9 +48,16 @@ class HomeScreen extends StatelessWidget {
             value: f.toString(),
             color: f != 0 ? const Color(0xFFfaedcd) : Colors.transparent);
       },
-      child: FloatingActionButton(
-        onPressed: () => Navigator.of(context).pushNamed(CartScreen.routeName),
-        child: const Icon(CupertinoIcons.shopping_cart),
+      child: getButtonDecoration(
+        70,
+        70,
+        BoxShape.circle,
+        [],
+        FloatingActionButton(
+          onPressed: () =>
+              Navigator.of(context).pushNamed(CartScreen.routeName),
+          child: const Icon(CupertinoIcons.shopping_cart),
+        ),
       ),
     );
   }
