@@ -43,7 +43,7 @@ class CustomAppBarr extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: Colors.white.withOpacity(0.3)),
-            child: const Icon(Icons.arrow_back_ios),
+            child: const Icon(Icons.arrow_back_ios,color: Colors.black),
           ),
         ),
       );

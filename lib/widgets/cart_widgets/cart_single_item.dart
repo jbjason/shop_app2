@@ -69,7 +69,15 @@ class CartSingleItem extends StatelessWidget {
       subtitle: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(width: 10, color: item.colors[0]),
+          Container(
+            width: 13,
+            height: 13,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: item.colors[0],
+            ),
+          ),
+          const SizedBox(width: 10),
           Text(item.sizes[0]),
         ],
       ),

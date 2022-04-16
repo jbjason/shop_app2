@@ -15,8 +15,8 @@ List<BoxShadow> getShadowBox(Color upper, Color lower) => [
       ),
     ];
 
-Widget getButtonDecoration(
-    double height, double width, BoxShape _shape,List<BoxShadow> _shadow , Widget child ) {
+Widget getButtonDecoration(double height, double width, BoxShape _shape,
+    List<BoxShadow> _shadow, Widget child) {
   return Container(
     height: height,
     width: width,
@@ -37,13 +37,13 @@ const String detailString =
 
 const List<String> sizeList = ['M', 'L', 'XL', 'XXL'];
 
-const List<Color> colorsList = [
-  Colors.pink,
-  Colors.red,
-  Colors.black,
-  Colors.green,
-  Colors.blue,
-  Colors.indigo
+List<Color> colorsList = [
+  const Color(0xffe91e63),
+  const Color(0xfff44336),
+  const Color(0xff000000),
+  const Color(0xff4caf50),
+  const Color(0xff2196f3),
+  const Color(0xff3f51b5)
 ];
 
 const List<String> imageList = [
