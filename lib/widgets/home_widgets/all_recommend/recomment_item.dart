@@ -1,30 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
-import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app2/providers/cart.dart';
-import 'package:shop_app2/providers/products.dart';
-
-class RecommendAll extends StatelessWidget {
-  const RecommendAll({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    final products = Provider.of<Products>(context, listen: false).items;
-    final int length = products.length;
-    final size = MediaQuery.of(context).size;
-    return SizedBox(
-      height: length < 3 ? length * 118.0 : size.height * 0.5,
-      width: size.width,
-      child: ListView.builder(
-          padding: const EdgeInsets.only(bottom: 20, top: 10),
-          itemCount: length * 3,
-          itemBuilder: (context, index) =>
-              RecommendItem(product: products[index % 4])),
-    );
-  }
-}
+import 'package:shop_app2/widgets/home_widgets/all_recommend/add_favorite_button.dart';
 
 class RecommendItem extends StatelessWidget {
   RecommendItem({Key? key, required this.product}) : super(key: key);
@@ -45,7 +22,7 @@ class RecommendItem extends StatelessWidget {
               children: [
                 _titlePriceContainer(),
                 // favorite & cart Icons
-                Expanded(child: AddAndFavoriteButtons(product: product)),
+                Expanded(child: AddFavoriteButtons(product: product)),
               ],
             ),
           ),
@@ -124,54 +101,4 @@ class RecommendItem extends StatelessWidget {
         bottomRight: Radius.circular(50)),
     boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
   );
-}
-
-class AddAndFavoriteButtons extends StatefulWidget {
-  const AddAndFavoriteButtons({Key? key, required this.product})
-      : super(key: key);
-  final Product product;
-
-  @override
-  State<AddAndFavoriteButtons> createState() => _AddAndFavoriteButtonsState();
-}
-
-class _AddAndFavoriteButtonsState extends State<AddAndFavoriteButtons> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(left: 80),
-      decoration: BoxDecoration(
-          color: AppColors.accent.withOpacity(0.4),
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(50), bottomRight: Radius.circular(50))),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          IconButton(
-            icon: Icon(
-                widget.product.isFavorite
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                size: 20),
-            onPressed: () {
-              widget.product.toggleFavoriteStatus();
-              setState(() {});
-            },
-          ),
-          IconButton(
-            icon: const Icon(CupertinoIcons.cart, size: 20),
-            onPressed: () {
-              final s = Provider.of<Cart>(context, listen: false)
-                  .addItem(widget.product, 0, 0);
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(SnackBar(
-                    content: Text(s), duration: const Duration(seconds: 1)));
-            },
-          ),
-        ],
-      ),
-    );
-  }
 }
