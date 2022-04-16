@@ -12,10 +12,10 @@ class RecommendAll extends StatelessWidget {
     final int length = products.length;
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: length < 3 ? length * 118.0 : size.height * 0.5,
+      height: length < 3 ? length * 120.0 : size.height * 0.5,
       width: size.width,
       child: ListView.builder(
-          padding: const EdgeInsets.only(bottom: 40, top: 10),
+          padding: const EdgeInsets.only(bottom: 50, top: 10),
           itemCount: length,
           itemBuilder: (context, index) =>
               RecommendItem(product: products[length - 1 - index])),
