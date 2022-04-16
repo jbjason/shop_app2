@@ -27,27 +27,33 @@ class CartTotalAmount extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RichText(
-            text: TextSpan(
-              text: 'Total : ',
-              style: GoogleFonts.kaushanScript(
-                  textStyle: const TextStyle(
-                      fontSize: 18, letterSpacing: 1.3, color: Colors.black)),
-              children: [
-                TextSpan(text: cartItems.totalAmount.toStringAsFixed(2))
-              ],
-            ),
-          ),
-          TextButton(
-              onPressed: () {
-                Provider.of<Orders>(context, listen: false)
-                    .addOrder(cartItems.items, cartItems.totalAmount);
-                cartItems.clear();
-                Navigator.of(context).pushNamed(OrderScreen.routeName);
-              },
-              child: const Text('Confirm Orders')),
+          _totalTextAndAmount(),
+          _confirmOrdersText(context),
         ],
       ),
     );
+  }
+
+  Widget _totalTextAndAmount() {
+    return RichText(
+      text: TextSpan(
+        text: 'Total : ',
+        style: GoogleFonts.kaushanScript(
+            textStyle: const TextStyle(
+                fontSize: 18, letterSpacing: 1.3, color: Colors.black)),
+        children: [TextSpan(text: cartItems.totalAmount.toStringAsFixed(2))],
+      ),
+    );
+  }
+
+  Widget _confirmOrdersText(BuildContext context) {
+    return TextButton(
+        onPressed: () {
+          Provider.of<Orders>(context, listen: false)
+              .addOrder(cartItems.items, cartItems.totalAmount);
+          cartItems.clear();
+          Navigator.of(context).pushNamed(OrderScreen.routeName);
+        },
+        child: const Text('Confirm Orders'));
   }
 }

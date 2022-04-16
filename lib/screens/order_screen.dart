@@ -1,9 +1,8 @@
-import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/orders.dart';
+import 'package:shop_app2/widgets/orders_widget/order_singleitem.dart';
 
 class OrderScreen extends StatelessWidget {
   static const routeName = '/order-screen';
@@ -53,71 +52,5 @@ class OrderScreen extends StatelessWidget {
         : const Center(
             child: Text('No items Available right now !'),
           );
-  }
-}
-
-class OrderSingleItem extends StatefulWidget {
-  const OrderSingleItem({Key? key, required this.order}) : super(key: key);
-  final OrderItem order;
-  @override
-  State<OrderSingleItem> createState() => _OrderSingleItemState();
-}
-
-class _OrderSingleItemState extends State<OrderSingleItem> {
-  var _expanded = false;
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      height:
-          _expanded ? min(widget.order.products.length * 25.0 + 110, 230) : 95,
-      child: Card(
-        margin: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            ListTile(
-              title:
-                  Text('Total =  \$${widget.order.amount.toStringAsFixed(2)}'),
-              subtitle: Text(
-                DateFormat('dd/MM/yyyy    hh:mm').format(widget.order.dateTime),
-              ),
-              trailing: IconButton(
-                  icon: Icon(_expanded
-                      ? CupertinoIcons.rectangle_expand_vertical
-                      : CupertinoIcons.rectangle_compress_vertical),
-                  onPressed: () => setState(() => _expanded = !_expanded)),
-            ),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-              height: _expanded
-                  ? min(widget.order.products.length * 25.0 + 10, 150)
-                  : 0,
-              child: ListView(
-                children: widget.order.products
-                    .map((prod) => Row(
-                          children: [
-                            Text(
-                              prod.title,
-                              style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            const Spacer(),
-                            Text(
-                              '${prod.quantity}x  \$${prod.price}',
-                              style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ))
-                    .toList(),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
   }
 }

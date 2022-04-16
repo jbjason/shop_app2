@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/cart.dart';
 
 class CartSingleItem extends StatelessWidget {
@@ -117,18 +118,7 @@ class CartSingleItem extends StatelessWidget {
     color: Colors.white,
     borderRadius: const BorderRadius.vertical(
         top: Radius.circular(35), bottom: Radius.circular(14)),
-    boxShadow: [
-      BoxShadow(
-          color: const Color(0xFF6b705c).withOpacity(.1),
-          offset: const Offset(4.0, 4.0),
-          blurRadius: 15.0,
-          spreadRadius: 3.0),
-      const BoxShadow(
-          color: Color(0xFFe8e8e4),
-          offset: Offset(-4.0, -4.0),
-          blurRadius: 15.0,
-          spreadRadius: 1.0),
-    ],
+    boxShadow: getShadowBox(Colors.grey.shade600, Colors.white),
     gradient: LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,

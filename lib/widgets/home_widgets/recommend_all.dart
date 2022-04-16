@@ -163,7 +163,7 @@ class _AddAndFavoriteButtonsState extends State<AddAndFavoriteButtons> {
             icon: const Icon(CupertinoIcons.cart, size: 20),
             onPressed: () {
               final s = Provider.of<Cart>(context, listen: false)
-                  .addItem(widget.product, 0, widget.product.size[0]);
+                  .addItem(widget.product, 0, 0);
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(

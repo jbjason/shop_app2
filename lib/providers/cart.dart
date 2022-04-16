@@ -37,16 +37,17 @@ class Cart with ChangeNotifier {
 
   int getIndex(String id) => _items.indexWhere((element) => element.id == id);
 
-  String addItem(Product product, int _sColorIndex, String _sSize) {
+  String addItem(Product product, int _sColorIndex, int _sSize) {
     final int i = getIndex(product.id);
     if (i == -1) {
       // putting the selected color & size at index 0
       List<Color> _colors = product.color;
+      List<String> _sizes = product.size;
       if (_sColorIndex != 0) {
         _colors.removeAt(_sColorIndex);
         _colors.insert(0, product.color[_sColorIndex]);
-        product.size.remove(_sSize);
-        product.size.insert(0, _sSize);
+        _sizes.removeAt(_sSize);
+        _sizes.insert(0, product.size[_sSize]);
       }
       _items.add(
         CartItem(
@@ -55,7 +56,7 @@ class Cart with ChangeNotifier {
           imageUrl: product.imageUrl[0],
           price: product.price,
           colors: _colors,
-          sizes: product.size,
+          sizes: _sizes,
           quantity: 1,
         ),
       );

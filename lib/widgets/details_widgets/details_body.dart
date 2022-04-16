@@ -166,7 +166,7 @@ class _DetailsBodyState extends State<DetailsBody> {
             final s = Provider.of<Cart>(context, listen: false).addItem(
                 widget.product,
                 _selectedColor,
-                widget.product.size[_selectedSize]);
+                _selectedSize);
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
