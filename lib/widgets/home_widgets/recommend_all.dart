@@ -19,9 +19,9 @@ class RecommendAll extends StatelessWidget {
       width: size.width,
       child: ListView.builder(
           padding: const EdgeInsets.only(bottom: 20, top: 10),
-          itemCount: length,
+          itemCount: length * 3,
           itemBuilder: (context, index) =>
-              RecommendItem(product: products[index])),
+              RecommendItem(product: products[index % 4])),
     );
   }
 }
@@ -166,8 +166,8 @@ class _AddAndFavoriteButtonsState extends State<AddAndFavoriteButtons> {
                   .addItem(widget.product, 0, 0);
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
-                ..showSnackBar(
-                    SnackBar(content: Text(s), duration: const Duration(seconds: 1)));
+                ..showSnackBar(SnackBar(
+                    content: Text(s), duration: const Duration(seconds: 1)));
             },
           ),
         ],

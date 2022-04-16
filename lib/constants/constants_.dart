@@ -46,9 +46,27 @@ List<Color> colorsList = [
   const Color(0xff3f51b5)
 ];
 
-const List<String> imageList = [
+const List<String> imageList1 = [
+  'https://source.unsplash.com/random?sig=${1}',
+  'https://source.unsplash.com/random?sig=${2}',
+  'https://source.unsplash.com/random?sig=${3}',
+  'https://source.unsplash.com/random?sig=${4}',
+];
+const List<String> imageList2 = [
   'https://source.unsplash.com/random?sig=${5}',
   'https://source.unsplash.com/random?sig=${6}',
   'https://source.unsplash.com/random?sig=${7}',
   'https://source.unsplash.com/random?sig=${8}',
+];
+const List<String> imageList3 = [
+  'https://source.unsplash.com/random?sig=${9}',
+  'https://source.unsplash.com/random?sig=${10}',
+  'https://source.unsplash.com/random?sig=${11}',
+  'https://source.unsplash.com/random?sig=${12}',
+];
+const List<String> imageList4 = [
+  'https://source.unsplash.com/random?sig=${13}',
+  'https://source.unsplash.com/random?sig=${14}',
+  'https://source.unsplash.com/random?sig=${15}',
+  'https://source.unsplash.com/random?sig=${16}',
 ];

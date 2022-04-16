@@ -7,7 +7,7 @@ import 'package:shop_app2/screens/cart_screen.dart';
 import 'package:shop_app2/widgets/home_widgets/badge.dart';
 import 'package:shop_app2/widgets/home_widgets/category_container.dart';
 import 'package:shop_app2/widgets/home_widgets/navigation_cbar.dart';
-import 'package:shop_app2/widgets/home_widgets/product_all.dart';
+import 'package:shop_app2/widgets/home_widgets/all_product/product_all.dart';
 import 'package:shop_app2/widgets/home_widgets/recommend_all.dart';
 
 class HomeScreen extends StatelessWidget {
