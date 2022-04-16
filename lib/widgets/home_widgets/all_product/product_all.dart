@@ -37,9 +37,9 @@ class _ProductAllState extends State<ProductAll> {
         controller: _pageController,
         physics: const ClampingScrollPhysics(),
         onPageChanged: (value) => setState(() => _currentIndex = value),
-        itemCount: products.length * 3,
+        itemCount: products.length,
         itemBuilder: (context, index) =>
-            _buildSlider(products[index % 4], index % 4),
+            _buildSlider(products[index], index),
       ),
     );
   }

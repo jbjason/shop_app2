@@ -15,10 +15,10 @@ class RecommendAll extends StatelessWidget {
       height: length < 3 ? length * 118.0 : size.height * 0.5,
       width: size.width,
       child: ListView.builder(
-          padding: const EdgeInsets.only(bottom: 20, top: 10),
-          itemCount: length * 3,
+          padding: const EdgeInsets.only(bottom: 40, top: 10),
+          itemCount: length,
           itemBuilder: (context, index) =>
-              RecommendItem(product: products[index % 4])),
+              RecommendItem(product: products[length - 1 - index])),
     );
   }
 }
