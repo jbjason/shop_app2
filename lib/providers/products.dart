@@ -40,6 +40,42 @@ class Products with ChangeNotifier {
       size: sizeList,
       color: colorsList,
     ),
+    Product(
+      id: 'p5',
+      title: 'Red Shirt',
+      description: 'A red shirt - it is pretty red!',
+      price: 29.99,
+      imageUrl: imageList1,
+      size: sizeList,
+      color: colorsList,
+    ),
+    Product(
+      id: 'p6',
+      title: 'Trowser',
+      description: detailString,
+      price: 20.45,
+      imageUrl: imageList2,
+      size: sizeList,
+      color: colorsList,
+    ),
+    Product(
+      id: 'p7',
+      title: 'Yellow Scarf',
+      description: detailString,
+      price: 20.45,
+      imageUrl: imageList3,
+      size: sizeList,
+      color: colorsList,
+    ),
+    Product(
+      id: 'p8',
+      title: 'A Pan',
+      description: detailString,
+      price: 20.45,
+      imageUrl: imageList4,
+      size: sizeList,
+      color: colorsList,
+    ),
   ];
 
   List<Product> get items {
