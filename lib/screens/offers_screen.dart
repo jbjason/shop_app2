@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
@@ -40,11 +39,11 @@ class _OffersScreenState extends State<OffersScreen> {
       child: Scaffold(
         body: Stack(
           children: [
-            const AppBarWidget(),
             ValueListenableBuilder<double>(
               valueListenable: _notifierScroll,
               builder: (context, value, _) => _body(context, value),
             ),
+            getAppBarTile('My Offers', context),
           ],
         ),
       ),
@@ -153,29 +152,6 @@ class TitleAndAuthor extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: kToolbarHeight,
-      child: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(CupertinoIcons.back),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: getAppBarTile('My Offers'),
       ),
     );
   }

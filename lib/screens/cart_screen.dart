@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
@@ -19,29 +18,12 @@ class CartScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              _backButtonTitle(context),
+              getAppBarTile('Your Cart', context),
               Expanded(child: _cartList(cartItems.items)),
               CartTotalAmount(cartItems: cartItems),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _backButtonTitle(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      height: 60,
-      child: Row(
-        children: [
-          IconButton(
-            icon: const Icon(CupertinoIcons.back),
-            onPressed: () => Navigator.pop(context),
-          ),
-          const SizedBox(width: 10),
-          getAppBarTile('Your Cart'),
-        ],
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
@@ -16,27 +15,10 @@ class OrderScreen extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            _backButtonTitle(context),
+            getAppBarTile('Your Orders', context),
             Expanded(child: _cartList(_ordersList)),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _backButtonTitle(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      height: 60,
-      child: Row(
-        children: [
-          IconButton(
-            icon: const Icon(CupertinoIcons.back),
-            onPressed: () => Navigator.pop(context),
-          ),
-          const SizedBox(width: 10),
-          getAppBarTile('Your Orders'),
-        ],
       ),
     );
   }
