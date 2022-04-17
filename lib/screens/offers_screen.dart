@@ -62,9 +62,8 @@ class _OffersScreenState extends State<OffersScreen> {
         final percent = index - value;
         final rotation = percent.clamp(0.0, 1.0);
         final fixRotation = pow(rotation, 0.35);
-        return Container(
-          margin: const EdgeInsets.only(top: 60),
-          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        return Padding(
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -83,8 +82,8 @@ class _OffersScreenState extends State<OffersScreen> {
   }
 
   Widget _itemBody(Size size, double rotation, num fixRotation, String image) {
-    final _itemHeight = size.height * .55;
-    final _itemWidth = size.width * .75;
+    final _itemHeight = size.height * .6;// initial .45
+    final _itemWidth = size.width * .65; // .6
     return Center(
       child: Stack(
         children: [
@@ -107,7 +106,7 @@ class _OffersScreenState extends State<OffersScreen> {
             alignment: Alignment.centerLeft,
             transform: Matrix4.identity()
               ..setEntry(3, 2, 0.002)
-              ..rotateY(1.8 * fixRotation)
+              ..rotateY(1.78 * fixRotation) // 1.8
               ..translate(-rotation * size.width * 0.8)
               ..scale(1 + rotation),
             child: Image.network(
@@ -141,10 +140,7 @@ class TitleAndAuthor extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            product.title,
-            style: const TextStyle(fontSize: 30),
-          ),
+          Text(product.title, style: const TextStyle(fontSize: 30)),
           const SizedBox(height: 10),
           const Text(
             'Popeye Jas Pompai',
