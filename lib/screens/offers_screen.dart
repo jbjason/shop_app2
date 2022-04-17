@@ -61,15 +61,16 @@ class _OffersScreenState extends State<OffersScreen> {
         final percent = index - value;
         final rotation = percent.clamp(0.0, 1.0);
         final fixRotation = pow(rotation, 0.35);
-        return Padding(
-          padding: const EdgeInsets.all(20),
+        return Container(
+          margin: const EdgeInsets.only(top: 60),
+          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _itemBody(
                   size, rotation, fixRotation, products[index].imageUrl[1]),
-              const SizedBox(height: 90),
+              const SizedBox(height: 30),
               TitleAndAuthor(
                   rotation: rotation, index: index, product: products[index]),
             ],
@@ -81,8 +82,8 @@ class _OffersScreenState extends State<OffersScreen> {
   }
 
   Widget _itemBody(Size size, double rotation, num fixRotation, String image) {
-    final _itemHeight = size.height * .5;
-    final _itemWidth = size.width * .7;
+    final _itemHeight = size.height * .55;
+    final _itemWidth = size.width * .75;
     return Center(
       child: Stack(
         children: [
@@ -141,9 +142,7 @@ class TitleAndAuthor extends StatelessWidget {
         children: [
           Text(
             product.title,
-            style: const TextStyle(
-              fontSize: 30,
-            ),
+            style: const TextStyle(fontSize: 30),
           ),
           const SizedBox(height: 10),
           const Text(
@@ -153,7 +152,6 @@ class TitleAndAuthor extends StatelessWidget {
               color: Colors.grey,
             ),
           ),
-          const SizedBox(height: 100),
         ],
       ),
     );
@@ -167,18 +165,17 @@ class AppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      height: 60,
-      child: Row(
-        children: [
-          IconButton(
-            icon: const Icon(CupertinoIcons.back),
-            onPressed: () => Navigator.pop(context),
-          ),
-          const SizedBox(width: 10),
-          getAppBarTile('Available Offers'),
-        ],
+    return SizedBox(
+      height: kToolbarHeight,
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(CupertinoIcons.back),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: getAppBarTile('My Offers'),
       ),
     );
   }
