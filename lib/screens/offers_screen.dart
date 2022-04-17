@@ -43,7 +43,9 @@ class _OffersScreenState extends State<OffersScreen> {
               valueListenable: _notifierScroll,
               builder: (context, value, _) => _body(context, value),
             ),
-            getAppBarTile('My Offers', context),
+            Padding(
+                padding: const EdgeInsets.only(left: 20, top: 20),
+                child: getAppBarTile('My Offers', context)),
           ],
         ),
       ),
