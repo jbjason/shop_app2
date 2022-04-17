@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/app_drawer.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/screens/cart_screen.dart';
@@ -32,6 +33,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      drawer: const AppDrawer(),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: _floatingButton(context),

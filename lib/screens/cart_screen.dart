@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/widgets/cart_widgets/cart_single_item.dart';
 import 'package:shop_app2/widgets/cart_widgets/cart_total_amount.dart';
@@ -39,8 +40,7 @@ class CartScreen extends StatelessWidget {
             onPressed: () => Navigator.pop(context),
           ),
           const SizedBox(width: 10),
-          const Text('Your Cart',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          getAppBarTile('Your Cart'),
         ],
       ),
     );

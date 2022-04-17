@@ -32,6 +32,9 @@ Widget getButtonDecoration(double height, double width, BoxShape _shape,
   );
 }
 
+Widget getAppBarTile(String s) =>
+    Text(s, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18));
+
 const String detailString =
     'Providers allow you to not only expose a value, but also create, listen, and dispose of it.\n\nTo expose a newly created object, use the default constructor of a provider. Do not use the .value constructor if you want to create an object, or you may otherwise have undesired side effects.\n\nSee this StackOverflow answer which explains why using the .value constructor to create values is undesired.\nProviders allow you to not only expose a value, but also create, listen, and dispose of it.\n\nTo expose a newly created object, use the default constructor of a provider. Do not use the .value constructor if you want to create an object, or you may otherwise have undesired side effects.\n\nSee this StackOverflow answer which explains why using the .value constructor to create values is undesired.';
 

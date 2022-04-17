@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/orders.dart';
 import 'package:shop_app2/widgets/orders_widget/order_singleitem.dart';
 
@@ -34,8 +35,7 @@ class OrderScreen extends StatelessWidget {
             onPressed: () => Navigator.pop(context),
           ),
           const SizedBox(width: 10),
-          const Text('Your Orders',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          getAppBarTile('Your Orders'),
         ],
       ),
     );
