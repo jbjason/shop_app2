@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
-import 'dart:math';
-import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/providers/products.dart';
+import 'package:shop_app2/widgets/offer_widgets/offer_body.dart';
+import 'package:shop_app2/widgets/offer_widgets/offer_details.dart';
 
 class OffersScreen extends StatefulWidget {
   static const routeName = '/offers-screen';
@@ -15,6 +15,60 @@ class OffersScreen extends StatefulWidget {
 class _OffersScreenState extends State<OffersScreen> {
   final _controller = PageController();
   final _notifierScroll = ValueNotifier(0.0);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            ValueListenableBuilder<double>(
+              valueListenable: _notifierScroll,
+              builder: (context, value, _) => _body(context, value),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, top: 20),
+              child: getAppBarTile('My Offers', context),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _body(BuildContext context, double value) {
+    final products = Provider.of<Products>(context, listen: false).items;
+    final size = MediaQuery.of(context).size;
+    return PageView.builder(
+      controller: _controller,
+      itemBuilder: (context, index) {
+        final percent = index - value;
+        final rotation = percent.clamp(0.0, 1.0);
+        return Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // initial height: .45 width .6
+              OfferBody(
+                  rotation: rotation,
+                  size: size,
+                  image: products[index].imageUrl[0]),
+              const SizedBox(height: 30),
+              OfferDetails(
+                rotation: rotation,
+                index: index,
+                product: products[index],
+                height: size.height * .3,
+              )
+            ],
+          ),
+        );
+      },
+      itemCount: products.length,
+    );
+  }
 
   void _listener() {
     _notifierScroll.value = _controller.page!;
@@ -31,126 +85,5 @@ class _OffersScreenState extends State<OffersScreen> {
     _controller.removeListener(_listener);
     _controller.dispose();
     super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            ValueListenableBuilder<double>(
-              valueListenable: _notifierScroll,
-              builder: (context, value, _) => _body(context, value),
-            ),
-            Padding(
-                padding: const EdgeInsets.only(left: 20, top: 20),
-                child: getAppBarTile('My Offers', context)),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _body(BuildContext context, double value) {
-    final products = Provider.of<Products>(context, listen: false).items;
-    final size = MediaQuery.of(context).size;
-
-    return PageView.builder(
-      controller: _controller,
-      itemBuilder: (context, index) {
-        final percent = index - value;
-        final rotation = percent.clamp(0.0, 1.0);
-        final fixRotation = pow(rotation, 0.35);
-        return Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _itemBody(
-                  size, rotation, fixRotation, products[index].imageUrl[1]),
-              const SizedBox(height: 30),
-              TitleAndAuthor(
-                  rotation: rotation, index: index, product: products[index]),
-            ],
-          ),
-        );
-      },
-      itemCount: products.length,
-    );
-  }
-
-  Widget _itemBody(Size size, double rotation, num fixRotation, String image) {
-    final _itemHeight = size.height * .6;// initial .45
-    final _itemWidth = size.width * .65; // .6
-    return Center(
-      child: Stack(
-        children: [
-          Container(
-            height: _itemHeight,
-            width: _itemWidth,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black,
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                  offset: Offset(5.0, 5.0),
-                ),
-              ],
-            ),
-          ),
-          Transform(
-            alignment: Alignment.centerLeft,
-            transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.002)
-              ..rotateY(1.78 * fixRotation) // 1.8
-              ..translate(-rotation * size.width * 0.8)
-              ..scale(1 + rotation),
-            child: Image.network(
-              image,
-              fit: BoxFit.cover,
-              height: _itemHeight,
-              width: _itemWidth,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class TitleAndAuthor extends StatelessWidget {
-  const TitleAndAuthor({
-    Key? key,
-    required this.rotation,
-    required this.index,
-    required this.product,
-  }) : super(key: key);
-  final Product product;
-  final double rotation;
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Opacity(
-      opacity: 1 - rotation,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(product.title, style: const TextStyle(fontSize: 30)),
-          const SizedBox(height: 10),
-          const Text(
-            'Popeye Jas Pompai',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.grey,
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }
