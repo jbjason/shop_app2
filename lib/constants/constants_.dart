@@ -62,6 +62,13 @@ List<Color> colorsList = [
   const Color(0xff3f51b5)
 ];
 
+final List<String> categoryList = [
+    'All',
+    'Electronics',
+    'Sports',
+    'Groceries',
+    'Cloths'
+  ];
 const List<String> imageList1 = [
   'https://source.unsplash.com/random?sig=${1}',
   'https://source.unsplash.com/random?sig=${2}',

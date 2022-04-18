@@ -90,6 +90,14 @@ class Products with ChangeNotifier {
     return _items.firstWhere((element) => element.id == id);
   }
 
+  List<Product> _categoryList=[];
+  void setCategorizedList(double range, int index) {
+    if (index == 0) {
+      _categoryList = items;
+    } else {
+    }
+  }
+
   void addProduct(Product product) {
     final newProduct = Product(
       title: product.title,

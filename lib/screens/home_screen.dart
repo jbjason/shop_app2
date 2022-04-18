@@ -13,23 +13,22 @@ import 'package:shop_app2/widgets/home_widgets/all_recommend/recommend_all.dart'
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            SizedBox(height: 40),
+          children: [
+            const SizedBox(height: 40),
             // SearchBar Container
-            SearchBarContainer(),
-            SizedBox(height: 20),
+            const SearchBarContainer(),
+            const SizedBox(height: 20),
             // Category Container
-            CategoryContainer(),
-            SizedBox(height: 30),
+            CategoryContainer(currentIndex: (_) {}),
+            const SizedBox(height: 30),
             // all Proudcts
-            ProductAll(),
-            RecommendAll(),
+            const ProductAll(),
+            const RecommendAll(),
           ],
         ),
       ),

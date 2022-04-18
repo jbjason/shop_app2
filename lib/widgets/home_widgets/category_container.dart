@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
 
 class CategoryContainer extends StatefulWidget {
-  const CategoryContainer({Key? key}) : super(key: key);
+  const CategoryContainer({Key? key, required this.currentIndex})
+      : super(key: key);
+  final void Function(int selectedIndex) currentIndex;
   @override
   State<CategoryContainer> createState() => _CategoryContainerState();
 }
 
 class _CategoryContainerState extends State<CategoryContainer> {
-  final List<String> _category = [
-    'All',
-    'Electronics',
-    'Sports',
-    'Groceries',
-    'Cloths'
-  ];
-
   int selectedIndex = 0;
 
   @override
@@ -25,14 +20,17 @@ class _CategoryContainerState extends State<CategoryContainer> {
       padding: const EdgeInsets.only(left: 10),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: _category.length,
+        itemCount: categoryList.length,
         itemBuilder: (ctx, index) {
           final bool f = index == selectedIndex;
           return InkWell(
-            onTap: () => setState(() => selectedIndex = index),
+            onTap: () {
+              setState(() => selectedIndex = index);
+              widget.currentIndex(selectedIndex);
+            },
             child: Container(
               child: Text(
-                _category[index],
+                categoryList[index],
                 style: TextStyle(color: f ? Colors.white : AppColors.textDark),
               ),
               alignment: Alignment.center,
@@ -41,7 +39,7 @@ class _CategoryContainerState extends State<CategoryContainer> {
                   left: 3,
                   top: 5,
                   bottom: 5,
-                  right: index == _category.length - 1 ? 10 : 5),
+                  right: index == categoryList.length - 1 ? 10 : 5),
               decoration: BoxDecoration(
                   color: f
                       ? AppColors.accent.withOpacity(0.7)
