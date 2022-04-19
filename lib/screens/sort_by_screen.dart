@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
-import 'package:shop_app2/providers/products.dart';
+import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/widgets/home_widgets/all_recommend/recomment_item.dart';
 import 'package:shop_app2/widgets/home_widgets/category_container.dart';
 
@@ -19,11 +19,11 @@ class _SortByScreenState extends State<SortByScreen> {
   bool _expanded = true;
   @override
   Widget build(BuildContext context) {
-    final ff = Provider.of<Products>(context, listen: false);
-    final sortedList = ff.items;
+    final categoryList = Provider.of<Category>(context).sortedList;
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 50, bottom: 10,left: 10,right: 10),
+        padding:
+            const EdgeInsets.only(top: 50, bottom: 10, left: 10, right: 10),
         child: Column(
           children: [
             getAppBarTile('All Products', context),
@@ -36,7 +36,7 @@ class _SortByScreenState extends State<SortByScreen> {
                 child: Column(
                   children: [
                     _titleText(),
-                    _sortByBody(ff),
+                    _sortByBody(context),
                   ],
                 ),
               ),
@@ -44,9 +44,9 @@ class _SortByScreenState extends State<SortByScreen> {
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.only(top: 20),
-                itemCount: sortedList.length,
+                itemCount: categoryList.length,
                 itemBuilder: ((context, index) =>
-                    RecommendItem(product: sortedList[index])),
+                    RecommendItem(product: categoryList[index])),
               ),
             ),
           ],
@@ -64,7 +64,7 @@ class _SortByScreenState extends State<SortByScreen> {
             onPressed: () => setState(() => _expanded = !_expanded)),
       );
 
-  Widget _sortByBody(Products ff) {
+  Widget _sortByBody(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       height: _expanded ? 260 : 0,
@@ -76,7 +76,7 @@ class _SortByScreenState extends State<SortByScreen> {
             _pointBar(),
             _sortByTitleText('Sort By *(Category)    '),
             const CategoryContainer(),
-            _applyButton(ff),
+            _applyButton(context),
           ],
         ),
       ),
@@ -105,9 +105,13 @@ class _SortByScreenState extends State<SortByScreen> {
   Widget _rangeText(String s, FontWeight f) =>
       Text(s, style: TextStyle(fontWeight: f, fontSize: 11));
 
-  Widget _applyButton(Products ff) {
+  Widget _applyButton(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        // final products = Provider.of<Products>(context, listen: false).items;
+        // Provider.of<Category>(context, listen: false)
+        //     .setCategorizedList(products, highValue, index);
+      },
       child: Container(
         width: 200,
         height: 40,
