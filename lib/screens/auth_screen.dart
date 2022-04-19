@@ -107,7 +107,9 @@ class _AuthFormState extends State<AuthForm> {
       FocusScope.of(context).unfocus();
       await Future.delayed(const Duration(milliseconds: 500));
       _formKey.currentState!.save();
-      if (_userEmail.trim() == 'jb' && _userPassword.trim() == 'jason') {
+      if (_userEmail.trim() == 'jb' &&
+          _userPassword.trim() == 'jason' &&
+          _userName == '') {
         setState(() => _animation = 'success');
       } else {
         setState(() => _animation = 'fail');

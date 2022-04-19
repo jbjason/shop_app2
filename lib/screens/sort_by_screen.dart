@@ -17,9 +17,6 @@ class SortByScreen extends StatefulWidget {
 class _SortByScreenState extends State<SortByScreen> {
   double lowValue = 0, highValue = 1000;
   bool _expanded = true;
-  int _categoryIndex = 0;
-
-  void _selectCategory(int i) => _categoryIndex = i;
   @override
   Widget build(BuildContext context) {
     final ff = Provider.of<Products>(context, listen: false);
@@ -78,7 +75,7 @@ class _SortByScreenState extends State<SortByScreen> {
             _rangeAmountText(),
             _pointBar(),
             _sortByTitleText('Sort By *(Category)    '),
-            CategoryContainer(currentIndex: _selectCategory),
+            const CategoryContainer(),
             _applyButton(ff),
           ],
         ),
@@ -110,7 +107,7 @@ class _SortByScreenState extends State<SortByScreen> {
 
   Widget _applyButton(Products ff) {
     return InkWell(
-      onTap: () => ff.setCategorizedList(highValue, _categoryIndex),
+      onTap: () {},
       child: Container(
         width: 200,
         height: 40,

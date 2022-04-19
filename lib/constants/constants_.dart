@@ -62,7 +62,7 @@ List<Color> colorsList = [
   const Color(0xff3f51b5)
 ];
 
-final List<String> categoryList = [
+final List<String> categories = [
     'All',
     'Electronics',
     'Sports',

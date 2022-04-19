@@ -18,17 +18,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            const SizedBox(height: 40),
+          children: const [
+            SizedBox(height: 40),
             // SearchBar Container
-            const SearchBarContainer(),
-            const SizedBox(height: 20),
+            SearchBarContainer(),
+            SizedBox(height: 20),
             // Category Container
-            CategoryContainer(currentIndex: (_) {}),
-            const SizedBox(height: 30),
+            CategoryContainer(),
+            SizedBox(height: 30),
             // all Proudcts
-            const ProductAll(),
-            const RecommendAll(),
+            ProductAll(),
+            RecommendAll(),
           ],
         ),
       ),

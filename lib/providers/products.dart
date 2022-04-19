@@ -12,7 +12,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList1,
       size: sizeList,
       color: colorsList,
-      category: categoryList[1],
+      category:categories[1],
     ),
     Product(
       id: 'p2',
@@ -22,7 +22,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList2,
       size: sizeList,
       color: colorsList,
-      category: categoryList[1],
+      category:categories[1],
     ),
     Product(
       id: 'p3',
@@ -32,7 +32,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList3,
       size: sizeList,
       color: colorsList,
-      category: categoryList[2],
+      category:categories[2],
     ),
     Product(
       id: 'p4',
@@ -42,7 +42,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList4,
       size: sizeList,
       color: colorsList,
-      category: categoryList[2],
+      category:categories[2],
     ),
     Product(
       id: 'p5',
@@ -52,7 +52,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList1,
       size: sizeList,
       color: colorsList,
-      category: categoryList[3],
+      category:categories[3],
     ),
     Product(
       id: 'p6',
@@ -62,7 +62,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList2,
       size: sizeList,
       color: colorsList,
-      category: categoryList[3],
+      category:categories[3],
     ),
     Product(
       id: 'p7',
@@ -72,7 +72,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList3,
       size: sizeList,
       color: colorsList,
-      category: categoryList[4],
+      category:categories[4],
     ),
     Product(
       id: 'p8',
@@ -82,7 +82,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList4,
       size: sizeList,
       color: colorsList,
-      category: categoryList[4],
+      category:categories[4],
     ),
   ];
 
@@ -96,13 +96,6 @@ class Products with ChangeNotifier {
 
   Product findById(String id) {
     return _items.firstWhere((element) => element.id == id);
-  }
-
-  List<Product> _categoryList = [];
-  void setCategorizedList(double range, int index) {
-    if (index == 0) {
-      _categoryList = items;
-    } else {}
   }
 
   void addProduct(Product product) {

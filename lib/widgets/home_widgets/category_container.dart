@@ -3,9 +3,8 @@ import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
 
 class CategoryContainer extends StatefulWidget {
-  const CategoryContainer({Key? key, required this.currentIndex})
+  const CategoryContainer({Key? key})
       : super(key: key);
-  final void Function(int selectedIndex) currentIndex;
   @override
   State<CategoryContainer> createState() => _CategoryContainerState();
 }
@@ -20,17 +19,16 @@ class _CategoryContainerState extends State<CategoryContainer> {
       padding: const EdgeInsets.only(left: 10),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: categoryList.length,
+        itemCount: categories.length,
         itemBuilder: (ctx, index) {
           final bool f = index == selectedIndex;
           return InkWell(
             onTap: () {
               setState(() => selectedIndex = index);
-              widget.currentIndex(selectedIndex);
             },
             child: Container(
               child: Text(
-                categoryList[index],
+                categories[index],
                 style: TextStyle(color: f ? Colors.white : AppColors.textDark),
               ),
               alignment: Alignment.center,
@@ -39,7 +37,7 @@ class _CategoryContainerState extends State<CategoryContainer> {
                   left: 3,
                   top: 5,
                   bottom: 5,
-                  right: index == categoryList.length - 1 ? 10 : 5),
+                  right: index == categories.length - 1 ? 10 : 5),
               decoration: BoxDecoration(
                   color: f
                       ? AppColors.accent.withOpacity(0.7)
