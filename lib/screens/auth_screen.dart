@@ -211,7 +211,9 @@ class _AuthFormState extends State<AuthForm> {
           TextButton(
             onPressed: () => setState(() => _isLogin = !_isLogin),
             child: Text(
-                _isLogin ? 'Create new account' : 'I already have an account'),
+              _isLogin ? 'Create new account' : 'I already have an account',
+              style: const TextStyle(color: Colors.black),
+            ),
           )
       ],
     );

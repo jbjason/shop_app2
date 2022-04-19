@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/home_widgets/all_recommend/recomment_item.dart';
 import 'package:shop_app2/widgets/home_widgets/category_container.dart';
@@ -15,7 +16,7 @@ class SortByScreen extends StatefulWidget {
 
 class _SortByScreenState extends State<SortByScreen> {
   double lowValue = 0, highValue = 1000;
-  bool _expanded = false;
+  bool _expanded = true;
   int _categoryIndex = 0;
 
   void _selectCategory(int i) => _categoryIndex = i;
@@ -25,28 +26,30 @@ class _SortByScreenState extends State<SortByScreen> {
     final sortedList = ff.items;
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(top: 50, bottom: 10,left: 10,right: 10),
         child: Column(
           children: [
             getAppBarTile('All Products', context),
+            const SizedBox(height: 5),
             AnimatedContainer(
-              duration: kThemeAnimationDuration,
-              height: _expanded ? 320 : 65,
+              duration: const Duration(milliseconds: 300),
+              height: _expanded ? 320 : 60,
               child: Material(
                 elevation: 15,
                 child: Column(
                   children: [
                     _titleText(),
                     _sortByBody(ff),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: sortedList.length,
-                        itemBuilder: ((context, index) =>
-                            RecommendItem(product: sortedList[index])),
-                      ),
-                    ),
                   ],
                 ),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.only(top: 20),
+                itemCount: sortedList.length,
+                itemBuilder: ((context, index) =>
+                    RecommendItem(product: sortedList[index])),
               ),
             ),
           ],
@@ -66,7 +69,7 @@ class _SortByScreenState extends State<SortByScreen> {
 
   Widget _sortByBody(Products ff) {
     return AnimatedContainer(
-      duration: kThemeAnimationDuration,
+      duration: const Duration(milliseconds: 300),
       height: _expanded ? 260 : 0,
       child: SingleChildScrollView(
         child: Column(
@@ -111,9 +114,12 @@ class _SortByScreenState extends State<SortByScreen> {
       child: Container(
         width: 200,
         height: 40,
-        margin: const EdgeInsets.only(top: 10),
-        color: const Color(0xFF5c677d).withOpacity(.2),
-        child: const Center(child: Text('Apply')),
+        margin: const EdgeInsets.only(top: 8),
+        color: AppColors.accent,
+        child: const Center(
+            child: Text('Apply',
+                style:
+                    TextStyle(letterSpacing: 1.5, color: AppColors.textLigth))),
       ),
     );
   }
