@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/screens/auth_screen.dart';
 import 'package:shop_app2/screens/offers_screen.dart';
 import 'package:shop_app2/screens/order_screen.dart';
+import 'package:shop_app2/screens/sort_by_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -27,6 +29,22 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Available Offers'),
             onTap: () {
               Navigator.of(context).pushNamed(OffersScreen.routeName);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.payment),
+            title: const Text('Sort By'),
+            onTap: () {
+              Navigator.of(context).pushNamed(SortByScreen.routeName);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.payment),
+            title: const Text('Auth Screen'),
+            onTap: () {
+              Navigator.of(context).pushNamed(AuthScreen.routeName);
             },
           ),
           const Divider(),

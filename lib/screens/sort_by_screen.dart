@@ -6,13 +6,14 @@ import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/home_widgets/all_recommend/recomment_item.dart';
 import 'package:shop_app2/widgets/home_widgets/category_container.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class SortByScreen extends StatefulWidget {
+  static const routeName = '/sortby-screen';
+  const SortByScreen({Key? key}) : super(key: key);
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SortByScreen> createState() => _SortByScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SortByScreenState extends State<SortByScreen> {
   double lowValue = 0, highValue = 1000;
   bool _expanded = false;
   int _categoryIndex = 0;
@@ -39,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     _sortByBody(ff),
                     Expanded(
                       child: ListView.builder(
+                        itemCount: sortedList.length,
                         itemBuilder: ((context, index) =>
                             RecommendItem(product: sortedList[index])),
                       ),
