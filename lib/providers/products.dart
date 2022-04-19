@@ -12,6 +12,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList1,
       size: sizeList,
       color: colorsList,
+      category: categoryList[1],
     ),
     Product(
       id: 'p2',
@@ -21,6 +22,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList2,
       size: sizeList,
       color: colorsList,
+      category: categoryList[1],
     ),
     Product(
       id: 'p3',
@@ -30,6 +32,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList3,
       size: sizeList,
       color: colorsList,
+      category: categoryList[2],
     ),
     Product(
       id: 'p4',
@@ -39,6 +42,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList4,
       size: sizeList,
       color: colorsList,
+      category: categoryList[2],
     ),
     Product(
       id: 'p5',
@@ -48,6 +52,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList1,
       size: sizeList,
       color: colorsList,
+      category: categoryList[3],
     ),
     Product(
       id: 'p6',
@@ -57,6 +62,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList2,
       size: sizeList,
       color: colorsList,
+      category: categoryList[3],
     ),
     Product(
       id: 'p7',
@@ -66,6 +72,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList3,
       size: sizeList,
       color: colorsList,
+      category: categoryList[4],
     ),
     Product(
       id: 'p8',
@@ -75,6 +82,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList4,
       size: sizeList,
       color: colorsList,
+      category: categoryList[4],
     ),
   ];
 
@@ -90,12 +98,11 @@ class Products with ChangeNotifier {
     return _items.firstWhere((element) => element.id == id);
   }
 
-  List<Product> _categoryList=[];
+  List<Product> _categoryList = [];
   void setCategorizedList(double range, int index) {
     if (index == 0) {
       _categoryList = items;
-    } else {
-    }
+    } else {}
   }
 
   void addProduct(Product product) {
@@ -107,6 +114,7 @@ class Products with ChangeNotifier {
       id: product.id,
       color: product.color,
       size: product.size,
+      category: product.category,
     );
     _items.add(newProduct);
     notifyListeners();
