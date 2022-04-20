@@ -25,7 +25,6 @@ class Category with ChangeNotifier {
     notifyListeners();
   }
 
-  List<Product> _sortedList = [];
   int _isSet = 0;
   List<Product> getSortedList(double range) {
     if (_isSet == 0) {
@@ -36,11 +35,6 @@ class Category with ChangeNotifier {
               element.category == categories[_isSet] && element.price <= range)
           .toList();
     }
-  }
-
-  void setSortedList() {
-    _sortedList = [..._items];
-    _isSet = 0;
   }
 
   void updateSortedList(int i) => _isSet = i;

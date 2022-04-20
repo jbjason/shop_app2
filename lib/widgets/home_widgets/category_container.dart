@@ -20,8 +20,6 @@ class _CategoryContainerState extends State<CategoryContainer> {
     final cat = Provider.of<Category>(context, listen: false);
     if (widget.tag.toLowerCase() == 'home') {
       cat.setCategoryList();
-    } else {
-      cat.setSortedList();
     }
   }
 
