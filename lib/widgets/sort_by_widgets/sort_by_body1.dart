@@ -39,6 +39,7 @@ class _SortByBody1State extends State<SortByBody1> {
         margin: const EdgeInsets.only(bottom: 10),
         child: Text(s),
       );
+ 
   Widget _applyButton(List<Product> products) {
     return InkWell(
       onTap: () => widget.onChangeList(highValue),

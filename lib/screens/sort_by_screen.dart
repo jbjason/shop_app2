@@ -36,14 +36,7 @@ class _SortByScreenState extends State<SortByScreen> {
             getAppBarTile('All Products', context),
             const SizedBox(height: 5),
             _sortByBody(),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.only(top: 20),
-                itemCount: _categoryList.length,
-                itemBuilder: ((context, index) =>
-                    RecommendItem(product: _categoryList[index])),
-              ),
-            ),
+            _listViewOfProducts(),
           ],
         ),
       ),
@@ -80,6 +73,17 @@ class _SortByScreenState extends State<SortByScreen> {
                 : CupertinoIcons.rectangle_compress_vertical),
             onPressed: () => setState(() => _isExpand = !_isExpand)),
       );
+
+  Widget _listViewOfProducts() {
+    return Expanded(
+      child: ListView.builder(
+        padding: const EdgeInsets.only(top: 20),
+        itemCount: _categoryList.length,
+        itemBuilder: ((context, index) =>
+            RecommendItem(product: _categoryList[index])),
+      ),
+    );
+  }
 
   void searchProductsByCondition(double highVal) {
     _categoryList =
