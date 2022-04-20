@@ -13,7 +13,6 @@ class Category with ChangeNotifier {
 
   void setCategoryList() {
     _categoryList = [..._items];
-    notifyListeners();
   }
 
   void updateCategoryList(int i) {
@@ -42,7 +41,6 @@ class Category with ChangeNotifier {
   void setSortedList() {
     _sortedList = [..._items];
     _isSet = 0;
-    notifyListeners();
   }
 
   void updateSortedList(int i) => _isSet = i;

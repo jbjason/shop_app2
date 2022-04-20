@@ -17,7 +17,7 @@ class SortByScreen extends StatefulWidget {
 
 class _SortByScreenState extends State<SortByScreen> {
   double lowValue = 0, highValue = 1000;
-  bool _expanded = true;
+  bool _isExpand = true;
   @override
   Widget build(BuildContext context) {
     List<Product> categoryList =
@@ -32,7 +32,7 @@ class _SortByScreenState extends State<SortByScreen> {
             const SizedBox(height: 5),
             AnimatedContainer(
               duration: const Duration(milliseconds: 300),
-              height: _expanded ? 320 : 60,
+              height: _isExpand ? 320 : 60,
               child: Material(
                 elevation: 15,
                 child: Column(
@@ -60,16 +60,16 @@ class _SortByScreenState extends State<SortByScreen> {
   Widget _titleText() => ListTile(
         title: const Text('Sort By'),
         trailing: IconButton(
-            icon: Icon(_expanded
+            icon: Icon(_isExpand
                 ? CupertinoIcons.rectangle_expand_vertical
                 : CupertinoIcons.rectangle_compress_vertical),
-            onPressed: () => setState(() => _expanded = !_expanded)),
+            onPressed: () => setState(() => _isExpand = !_isExpand)),
       );
 
   Widget _sortByBody(List<Product> products) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      height: _expanded ? 260 : 0,
+      height: _isExpand ? 260 : 0,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -112,6 +112,7 @@ class _SortByScreenState extends State<SortByScreen> {
       onTap: () {
         products = Provider.of<Category>(context, listen: false)
             .getSortedList(highValue);
+        _isExpand = !_isExpand;
         setState(() {});
       },
       child: Container(
