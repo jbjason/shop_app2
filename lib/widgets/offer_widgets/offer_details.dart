@@ -32,18 +32,31 @@ class OfferDetails extends StatelessWidget {
               ),
             ),
             Container(
+              color: Colors.white,
               height: 40,
-              margin: const EdgeInsets.only(top: 10, bottom: 5),
-              padding: const EdgeInsets.only(top: 15, left: 20, right: 20),
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50))),
-              child: const Text(
-                '*Due: 21.05.2022 , Sunday',
-                style: TextStyle(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.end,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text('←←', style: TextStyle(fontSize: 20)),
+                  Container(
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 20, right: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          topRight: Radius.circular(50)),
+                    ),
+                    child: const Text(
+                      '*Due: 21.05.2022,Sunday',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.end,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const Text('➙➙', style: TextStyle(fontSize: 20)),
+                ],
               ),
             ),
           ],

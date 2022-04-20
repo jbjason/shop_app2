@@ -45,22 +45,22 @@ class _OffersScreenState extends State<OffersScreen> {
         final percent = index - value;
         final rotation = percent.clamp(0.0, 1.0);
         return Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               // initial height: .45 width .6
               OfferBody(
                   rotation: rotation,
                   size: size,
                   image: products[index].imageUrl[0]),
-              const SizedBox(height: 30),
+              SizedBox(height: size.height * .05),
               OfferDetails(
                 rotation: rotation,
                 index: index,
                 product: products[index],
-                height: size.height * .3,
+                height: size.height * .28,
               )
             ],
           ),
