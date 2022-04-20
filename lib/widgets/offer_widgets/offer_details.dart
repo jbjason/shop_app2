@@ -33,12 +33,12 @@ class OfferDetails extends StatelessWidget {
             ),
             Container(
               color: Colors.white,
-              height: 40,
+              height: 44,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('←←', style: TextStyle(fontSize: 20)),
+                  const Text('⇐', style: TextStyle(fontSize: 20)),
                   Container(
                     padding:
                         const EdgeInsets.only(top: 15, left: 20, right: 20),
@@ -55,7 +55,7 @@ class OfferDetails extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  const Text('➙➙', style: TextStyle(fontSize: 20)),
+                  const Text('⇒', style: TextStyle(fontSize: 20)),
                 ],
               ),
             ),
