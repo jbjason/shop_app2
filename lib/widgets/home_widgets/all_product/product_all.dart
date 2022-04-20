@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/providers/products.dart';
 import 'dart:math' as math;
 import 'package:shop_app2/widgets/home_widgets/all_product/product_item.dart';
 
@@ -30,7 +30,7 @@ class _ProductAllState extends State<ProductAll> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final products = Provider.of<Products>(context).items;
+    final products = Provider.of<Category>(context).categoryList;
     return SizedBox(
       height: size.height * .42,
       child: PageView.builder(
@@ -38,8 +38,7 @@ class _ProductAllState extends State<ProductAll> {
         physics: const ClampingScrollPhysics(),
         onPageChanged: (value) => setState(() => _currentIndex = value),
         itemCount: products.length,
-        itemBuilder: (context, index) =>
-            _buildSlider(products[index], index),
+        itemBuilder: (context, index) => _buildSlider(products[index], index),
       ),
     );
   }

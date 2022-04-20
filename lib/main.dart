@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => Orders()),
         ChangeNotifierProxyProvider<Products, Category>(
           create: (context) => Category(),
-          update: (ctx, products, previous) =>
+          update: (_, products, previous) =>
               previous!..update(products.items),
         ),
       ],

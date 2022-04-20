@@ -27,20 +27,23 @@ class Category with ChangeNotifier {
   }
 
   List<Product> _sortedList = [];
-  List<Product> get sortedList => [..._sortedList];
+  int _isSet = 0;
+  List<Product> getSortedList(double range) {
+    if (_isSet == 0) {
+      return [..._items];
+    } else {
+      return _items
+          .where((element) =>
+              element.category == categories[_isSet] && element.price <= range)
+          .toList();
+    }
+  }
 
   void setSortedList() {
     _sortedList = [..._items];
+    _isSet = 0;
     notifyListeners();
   }
 
-  void updateSortedList(int i) {
-    if (i == 0) {
-      _sortedList = [..._items];
-    } else {
-      _sortedList =
-          _items.where((element) => element.category == categories[i]).toList();
-    }
-    notifyListeners();
-  }
+  void updateSortedList(int i) => _isSet = i;
 }
