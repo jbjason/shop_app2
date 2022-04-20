@@ -3,31 +3,43 @@ import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class Category with ChangeNotifier {
-  List<Product> _categoryList = [];
-  List<Product> get categoryList => _categoryList;
+  List<Product> _items = [];
+  void update(List<Product> items) {
+    _items = [...items];
+  }
 
-  void setCategoryList(int index, List<Product> products) {
-    if (index == 0) {
-      _sorteList = [...products];
+  List<Product> _categoryList = [];
+  List<Product> get categoryList => [..._categoryList];
+
+  void setCategoryList() {
+    _categoryList = [..._items];
+    notifyListeners();
+  }
+
+  void updateCategoryList(int i) {
+    if (i == 0) {
+      _categoryList = [..._items];
     } else {
-      _categoryList = products
-          .where((element) => element.category == categories[index])
-          .toList();
+      _categoryList =
+          _items.where((element) => element.category == categories[i]).toList();
     }
     notifyListeners();
   }
 
-  List<Product> _sorteList = [];
-  List<Product> get sortedList => [..._sorteList];
+  List<Product> _sortedList = [];
+  List<Product> get sortedList => [..._sortedList];
 
-  void setSortedList(List<Product> items, double range, int index) {
-    if (index == 0) {
-      _sorteList = [...items];
+  void setSortedList() {
+    _sortedList = [..._items];
+    notifyListeners();
+  }
+
+  void updateSortedList(int i) {
+    if (i == 0) {
+      _sortedList = [..._items];
     } else {
-      _sorteList = items
-          .where((element) =>
-              element.category == categories[index] && element.price <= range)
-          .toList();
+      _sortedList =
+          _items.where((element) => element.category == categories[i]).toList();
     }
     notifyListeners();
   }

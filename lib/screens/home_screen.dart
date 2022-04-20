@@ -13,6 +13,7 @@ import 'package:shop_app2/widgets/home_widgets/all_recommend/recommend_all.dart'
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             SearchBarContainer(),
             SizedBox(height: 20),
             // Category Container
-            CategoryContainer(),
+            CategoryContainer(tag: 'home'),
             SizedBox(height: 30),
             // all Proudcts
             ProductAll(),

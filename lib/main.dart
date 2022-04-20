@@ -25,7 +25,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => Products()),
         ChangeNotifierProvider(create: (ctx) => Cart()),
         ChangeNotifierProvider(create: (ctx) => Orders()),
-        ChangeNotifierProvider(create: (ctx) => Category()),
+        ChangeNotifierProxyProvider<Products, Category>(
+          create: (context) => Category(),
+          update: (ctx, products, previous) =>
+              previous!..update(products.items),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

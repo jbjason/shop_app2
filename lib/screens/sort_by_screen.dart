@@ -75,7 +75,7 @@ class _SortByScreenState extends State<SortByScreen> {
             _rangeAmountText(),
             _pointBar(),
             _sortByTitleText('Sort By *(Category)    '),
-            const CategoryContainer(),
+            const CategoryContainer(tag: 'sort'),
             _applyButton(context),
           ],
         ),

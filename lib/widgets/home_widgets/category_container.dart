@@ -3,16 +3,27 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/category.dart';
-import 'package:shop_app2/providers/products.dart';
 
 class CategoryContainer extends StatefulWidget {
-  const CategoryContainer({Key? key}) : super(key: key);
+  const CategoryContainer({Key? key, required this.tag}) : super(key: key);
+  final String tag;
   @override
   State<CategoryContainer> createState() => _CategoryContainerState();
 }
 
 class _CategoryContainerState extends State<CategoryContainer> {
   int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    final cat = Provider.of<Category>(context, listen: false);
+    if (widget.tag.toLowerCase() == 'home') {
+      cat.setCategoryList();
+    } else {
+      cat.setSortedList();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +38,12 @@ class _CategoryContainerState extends State<CategoryContainer> {
           return InkWell(
             onTap: () {
               setState(() => selectedIndex = index);
-              final products =
-                  Provider.of<Products>(context, listen: false).items;
-              Provider.of<Category>(context, listen: false)
-                  .setCategoryList(selectedIndex, products);
+              final f = Provider.of<Category>(context, listen: false);
+              if (widget.tag.toLowerCase() == 'home') {
+                f.updateCategoryList(selectedIndex);
+              } else {
+                f.updateSortedList(selectedIndex);
+              }
             },
             child: Container(
               child: Text(
