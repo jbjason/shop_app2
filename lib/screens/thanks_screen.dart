@@ -8,15 +8,9 @@ import 'package:shop_app2/widgets/thanks_widgets/total_amount_details.dart';
 
 class ThanksScreen extends StatefulWidget {
   static const routeName = '/thanks-screen';
-  const ThanksScreen(
-      {Key? key,
-      required this.finalAmount,
-      required this.name,
-      required this.address,
-      required this.contact})
-      : super(key: key);
-  final String name, address, contact;
-  final double finalAmount;
+  const ThanksScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ThanksScreen> createState() => _ThanksScreenState();
@@ -32,7 +26,7 @@ class _ThanksScreenState extends State<ThanksScreen> {
       child: Scaffold(
         body: Stack(
           children: [
-            _body(size),
+            _body(context, size),
             _conflettiAnimation(),
           ],
         ),
@@ -40,7 +34,10 @@ class _ThanksScreenState extends State<ThanksScreen> {
     );
   }
 
-  Widget _body(Size size) {
+  Widget _body(BuildContext context, Size size) {
+    final f = ModalRoute.of(context)!.settings.arguments as List<String>;
+    final String name = f[0], email = f[1], contact = f[2], address = f[3];
+    final double finalAmount = double.parse(f[4]);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
       child: Column(
@@ -48,13 +45,14 @@ class _ThanksScreenState extends State<ThanksScreen> {
           InvoiceAndUserInfo(
               orderId: '12345678',
               size: size,
-              name: widget.name,
-              address: widget.address,
-              contact: widget.contact),
+              name: name,
+              email: email,
+              address: address,
+              contact: contact),
           const OrderedProductDetails(),
           //ProductsDetails(finalProduct: finalProduct),
           TotalAmountDetails(
-              finalAmount: widget.finalAmount,
+              finalAmount: finalAmount,
               finalPoint: 23,
               finalVoucher: 2,
               width: size.width),

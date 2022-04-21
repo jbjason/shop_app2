@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/screens/thanks_screen.dart';
 import 'package:shop_app2/widgets/confirm_widgets/user_contact_field.dart';
 import 'package:shop_app2/widgets/confirm_widgets/user_details_field.dart';
 import 'package:shop_app2/widgets/confirm_widgets/user_email_field.dart';
@@ -22,7 +23,6 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   final _addressController = TextEditingController();
   String _name = '', _email = '', _address = '', _contact = '';
 
-  
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -88,10 +88,12 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   void submitFunction() {
     if (!_form.currentState!.validate()) return;
     _form.currentState!.save();
-    _email = _emailController.text.trim();
     _name = _nameController.text.trim();
+    _email = _emailController.text.trim();
     _contact = _contactController.text.trim();
     _address = _addressController.text.trim();
+    Navigator.of(context).pushNamed(ThanksScreen.routeName,
+        arguments: [_name, _email, _contact, _address, 123.0]);
   }
 
   @override

@@ -7,11 +7,13 @@ import 'package:shop_app2/providers/orders.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/screens/auth_screen.dart';
 import 'package:shop_app2/screens/cart_screen.dart';
+import 'package:shop_app2/screens/confirm_screen.dart';
 import 'package:shop_app2/screens/details_screen.dart';
 import 'package:shop_app2/screens/home_screen.dart';
 import 'package:shop_app2/screens/offers_screen.dart';
 import 'package:shop_app2/screens/order_screen.dart';
 import 'package:shop_app2/screens/sort_by_screen.dart';
+import 'package:shop_app2/screens/thanks_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -27,8 +29,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => Orders()),
         ChangeNotifierProxyProvider<Products, Category>(
           create: (context) => Category(),
-          update: (_, products, previous) =>
-              previous!..update(products.items),
+          update: (_, products, previous) => previous!..update(products.items),
         ),
       ],
       child: MaterialApp(
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
           OffersScreen.routeName: (ctx) => const OffersScreen(),
           SortByScreen.routeName: (ctx) => const SortByScreen(),
           AuthScreen.routeName: (ctx) => const AuthScreen(),
+          ThanksScreen.routeName: (ctx) => const ThanksScreen(),
+          ConfirmScreen.routeName: (ctx) => const ConfirmScreen(),
         },
       ),
     );

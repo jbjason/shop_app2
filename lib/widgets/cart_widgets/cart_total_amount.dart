@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/orders.dart';
-import 'package:shop_app2/screens/order_screen.dart';
+import 'package:shop_app2/screens/thanks_screen.dart';
 
 class CartTotalAmount extends StatelessWidget {
   const CartTotalAmount({
@@ -52,7 +52,7 @@ class CartTotalAmount extends StatelessWidget {
           Provider.of<Orders>(context, listen: false)
               .addOrder(cartItems.items, cartItems.totalAmount);
           cartItems.clear();
-          Navigator.of(context).pushNamed(OrderScreen.routeName);
+          Navigator.of(context).pushNamed(ThanksScreen.routeName);
         },
         child: const Text('Confirm Orders'));
   }

@@ -8,10 +8,11 @@ class InvoiceAndUserInfo extends StatelessWidget {
       required this.size,
       required this.name,
       required this.address,
+      required this.email,
       required this.contact})
       : super(key: key);
   final Size size;
-  final String name, orderId, address, contact;
+  final String name, orderId, address, contact, email;
 
   @override
   Widget build(BuildContext context) {
@@ -66,16 +67,16 @@ class InvoiceAndUserInfo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Bill TO : ',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+            const Text('Bill TO : ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
             Text('Name : $name', overflow: TextOverflow.ellipsis),
             const SizedBox(height: 8),
-            Text('Address : $address', overflow: TextOverflow.ellipsis),
+            Text('email : $contact'),
             const SizedBox(height: 8),
             Text('Contact : $contact'),
+            const SizedBox(height: 8),
+            Text('Address : $address', overflow: TextOverflow.ellipsis),
             const SizedBox(height: 16),
             const Center(
               child: Text('* Estimated Delivary in 7days *',
