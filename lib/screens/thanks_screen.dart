@@ -7,6 +7,7 @@ import 'package:shop_app2/widgets/thanks_widgets/ordered_product_details.dart';
 import 'package:shop_app2/widgets/thanks_widgets/total_amount_details.dart';
 
 class ThanksScreen extends StatefulWidget {
+  static const routeName = '/thanks-screen';
   const ThanksScreen(
       {Key? key,
       required this.finalAmount,
