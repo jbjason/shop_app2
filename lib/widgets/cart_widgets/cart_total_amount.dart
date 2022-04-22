@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/cart.dart';
-import 'package:shop_app2/providers/orders.dart';
 import 'package:shop_app2/screens/thanks_screen.dart';
 
 class CartTotalAmount extends StatelessWidget {
@@ -49,9 +47,6 @@ class CartTotalAmount extends StatelessWidget {
   Widget _confirmOrdersText(BuildContext context) {
     return TextButton(
         onPressed: () {
-          Provider.of<Orders>(context, listen: false)
-              .addOrder(cartItems.items, cartItems.totalAmount);
-          cartItems.clear();
           Navigator.of(context).pushNamed(ThanksScreen.routeName);
         },
         child: const Text('Confirm Orders'));

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/providers/cart.dart';
+import 'package:shop_app2/providers/orders.dart';
 import 'package:shop_app2/screens/thanks_screen.dart';
+import 'package:shop_app2/widgets/confirm_widgets/confirm_button.dart';
 import 'package:shop_app2/widgets/confirm_widgets/user_contact_field.dart';
 import 'package:shop_app2/widgets/confirm_widgets/user_details_field.dart';
 import 'package:shop_app2/widgets/confirm_widgets/user_email_field.dart';
@@ -35,7 +39,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
               getAppBarTile('Your Details', context),
               const SizedBox(height: 20),
               _textFields(),
-              _addToCartButton(size.width),
+              ConfirmButton(width: size.width, submitFunction: submitFunction),
             ],
           ),
         ),
@@ -62,29 +66,6 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     );
   }
 
-  Widget _addToCartButton(double width) {
-    return Center(
-      child: getButtonDecoration(
-        70,
-        width,
-        BoxShape.rectangle,
-        getShadowBox(Colors.grey.shade900, Colors.white),
-        InkWell(
-          onTap: () => submitFunction(),
-          child: Container(
-            color: Colors.grey[300],
-            alignment: Alignment.center,
-            child: const Text('Confirm Done!',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5,
-                    wordSpacing: 1.5)),
-          ),
-        ),
-      ),
-    );
-  }
-
   void submitFunction() {
     if (!_form.currentState!.validate()) return;
     _form.currentState!.save();
@@ -92,8 +73,12 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     _email = _emailController.text.trim();
     _contact = _contactController.text.trim();
     _address = _addressController.text.trim();
+    final cartItems = Provider.of<Cart>(context, listen: false);
+    final total = cartItems.totalAmount;
+    Provider.of<Orders>(context, listen: false)
+        .addOrder(cartItems.items, total);
     Navigator.of(context).pushNamed(ThanksScreen.routeName,
-        arguments: [_name, _email, _contact, _address, 123.0]);
+        arguments: [_name, _email, _contact, _address, total.toString()]);
   }
 
   @override
