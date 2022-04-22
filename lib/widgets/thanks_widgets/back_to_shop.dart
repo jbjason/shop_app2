@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/providers/cart.dart';
 
 class BackToShopButton extends StatelessWidget {
   const BackToShopButton({Key? key, required this.width}) : super(key: key);
@@ -14,7 +16,13 @@ class BackToShopButton extends StatelessWidget {
         BoxShape.rectangle,
         getShadowBox(Colors.grey.shade600, Colors.white),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Provider.of<Cart>(context, listen: false).clear();
+            int count = 0;
+            Navigator.popUntil(context, (route) {
+              return count++ == 3;
+            });
+          },
           child: Container(
             color: Colors.grey[300],
             alignment: Alignment.center,

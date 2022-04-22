@@ -17,7 +17,20 @@ class OrderedProductDetails extends StatelessWidget {
           children: [
             _titleTexts(),
             const SizedBox(height: 10),
-           
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                children: order
+                    .map((prod) => Row(
+                          children: [
+                            Text(prod.title, overflow: TextOverflow.ellipsis),
+                            const Spacer(),
+                            Text('${prod.quantity}x  \$${prod.price}'),
+                          ],
+                        ))
+                    .toList(),
+              ),
+            )
           ],
         ),
       ),
