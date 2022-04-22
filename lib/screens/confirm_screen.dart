@@ -69,6 +69,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   void submitFunction() {
     if (!_form.currentState!.validate()) return;
     _form.currentState!.save();
+    FocusManager.instance.primaryFocus?.unfocus();
     _name = _nameController.text.trim();
     _email = _emailController.text.trim();
     _contact = _contactController.text.trim();
