@@ -19,8 +19,7 @@ class _OrderSingleItemState extends State<OrderSingleItem> {
       duration: const Duration(milliseconds: 300),
       height:
           _expanded ? min(widget.order.products.length * 25.0 + 110, 230) : 95,
-      child: Card(
-        margin: const EdgeInsets.all(10),
+      child: Material(
         child: Column(
           children: [
             _ordersReceipt(),

@@ -13,11 +13,14 @@ class OrderScreen extends StatelessWidget {
     final _ordersList = Provider.of<Orders>(context).orders;
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            getAppBarTile('Your Orders', context),
-            Expanded(child: _cartList(_ordersList)),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              getAppBarTile('Your Orders', context),
+              Expanded(child: _cartList(_ordersList)),
+            ],
+          ),
         ),
       ),
     );
