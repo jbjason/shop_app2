@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/constants/delegates_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/details_widgets/comments.dart';
@@ -23,10 +24,14 @@ class DetailsScreen extends StatelessWidget {
         slivers: [
           SliverPersistentHeader(
             pinned: true,
-            delegate: _PersistentDelegate(
+            delegate: DetailsDelegate(
               maxExtend: height,
               minExtend: height * .45,
-              product: product,
+              appBars: (percent) => CustomAppBarDetail(
+                topPercent: ((1 - percent) / .7).clamp(0.0, 1.0),
+                bottomPercent: (percent / .3).clamp(0.0, 1.0),
+                product: product,
+              ),
             ),
           ),
           SliverToBoxAdapter(child: DetailsBody(product: product)),
@@ -35,36 +40,4 @@ class DetailsScreen extends StatelessWidget {
       bottomNavigationBar: const CommentsContainer(),
     );
   }
-}
-
-class _PersistentDelegate extends SliverPersistentHeaderDelegate {
-  final double _maxExtend, _minExtend;
-  final Product product;
-  _PersistentDelegate({
-    required double maxExtend,
-    required double minExtend,
-    required this.product,
-  })  : _maxExtend = maxExtend,
-        _minExtend = minExtend;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final percent = shrinkOffset / _maxExtend;
-    return CustomAppBarDetail(
-      topPercent: ((1 - percent) / .7).clamp(0.0, 1.0),
-      bottomPercent: (percent / .3).clamp(0.0, 1.0),
-      product: product,
-    );
-  }
-
-  @override
-  double get maxExtent => _maxExtend;
-
-  @override
-  double get minExtent => _minExtend;
-
-  @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      false;
 }
