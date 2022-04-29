@@ -50,8 +50,8 @@ class CustomAppBarHome extends StatelessWidget {
 
   Widget _topButtons() => Positioned(
         top: 40,
-        left: 15,
-        right: 15,
+        left: 6,
+        right: 9,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
@@ -64,6 +64,6 @@ class CustomAppBarHome extends StatelessWidget {
   Widget _recommentText() => const Positioned(
         bottom: 0,
         left: 10,
-        child: Text('Offers', style: TextStyle(fontSize: 24)),
+        child: Text('Offers', style: TextStyle(fontSize: 22)),
       );
 }

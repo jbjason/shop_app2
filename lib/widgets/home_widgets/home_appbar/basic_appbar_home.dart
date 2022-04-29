@@ -9,8 +9,8 @@ class BasicAppBarHome extends StatelessWidget {
       opacity: shrink,
       child: AppBar(
         leading: const Icon(Icons.menu_open),
-        title: const Text('Hello Shop!', style: TextStyle(fontSize: 20)),
-        backgroundColor: const Color.fromARGB(255, 23, 23, 48),
+        title: const Text('Hello Bazar!', style: TextStyle(fontSize: 20)),
+        backgroundColor: const Color.fromARGB(255, 1, 1, 17),
         elevation: 10,
         actions: const [
           Icon(Icons.search),

@@ -14,11 +14,19 @@ class RecommendAll extends StatelessWidget {
     return SizedBox(
       height: length < 3 ? length * 120.0 : size.height * 0.5,
       width: size.width,
-      child: ListView.builder(
-          padding: const EdgeInsets.only(bottom: 50, top: 10),
-          itemCount: length,
-          itemBuilder: (context, index) =>
-              RecommendItem(product: products[length - 1 - index])),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('  Recommended', style: TextStyle(fontSize: 22)),
+          Expanded(
+            child: ListView.builder(
+                padding: const EdgeInsets.only(bottom: 50, top: 10),
+                itemCount: length,
+                itemBuilder: (context, index) =>
+                    RecommendItem(product: products[length - 1 - index])),
+          ),
+        ],
+      ),
     );
   }
 }
