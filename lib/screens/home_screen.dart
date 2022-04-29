@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const SliverToBoxAdapter(child: CategoryContainer(tag: 'home')),
-        const SizedBox(height: 30),
+        const SliverToBoxAdapter(child: SizedBox(height: 20)),
         const SliverToBoxAdapter(child: ProductAll()),
         const SliverToBoxAdapter(child: RecommendAll())
       ],
