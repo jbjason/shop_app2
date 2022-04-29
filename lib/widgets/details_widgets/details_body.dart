@@ -35,7 +35,7 @@ class _DetailsBodyState extends State<DetailsBody> {
           _titlePortion('Color'),
           const SizedBox(height: 5),
           _colorContainer(),
-          const SizedBox(height: 30),
+          const SizedBox(height: 35),
           _addToCartButton(context),
           const SizedBox(height: 25),
           _titlePortion('Related Items'),
@@ -158,10 +158,12 @@ class _DetailsBodyState extends State<DetailsBody> {
     return Center(
       child: InkWell(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-          color: Colors.grey[300],
+          width: 250,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           decoration: BoxDecoration(
-              boxShadow: getShadowBox(Colors.white, Colors.grey[600]!)),
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: getShadowBox(Colors.grey[600]!, Colors.white)),
           alignment: Alignment.center,
           child: const Text('ADD TO CART',
               style: TextStyle(

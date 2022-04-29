@@ -51,7 +51,7 @@ class PersistentDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     final percent = shrinkOffset / _maxExtend;
-    return CustomAppBarr(
+    return CustomAppBarrDetail(
       topPercent: ((1 - percent) / .7).clamp(0.0, 1.0),
       bottomPercent: (percent / .3).clamp(0.0, 1.0),
       product: product,
