@@ -14,9 +14,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: _homeBody(size),
+      body: _homeBody(context),
       drawer: const AppDrawer(),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -25,8 +24,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _homeBody(Size size) {
-    final maxHeight = size.height * .4;
+  Widget _homeBody(BuildContext context) {
+    final maxHeight = MediaQuery.of(context).size.height * .4;
     return CustomScrollView(
       slivers: [
         SliverPersistentHeader(
