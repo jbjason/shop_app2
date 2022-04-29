@@ -43,7 +43,7 @@ class CustomAppBarr extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: Colors.white.withOpacity(0.3)),
-            child: const Icon(Icons.arrow_back_ios,color: Colors.black),
+            child: const Icon(Icons.arrow_back_ios, color: Colors.black),
           ),
         ),
       );
@@ -91,24 +91,22 @@ class TitleSplashContainer extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Icon(Icons.location_on_sharp,
-                        size: 14, color: Colors.white),
+                    const Icon(Icons.location_on_sharp, size: 14),
                     Text(
                       '${product.isReview} reviews',
-                      style: const TextStyle(fontSize: 11, color: Colors.white),
+                      style: const TextStyle(fontSize: 11),
                     ),
                     const SizedBox(width: 10),
-                    const Text('✶',
-                        style: TextStyle(fontSize: 18, color: Colors.white)),
+                    const Text('✶', style: TextStyle(fontSize: 18)),
                     Text(
                       product.isRating.toString(),
-                      style: const TextStyle(fontSize: 11, color: Colors.white),
+                      style: const TextStyle(fontSize: 11),
                     ),
                   ],
                 ),
                 Text(
                   '\$ ${product.price}',
-                  style: const TextStyle(color: Colors.white),
+                  // style: const TextStyle(color: Colors.white),
                 ),
               ],
             ),
@@ -118,11 +116,8 @@ class TitleSplashContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           gradient: LinearGradient(
             colors: [
-              Colors.black.withOpacity(0.5),
-              Colors.black.withOpacity(0.7),
-              Colors.black.withOpacity(0.8),
-              Colors.black.withOpacity(0.7),
-              const Color(0xFF5c677d),
+              Colors.white.withOpacity(0.4),
+              Colors.white.withOpacity(0.1),
             ],
           ),
         ),

@@ -156,32 +156,27 @@ class _DetailsBodyState extends State<DetailsBody> {
 
   Widget _addToCartButton(BuildContext context) {
     return Center(
-      child: getButtonDecoration(
-        70,
-        250,
-        BoxShape.rectangle,
-        getShadowBox(Colors.grey.shade900, Colors.white),
-        InkWell(
-          onTap: () {
-            final s = Provider.of<Cart>(context, listen: false).addItem(
-                widget.product,
-                _selectedColor,
-                _selectedSize);
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                  SnackBar(content: Text(s), duration: const Duration(seconds: 1)));
-          },
-          child: Container(
-            color: Colors.grey[300],
-            alignment: Alignment.center,
-            child: const Text('ADD TO CART',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5,
-                    wordSpacing: 1.5)),
-          ),
+      child: InkWell(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+          color: Colors.grey[300],
+          decoration: BoxDecoration(
+              boxShadow: getShadowBox(Colors.white, Colors.grey[600]!)),
+          alignment: Alignment.center,
+          child: const Text('ADD TO CART',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5,
+                  wordSpacing: 1.5)),
         ),
+        onTap: () {
+          final s = Provider.of<Cart>(context, listen: false)
+              .addItem(widget.product, _selectedColor, _selectedSize);
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(SnackBar(
+                content: Text(s), duration: const Duration(seconds: 1)));
+        },
       ),
     );
   }
