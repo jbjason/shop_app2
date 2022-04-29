@@ -3,7 +3,8 @@ import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/widgets/home_widgets/home_appbar/custom_body_home.dart';
 
 class CustomAppBarHome extends StatelessWidget {
-  const CustomAppBarHome({Key? key, required this.height, required this.disappear})
+  const CustomAppBarHome(
+      {Key? key, required this.height, required this.disappear})
       : super(key: key);
   final double height, disappear;
   @override
@@ -54,8 +55,8 @@ class CustomAppBarHome extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
-            Icon(Icons.read_more_sharp, size: 35),
-            Icon(Icons.more_vert, size: 30)
+            Icon(Icons.read_more_sharp, size: 35, color: Colors.white),
+            Icon(Icons.more_vert, color: Colors.white)
           ],
         ),
       );

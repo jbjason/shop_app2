@@ -15,8 +15,9 @@ class CustomBodyHome extends StatelessWidget {
       clipper: HomeClipper(),
       child: Container(
         height: height - 5,
-        padding: const EdgeInsets.symmetric(vertical: 40),
+        padding: const EdgeInsets.only(top: 40, left: 25, right: 15),
         child: _body(),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -32,30 +33,31 @@ class CustomBodyHome extends StatelessWidget {
     );
   }
 
-  Widget _body() => Padding(
-        padding: const EdgeInsets.only(left: 25, right: 15),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('Hii There !', style: TextStyle(fontSize: 32)),
-              const SizedBox(height: 20),
-              const Text('What do u like to buy ?',
-                  style: TextStyle(fontSize: 15)),
-              Row(
-                children: [
-                  const Expanded(child: SearchBar()),
-                  InkWell(
-                    child: const Icon(Icons.settings_suggest_sharp,
-                        size: 35, color: Colors.white),
-                    onTap: () {},
-                  ),
-                  const SizedBox(width: 140),
-                ],
-              )
-            ],
-          ),
+  Widget _body() => SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Hello Bazar',
+                style: TextStyle(
+                    fontSize: 32,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(height: 15),
+            const Text('   What do u like to buy ?',
+                style: TextStyle(color: Colors.white)),
+            Row(
+              children: [
+                const Expanded(child: SearchBar()),
+                InkWell(
+                  child: const Icon(Icons.settings_suggest_sharp,
+                      size: 35, color: Colors.white),
+                  onTap: () {},
+                ),
+                const SizedBox(width: 140),
+              ],
+            ),
+            const SizedBox(height: 50),
+          ],
         ),
       );
 }

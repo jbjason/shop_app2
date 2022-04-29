@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _homeBody(BuildContext context) {
-    final maxHeight = MediaQuery.of(context).size.height * .4;
+    final maxHeight = MediaQuery.of(context).size.height * .37;
     return CustomScrollView(
       slivers: [
         SliverPersistentHeader(
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const SliverToBoxAdapter(child: CategoryContainer(tag: 'home')),
-        const SliverToBoxAdapter(child: SizedBox(height: 20)),
+        const SliverToBoxAdapter(child: SizedBox(height: 10)),
         const SliverToBoxAdapter(child: ProductAll()),
         const SliverToBoxAdapter(child: RecommendAll())
       ],
