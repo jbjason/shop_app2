@@ -5,9 +5,9 @@ import 'package:shop_app2/app_drawer.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/screens/cart_screen.dart';
-import 'package:shop_app2/widgets/home_widgets/badge.dart';
-import 'package:shop_app2/widgets/home_widgets/category_container.dart';
-import 'package:shop_app2/widgets/home_widgets/navigation_cbar.dart';
+import 'package:shop_app2/widgets/home_widgets/navigation_bar/badge.dart';
+import 'package:shop_app2/widgets/home_widgets/home_body/category_container.dart';
+import 'package:shop_app2/widgets/home_widgets/navigation_bar/navigation_cbar.dart';
 import 'package:shop_app2/widgets/home_widgets/all_product/product_all.dart';
 import 'package:shop_app2/widgets/home_widgets/all_recommend/recommend_all.dart';
 
