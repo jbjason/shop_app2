@@ -35,7 +35,7 @@ class TitleSplashContainer extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Icon(CupertinoIcons.heart,color: Colors.black),
+                const Icon(CupertinoIcons.heart, color: Colors.black),
               ],
             ),
             // rating ,review , price
@@ -57,16 +57,15 @@ class TitleSplashContainer extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(
-                  '\$ ${product.price}',
-                  style: const TextStyle(color: Colors.black),
-                ),
+                Text('\$ ${product.price}',
+                    style: const TextStyle(color: Colors.black)),
               ],
             ),
           ],
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(40), topRight: Radius.circular(10)),
           gradient: LinearGradient(
             colors: [
               Colors.white.withOpacity(0.7),
