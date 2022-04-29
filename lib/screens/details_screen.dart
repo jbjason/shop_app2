@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/details_widgets/comments.dart';
-import 'package:shop_app2/widgets/details_widgets/custom_appbarr.dart';
+import 'package:shop_app2/widgets/details_widgets/custom_appbar_detail.dart';
 import 'package:shop_app2/widgets/details_widgets/details_body.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -23,7 +23,7 @@ class DetailsScreen extends StatelessWidget {
         slivers: [
           SliverPersistentHeader(
             pinned: true,
-            delegate: PersistentDelegate(
+            delegate: _PersistentDelegate(
               maxExtend: height,
               minExtend: height * .45,
               product: product,
@@ -37,10 +37,10 @@ class DetailsScreen extends StatelessWidget {
   }
 }
 
-class PersistentDelegate extends SliverPersistentHeaderDelegate {
+class _PersistentDelegate extends SliverPersistentHeaderDelegate {
   final double _maxExtend, _minExtend;
   final Product product;
-  PersistentDelegate({
+  _PersistentDelegate({
     required double maxExtend,
     required double minExtend,
     required this.product,
@@ -51,7 +51,7 @@ class PersistentDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     final percent = shrinkOffset / _maxExtend;
-    return CustomAppBarrDetail(
+    return CustomAppBarDetail(
       topPercent: ((1 - percent) / .7).clamp(0.0, 1.0),
       bottomPercent: (percent / .3).clamp(0.0, 1.0),
       product: product,

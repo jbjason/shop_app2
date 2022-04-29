@@ -3,8 +3,8 @@ import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/widgets/details_widgets/images_preview.dart';
 import 'package:shop_app2/widgets/details_widgets/title_splash_container.dart';
 
-class CustomAppBarrDetail extends StatelessWidget {
-  const CustomAppBarrDetail({
+class CustomAppBarDetail extends StatelessWidget {
+  const CustomAppBarDetail({
     Key? key,
     required this.topPercent,
     required this.bottomPercent,
