@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppColors {
   static const secondary = Color(0xFF3B76F6);
-  static const accent = Color(0xFF5c677d);
+  static const accent = Color.fromARGB(255, 45, 45, 75);
   static const textDark = Color(0xFF53585A);
   static const textLigth = Color(0xFFF5F5F5);
   static const textFaded = Color(0xFF9899A5);
@@ -30,6 +30,7 @@ abstract class AppTheme {
         primaryTextTheme: const TextTheme(
           headline6: TextStyle(color: AppColors.textDark),
         ),
-        iconTheme: const IconThemeData(color: AppColors.iconDark), colorScheme: ColorScheme.fromSwatch().copyWith(secondary: accentColor),
+        iconTheme: const IconThemeData(color: AppColors.iconDark),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: accentColor),
       );
 }

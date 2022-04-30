@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shop_app2/constants/clippers_.dart';
+import 'package:shop_app2/constants/theme.dart';
+import 'package:shop_app2/screens/offers_screen.dart';
 import 'package:shop_app2/widgets/home_widgets/home_appbar/custom_body_home.dart';
 
 class CustomAppBarHome extends StatelessWidget {
@@ -17,13 +19,15 @@ class CustomAppBarHome extends StatelessWidget {
         children: [
           // border
           _clipper1(),
+          // offer image
+          _offerImage(context),
           // body
           CustomBodyHome(height: height),
           _image(),
           // menu button
           _topButtons(),
           // clipped area text
-          _recommentText(),
+          _seeTextButton(context),
         ],
       ),
     );
@@ -63,11 +67,26 @@ class CustomAppBarHome extends StatelessWidget {
         ),
       );
 
-  Widget _recommentText() => Positioned(
-        bottom: -10,
-        left: 0,
-        right: 0,
-        child:
-            Lottie.asset('assets/offer_.json', height: 80, fit: BoxFit.contain),
+  Widget _offerImage(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Positioned(
+      bottom: -52,
+      right: width * .3,
+      child:
+          Lottie.asset('assets/offer_.json', height: 170, fit: BoxFit.contain),
+    );
+  }
+
+  Widget _seeTextButton(BuildContext context) => Positioned(
+        bottom: 10,
+        right: 30,
+        child: InkWell(
+          onTap: () => Navigator.of(context).pushNamed(OffersScreen.routeName),
+          child: const Text(
+            'See All',
+            style:
+                TextStyle(color: AppColors.accent, fontWeight: FontWeight.bold),
+          ),
+        ),
       );
 }
