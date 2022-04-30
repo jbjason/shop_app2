@@ -35,8 +35,8 @@ class TitleSplashContainer extends StatelessWidget {
               bottomRight: Radius.circular(50)),
           gradient: LinearGradient(
             colors: [
-              Colors.white.withOpacity(0.7),
               Colors.white.withOpacity(0.6),
+              Colors.white.withOpacity(0.5),
               Colors.white.withOpacity(0.3),
             ],
           ),
