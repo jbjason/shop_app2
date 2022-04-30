@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/theme.dart';
 
 class WelcomeBody2 extends StatelessWidget {
   const WelcomeBody2({Key? key, required this.image, required this.text})
@@ -14,23 +15,19 @@ class WelcomeBody2 extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image:
-                  DecorationImage(image: AssetImage(image), fit: BoxFit.fill),
+                  DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
             ),
           ),
         ),
-        // ClipRRect(
-        //   borderRadius: BorderRadius.circular(10),
-        //   child: Image.asset(image,
-        //       fit: BoxFit.cover, height: size.height * .65, width: size.width),
-        // ),
-        // const SizedBox(height: 10),
         Positioned(
           top: size.height * .7,
           left: 0,
           right: 0,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            child: Text(text, style: const TextStyle(fontSize: 13)),
+            padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
+            child: Text(text,
+                style:
+                    const TextStyle(fontSize: 13, color: AppColors.textLigth)),
           ),
         ),
       ],

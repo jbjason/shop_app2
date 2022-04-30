@@ -3,7 +3,7 @@ import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/widgets/welcome_widgets/welcome_body.dart';
 
 class WelcomeScreen extends StatelessWidget {
- WelcomeScreen({Key? key}) : super(key: key);
+  WelcomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -32,8 +32,9 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _swipeText(String s) => Text(s, style: const TextStyle(fontSize: 13));
-  
+  Widget _swipeText(String s) =>
+      Text(s, style: const TextStyle(fontSize: 13, color: Colors.black));
+
   final _decoration = BoxDecoration(
     border: Border.all(color: Colors.white.withOpacity(0.8)),
     borderRadius: BorderRadius.circular(10),

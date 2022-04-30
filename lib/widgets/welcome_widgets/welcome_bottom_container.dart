@@ -38,14 +38,14 @@ class WelcomeBottomContainer extends StatelessWidget {
             (index) => AnimatedContainer(
               duration: kThemeAnimationDuration,
               margin: const EdgeInsets.only(right: 7),
-              height: 10,
-              width: isSelected == index ? 25 : 10,
+              height: 13,
+              width: isSelected == index ? 30 : 13,
               decoration: BoxDecoration(
                 shape:
                     isSelected == index ? BoxShape.rectangle : BoxShape.circle,
                 color: isSelected == index
-                    ? const Color.fromARGB(255, 5, 18, 43)
-                    : const Color(0xFF5c677d),
+                    ? const Color(0xFF5c677d)
+                    : const Color.fromARGB(255, 5, 18, 43),
               ),
             ),
           ),
