@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/widgets/home_widgets/home_appbar/custom_body_home.dart';
 
@@ -12,6 +13,7 @@ class CustomAppBarHome extends StatelessWidget {
     return Opacity(
       opacity: disappear,
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           // border
           _clipper1(),
@@ -61,9 +63,11 @@ class CustomAppBarHome extends StatelessWidget {
         ),
       );
 
-  Widget _recommentText() => const Positioned(
-        bottom: 0,
-        left: 10,
-        child: Text('Offers', style: TextStyle(fontSize: 22)),
+  Widget _recommentText() => Positioned(
+        bottom: -10,
+        left: 0,
+        right: 0,
+        child:
+            Lottie.asset('assets/offer_.json', height: 80, fit: BoxFit.contain),
       );
 }
