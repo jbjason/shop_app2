@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/widgets/welcome_widgets/welcome_body.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -41,24 +42,4 @@ class WelcomeScreen extends StatelessWidget {
       Colors.white.withOpacity(0.1),
     ]),
   );
-}
-
-class WelcomeClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    final w = size.width, h = size.height;
-    path.lineTo(0, h * .7);
-    path.quadraticBezierTo(125, h * .8, 0, h * .9);
-    path.lineTo(0, h);
-    path.lineTo(w, h);
-    path.lineTo(w, h * .9);
-    path.quadraticBezierTo(w - 125, h * .8, w, h * .7);
-    path.lineTo(w, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }

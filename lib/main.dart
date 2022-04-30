@@ -14,6 +14,7 @@ import 'package:shop_app2/screens/offers_screen.dart';
 import 'package:shop_app2/screens/order_screen.dart';
 import 'package:shop_app2/screens/sort_by_screen.dart';
 import 'package:shop_app2/screens/thanks_screen.dart';
+import 'package:shop_app2/screens/welcome_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
         title: 'Shop App',
         theme: AppTheme.light(),
         themeMode: ThemeMode.light,
-        home: const HomeScreen(),
+        home: WelcomeScreen(),
         routes: {
+          HomeScreen.routeName:(ctx)=> const HomeScreen(),
           CartScreen.routeName: (ctx) => const CartScreen(),
           OrderScreen.routeName: (ctx) => const OrderScreen(),
           DetailsScreen.routeName: (ctx) => const DetailsScreen(),

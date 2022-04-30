@@ -10,6 +10,7 @@ import 'package:shop_app2/widgets/home_widgets/home_body/all_recommend/recommend
 import 'package:shop_app2/widgets/home_widgets/home_body/category_container.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const routeName = '/home-screen';
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
