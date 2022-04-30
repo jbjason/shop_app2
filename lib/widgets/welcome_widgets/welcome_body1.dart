@@ -24,7 +24,7 @@ class WelcomeBody1 extends StatelessWidget {
           top: size.height * .53,
           left: 60,
           right: 15,
-          child: middleLongText1(),
+          child: welcomeText1(),
         ),
       ],
     );

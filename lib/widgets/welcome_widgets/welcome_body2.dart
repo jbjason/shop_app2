@@ -7,6 +7,7 @@ class WelcomeBody2 extends StatelessWidget {
   final String image, text;
   @override
   Widget build(BuildContext context) {
+    final bool _isTrue = text.contains('Welcome to') ? true : false;
     final size = MediaQuery.of(context).size;
     return Stack(
       children: [
@@ -26,8 +27,10 @@ class WelcomeBody2 extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
             child: Text(text,
-                style:
-                    const TextStyle(fontSize: 13, color: AppColors.textLigth)),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: _isTrue ? 30 : 13,
+                    color: AppColors.textLigth)),
           ),
         ),
       ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BasicAppBarHome extends StatelessWidget {
   const BasicAppBarHome({Key? key, required this.shrink}) : super(key: key);
@@ -9,7 +10,9 @@ class BasicAppBarHome extends StatelessWidget {
       opacity: shrink,
       child: AppBar(
         leading: const Icon(Icons.menu_open),
-        title: const Text('Hello Bazar!', style: TextStyle(fontSize: 20)),
+        title: Text('Hello Bazar!',
+            style: GoogleFonts.permanentMarker(
+                textStyle: const TextStyle(fontSize: 20))),
         backgroundColor: const Color.fromARGB(255, 1, 1, 17),
         elevation: 10,
         actions: const [

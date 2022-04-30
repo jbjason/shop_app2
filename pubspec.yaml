@@ -33,10 +33,10 @@ flutter:
   assets:
     - assets/
   # example:
-  fonts:
-    - family: vintage
-      fonts:
-        - asset: assets/vintage.ttf
+  # fonts:
+  #   - family: vintage
+  #     fonts:
+  #       - asset: assets/vintage.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

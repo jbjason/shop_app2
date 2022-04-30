@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/widgets/home_widgets/home_appbar/search_bar.dart';
 
@@ -37,14 +38,14 @@ class CustomBodyHome extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Hello Bazar',
-                style: TextStyle(
-                    fontSize: 32,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold)),
+            Text('Hello Bazar',
+                style: GoogleFonts.permanentMarker(
+                    textStyle:
+                        const TextStyle(fontSize: 32, color: Colors.white))),
             const SizedBox(height: 15),
             const Text('   What do u like to buy ?',
                 style: TextStyle(color: Colors.white)),
+            const SizedBox(height: 5),
             Row(
               children: [
                 const Expanded(child: SearchBar()),

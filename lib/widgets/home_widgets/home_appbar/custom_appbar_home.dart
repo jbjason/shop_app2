@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shop_app2/constants/clippers_.dart';
-import 'package:shop_app2/constants/theme.dart';
-import 'package:shop_app2/screens/offers_screen.dart';
+import 'package:shop_app2/widgets/home_widgets/home_appbar/custom_appbar_home1.dart';
 import 'package:shop_app2/widgets/home_widgets/home_appbar/custom_body_home.dart';
 
 class CustomAppBarHome extends StatelessWidget {
@@ -19,15 +18,14 @@ class CustomAppBarHome extends StatelessWidget {
         children: [
           // border
           _clipper1(),
-          // offer image
+          // offer image 
           _offerImage(context),
           // body
           CustomBodyHome(height: height),
+          // image sammy
           _image(),
-          // menu button
-          _topButtons(),
-          // clipped area text
-          _seeTextButton(context),
+          // menu button // clipped area Button
+          const CustomAppBarHome1()
         ],
       ),
     );
@@ -54,20 +52,7 @@ class CustomAppBarHome extends StatelessWidget {
         ),
       );
 
-  Widget _topButtons() => Positioned(
-        top: 40,
-        left: 6,
-        right: 9,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Icon(Icons.read_more_sharp, size: 35, color: Colors.white),
-            Icon(Icons.more_vert, color: Colors.white)
-          ],
-        ),
-      );
-
-  Widget _offerImage(BuildContext context) {
+   Widget _offerImage(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Positioned(
       bottom: -52,
@@ -76,17 +61,4 @@ class CustomAppBarHome extends StatelessWidget {
           Lottie.asset('assets/offer_.json', height: 170, fit: BoxFit.contain),
     );
   }
-
-  Widget _seeTextButton(BuildContext context) => Positioned(
-        bottom: 10,
-        right: 30,
-        child: InkWell(
-          onTap: () => Navigator.of(context).pushNamed(OffersScreen.routeName),
-          child: const Text(
-            'See All',
-            style:
-                TextStyle(color: AppColors.accent, fontWeight: FontWeight.bold),
-          ),
-        ),
-      );
 }

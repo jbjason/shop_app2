@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/constants_2.dart';
 import 'package:shop_app2/widgets/welcome_widgets/welcome_body1.dart';
 import 'package:shop_app2/widgets/welcome_widgets/welcome_body2.dart';
 import 'package:shop_app2/widgets/welcome_widgets/welcome_bottom_container.dart';
@@ -36,7 +36,7 @@ class _WelcomeBodyState extends State<WelcomeBody> {
     return i == 0
         ? const WelcomeBody1()
         : i == 1
-            ? const WelcomeBody2(image: 'assets/s15.jpg', text: middleText2)
-            : const WelcomeBody2(image: 'assets/s4.jpg', text: middleText3);
+            ? const WelcomeBody2(image: 'assets/s15.jpg', text: welcomeText2)
+            : const WelcomeBody2(image: 'assets/s4.jpg', text: welcomeText3);
   }
 }
