@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/screens/home_screen.dart';
 
 class WelcomeBottomContainer extends StatelessWidget {
   const WelcomeBottomContainer({
@@ -16,19 +17,26 @@ class WelcomeBottomContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          // animated page counter
           _animatedPageList(),
-          Row(
-            children: const [
-              Text('Continue ',
-                  style: TextStyle(fontSize: 16, color: Colors.white)),
-              Icon(Icons.arrow_forward_outlined,
-                  color: Color.fromARGB(255, 5, 18, 43), size: 30)
-            ],
-          ),
+          // continue button
+          _continueButton(context),
         ],
       ),
     );
   }
+
+  Widget _continueButton(BuildContext context) => InkWell(
+        onTap: () => Navigator.of(context).pushNamed(HomeScreen.routeName),
+        child: Row(
+          children: const [
+            Text('Continue ',
+                style: TextStyle(fontSize: 16, color: Colors.white)),
+            Icon(Icons.arrow_forward_outlined,
+                color: Color.fromARGB(255, 5, 18, 43), size: 30)
+          ],
+        ),
+      );
 
   Widget _animatedPageList() => SizedBox(
         width: 100,

@@ -6,11 +6,11 @@ class WelcomeClipper extends CustomClipper<Path> {
     final path = Path();
     final w = size.width, h = size.height;
     path.lineTo(0, h * .7);
-    path.quadraticBezierTo(125, h * .78, 0, h * .9);
+    path.quadraticBezierTo(120, h * .8, 0, h * .9);
     path.lineTo(0, h);
     path.lineTo(w, h);
     path.lineTo(w, h * .9);
-    path.quadraticBezierTo(w - 125, h * .78, w, h * .7);
+    path.quadraticBezierTo(w - 120, h * .8, w, h * .7);
     path.lineTo(w, 0);
     path.close();
     return path;

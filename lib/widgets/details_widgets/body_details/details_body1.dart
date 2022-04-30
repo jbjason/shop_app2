@@ -20,7 +20,7 @@ class _DetailsBody1State extends State<DetailsBody1> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      //crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(padding: const EdgeInsets.all(8.0), child: _detailsText()),
         const SizedBox(height: 20),
