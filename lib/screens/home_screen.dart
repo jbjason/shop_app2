@@ -5,8 +5,8 @@ import 'package:shop_app2/widgets/home_widgets/home_appbar/basic_appbar_home.dar
 import 'package:shop_app2/widgets/home_widgets/home_appbar/custom_appbar_home.dart';
 import 'package:shop_app2/widgets/home_widgets/navigation_bar/floating_button.dart';
 import 'package:shop_app2/widgets/home_widgets/navigation_bar/navigation_cbar.dart';
-import 'package:shop_app2/widgets/home_widgets/all_product/product_all.dart';
-import 'package:shop_app2/widgets/home_widgets/all_recommend/recommend_all.dart';
+import 'package:shop_app2/widgets/home_widgets/home_body/all_product/product_all.dart';
+import 'package:shop_app2/widgets/home_widgets/home_body/all_recommend/recommend_all.dart';
 import 'package:shop_app2/widgets/home_widgets/home_body/category_container.dart';
 
 class HomeScreen extends StatelessWidget {
