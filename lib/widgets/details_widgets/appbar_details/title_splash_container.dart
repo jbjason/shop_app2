@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class TitleSplashContainer extends StatelessWidget {
@@ -30,7 +31,7 @@ class TitleSplashContainer extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(50),
+              topLeft: Radius.circular(70),
               topRight: Radius.circular(10),
               bottomRight: Radius.circular(50)),
           gradient: LinearGradient(
@@ -52,9 +53,11 @@ class TitleSplashContainer extends StatelessWidget {
             product.title,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
-            style: TextStyle(
-              fontSize: lerpDouble(20, 40, topPercent),
-              fontWeight: FontWeight.bold,
+            style: GoogleFonts.niconne(
+              textStyle: TextStyle(
+                fontSize: lerpDouble(20, 40, topPercent),
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           const Icon(CupertinoIcons.heart, color: Colors.black),
