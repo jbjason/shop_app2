@@ -22,7 +22,7 @@ class RecommendItem extends StatelessWidget {
               children: [
                 _titlePriceContainer(),
                 // favorite & cart Icons
-                Expanded(child: AddFavoriteButtons(product: product)),
+                Expanded(child: AddButtons(product: product)),
               ],
             ),
           ),

@@ -1,53 +1,49 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
-import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/widgets/details_widgets/body_details/add_to_cart_button.dart';
 
-class DetailsBody extends StatefulWidget {
-  const DetailsBody({Key? key, required this.product}) : super(key: key);
+class DetailsBody1 extends StatefulWidget {
+  const DetailsBody1({Key? key, required this.product}) : super(key: key);
   final Product product;
   @override
-  State<DetailsBody> createState() => _DetailsBodyState();
+  State<DetailsBody1> createState() => _DetailsBody1State();
 }
 
-class _DetailsBodyState extends State<DetailsBody> {
+class _DetailsBody1State extends State<DetailsBody1> {
   bool _isExpanded = false;
   int _selectedSize = 0;
   int _selectedColor = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _titlePortion('Details'),
-          Padding(padding: const EdgeInsets.all(8.0), child: _detailsText()),
-          const SizedBox(height: 20),
-          _titlePortion('Size'),
-          const SizedBox(height: 5),
-          _sizeContainer(),
-          const SizedBox(height: 15),
-          _titlePortion('Color'),
-          const SizedBox(height: 5),
-          _colorContainer(),
-          const SizedBox(height: 35),
-          _addToCartButton(context),
-          const SizedBox(height: 25),
-          _titlePortion('Related Items'),
-          const SizedBox(height: 10),
-          _relatedPlaces(),
-        ],
-      ),
+    return Column(
+      //crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(padding: const EdgeInsets.all(8.0), child: _detailsText()),
+        const SizedBox(height: 20),
+        _titlePortion('Size'),
+        const SizedBox(height: 5),
+        _sizeContainer(),
+        const SizedBox(height: 15),
+        _titlePortion('Color'),
+        const SizedBox(height: 5),
+        _colorContainer(),
+        const SizedBox(height: 35),
+        AddToCartButton(
+          product: widget.product,
+          selectedColor: _selectedColor,
+          selectedSize: _selectedSize,
+        ),
+      ],
     );
   }
 
   Widget _titlePortion(String s) =>
       Text(s, style: const TextStyle(fontSize: 18));
+
   Widget _detailsText() {
     if (widget.product.description.length > 190 && !_isExpanded) {
       return RichText(
@@ -150,59 +146,6 @@ class _DetailsBodyState extends State<DetailsBody> {
                 ),
               ),
             )),
-      ),
-    );
-  }
-
-  Widget _addToCartButton(BuildContext context) {
-    return Center(
-      child: InkWell(
-        child: Container(
-          width: 250,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-          decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: getShadowBox(Colors.grey[600]!, Colors.white)),
-          alignment: Alignment.center,
-          child: const Text('ADD TO CART',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
-                  wordSpacing: 1.5)),
-        ),
-        onTap: () {
-          final s = Provider.of<Cart>(context, listen: false)
-              .addItem(widget.product, _selectedColor, _selectedSize);
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text(s), duration: const Duration(seconds: 1)));
-        },
-      ),
-    );
-  }
-
-  Widget _relatedPlaces() {
-    final length = widget.product.imageUrl.length;
-    return SizedBox(
-      height: 180,
-      child: ListView.builder(
-        itemCount: length,
-        scrollDirection: Axis.horizontal,
-        itemExtent: 150,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                widget.product.imageUrl[length - 1 - index],
-                fit: BoxFit.cover,
-              ),
-            ),
-          );
-        },
       ),
     );
   }

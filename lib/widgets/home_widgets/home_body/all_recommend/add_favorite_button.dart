@@ -5,16 +5,16 @@ import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/product.dart';
 
-class AddFavoriteButtons extends StatefulWidget {
-  const AddFavoriteButtons({Key? key, required this.product})
+class AddButtons extends StatefulWidget {
+  const AddButtons({Key? key, required this.product})
       : super(key: key);
   final Product product;
 
   @override
-  State<AddFavoriteButtons> createState() => _AddFavoriteButtonsState();
+  State<AddButtons> createState() => _AddButtonsState();
 }
 
-class _AddFavoriteButtonsState extends State<AddFavoriteButtons> {
+class _AddButtonsState extends State<AddButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(

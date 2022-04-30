@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/widgets/details_widgets/images_preview.dart';
-import 'package:shop_app2/widgets/details_widgets/title_splash_container.dart';
+import 'package:shop_app2/widgets/details_widgets/appbar_details/images_preview.dart';
+import 'package:shop_app2/widgets/details_widgets/appbar_details/title_splash_container.dart';
 
 class CustomAppBarDetail extends StatelessWidget {
   const CustomAppBarDetail({
