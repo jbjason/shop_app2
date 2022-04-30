@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+
+class WelcomeBottomContainer extends StatelessWidget {
+  const WelcomeBottomContainer({
+    Key? key,
+    required this.isSelected,
+  }) : super(key: key);
+
+  final int isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _animatedPageList(),
+          Row(
+            children: const [
+              Text('Continue ',
+                  style: TextStyle(fontSize: 16, color: Colors.white)),
+              Icon(Icons.arrow_forward_outlined,
+                  color: Color.fromARGB(255, 5, 18, 43), size: 30)
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _animatedPageList() => SizedBox(
+        width: 100,
+        child: Row(
+          children: List.generate(
+            3,
+            (index) => AnimatedContainer(
+              duration: kThemeAnimationDuration,
+              margin: const EdgeInsets.only(right: 7),
+              height: 10,
+              width: isSelected == index ? 25 : 10,
+              decoration: BoxDecoration(
+                shape:
+                    isSelected == index ? BoxShape.rectangle : BoxShape.circle,
+                color: isSelected == index
+                    ? const Color.fromARGB(255, 5, 18, 43)
+                    : const Color(0xFF5c677d),
+              ),
+            ),
+          ),
+        ),
+      );
+}
