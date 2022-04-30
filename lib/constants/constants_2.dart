@@ -1,5 +1,6 @@
 // Welcome Screen part
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const String welcomeText2 =
     'There are vast variety collections of products of top Brands & Categories. As bangaldesh\'s online shopping landscape is expanding every year. ';
@@ -26,6 +27,6 @@ Widget welcomeText1() => RichText(
 TextSpan _spanText(String s, FontWeight weight, double font, Color c) =>
     TextSpan(
       text: s,
-      style: TextStyle(
-          fontSize: font, color: c, wordSpacing: 3),
+      style: GoogleFonts.aclonica(
+          textStyle: TextStyle(fontSize: font, color: c, wordSpacing: 3)),
     );

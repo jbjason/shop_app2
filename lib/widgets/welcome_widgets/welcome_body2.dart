@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/constants/theme.dart';
 
 class WelcomeBody2 extends StatelessWidget {
@@ -28,9 +29,10 @@ class WelcomeBody2 extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
             child: Text(text,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: _isTrue ? 30 : 13,
-                    color: AppColors.textLigth)),
+                style: GoogleFonts.aclonica(
+                    textStyle: TextStyle(
+                        fontSize: _isTrue ? 30 : 13,
+                        color: AppColors.textLigth))),
           ),
         ),
       ],
