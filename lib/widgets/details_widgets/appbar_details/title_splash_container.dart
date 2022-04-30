@@ -23,49 +23,16 @@ class TitleSplashContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // title
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  product.title,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontSize: lerpDouble(20, 40, topPercent),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Icon(CupertinoIcons.heart, color: Colors.black),
-              ],
-            ),
+            _title(),
             // rating ,review , price
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const Icon(Icons.location_on_sharp, size: 14),
-                    Text(
-                      '${product.isReview} reviews',
-                      style: const TextStyle(fontSize: 11),
-                    ),
-                    const SizedBox(width: 10),
-                    const Text('✶', style: TextStyle(fontSize: 18)),
-                    Text(
-                      product.isRating.toString(),
-                      style: const TextStyle(fontSize: 11),
-                    ),
-                  ],
-                ),
-                Text('\$ ${product.price}',
-                    style: const TextStyle(color: Colors.black)),
-              ],
-            ),
+            _PriceRating(),
           ],
         ),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(40), topRight: Radius.circular(10)),
+              topLeft: Radius.circular(50),
+              topRight: Radius.circular(10),
+              bottomRight: Radius.circular(50)),
           gradient: LinearGradient(
             colors: [
               Colors.white.withOpacity(0.7),
@@ -77,4 +44,43 @@ class TitleSplashContainer extends StatelessWidget {
       ),
     );
   }
+
+  Widget _title() => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            product.title,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: TextStyle(
+              fontSize: lerpDouble(20, 40, topPercent),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Icon(CupertinoIcons.heart, color: Colors.black),
+        ],
+      );
+
+  Widget _PriceRating() => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.location_on_sharp, size: 14),
+              Text(
+                '${product.isReview} reviews',
+                style: const TextStyle(fontSize: 11),
+              ),
+              const SizedBox(width: 10),
+              const Text('✶', style: TextStyle(fontSize: 18)),
+              Text(
+                product.isRating.toString(),
+                style: const TextStyle(fontSize: 11),
+              ),
+            ],
+          ),
+          Text('\$ ${product.price}',
+              style: const TextStyle(color: Colors.black)),
+        ],
+      );
 }
