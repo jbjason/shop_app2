@@ -8,7 +8,7 @@ class NavigationCBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: NavPaniter(),
+      painter: NavClipper(),
       child: SizedBox(
         height: kToolbarHeight,
         child: Row(

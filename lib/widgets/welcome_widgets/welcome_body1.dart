@@ -23,7 +23,7 @@ class WelcomeBody1 extends StatelessWidget {
         Positioned(
           top: size.height * .53,
           left: 60,
-          right: 15,
+          right: 40,
           child: welcomeText1(),
         ),
       ],

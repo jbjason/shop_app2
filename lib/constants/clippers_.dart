@@ -20,7 +20,7 @@ class WelcomeClipper extends CustomClipper<Path> {
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }
 
-class NavPaniter extends CustomPainter {
+class NavClipper extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final w = size.width, h = size.height;
