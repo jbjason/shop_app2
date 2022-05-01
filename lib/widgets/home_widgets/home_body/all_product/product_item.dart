@@ -20,29 +20,32 @@ class ProductItem extends StatelessWidget {
     );
   }
 
-  Widget _body() => AnimatedContainer(
-        duration: kThemeAnimationDuration,
-        margin: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 18),
-        child: Stack(
-          children: [
-            _ratings(),
-            _reveiws(),
-            _title(),
-          ],
+  Widget _body() => Hero(
+    tag: product.id,
+    child: AnimatedContainer(
+          duration: kThemeAnimationDuration,
+          margin: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 18),
+          child: Stack(
+            children: [
+              _ratings(),
+              _reveiws(),
+              _title(),
+            ],
+          ),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: NetworkImage(product.imageUrl[0]), fit: BoxFit.cover),
+            borderRadius: BorderRadius.circular(40),
+            gradient: const LinearGradient(colors: [
+              Color(0xFFeae4e9),
+              Color(0xFFfff1e6),
+              Color(0xFFf0efeb),
+              Color(0xFFf0efeb),
+            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+            boxShadow: getShadowBox(Colors.grey.shade600, Colors.white),
+          ),
         ),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: NetworkImage(product.imageUrl[0]), fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(40),
-          gradient: const LinearGradient(colors: [
-            Color(0xFFeae4e9),
-            Color(0xFFfff1e6),
-            Color(0xFFf0efeb),
-            Color(0xFFf0efeb),
-          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-          boxShadow: getShadowBox(Colors.grey.shade600, Colors.white),
-        ),
-      );
+  );
       
   Widget _ratings() => Positioned(
         top: 10,

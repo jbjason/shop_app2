@@ -9,8 +9,7 @@ class NavigationCBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: NavClipper(),
-      child: SizedBox(
-        height: kToolbarHeight +5,
+      child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -20,12 +19,12 @@ class NavigationCBar extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.all(7),
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.black45),
-                  child: const Icon(CupertinoIcons.chat_bubble,
-                      color: Colors.white),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withOpacity(0.3)),
+                  child: const Icon(CupertinoIcons.square_split_2x2_fill),
                 ),
-                const Text('Message')
+                const Text('All')
               ],
             ),
             Column(
@@ -33,17 +32,22 @@ class NavigationCBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.black54),
-                  child: const Icon(CupertinoIcons.square_split_2x2_fill,
-                      color: Colors.white),
+                  padding: const EdgeInsets.all(7),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withOpacity(0.3)),
+                  child: const Icon(CupertinoIcons.heart),
                 ),
-                const Text('Favorite')
+                const Text('Favorites')
               ],
             ),
           ],
         ),
+        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+        height: kToolbarHeight + 20,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(width: 2, color: Colors.white60)),
       ),
     );
   }
