@@ -14,17 +14,28 @@ class NavigationCBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(
-              onPressed: () {},
-              icon:
-                  const Icon(CupertinoIcons.chat_bubble, color: Colors.black87),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Icon(
+                  CupertinoIcons.chat_bubble,
+                  color: Colors.black87,
+                ),
+                Text('Message   ')
+              ],
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                CupertinoIcons.square_split_2x2_fill,
-                color: Colors.black87,
-              ),
+            Column(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Icon(
+                  CupertinoIcons.square_split_2x2_fill,
+                  color: Colors.black87,
+                ),
+                Text('    Favorite')
+              ],
             ),
           ],
         ),
