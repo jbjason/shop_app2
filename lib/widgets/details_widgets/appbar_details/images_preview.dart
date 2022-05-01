@@ -23,11 +23,18 @@ class _ImagesPreviewState extends State<ImagesPreview> {
   late var pageController = PageController();
   double pageOffset = 0;
   double viewPortion = 0.9;
+
   @override
   void initState() {
     super.initState();
     pageController = PageController(viewportFraction: viewPortion)
       ..addListener(() => setState(() => pageOffset = pageController.page!));
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,61 +51,11 @@ class _ImagesPreviewState extends State<ImagesPreview> {
             scale: lerpDouble(1, 1.3, widget.bottomPercent),
             child: Column(
               children: [
-                Expanded(
-                  child: PageView.builder(
-                    controller: pageController,
-                    itemCount: widget.product.imageUrl.length,
-                    onPageChanged: (value) =>
-                        setState(() => _currentIndex = value),
-                    itemBuilder: (context, index) {
-                      double scale = max(viewPortion,
-                          (1 - (pageOffset - index).abs()) + viewPortion);
-                      double angle = (pageOffset - index).abs();
-                      if (angle > .5) {
-                        angle = 1 - angle;
-                      }
-                      return Transform(
-                        alignment: Alignment.center,
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.001)
-                          ..rotateY(1.8 * angle),
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              right: 10,
-                              top: 40 - scale * 20,
-                              bottom: 40 - scale * 20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: NetworkImage(widget.product.imageUrl[index]),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                // all images
+                _allImagesOfProduct(),
                 const SizedBox(height: 10),
                 // image counter Container
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    widget.product.imageUrl.length,
-                    (index) => AnimatedContainer(
-                      duration: kThemeAnimationDuration,
-                      height: 4,
-                      width: index == _currentIndex ? 23 : 10,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
-                        color: index == _currentIndex
-                            ? Colors.black87
-                            : Colors.black12,
-                      ),
-                      margin: const EdgeInsets.symmetric(horizontal: 5),
-                    ),
-                  ),
-                ),
+                _imageCounterContainer(),
                 const SizedBox(height: 10),
               ],
             ),
@@ -107,4 +64,54 @@ class _ImagesPreviewState extends State<ImagesPreview> {
       ),
     );
   }
+
+  Widget _allImagesOfProduct() => Expanded(
+        child: PageView.builder(
+          controller: pageController,
+          itemCount: widget.product.imageUrl.length,
+          onPageChanged: (value) => setState(() => _currentIndex = value),
+          itemBuilder: (context, index) {
+            double scale = max(
+                viewPortion, (1 - (pageOffset - index).abs()) + viewPortion);
+            double angle = (pageOffset - index).abs();
+            if (angle > .5) {
+              angle = 1 - angle;
+            }
+            return Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.001)
+                ..rotateY(1.8 * angle),
+              child: Container(
+                margin: EdgeInsets.only(
+                    right: 10, top: 40 - scale * 20, bottom: 40 - scale * 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: NetworkImage(widget.product.imageUrl[index]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      );
+
+  Widget _imageCounterContainer() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+          widget.product.imageUrl.length,
+          (index) => AnimatedContainer(
+            duration: kThemeAnimationDuration,
+            height: 4,
+            width: index == _currentIndex ? 23 : 10,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14),
+              color: index == _currentIndex ? Colors.black87 : Colors.black12,
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 5),
+          ),
+        ),
+      );
 }
