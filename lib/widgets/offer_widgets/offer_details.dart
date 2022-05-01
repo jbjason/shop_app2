@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/constants_2.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class OfferDetails extends StatelessWidget {
@@ -38,7 +39,7 @@ class OfferDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('⇐', style: TextStyle(fontSize: 20)),
+                  swipeText('↞swipe'),
                   Container(
                     padding:
                         const EdgeInsets.only(top: 15, left: 20, right: 20),
@@ -55,7 +56,7 @@ class OfferDetails extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  const Text('⇒', style: TextStyle(fontSize: 20)),
+                  swipeText('swipe↠'),
                 ],
               ),
             ),

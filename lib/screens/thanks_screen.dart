@@ -39,7 +39,7 @@ class _ThanksScreenState extends State<ThanksScreen> {
     final String name = f[0], email = f[1], contact = f[2], address = f[3];
     final double finalAmount = double.parse(f[4]);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+      padding: const EdgeInsets.all(6),
       child: Column(
         children: [
           InvoiceAndUserInfo(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/constants/clippers_.dart';
+import 'package:shop_app2/screens/sort_by_screen.dart';
 import 'package:shop_app2/widgets/home_widgets/home_appbar/search_bar.dart';
 
 class CustomBodyHome extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomBodyHome extends StatelessWidget {
       child: Container(
         height: height - 5,
         padding: const EdgeInsets.only(top: 40, left: 25, right: 15),
-        child: _body(),
+        child: _body(context),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -34,7 +35,7 @@ class CustomBodyHome extends StatelessWidget {
     );
   }
 
-  Widget _body() => SingleChildScrollView(
+  Widget _body(BuildContext context) => SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -52,7 +53,8 @@ class CustomBodyHome extends StatelessWidget {
                 InkWell(
                   child: const Icon(Icons.settings_suggest_sharp,
                       size: 35, color: Colors.white),
-                  onTap: () {},
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(SortByScreen.routeName),
                 ),
                 const SizedBox(width: 140),
               ],

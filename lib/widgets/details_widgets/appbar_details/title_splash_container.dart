@@ -26,7 +26,7 @@ class TitleSplashContainer extends StatelessWidget {
             // title
             _title(),
             // rating ,review , price
-            _PriceRating(),
+            _priceRating(),
           ],
         ),
         decoration: BoxDecoration(
@@ -64,7 +64,7 @@ class TitleSplashContainer extends StatelessWidget {
         ],
       );
 
-  Widget _PriceRating() => Row(
+  Widget _priceRating() => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(

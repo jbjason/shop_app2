@@ -9,7 +9,10 @@ class BasicAppBarHome extends StatelessWidget {
     return Opacity(
       opacity: shrink,
       child: AppBar(
-        leading: const Icon(Icons.menu_open),
+        // drawer open button
+        leading: InkWell(
+            onTap: () => Scaffold.of(context).openDrawer(),
+            child: const Icon(Icons.menu_open)),
         title: Text('Hello Bazar!',
             style: GoogleFonts.permanentMarker(
                 textStyle: const TextStyle(fontSize: 20))),

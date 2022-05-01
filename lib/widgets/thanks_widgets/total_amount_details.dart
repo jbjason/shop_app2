@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/theme.dart';
 
 class TotalAmountDetails extends StatelessWidget {
   const TotalAmountDetails(
@@ -15,6 +16,10 @@ class TotalAmountDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final subTotal = finalAmount.toStringAsFixed(2);
+    final discount = (finalPoint + finalVoucher).toStringAsFixed(2);
+    final grandTotal =
+        (finalAmount - (finalPoint + finalVoucher)).toStringAsFixed(2);
     return Container(
       margin: const EdgeInsets.only(right: 10, bottom: 15),
       width: width,
@@ -23,12 +28,9 @@ class TotalAmountDetails extends StatelessWidget {
         children: [
           RichText(
             text: TextSpan(children: [
-              _totalText('Sub Total : \$ $finalAmount \n\n', FontWeight.normal),
-              _totalText('Discount : \$ ${finalPoint + finalVoucher} \n\n',
-                  FontWeight.normal),
-              _totalText(
-                  'Grand Total : \$ ${finalAmount - (finalPoint + finalVoucher)}',
-                  FontWeight.bold),
+              _totalText('Sub Total : \$ $subTotal \n\n', FontWeight.normal),
+              _totalText('Discount : \$ $discount \n\n', FontWeight.normal),
+              _totalText('Grand Total : \$ $grandTotal', FontWeight.bold),
             ]),
           ),
         ],
@@ -38,6 +40,6 @@ class TotalAmountDetails extends StatelessWidget {
 
   TextSpan _totalText(String s, FontWeight fontWeight) {
     return TextSpan(
-        text: s, style: TextStyle(color: Colors.black, fontWeight: fontWeight));
+        text: s, style: TextStyle(color: AppColors.textDark, fontWeight: fontWeight));
   }
 }

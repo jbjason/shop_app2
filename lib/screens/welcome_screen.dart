@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/clippers_.dart';
+import 'package:shop_app2/constants/constants_2.dart';
 import 'package:shop_app2/widgets/welcome_widgets/welcome_body.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -23,17 +24,16 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-                top: size.height * .745, left: 0, child: _swipeText('↞swipe')),
+                top: size.height * .745, left: 0, child: swipeText('↞swipe')),
             Positioned(
-                top: size.height * .745, right: 0, child: _swipeText('swipe↠')),
+                top: size.height * .745, right: 0, child: swipeText('swipe↠')),
           ],
         ),
       ),
     );
   }
 
-  Widget _swipeText(String s) =>
-      Text(s, style: const TextStyle(fontSize: 13, color: Colors.black));
+  
 
   final _decoration = BoxDecoration(
     border: Border.all(color: Colors.white.withOpacity(0.8)),

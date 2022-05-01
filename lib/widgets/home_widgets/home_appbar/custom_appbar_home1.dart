@@ -9,21 +9,25 @@ class CustomAppBarHome1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _topButtons(),
+        _topButtons(context),
         _seeTextButton(context),
       ],
     );
   }
 
-  Widget _topButtons() => Positioned(
+  Widget _topButtons(BuildContext context) => Positioned(
         top: 40,
         left: 6,
         right: 9,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Icon(Icons.read_more_sharp, size: 35, color: Colors.white),
-            Icon(Icons.more_vert, color: Colors.white)
+          children: [
+            // drawer open button
+            InkWell(
+                onTap: () => Scaffold.of(context).openDrawer(),
+                child: const Icon(Icons.read_more_sharp,
+                    size: 35, color: Colors.white)),
+            const Icon(Icons.more_vert, color: Colors.white)
           ],
         ),
       );

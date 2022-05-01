@@ -30,3 +30,6 @@ TextSpan _spanText(String s, FontWeight weight, double font, Color c) =>
       style: GoogleFonts.aclonica(
           textStyle: TextStyle(fontSize: font, color: c, wordSpacing: 3)),
     );
+
+Widget swipeText(String s) =>
+      Text(s, style: const TextStyle(fontSize: 13, color: Colors.black));
