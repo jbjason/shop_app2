@@ -20,23 +20,25 @@ class WelcomeBottomContainer extends StatelessWidget {
           // animated page counter
           _animatedPageList(),
           // continue button
-          _continueButton(context),
+          _continueButton(context, isSelected),
         ],
       ),
     );
   }
 
-  Widget _continueButton(BuildContext context) => InkWell(
-        onTap: () => Navigator.of(context).pushNamed(HomeScreen.routeName),
-        child: Row(
-          children: const [
-            Text('Continue ',
-                style: TextStyle(fontSize: 16, color: Colors.white)),
-            Icon(Icons.arrow_forward_outlined,
-                color: Color.fromARGB(255, 5, 18, 43), size: 30)
-          ],
-        ),
-      );
+  Widget _continueButton(BuildContext context, int index) => index == 2
+      ? InkWell(
+          onTap: () => Navigator.of(context).pushNamed(HomeScreen.routeName),
+          child: Row(
+            children: const [
+              Text('Continue ',
+                  style: TextStyle(fontSize: 16, color: Colors.white)),
+              Icon(Icons.arrow_forward_outlined,
+                  color: Color.fromARGB(255, 5, 18, 43), size: 30)
+            ],
+          ),
+        )
+      : Container();
 
   Widget _animatedPageList() => SizedBox(
         width: 100,
