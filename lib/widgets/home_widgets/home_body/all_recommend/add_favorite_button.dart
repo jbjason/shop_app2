@@ -28,15 +28,19 @@ class AddButtons extends StatelessWidget {
     );
   }
 
-  Widget _cartButton(BuildContext context) => IconButton(
-        icon: const Icon(CupertinoIcons.cart, size: 20),
-        onPressed: () {
-          final s =
-              Provider.of<Cart>(context, listen: false).addItem(product, 0, 0);
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text(s), duration: const Duration(seconds: 1)));
-        },
-      );
+  Widget _cartButton(BuildContext context) => InkWell(
+      onTap: () {
+        final s =
+            Provider.of<Cart>(context, listen: false).addItem(product, 0, 0);
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+              SnackBar(content: Text(s), duration: const Duration(seconds: 1)));
+      },
+      child: Container(
+        padding: const EdgeInsets.all(4),
+        decoration:
+            const BoxDecoration(shape: BoxShape.circle, color: Colors.black26),
+        child:  Icon(CupertinoIcons.cart,color: Colors.grey[300]!),
+      ));
 }

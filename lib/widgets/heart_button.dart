@@ -25,7 +25,7 @@ class _HeartButtonState extends State<HeartButton>
         duration: const Duration(milliseconds: 300), vsync: this);
     curve = CurvedAnimation(parent: _controller, curve: Curves.slowMiddle);
     _colorAnimation =
-        ColorTween(begin: Colors.grey[400], end: Colors.red).animate(curve);
+        ColorTween(begin: Colors.grey[300], end: Colors.red).animate(curve);
 
     _sizeAnimation = TweenSequence(<TweenSequenceItem<double>>[
       TweenSequenceItem<double>(
@@ -60,10 +60,15 @@ class _HeartButtonState extends State<HeartButton>
             _isFav ? _controller.reverse() : _controller.forward();
             widget.product.toggleFavoriteStatus();
           },
-          child: Icon(
-            Icons.favorite,
-            color: _colorAnimation.value,
-            size: _sizeAnimation.value,
+          child: Container(
+            padding: const EdgeInsets.all(7),
+            decoration:
+                const BoxDecoration(shape: BoxShape.circle, color: Colors.black26),
+            child: Icon(
+              Icons.favorite,
+              color: _colorAnimation.value,
+              size: _sizeAnimation.value,
+            ),
           ),
         );
       },

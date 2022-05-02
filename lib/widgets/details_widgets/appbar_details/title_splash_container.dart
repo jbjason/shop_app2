@@ -18,7 +18,7 @@ class TitleSplashContainer extends StatelessWidget {
     return Positioned.fill(
       top: null,
       child: Container(
-        height: 100,
+        height: 105,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
