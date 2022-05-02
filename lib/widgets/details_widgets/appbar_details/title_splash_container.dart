@@ -1,8 +1,8 @@
 import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/widgets/heart_button.dart';
 
 class TitleSplashContainer extends StatelessWidget {
   const TitleSplashContainer({
@@ -60,7 +60,7 @@ class TitleSplashContainer extends StatelessWidget {
               ),
             ),
           ),
-          const Icon(CupertinoIcons.heart, color: Colors.black),
+          HeartButton(product: product),
         ],
       );
 

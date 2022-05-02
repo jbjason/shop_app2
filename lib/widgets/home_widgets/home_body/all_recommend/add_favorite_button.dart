@@ -4,17 +4,11 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/widgets/heart_button.dart';
 
-class AddButtons extends StatefulWidget {
-  const AddButtons({Key? key, required this.product})
-      : super(key: key);
+class AddButtons extends StatelessWidget {
+  const AddButtons({Key? key, required this.product}) : super(key: key);
   final Product product;
-
-  @override
-  State<AddButtons> createState() => _AddButtonsState();
-}
-
-class _AddButtonsState extends State<AddButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,30 +21,22 @@ class _AddButtonsState extends State<AddButtons> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          IconButton(
-            icon: Icon(
-                widget.product.isFavorite
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                size: 20),
-            onPressed: () {
-              widget.product.toggleFavoriteStatus();
-              setState(() {});
-            },
-          ),
-          IconButton(
-            icon: const Icon(CupertinoIcons.cart, size: 20),
-            onPressed: () {
-              final s = Provider.of<Cart>(context, listen: false)
-                  .addItem(widget.product, 0, 0);
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(SnackBar(
-                    content: Text(s), duration: const Duration(seconds: 1)));
-            },
-          ),
+          HeartButton(product: product),
+          _cartButton(context),
         ],
       ),
     );
   }
+
+  Widget _cartButton(BuildContext context) => IconButton(
+        icon: const Icon(CupertinoIcons.cart, size: 20),
+        onPressed: () {
+          final s =
+              Provider.of<Cart>(context, listen: false).addItem(product, 0, 0);
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(SnackBar(
+                content: Text(s), duration: const Duration(seconds: 1)));
+        },
+      );
 }
