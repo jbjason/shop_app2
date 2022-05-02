@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/screens/details_screen.dart';
 import 'package:shop_app2/widgets/home_widgets/home_body/all_recommend/add_favorite_button.dart';
 
 class RecommendItem extends StatelessWidget {
@@ -15,7 +16,7 @@ class RecommendItem extends StatelessWidget {
       child: Row(
         children: [
           // image
-          _imageContainer(),
+          _imageContainer(context),
           // title ,price, review
           Expanded(
             child: Column(
@@ -31,13 +32,19 @@ class RecommendItem extends StatelessWidget {
     );
   }
 
-  Widget _imageContainer() {
+  Widget _imageContainer(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 5, bottom: 5),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30.0),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(DetailsScreen.routeName,
+                arguments: [
+                  product.id,
+                  MediaQuery.of(context).size.height.toString()
+                ]);
+          },
           child: Hero(
             tag: product.id,
             child: FadeInImage(

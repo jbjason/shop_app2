@@ -14,9 +14,9 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final f = ModalRoute.of(context)!.settings.arguments as List<String>;
-    final double height = double.parse(f[0]);
     final Product product =
-        Provider.of<Products>(context, listen: false).findById(f[1]);
+        Provider.of<Products>(context, listen: false).findById(f[0]);
+    final double height = double.parse(f[1]);
     return Scaffold(
       body: CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),

@@ -13,16 +13,16 @@ class ProductItem extends StatelessWidget {
       child: _body(),
       onTap: () {
         Navigator.of(context).pushNamed(DetailsScreen.routeName, arguments: [
-          MediaQuery.of(context).size.height.toString(),
           product.id,
+          MediaQuery.of(context).size.height.toString()
         ]);
       },
     );
   }
 
   Widget _body() => Hero(
-    tag: product.id,
-    child: AnimatedContainer(
+        tag: product.id,
+        child: AnimatedContainer(
           duration: kThemeAnimationDuration,
           margin: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 18),
           child: Stack(
@@ -45,8 +45,8 @@ class ProductItem extends StatelessWidget {
             boxShadow: getShadowBox(Colors.grey.shade600, Colors.white),
           ),
         ),
-  );
-      
+      );
+
   Widget _ratings() => Positioned(
         top: 10,
         left: 5,
