@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/clippers_.dart';
+import 'package:shop_app2/constants/constants_.dart';
 
 class NavigationCBar extends StatelessWidget {
   const NavigationCBar({Key? key}) : super(key: key);
@@ -23,13 +24,8 @@ class NavigationCBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(0.7)),
-                    child: const Icon(CupertinoIcons.square_split_2x2_fill),
-                  ),
+                  buttonBackGround(
+                      const Icon(CupertinoIcons.square_split_2x2_fill)),
                   const Text('All')
                 ],
               ),
@@ -37,13 +33,7 @@ class NavigationCBar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(0.7)),
-                    child: const Icon(CupertinoIcons.heart),
-                  ),
+                  buttonBackGround(const Icon(CupertinoIcons.heart)),
                   const Text('Favorites')
                 ],
               ),

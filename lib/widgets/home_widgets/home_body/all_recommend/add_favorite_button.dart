@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/product.dart';
@@ -37,10 +38,6 @@ class AddButtons extends StatelessWidget {
           ..showSnackBar(
               SnackBar(content: Text(s), duration: const Duration(seconds: 1)));
       },
-      child: Container(
-        padding: const EdgeInsets.all(4),
-        decoration:
-            const BoxDecoration(shape: BoxShape.circle, color: Colors.black26),
-        child:  Icon(CupertinoIcons.cart,color: Colors.grey[300]!),
-      ));
+      child: buttonBackGround(
+          Icon(CupertinoIcons.cart, color: Colors.grey[300]!)));
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class HeartButton extends StatefulWidget {
@@ -60,15 +61,9 @@ class _HeartButtonState extends State<HeartButton>
             _isFav ? _controller.reverse() : _controller.forward();
             widget.product.toggleFavoriteStatus();
           },
-          child: Container(
-            padding: const EdgeInsets.all(7),
-            decoration:
-                const BoxDecoration(shape: BoxShape.circle, color: Colors.black26),
-            child: Icon(
-              Icons.favorite,
-              color: _colorAnimation.value,
-              size: _sizeAnimation.value,
-            ),
+          child: buttonBackGround(
+            Icon(Icons.favorite,
+                color: _colorAnimation.value, size: _sizeAnimation.value),
           ),
         );
       },
