@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/cart.dart';
-import 'package:shop_app2/screens/cart_screen.dart';
+import 'package:shop_app2/screens/users_screen/cart_screen.dart';
 import 'package:shop_app2/widgets/home_widgets/navigation_bar/badge.dart';
 
 class FloatingButton extends StatelessWidget {

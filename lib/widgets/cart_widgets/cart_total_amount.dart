@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/providers/cart.dart';
-import 'package:shop_app2/screens/confirm_screen.dart';
+import 'package:shop_app2/screens/users_screen/confirm_screen.dart';
 
 class CartTotalAmount extends StatelessWidget {
   const CartTotalAmount({

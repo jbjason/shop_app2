@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/theme.dart';
-import 'package:shop_app2/screens/offers_screen.dart';
+import 'package:shop_app2/screens/users_screen/offers_screen.dart';
 
 class CustomAppBarHome1 extends StatelessWidget {
   const CustomAppBarHome1({Key? key}) : super(key: key);
