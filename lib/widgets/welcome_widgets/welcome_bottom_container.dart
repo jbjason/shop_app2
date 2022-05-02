@@ -54,8 +54,8 @@ class WelcomeBottomContainer extends StatelessWidget {
                 shape:
                     isSelected == index ? BoxShape.rectangle : BoxShape.circle,
                 color: isSelected == index
-                    ? const Color(0xFF5c677d)
-                    : const Color.fromARGB(255, 5, 18, 43),
+                    ? const Color.fromARGB(255, 5, 18, 43)
+                    : const Color(0xFF5c677d),
               ),
             ),
           ),

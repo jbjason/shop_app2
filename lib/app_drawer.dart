@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app2/screens/users_screen/auth_screen.dart';
+import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/offers_screen.dart';
 import 'package:shop_app2/screens/users_screen/order_screen.dart';
 import 'package:shop_app2/screens/users_screen/sort_by_screen.dart';

@@ -8,7 +8,7 @@ class NavigationCBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 35, right: 35, bottom: 10),
+      margin: const EdgeInsets.only(left: 45, right: 45, bottom: 10),
       child: CustomPaint(
         painter: NavClipper(),
         child: Container(
