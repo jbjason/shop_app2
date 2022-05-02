@@ -38,6 +38,6 @@ class AddButtons extends StatelessWidget {
           ..showSnackBar(
               SnackBar(content: Text(s), duration: const Duration(seconds: 1)));
       },
-      child: buttonBackGround(
-          Icon(CupertinoIcons.cart, color: Colors.grey[300]!)));
+      child:
+          buttonBackGround(const Icon(CupertinoIcons.cart)));
 }
