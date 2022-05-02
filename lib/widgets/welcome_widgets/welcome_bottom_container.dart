@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app2/screens/home_screen.dart';
+import 'package:shop_app2/screens/users_screen/home_screen.dart';
 
 class WelcomeBottomContainer extends StatelessWidget {
   const WelcomeBottomContainer({
