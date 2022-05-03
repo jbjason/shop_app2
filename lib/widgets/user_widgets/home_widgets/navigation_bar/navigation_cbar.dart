@@ -9,14 +9,13 @@ class NavigationCBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 45, right: 45, bottom: 10),
+      margin: const EdgeInsets.only(left: 35, right: 35, bottom: 10),
       child: CustomPaint(
         painter: NavClipper(),
         child: Container(
           height: kToolbarHeight + 7,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(width: 3, color: Colors.white)),
+          decoration:
+              BoxDecoration(border: Border.all(width: 3, color: Colors.white)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -29,6 +28,7 @@ class NavigationCBar extends StatelessWidget {
                   const Text('All')
                 ],
               ),
+              Container(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
