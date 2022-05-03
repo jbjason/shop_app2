@@ -37,9 +37,9 @@ class WelcomeBottomContainer extends StatelessWidget {
                   Navigator.of(context).pushNamed(AuthScreen.routeName),
               child: Row(
                 children: const [
+                  Icon(Icons.arrow_back_outlined, size: 30),
                   Text('Login ',
                       style: TextStyle(fontSize: 16, color: Colors.white)),
-                  Icon(Icons.arrow_back_outlined, size: 30),
                 ],
               ),
             ),
