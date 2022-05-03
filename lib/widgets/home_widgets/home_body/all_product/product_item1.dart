@@ -10,20 +10,20 @@ class ProductItem1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        _heartButton(),
         _ratings(),
-        _reveiws(),
         _title(),
       ],
     );
   }
 
-  Widget _ratings() => Positioned(
+  Widget _heartButton() => Positioned(
         top: 10,
         left: 5,
         child: buttonBackGround(HeartButton(product: product)),
       );
 
-  Widget _reveiws() => Positioned(
+  Widget _ratings() => Positioned(
         top: 10,
         right: 8,
         child: Container(
