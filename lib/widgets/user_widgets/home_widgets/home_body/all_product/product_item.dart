@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/screens/users_screen/details_screen.dart';
-import 'package:shop_app2/widgets/home_widgets/home_body/all_product/product_item1.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_product/product_item1.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({Key? key, required this.product}) : super(key: key);

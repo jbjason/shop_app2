@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shop_app2/constants/clippers_.dart';
-import 'package:shop_app2/widgets/home_widgets/home_appbar/custom_appbar_home1.dart';
-import 'package:shop_app2/widgets/home_widgets/home_appbar/custom_body_home.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/custom_appbar_home1.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/custom_body_home.dart';
 
 class CustomAppBarHome extends StatelessWidget {
   const CustomAppBarHome(

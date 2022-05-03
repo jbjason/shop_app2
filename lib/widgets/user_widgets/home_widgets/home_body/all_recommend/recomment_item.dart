@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/screens/users_screen/details_screen.dart';
-import 'package:shop_app2/widgets/home_widgets/home_body/all_recommend/add_favorite_button.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/add_favorite_button.dart';
 
 class RecommendItem extends StatelessWidget {
   RecommendItem({Key? key, required this.product}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/widgets/details_widgets/body_details/details_body1.dart';
-import 'package:shop_app2/widgets/details_widgets/body_details/related_places.dart';
+import 'package:shop_app2/widgets/user_widgets/details_widgets/body_details/details_body1.dart';
+import 'package:shop_app2/widgets/user_widgets/details_widgets/body_details/related_places.dart';
 
 class DetailsBody extends StatelessWidget {
   const DetailsBody({Key? key, required this.product}) : super(key: key);

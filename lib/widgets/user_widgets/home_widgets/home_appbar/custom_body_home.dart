@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/screens/users_screen/sort_by_screen.dart';
-import 'package:shop_app2/widgets/home_widgets/home_appbar/search_bar.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/search_bar.dart';
 
 class CustomBodyHome extends StatelessWidget {
   const CustomBodyHome({

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/widgets/details_widgets/body_details/add_to_cart_button.dart';
+import 'package:shop_app2/widgets/user_widgets/details_widgets/body_details/add_to_cart_button.dart';
 
 class DetailsBody1 extends StatefulWidget {
   const DetailsBody1({Key? key, required this.product}) : super(key: key);

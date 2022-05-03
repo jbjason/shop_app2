@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/products.dart';
-import 'package:shop_app2/widgets/home_widgets/home_body/all_recommend/recomment_item.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/recomment_item.dart';
 
 class RecommendAll extends StatelessWidget {
   const RecommendAll({Key? key}) : super(key: key);

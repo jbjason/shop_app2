@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/constants/constants_2.dart';
-import 'package:shop_app2/widgets/welcome_widgets/welcome_body.dart';
+import 'package:shop_app2/widgets/user_widgets/welcome_widgets/welcome_body.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_2.dart';
-import 'package:shop_app2/widgets/welcome_widgets/welcome_body1.dart';
-import 'package:shop_app2/widgets/welcome_widgets/welcome_body2.dart';
-import 'package:shop_app2/widgets/welcome_widgets/welcome_bottom_container.dart';
+import 'package:shop_app2/widgets/user_widgets/welcome_widgets/welcome_body1.dart';
+import 'package:shop_app2/widgets/user_widgets/welcome_widgets/welcome_body2.dart';
+import 'package:shop_app2/widgets/user_widgets/welcome_widgets/welcome_bottom_container.dart';
 
 class WelcomeBody extends StatefulWidget {
   const WelcomeBody({Key? key}) : super(key: key);

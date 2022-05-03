@@ -4,11 +4,11 @@ import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/orders.dart';
 import 'package:shop_app2/screens/users_screen/thanks_screen.dart';
-import 'package:shop_app2/widgets/confirm_widgets/confirm_button.dart';
-import 'package:shop_app2/widgets/confirm_widgets/user_contact_field.dart';
-import 'package:shop_app2/widgets/confirm_widgets/user_details_field.dart';
-import 'package:shop_app2/widgets/confirm_widgets/user_email_field.dart';
-import 'package:shop_app2/widgets/confirm_widgets/user_name_field.dart';
+import 'package:shop_app2/widgets/user_widgets/confirm_widgets/confirm_button.dart';
+import 'package:shop_app2/widgets/user_widgets/confirm_widgets/user_contact_field.dart';
+import 'package:shop_app2/widgets/user_widgets/confirm_widgets/user_details_field.dart';
+import 'package:shop_app2/widgets/user_widgets/confirm_widgets/user_email_field.dart';
+import 'package:shop_app2/widgets/user_widgets/confirm_widgets/user_name_field.dart';
 
 class ConfirmScreen extends StatefulWidget {
   static const routeName = '/confirm-screen';

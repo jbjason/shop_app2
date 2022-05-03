@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/widgets/home_widgets/home_body/category_container.dart';
-import 'package:shop_app2/widgets/sort_by_widgets/range_amount_text.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/category_container.dart';
+import 'package:shop_app2/widgets/user_widgets/sort_by_widgets/range_amount_text.dart';
 
 class SortByBody1 extends StatefulWidget {
   const SortByBody1(

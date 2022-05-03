@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/widgets/home_widgets/home_body/all_recommend/recomment_item.dart';
-import 'package:shop_app2/widgets/sort_by_widgets/sort_by_body1.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/recomment_item.dart';
+import 'package:shop_app2/widgets/user_widgets/sort_by_widgets/sort_by_body1.dart';
 
 class SortByScreen extends StatefulWidget {
   static const routeName = '/sortby-screen';

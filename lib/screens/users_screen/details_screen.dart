@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/delegates_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/providers/products.dart';
-import 'package:shop_app2/widgets/details_widgets/body_details/comments.dart';
-import 'package:shop_app2/widgets/details_widgets/appbar_details/custom_appbar_detail.dart';
-import 'package:shop_app2/widgets/details_widgets/body_details/details_body.dart';
+import 'package:shop_app2/widgets/user_widgets/details_widgets/body_details/comments.dart';
+import 'package:shop_app2/widgets/user_widgets/details_widgets/appbar_details/custom_appbar_detail.dart';
+import 'package:shop_app2/widgets/user_widgets/details_widgets/body_details/details_body.dart';
 
 class DetailsScreen extends StatelessWidget {
   static const routeName = '/details-screen';

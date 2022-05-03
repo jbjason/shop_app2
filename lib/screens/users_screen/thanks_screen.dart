@@ -1,10 +1,10 @@
 import 'dart:math';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app2/widgets/thanks_widgets/back_to_shop.dart';
-import 'package:shop_app2/widgets/thanks_widgets/invoice_and_userinfo.dart';
-import 'package:shop_app2/widgets/thanks_widgets/ordered_product_details.dart';
-import 'package:shop_app2/widgets/thanks_widgets/total_amount_details.dart';
+import 'package:shop_app2/widgets/user_widgets/thanks_widgets/back_to_shop.dart';
+import 'package:shop_app2/widgets/user_widgets/thanks_widgets/invoice_and_userinfo.dart';
+import 'package:shop_app2/widgets/user_widgets/thanks_widgets/ordered_product_details.dart';
+import 'package:shop_app2/widgets/user_widgets/thanks_widgets/total_amount_details.dart';
 
 class ThanksScreen extends StatefulWidget {
   static const routeName = '/thanks-screen';
