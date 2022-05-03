@@ -33,8 +33,7 @@ class WelcomeBottomContainer extends StatelessWidget {
             children: const [
               Text('Continue ',
                   style: TextStyle(fontSize: 16, color: Colors.white)),
-              Icon(Icons.arrow_forward_outlined,
-                  color: Color.fromARGB(255, 5, 18, 43), size: 30)
+              Icon(Icons.arrow_forward_outlined, size: 30)
             ],
           ),
         )
@@ -54,7 +53,7 @@ class WelcomeBottomContainer extends StatelessWidget {
                 shape:
                     isSelected == index ? BoxShape.rectangle : BoxShape.circle,
                 color: isSelected == index
-                    ? const Color.fromARGB(255, 5, 18, 43)
+                    ? Colors.white
                     : const Color(0xFF5c677d),
               ),
             ),

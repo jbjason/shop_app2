@@ -56,15 +56,13 @@ class _HeartButtonState extends State<HeartButton>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, _) {
-        return InkWell(
+        return GestureDetector(
           onTap: () {
             _isFav ? _controller.reverse() : _controller.forward();
             widget.product.toggleFavoriteStatus();
           },
-          child: buttonBackGround(
-            Icon(Icons.favorite,
-                color: _colorAnimation.value, size: _sizeAnimation.value),
-          ),
+          child: buttonBackGround(Icon(Icons.favorite,
+              color: _colorAnimation.value, size: _sizeAnimation.value)),
         );
       },
     );

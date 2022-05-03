@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/screens/users_screen/details_screen.dart';
+import 'package:shop_app2/widgets/heart_button.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({Key? key, required this.product}) : super(key: key);
@@ -46,37 +47,27 @@ class ProductItem extends StatelessWidget {
           ),
         ),
       );
-
+  //,
   Widget _ratings() => Positioned(
         top: 10,
         left: 5,
-        child: Container(
-          height: 37,
-          width: 37,
-          alignment: Alignment.center,
-          child: Text('⭐${product.isRating.toStringAsFixed(1)}',
-              style: const TextStyle(fontSize: 11, color: Colors.black)),
-          decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.5), shape: BoxShape.circle),
-        ),
+        child: buttonBackGround(HeartButton(product: product)),
       );
+
   Widget _reveiws() => Positioned(
         top: 10,
         right: 8,
         child: Container(
-          height: 33,
-          width: 33,
+          height: 40,
+          width: 40,
           alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.location_on_sharp, size: 10.0),
-              Text('${product.isReview}',
-                  style: const TextStyle(fontSize: 11, color: Colors.black)),
-            ],
-          ),
+          child: Text('⭐${product.isRating.toStringAsFixed(1)}',
+              style: const TextStyle(
+                  overflow: TextOverflow.ellipsis,
+                  fontSize: 10,
+                  color: Colors.black)),
           decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withOpacity(0.7),
               borderRadius: BorderRadius.circular(10)),
         ),
       );
