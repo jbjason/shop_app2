@@ -5,7 +5,7 @@ import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/providers/orders.dart';
 import 'package:shop_app2/providers/products.dart';
-import 'package:shop_app2/screens/auth_and_admin/admin_products.dart';
+import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
 import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/cart_screen.dart';
 import 'package:shop_app2/screens/users_screen/confirm_screen.dart';

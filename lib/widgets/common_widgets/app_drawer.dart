@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
 import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/offers_screen.dart';
 import 'package:shop_app2/screens/users_screen/order_screen.dart';
@@ -40,6 +41,13 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.payment),
             title: const Text('Auth Screen'),
             onTap: () => Navigator.of(context).pushNamed(AuthScreen.routeName),
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.admin_panel_settings),
+            title: const Text('Admin Panel'),
+            onTap: () =>
+                Navigator.of(context).pushNamed(AdminPanelScreen.routeName),
           ),
           const Divider(),
         ],
