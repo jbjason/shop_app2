@@ -101,6 +101,7 @@ class RecommendItem extends StatelessWidget {
   }
 
   final _decoration = BoxDecoration(
+    color: Colors.grey[300],
     borderRadius: const BorderRadius.only(
         topRight: Radius.circular(15),
         topLeft: Radius.circular(10),
