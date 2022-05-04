@@ -7,22 +7,6 @@ Widget buttonBackGround(Widget child) => Container(
           shape: BoxShape.circle, color: Colors.white.withOpacity(0.7)),
       child: child,
     );
-List<String> sizeList = ['M', 'L', 'XL', 'XXL'];
-
-List<BoxShadow> getShadowBox(Color upper, Color lower) => [
-      BoxShadow(
-        color: upper,
-        offset: const Offset(4, 4),
-        blurRadius: 15,
-        spreadRadius: 5,
-      ),
-      BoxShadow(
-        color: lower,
-        offset: const Offset(-4, -4),
-        blurRadius: 15,
-        spreadRadius: 1,
-      ),
-    ];
 
 Widget getButtonDecoration(double height, double width, BoxShape _shape,
     List<BoxShadow> _shadow, Widget child) {
@@ -51,11 +35,30 @@ Widget getAppBarTile(String s, BuildContext context) => SizedBox(
           ),
           const SizedBox(width: 10),
           Text(s,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18))
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  overflow: TextOverflow.ellipsis))
         ],
       ),
     );
+    
+List<BoxShadow> getShadowBox(Color upper, Color lower) => [
+      BoxShadow(
+        color: upper,
+        offset: const Offset(4, 4),
+        blurRadius: 15,
+        spreadRadius: 5,
+      ),
+      BoxShadow(
+        color: lower,
+        offset: const Offset(-4, -4),
+        blurRadius: 15,
+        spreadRadius: 1,
+      ),
+    ];
 
+List<String> sizeList = ['M', 'L', 'XL', 'XXL'];
 List<Color> colorsList = [
   const Color(0xffe91e63),
   const Color(0xfff44336),

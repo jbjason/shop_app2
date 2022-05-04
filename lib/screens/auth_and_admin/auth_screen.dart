@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_form.dart';
+import 'package:shop_app2/widgets/admin_widgets/auth_form.dart';
 
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth-screen';
@@ -11,6 +11,6 @@ class AuthScreen extends StatelessWidget {
     );
   }
 
-  void _submitAuthForm(String emaill, String passwordd, String username,
+  void _submitAuthForm(String email, String password, String userName,
       bool isLogin, BuildContext ctx) {}
 }

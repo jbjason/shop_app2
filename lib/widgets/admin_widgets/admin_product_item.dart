@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/providers/product.dart';
 
 class AdminProductItem extends StatelessWidget {
-  const AdminProductItem(
-      {Key? key, required this.title, required this.id, required this.imageUrl})
-      : super(key: key);
-  final String title, id;
-  final List<String> imageUrl;
-  
+  const AdminProductItem({Key? key, required this.product}) : super(key: key);
+  final Product product;
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title:
-          Text(title, style: const TextStyle(overflow: TextOverflow.ellipsis)),
-      leading: CircleAvatar(backgroundImage: NetworkImage(imageUrl[0])),
+      title: Text(product.title,
+          style: const TextStyle(overflow: TextOverflow.ellipsis)),
+      subtitle: Text('category: ${product.category}'),
+      leading: CircleAvatar(backgroundImage: NetworkImage(product.imageUrl[0])),
       trailing: SizedBox(
-        width: 100,
+        width: 110,
         child: Row(
           children: [
             IconButton(
@@ -34,7 +32,7 @@ class AdminProductItem extends StatelessWidget {
                   //     .deleteProduct(id);
                 } catch (error) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Deleteing Failed')));
+                      const SnackBar(content: Text('Deleting Failed')));
                 }
               },
             ),

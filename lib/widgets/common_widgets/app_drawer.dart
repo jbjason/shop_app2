@@ -19,33 +19,27 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.shop),
             title: const Text('My Orders'),
-            onTap: () {
-              Navigator.of(context).pushNamed(OrderScreen.routeName);
-            },
+            onTap: () => Navigator.of(context).pushNamed(OrderScreen.routeName),
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.payment),
             title: const Text('Available Offers'),
-            onTap: () {
-              Navigator.of(context).pushNamed(OffersScreen.routeName);
-            },
+            onTap: () =>
+                Navigator.of(context).pushNamed(OffersScreen.routeName),
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.payment),
             title: const Text('Sort By'),
-            onTap: () {
-              Navigator.of(context).pushNamed(SortByScreen.routeName);
-            },
+            onTap: () =>
+                Navigator.of(context).pushNamed(SortByScreen.routeName),
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.payment),
             title: const Text('Auth Screen'),
-            onTap: () {
-              Navigator.of(context).pushNamed(AuthScreen.routeName);
-            },
+            onTap: () => Navigator.of(context).pushNamed(AuthScreen.routeName),
           ),
           const Divider(),
         ],
