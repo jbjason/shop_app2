@@ -16,12 +16,12 @@ class EditTextFields extends StatelessWidget {
     return TextFormField(
       initialValue: null,
       controller: controller,
-      decoration: const InputDecoration(labelText: 'Title'),
+      decoration: InputDecoration(labelText: text),
       maxLines: lines,
       validator: (value) {
         if (value!.isEmpty) {
           return 'Please provide a value';
-        } else if (text == 'price') {
+        } else if (text == 'Price') {
           if (double.tryParse(value) != null) {
             return null;
           } else {

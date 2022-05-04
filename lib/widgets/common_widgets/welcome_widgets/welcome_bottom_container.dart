@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
+import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
 import 'package:shop_app2/screens/users_screen/home_screen.dart';
 
 class WelcomeBottomContainer extends StatelessWidget {
@@ -34,7 +34,7 @@ class WelcomeBottomContainer extends StatelessWidget {
             // Login button
             InkWell(
               onTap: () =>
-                  Navigator.of(context).pushNamed(AuthScreen.routeName),
+                  Navigator.of(context).pushNamed(AdminPanelScreen.routeName),
               child: Row(
                 children: const [
                   Icon(Icons.arrow_back_outlined, size: 30),

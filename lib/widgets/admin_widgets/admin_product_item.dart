@@ -12,11 +12,10 @@ class AdminProductItem extends StatelessWidget {
       subtitle: Text('category: ${product.category}'),
       leading: CircleAvatar(backgroundImage: NetworkImage(product.imageUrl[0])),
       trailing: SizedBox(
-        width: 110,
+        width: 100,
         child: Row(
           children: [
             IconButton(
-              color: Theme.of(context).primaryColor,
               icon: const Icon(Icons.edit),
               onPressed: () {
                 //     Navigator.of(context)
@@ -25,7 +24,6 @@ class AdminProductItem extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Icons.delete),
-              color: Theme.of(context).errorColor,
               onPressed: () async {
                 try {
                   // await Provider.of<Products>(context, listen: false)

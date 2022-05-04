@@ -7,6 +7,7 @@ import 'package:shop_app2/providers/orders.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
 import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
+import 'package:shop_app2/screens/auth_and_admin/edit_product_screen.dart';
 import 'package:shop_app2/screens/users_screen/cart_screen.dart';
 import 'package:shop_app2/screens/users_screen/confirm_screen.dart';
 import 'package:shop_app2/screens/users_screen/details_screen.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
           ThanksScreen.routeName: (ctx) => const ThanksScreen(),
           ConfirmScreen.routeName: (ctx) => const ConfirmScreen(),
           AdminPanelScreen.routeName: (ctx) => const AdminPanelScreen(),
+          EditProductScreen.routeName: (ctx) => const EditProductScreen(),
         },
       ),
     );

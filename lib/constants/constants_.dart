@@ -42,7 +42,7 @@ Widget getAppBarTile(String s, BuildContext context) => SizedBox(
         ],
       ),
     );
-    
+
 List<BoxShadow> getShadowBox(Color upper, Color lower) => [
       BoxShadow(
         color: upper,
@@ -62,10 +62,17 @@ List<String> sizeList = ['M', 'L', 'XL', 'XXL'];
 List<Color> colorsList = [
   const Color(0xffe91e63),
   const Color(0xfff44336),
-  const Color(0xff000000),
+  const Color(0xFF9C27B0),
+  const Color(0xFF795548),
+  const Color(0xFFFFEB3B),
   const Color(0xff4caf50),
+  const Color(0xFF00BCD4),
   const Color(0xff2196f3),
-  const Color(0xff3f51b5)
+  const Color(0xFF009688),
+  const Color(0xff3f51b5),
+  const Color(0xFFFFFFFF),
+  const Color(0xFF9E9E9E),
+  const Color(0xff000000),
 ];
 
 final List<String> categories = [

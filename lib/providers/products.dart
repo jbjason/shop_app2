@@ -6,7 +6,7 @@ import 'package:shop_app2/providers/product.dart';
 class Products with ChangeNotifier {
   final List<Product> _items = [
     Product(
-      id: 'p1',
+      id: 'p1111',
       title: 'Red Shirt',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
@@ -16,7 +16,7 @@ class Products with ChangeNotifier {
       category:categories[1],
     ),
     Product(
-      id: 'p2',
+      id: 'p22222',
       title: 'Trowser',
       description: detailString,
       price: 20.45,
@@ -26,7 +26,7 @@ class Products with ChangeNotifier {
       category:categories[1],
     ),
     Product(
-      id: 'p3',
+      id: 'p333',
       title: 'Yellow Scarf',
       description: detailString,
       price: 20.45,
@@ -36,7 +36,7 @@ class Products with ChangeNotifier {
       category:categories[2],
     ),
     Product(
-      id: 'p4',
+      id: 'p4441',
       title: 'A Pan',
       description: detailString,
       price: 20.45,
@@ -46,7 +46,7 @@ class Products with ChangeNotifier {
       category:categories[2],
     ),
     Product(
-      id: 'p5',
+      id: 'p55',
       title: 'Red Shirt',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
@@ -56,7 +56,7 @@ class Products with ChangeNotifier {
       category:categories[3],
     ),
     Product(
-      id: 'p6',
+      id: 'p666',
       title: 'Trowser',
       description: detailString,
       price: 20.45,
@@ -76,7 +76,7 @@ class Products with ChangeNotifier {
       category:categories[4],
     ),
     Product(
-      id: 'p8',
+      id: 'p889',
       title: 'A Pan',
       description: detailString,
       price: 20.45,

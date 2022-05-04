@@ -23,7 +23,7 @@ class NavigationCBar extends StatelessWidget {
                 children: [
                   buttonBackGround(
                       const Icon(CupertinoIcons.square_split_2x2_fill)),
-                  const Text('All')
+                  const Text('All',style: TextStyle(fontSize: 11))
                 ],
               ),
               Column(
@@ -31,7 +31,7 @@ class NavigationCBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   buttonBackGround(const Icon(CupertinoIcons.heart)),
-                  const Text('Favorites')
+                  const Text('Favorites',style: TextStyle(fontSize: 11))
                 ],
               ),
             ],

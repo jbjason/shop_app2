@@ -22,7 +22,7 @@ class ProductItem extends StatelessWidget {
   }
 
   Widget _body() => Hero(
-        tag: product.id,
+        tag: product.id + product.category,
         child: AnimatedContainer(
           duration: kThemeAnimationDuration,
           margin: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 18),
