@@ -20,7 +20,7 @@ class EditSizeField extends StatelessWidget {
           maxLines: 1,
           textInputAction: TextInputAction.done,
           validator: (value) {
-            if (value!.isEmpty) {
+            if (value!.isEmpty && sizeList.isEmpty) {
               return 'Please provide a value';
             }
             return null;

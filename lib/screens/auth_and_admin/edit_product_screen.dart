@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/widgets/admin_widgets/edit_widgets/add_product_button.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/edit_color_field.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/edit_image_fields.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/edit_size_field.dart';
@@ -51,37 +52,30 @@ class _EditProductScreenState extends State<EditProductScreen> {
               controller: _imageController,
               function: addImage,
               imagesList: _imagesList),
-          EditSizeField(
-              function: addSize,
-              sizeList: _sizeList),
+          EditSizeField(function: addSize, sizeList: _sizeList),
           EditColorField(
               allColors: _allColors, colorList: _colorList, function: addColor),
           const SizedBox(height: 40),
-          _addButton(),
+          AddProductButton(submit: _submit),
         ],
       ),
     );
   }
 
-  Widget _addButton() => InkWell(
-        onTap: () {},
-        child: Container(
-          height: 100,
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
-          decoration: BoxDecoration(
-            boxShadow: getShadowBox(Colors.grey[500]!, Colors.white),
-            color: Colors.grey[300],
-          ),
-          alignment: Alignment.center,
-          child: const Text(
-            'Add Product',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.5,
-                wordSpacing: 1.5),
-          ),
-        ),
-      );
+  void _submit() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    if (!_form.currentState!.validate()) return;
+    _form.currentState!.save();
+    print('jason');
+    print(_titleController.text.trim());
+    print(_categoryController.text.trim());
+    print(_priceController.text.trim());
+    print(_detailsController.text.trim());
+    print(_imagesList);
+    print(_sizeList);
+    print(_colorList);
+    print('jb');
+  }
 
   void addImage(String s) {
     _imagesList.add(s);

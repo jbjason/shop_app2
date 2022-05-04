@@ -37,7 +37,7 @@ class EditImageFields extends StatelessWidget {
                 controller: controller,
                 textInputAction: TextInputAction.done,
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value!.isEmpty && imagesList.isEmpty) {
                     return 'Please enter a Url';
                   } else if ((!value.startsWith('http') &&
                       !value.startsWith('https'))) {
