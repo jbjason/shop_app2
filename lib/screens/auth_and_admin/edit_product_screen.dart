@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/edit_image_fields.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/edit_text_fields.dart';
 
@@ -41,11 +42,36 @@ class _EditProductScreenState extends State<EditProductScreen> {
           EditImageFields(
               controller: _imageController,
               function: addImage,
-              imagesList: _imagesList)
+              imagesList: _imagesList),
+          const SizedBox(height: 20),
+          _addButton(),
         ],
       ),
     );
   }
+
+  Widget _addButton() => Center(
+        child: getButtonDecoration(
+          70,
+          MediaQuery.of(context).size.width,
+          BoxShape.rectangle,
+          getShadowBox(Colors.grey.shade900, Colors.white),
+          InkWell(
+            onTap: () {},
+            child: Container(
+              color: Colors.grey[300],
+              alignment: Alignment.center,
+              child: const Text(
+                'Add Product',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.5,
+                    wordSpacing: 1.5),
+              ),
+            ),
+          ),
+        ),
+      );
 
   void addImage(String s) {
     _imagesList.add(s);
