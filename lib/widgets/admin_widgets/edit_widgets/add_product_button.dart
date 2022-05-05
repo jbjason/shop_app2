@@ -10,6 +10,7 @@ class AddProductButton extends StatelessWidget {
       onTap: () => submit(context),
       child: Container(
         height: 80,
+        margin: const EdgeInsets.symmetric(horizontal: 20),
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         decoration: BoxDecoration(
           boxShadow: getShadowBox(Colors.grey[500]!, Colors.white),

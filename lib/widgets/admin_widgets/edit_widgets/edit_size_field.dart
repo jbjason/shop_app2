@@ -34,23 +34,34 @@ class EditSizeField extends StatelessWidget {
           },
         ),
         const SizedBox(height: 10),
-        SingleChildScrollView(
+        SizedBox(
+          height: 50,
           child: Row(
-            children: List.generate(
-              sizeList.length,
-              (index) => Container(
-                margin: const EdgeInsets.only(right: 10),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.accent, width: 1),
-                ),
-                child: Text(
-                  sizeList[index],
-                  style: const TextStyle(overflow: TextOverflow.ellipsis),
+            children: [
+              const Text('Chosen : '),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Row(
+                    children: List.generate(
+                      sizeList.length,
+                      (index) => Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: AppColors.accent, width: 1),
+                        ),
+                        child: Text(
+                          sizeList[index],
+                          style:
+                              const TextStyle(overflow: TextOverflow.ellipsis),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ],

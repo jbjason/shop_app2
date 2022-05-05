@@ -56,8 +56,9 @@ class EditImageFields extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
           child: Row(
             children: List.generate(
               imagesList.length,

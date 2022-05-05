@@ -44,7 +44,7 @@ class _EditBodyState extends State<EditBody> {
       _sizeController.text = _sizeList[_sizeList.length - 1];
       _imageController.text = _imagesList[_imagesList.length - 1];
       setState(() {});
-    } 
+    }
   }
 
   @override
@@ -55,6 +55,7 @@ class _EditBodyState extends State<EditBody> {
         child: Column(
           children: [
             getAppBarTile('Edit Products', context),
+            const SizedBox(height: 20),
             EditTextFields(
                 controller: _titleController, lines: 1, text: 'Title'),
             EditTextFields(
@@ -77,6 +78,7 @@ class _EditBodyState extends State<EditBody> {
                 imagesList: _imagesList),
             const SizedBox(height: 40),
             AddProductButton(submit: submit),
+            const SizedBox(height: 20),
           ],
         ),
       ),
