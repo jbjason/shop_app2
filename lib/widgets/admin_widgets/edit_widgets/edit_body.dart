@@ -118,7 +118,7 @@ class _EditBodyState extends State<EditBody> {
 
   void addColor(Color color, BuildContext ctx) {
     final _id = _colorList.indexWhere((element) => element == color);
-    if (_id != -1) {
+    if (_id == -1) {
       _colorList.add(color);
       _allColors.remove(color);
       setState(() {});
