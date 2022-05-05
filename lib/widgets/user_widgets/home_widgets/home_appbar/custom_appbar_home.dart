@@ -43,8 +43,8 @@ class CustomAppBarHome extends StatelessWidget {
         right: -20,
         top: height * .2,
         child: Container(
-          height: height * .7,
-          width: 190,
+          height: height * .65,
+          width: 180,
           decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/shopping.png'), fit: BoxFit.contain),

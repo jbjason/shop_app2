@@ -48,13 +48,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
           EditTextFields(controller: _priceController, lines: 1, text: 'Price'),
           EditTextFields(
               controller: _detailsController, lines: 3, text: 'Details'),
+          EditSizeField(function: addSize, sizeList: _sizeList),
+          EditColorField(
+              allColors: _allColors, colorList: _colorList, function: addColor),
           EditImageFields(
               controller: _imageController,
               function: addImage,
               imagesList: _imagesList),
-          EditSizeField(function: addSize, sizeList: _sizeList),
-          EditColorField(
-              allColors: _allColors, colorList: _colorList, function: addColor),
           const SizedBox(height: 40),
           AddProductButton(submit: _submit),
         ],

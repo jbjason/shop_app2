@@ -28,8 +28,8 @@ class EditColorField extends StatelessWidget {
                       onTap: () => function(allColors[index]),
                       child: Container(
                         height: 35,
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
                         width: 35,
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: allColors[index],
@@ -61,6 +61,7 @@ class EditColorField extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 10),
       ],
     );
   }

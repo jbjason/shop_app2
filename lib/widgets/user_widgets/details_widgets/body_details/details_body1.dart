@@ -127,7 +127,7 @@ class _DetailsBody1State extends State<DetailsBody1> {
     return SizedBox(
       height: 55,
       child: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.only(top: 10,bottom: 15),
         scrollDirection: Axis.horizontal,
         itemCount: widget.product.color.length,
         itemBuilder: ((context, index) => InkWell(
