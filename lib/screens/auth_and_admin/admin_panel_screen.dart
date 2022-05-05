@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/screens/auth_and_admin/edit_product_screen.dart';
-import 'package:shop_app2/widgets/admin_widgets/admin_product_item.dart';
+import 'package:shop_app2/widgets/admin_widgets/admin_widgets/admin_product_item.dart';
 
 class AdminPanelScreen extends StatelessWidget {
   static const routeName = '/admin-panel-screen';
@@ -24,7 +24,7 @@ class AdminPanelScreen extends StatelessWidget {
                   getAppBarTile('Admin Panel', context),
                   InkWell(
                     onTap: () => Navigator.of(context)
-                        .pushNamed(EditProductScreen.routeName),
+                        .pushNamed(EditProductScreen.routeName, arguments: ''),
                     child: const Icon(CupertinoIcons.add),
                   )
                 ],

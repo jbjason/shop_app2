@@ -14,7 +14,7 @@ class EditTextFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      initialValue: null,
+      initialValue: controller.text,
       controller: controller,
       decoration: InputDecoration(labelText: text),
       maxLines: lines,

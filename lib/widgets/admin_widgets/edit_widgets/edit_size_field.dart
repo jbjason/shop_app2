@@ -4,9 +4,11 @@ import 'package:shop_app2/constants/theme.dart';
 class EditSizeField extends StatelessWidget {
   const EditSizeField(
       {Key? key,
+      required this.controller,
       required this.function,
       required this.sizeList})
       : super(key: key);
+  final TextEditingController controller;
   final void Function(String s) function;
   final List<String> sizeList;
 
@@ -15,7 +17,8 @@ class EditSizeField extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-          initialValue: null,
+          initialValue: controller.text,
+          controller: controller,
           decoration: const InputDecoration(labelText: 'Size'),
           maxLines: 1,
           textInputAction: TextInputAction.done,

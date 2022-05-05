@@ -9,7 +9,8 @@ class EditColorField extends StatelessWidget {
       required this.function})
       : super(key: key);
   final List<Color> allColors, colorList;
-  final void Function(Color s) function;
+  final void Function(Color s, BuildContext ctx) function;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +26,7 @@ class EditColorField extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: allColors.length,
                     itemBuilder: (context, index) => InkWell(
-                      onTap: () => function(allColors[index]),
+                      onTap: () => function(allColors[index], context),
                       child: Container(
                         height: 35,
                         width: 35,

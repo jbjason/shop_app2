@@ -11,6 +11,7 @@ class EditImageFields extends StatelessWidget {
   final TextEditingController controller;
   final void Function(String s) function;
   final List<String> imagesList;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +32,7 @@ class EditImageFields extends StatelessWidget {
             ),
             Expanded(
               child: TextFormField(
-                initialValue: null,
+                initialValue: controller.text,
                 decoration: const InputDecoration(labelText: 'Image Url'),
                 keyboardType: TextInputType.url,
                 controller: controller,
