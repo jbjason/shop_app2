@@ -26,6 +26,12 @@ class _ThanksScreenState extends State<ThanksScreen> {
       child: Scaffold(
         body: Stack(
           children: [
+            Positioned.fill(
+                child: Container(
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/background.png'),
+                            fit: BoxFit.contain)))),
             _body(context, size),
             _conflettiAnimation(),
           ],
