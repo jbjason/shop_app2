@@ -25,8 +25,7 @@ class CustomAppBarHome1 extends StatelessWidget {
             // drawer open button
             InkWell(
                 onTap: () => Scaffold.of(context).openDrawer(),
-                child: const Icon(Icons.read_more_sharp,
-                    size: 35, color: Colors.white)),
+                child: const Icon(Icons.read_more_sharp, color: Colors.white)),
             const Icon(Icons.more_vert, color: Colors.white)
           ],
         ),

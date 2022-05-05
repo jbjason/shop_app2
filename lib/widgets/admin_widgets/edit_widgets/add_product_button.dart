@@ -3,11 +3,11 @@ import 'package:shop_app2/constants/constants_.dart';
 
 class AddProductButton extends StatelessWidget {
   const AddProductButton({Key? key, required this.submit}) : super(key: key);
-  final void Function() submit;
+  final  Function(BuildContext ctx) submit;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => submit(),
+      onTap: () => submit(context),
       child: Container(
         height: 100,
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/providers/product.dart';
+import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/add_product_button.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/edit_color_field.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/edit_image_fields.dart';
@@ -15,6 +18,8 @@ class EditProductScreen extends StatefulWidget {
 
 class _EditProductScreenState extends State<EditProductScreen> {
   final _form = GlobalKey<FormState>();
+  final _key = GlobalKey<ScaffoldState>();
+
   final _titleController = TextEditingController();
   final _categoryController = TextEditingController();
   final _priceController = TextEditingController();
@@ -29,6 +34,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     // final _isEdit = widget.keyText == 'edit' ? true : false;
     return SafeArea(
       child: Scaffold(
+        key: _key,
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: Form(key: _form, child: _body(context)),
@@ -56,25 +62,33 @@ class _EditProductScreenState extends State<EditProductScreen> {
               function: addImage,
               imagesList: _imagesList),
           const SizedBox(height: 40),
-          AddProductButton(submit: _submit),
+          AddProductButton(submit: submit),
         ],
       ),
     );
   }
 
-  void _submit() {
+  void submit(BuildContext context) {
     FocusManager.instance.primaryFocus?.unfocus();
     if (!_form.currentState!.validate()) return;
+    if (_colorList.isEmpty) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Choose a Color !')));
+      return;
+    }
     _form.currentState!.save();
-    // print('jason');
-    // print(_titleController.text.trim());
-    // print(_categoryController.text.trim());
-    // print(_priceController.text.trim());
-    // print(_detailsController.text.trim());
-    // print(_imagesList);
-    // print(_sizeList);
-    // print(_colorList);
-    // print('jb');
+    Provider.of<Products>(context, listen: false).addProduct(
+      Product(
+          id: DateTime.now().toString(),
+          title: _titleController.text.trim(),
+          description: _detailsController.text.trim(),
+          category: _categoryController.text.trim(),
+          price: double.parse(_priceController.text.trim()),
+          imageUrl: _imagesList,
+          color: _colorList,
+          size: _sizeList),
+    );
+    Navigator.pop(context);
   }
 
   void addImage(String s) {
