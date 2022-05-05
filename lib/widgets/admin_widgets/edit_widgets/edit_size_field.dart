@@ -17,7 +17,6 @@ class EditSizeField extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-          initialValue: controller.text,
           controller: controller,
           decoration: const InputDecoration(labelText: 'Size'),
           maxLines: 1,

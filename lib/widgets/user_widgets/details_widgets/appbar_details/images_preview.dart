@@ -103,7 +103,7 @@ class _ImagesPreviewState extends State<ImagesPreview> {
         children: List.generate(
           widget.product.imageUrl.length,
           (index) => AnimatedContainer(
-            duration: kThemeAnimationDuration,
+            duration: const Duration(milliseconds: 300),
             height: 4,
             width: index == _currentIndex ? 23 : 10,
             decoration: BoxDecoration(

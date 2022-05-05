@@ -44,7 +44,7 @@ class _EditBodyState extends State<EditBody> {
       _sizeController.text = _sizeList[_sizeList.length - 1];
       _imageController.text = _imagesList[_imagesList.length - 1];
       setState(() {});
-    }
+    } 
   }
 
   @override

@@ -32,7 +32,6 @@ class EditImageFields extends StatelessWidget {
             ),
             Expanded(
               child: TextFormField(
-                initialValue: controller.text,
                 decoration: const InputDecoration(labelText: 'Image Url'),
                 keyboardType: TextInputType.url,
                 controller: controller,
