@@ -22,6 +22,14 @@ class _OffersScreenState extends State<OffersScreen> {
       child: Scaffold(
         body: Stack(
           children: [
+            Positioned.fill(
+              child: Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/background.png'),
+                        fit: BoxFit.contain)),
+              ),
+            ),
             ValueListenableBuilder<double>(
               valueListenable: _notifierScroll,
               builder: (context, value, _) => _body(context, value),

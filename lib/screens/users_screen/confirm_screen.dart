@@ -32,8 +32,12 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        body: Padding(
+        body: Container(
           padding: const EdgeInsets.all(20.0),
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/cart_.png'),
+                  fit: BoxFit.contain)),
           child: Column(
             children: [
               getAppBarTile('Your Details', context),

@@ -14,8 +14,12 @@ class CartScreen extends StatelessWidget {
     final cartItems = Provider.of<Cart>(context);
     return SafeArea(
       child: Scaffold(
-        body: Padding(
+        body: Container(
           padding: const EdgeInsets.all(20),
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/background.png'),
+                  fit: BoxFit.contain)),
           child: Column(
             children: [
               getAppBarTile('Your Cart', context),
