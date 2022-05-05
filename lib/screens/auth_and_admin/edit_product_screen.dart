@@ -66,15 +66,15 @@ class _EditProductScreenState extends State<EditProductScreen> {
     FocusManager.instance.primaryFocus?.unfocus();
     if (!_form.currentState!.validate()) return;
     _form.currentState!.save();
-    print('jason');
-    print(_titleController.text.trim());
-    print(_categoryController.text.trim());
-    print(_priceController.text.trim());
-    print(_detailsController.text.trim());
-    print(_imagesList);
-    print(_sizeList);
-    print(_colorList);
-    print('jb');
+    // print('jason');
+    // print(_titleController.text.trim());
+    // print(_categoryController.text.trim());
+    // print(_priceController.text.trim());
+    // print(_detailsController.text.trim());
+    // print(_imagesList);
+    // print(_sizeList);
+    // print(_colorList);
+    // print('jb');
   }
 
   void addImage(String s) {
