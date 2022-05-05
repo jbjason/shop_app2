@@ -13,7 +13,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList1,
       size: sizeList,
       color: colorsList,
-      category:categories[1],
+      category: categories[1],
     ),
     Product(
       id: 'p22222',
@@ -23,7 +23,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList2,
       size: sizeList,
       color: colorsList,
-      category:categories[1],
+      category: categories[1],
     ),
     Product(
       id: 'p333',
@@ -33,7 +33,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList3,
       size: sizeList,
       color: colorsList,
-      category:categories[2],
+      category: categories[2],
     ),
     Product(
       id: 'p4441',
@@ -43,7 +43,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList4,
       size: sizeList,
       color: colorsList,
-      category:categories[2],
+      category: categories[2],
     ),
     Product(
       id: 'p55',
@@ -53,7 +53,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList1,
       size: sizeList,
       color: colorsList,
-      category:categories[3],
+      category: categories[3],
     ),
     Product(
       id: 'p666',
@@ -63,7 +63,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList2,
       size: sizeList,
       color: colorsList,
-      category:categories[3],
+      category: categories[3],
     ),
     Product(
       id: 'p7',
@@ -73,7 +73,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList3,
       size: sizeList,
       color: colorsList,
-      category:categories[4],
+      category: categories[4],
     ),
     Product(
       id: 'p889',
@@ -83,7 +83,7 @@ class Products with ChangeNotifier {
       imageUrl: imageList4,
       size: sizeList,
       color: colorsList,
-      category:categories[4],
+      category: categories[4],
     ),
   ];
 
@@ -120,8 +120,9 @@ class Products with ChangeNotifier {
     notifyListeners();
   }
 
-  void updateProduct(String id, Product newProduct) {
-    final prodIndex = _items.indexWhere((element) => element.id == id);
+  void updateProduct(Product newProduct) {
+    final prodIndex =
+        _items.indexWhere((element) => element.id == newProduct.id);
     _items[prodIndex] = newProduct;
     notifyListeners();
   }

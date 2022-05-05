@@ -94,17 +94,31 @@ class _EditBodyState extends State<EditBody> {
       return;
     }
     _form.currentState!.save();
-    Provider.of<Products>(context, listen: false).addProduct(
-      Product(
-          id: DateTime.now().toString(),
-          title: _titleController.text.trim(),
-          description: _detailsController.text.trim(),
-          category: _categoryController.text.trim(),
-          price: double.parse(_priceController.text.trim()),
-          imageUrl: _imagesList,
-          color: _colorList,
-          size: _sizeList),
-    );
+    if (widget.isEdit.isEmpty) {
+      Provider.of<Products>(context, listen: false).addProduct(
+        Product(
+            id: DateTime.now().toString(),
+            title: _titleController.text.trim(),
+            description: _detailsController.text.trim(),
+            category: _categoryController.text.trim(),
+            price: double.parse(_priceController.text.trim()),
+            imageUrl: _imagesList,
+            color: _colorList,
+            size: _sizeList),
+      );
+    } else {
+      Provider.of<Products>(context, listen: false).updateProduct(
+        Product(
+            id: widget.isEdit,
+            title: _titleController.text.trim(),
+            description: _detailsController.text.trim(),
+            category: _categoryController.text.trim(),
+            price: double.parse(_priceController.text.trim()),
+            imageUrl: _imagesList,
+            color: _colorList,
+            size: _sizeList),
+      );
+    }
     Navigator.pop(context);
   }
 
