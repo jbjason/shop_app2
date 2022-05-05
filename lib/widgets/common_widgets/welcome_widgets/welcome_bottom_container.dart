@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
 import 'package:shop_app2/screens/users_screen/home_screen.dart';
 
@@ -28,34 +29,47 @@ class WelcomeBottomContainer extends StatelessWidget {
   }
 
   Widget _bottomButtons(BuildContext context, int index) => index == 2
-      ? Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            // Login button
-            InkWell(
-              onTap: () =>
-                  Navigator.of(context).pushNamed(AdminPanelScreen.routeName),
-              child: Row(
-                children: const [
-                  Icon(Icons.arrow_back_outlined, size: 30),
-                  Text('Login ',
-                      style: TextStyle(fontSize: 16, color: Colors.white)),
-                ],
+      ? Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+            Colors.white.withOpacity(0.5),
+            Colors.white.withOpacity(0.3),
+          ])),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Login button
+              InkWell(
+                onTap: () =>
+                    Navigator.of(context).pushNamed(AdminPanelScreen.routeName),
+                child: Row(
+                  children:  const [
+                    Icon(Icons.arrow_back_outlined, size: 30),
+                    Text('Login ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: AppColors.textHighlight)),
+                  ],
+                ),
               ),
-            ),
-            // continue button
-            InkWell(
-              onTap: () =>
-                  Navigator.of(context).pushNamed(HomeScreen.routeName),
-              child: Row(
-                children: const [
-                  Text('Continue ',
-                      style: TextStyle(fontSize: 16, color: Colors.white)),
-                  Icon(Icons.arrow_forward_outlined, size: 30)
-                ],
-              ),
-            )
-          ],
+              // continue button
+              InkWell(
+                onTap: () =>
+                    Navigator.of(context).pushNamed(HomeScreen.routeName),
+                child: Row(
+                  children: const [
+                    Text('Continue ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: AppColors.textHighlight)),
+                    Icon(Icons.arrow_forward_outlined, size: 30)
+                  ],
+                ),
+              )
+            ],
+          ),
         )
       : Container();
 

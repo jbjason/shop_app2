@@ -26,12 +26,7 @@ class _ThanksScreenState extends State<ThanksScreen> {
       child: Scaffold(
         body: Stack(
           children: [
-            Positioned.fill(
-                child: Container(
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/background.png'),
-                            fit: BoxFit.contain)))),
+            _backgroundImage(),
             _body(context, size),
             _conflettiAnimation(),
           ],
@@ -68,6 +63,13 @@ class _ThanksScreenState extends State<ThanksScreen> {
     );
   }
 
+  Widget _backgroundImage() => Positioned.fill(
+        child: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/background.png'), fit: BoxFit.contain)),
+        ),
+      );
   Widget _conflettiAnimation() => Align(
         alignment: Alignment.bottomCenter,
         child: ConfettiWidget(

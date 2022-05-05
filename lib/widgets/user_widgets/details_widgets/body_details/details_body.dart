@@ -9,11 +9,8 @@ class DetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/background.png'), fit: BoxFit.contain)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -115,20 +115,10 @@ class CartSingleItem extends StatelessWidget {
   }
 
   final _decoration = BoxDecoration(
-    color: Colors.white,
+    color: Colors.grey[300],
     borderRadius: const BorderRadius.vertical(
         top: Radius.circular(35), bottom: Radius.circular(14)),
-    boxShadow: getShadowBox(Colors.grey.shade600, Colors.white),
-    gradient: LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: [
-        const Color(0xFF6b705c).withOpacity(.2),
-        const Color(0xFFa5a58d).withOpacity(0.2),
-        const Color(0xFFa5a58d).withOpacity(0.4),
-        const Color(0xFFb7b7a4).withOpacity(0.2),
-      ],
-      stops: const [0.1, 0.3, 0.4, 1],
-    ),
+    boxShadow: getShadowBox(Colors.grey[500]!, Colors.white),
+    
   );
 }

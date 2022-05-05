@@ -25,14 +25,20 @@ class WelcomeBody2 extends StatelessWidget {
           top: size.height * .7,
           left: 0,
           right: 0,
-          child: Padding(
+          child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Colors.white.withOpacity(0.5),
+                Colors.white.withOpacity(0.4),
+              ])
+            ),
             child: Text(text,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.aclonica(
                     textStyle: TextStyle(
                         fontSize: _isTrue ? 30 : 13,
-                        color: AppColors.textLigth))),
+                        color: AppColors.textHighlight))),
           ),
         ),
       ],

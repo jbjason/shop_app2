@@ -20,7 +20,7 @@ class OfferDetails extends StatelessWidget {
       opacity: 1 - rotation,
       child: Container(
         height: height,
-        color: Colors.white,
+        color: Colors.white.withOpacity(0.5),
         child: Column(
           children: [
             const Expanded(
@@ -33,7 +33,7 @@ class OfferDetails extends StatelessWidget {
             ),
             Container(
               color: Colors.white,
-              height: 44,
+              height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,

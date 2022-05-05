@@ -12,7 +12,7 @@ class OrderedProductDetails extends StatelessWidget {
     final order = Provider.of<Cart>(context, listen: false).items;
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.only(top: 10, bottom: 10),
+        padding: const EdgeInsets.only(top: 10, bottom: 10,left:20,right: 10),
         child: Column(
           children: [
             _titleTexts(),

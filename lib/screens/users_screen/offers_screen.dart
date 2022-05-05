@@ -27,7 +27,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/background.png'),
-                        fit: BoxFit.contain)),
+                        fit: BoxFit.cover)),
               ),
             ),
             ValueListenableBuilder<double>(
@@ -53,7 +53,7 @@ class _OffersScreenState extends State<OffersScreen> {
         final percent = index - value;
         final rotation = percent.clamp(0.0, 1.0);
         return Padding(
-          padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 20,left: 10,right: 10,bottom: 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,

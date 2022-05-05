@@ -19,10 +19,11 @@ class CartScreen extends StatelessWidget {
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/background.png'),
-                  fit: BoxFit.contain)),
+                  fit: BoxFit.cover)),
           child: Column(
             children: [
               getAppBarTile('Your Cart', context),
+              const SizedBox(height: 30),
               Expanded(child: _cartList(cartItems.items)),
               CartTotalAmount(cartItems: cartItems),
             ],
