@@ -125,15 +125,16 @@ class _DetailsBody1State extends State<DetailsBody1> {
 
   Widget _colorContainer() {
     return SizedBox(
-      height: 35,
+      height: 55,
       child: ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 10),
         scrollDirection: Axis.horizontal,
         itemCount: widget.product.color.length,
         itemBuilder: ((context, index) => InkWell(
               onTap: () => setState(() => _selectedColor = index),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10),
-                width: 30,
+                width: 40,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: widget.product.color[index],
