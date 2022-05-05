@@ -9,8 +9,8 @@ class AddProductButton extends StatelessWidget {
     return InkWell(
       onTap: () => submit(context),
       child: Container(
-        height: 100,
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
+        height: 80,
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         decoration: BoxDecoration(
           boxShadow: getShadowBox(Colors.grey[500]!, Colors.white),
           color: Colors.grey[300],

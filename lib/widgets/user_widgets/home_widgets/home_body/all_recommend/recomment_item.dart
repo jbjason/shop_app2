@@ -11,7 +11,7 @@ class RecommendItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 115,
-      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
+      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
       decoration: _decoration,
       child: Row(
         children: [

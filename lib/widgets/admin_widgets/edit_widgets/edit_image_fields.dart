@@ -26,7 +26,7 @@ class EditImageFields extends StatelessWidget {
                 border: Border.all(width: 2, color: AppColors.accent),
               ),
               child: controller.text.isEmpty
-                  ? const Text('Enter a URL')
+                  ? const Center(child: Text('Enter a URL'))
                   : Image.network(controller.text.trim(), fit: BoxFit.cover),
             ),
             Expanded(

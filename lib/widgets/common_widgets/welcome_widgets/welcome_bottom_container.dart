@@ -65,7 +65,7 @@ class WelcomeBottomContainer extends StatelessWidget {
           children: List.generate(
             3,
             (index) => AnimatedContainer(
-              duration: kThemeAnimationDuration,
+              duration: const Duration(milliseconds: 300),
               margin: const EdgeInsets.only(right: 7),
               height: 13,
               width: isSelected == index ? 30 : 13,
