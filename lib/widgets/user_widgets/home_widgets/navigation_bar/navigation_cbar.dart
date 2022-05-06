@@ -14,7 +14,7 @@ class NavigationCBar extends StatelessWidget {
       child: CustomPaint(
         painter: NavClipper(),
         child: SizedBox(
-          height: kToolbarHeight + 10,
+          height: kToolbarHeight + 7,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -29,7 +29,9 @@ class NavigationCBar extends StatelessWidget {
 
   Widget _navButtons(IconData _icon, String title) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: title == 'All pro.'
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.end,
       children: [
         buttonBackGround(Icon(_icon, color: AppColors.secondary)),
         const Spacer(),
@@ -37,8 +39,7 @@ class NavigationCBar extends StatelessWidget {
           decoration: BoxDecoration(
               color: AppColors.secondary.withOpacity(0.7),
               borderRadius: BorderRadius.circular(20)),
-          padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
-          alignment: Alignment.bottomCenter,
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 2),
           child: Text(title,
               style: const TextStyle(fontSize: 11, color: Colors.white)),
         )

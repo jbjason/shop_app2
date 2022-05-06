@@ -11,7 +11,6 @@ class ProductItem1 extends StatelessWidget {
     return Stack(
       children: [
         _heartButton(),
-        _ratings(),
         _title(),
       ],
     );
@@ -19,26 +18,8 @@ class ProductItem1 extends StatelessWidget {
 
   Widget _heartButton() => Positioned(
         top: 10,
-        left: 5,
-        child: buttonBackGround(HeartButton(product: product)),
-      );
-
-  Widget _ratings() => Positioned(
-        top: 10,
         right: 8,
-        child: Container(
-          height: 40,
-          width: 40,
-          alignment: Alignment.center,
-          child: Text('⭐${product.isRating.toStringAsFixed(1)}',
-              style: const TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 10,
-                  color: Colors.black)),
-          decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.7),
-              borderRadius: BorderRadius.circular(10)),
-        ),
+        child: buttonBackGround(HeartButton(product: product)),
       );
   Widget _title() => Positioned(
         bottom: 0,

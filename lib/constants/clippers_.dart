@@ -43,7 +43,7 @@ class NavClipper extends CustomPainter {
       ..quadraticBezierTo(w5 - 80, h - 45, w5 - 150, h)
       ..lineTo(0, h)
       ..quadraticBezierTo(60, h / 2, 0, 0);
-    canvas.drawShadow(path, Colors.black26, 10, false);
+    //canvas.drawShadow(path, Colors.black26, 10, false);
     canvas.drawPath(path, Paint()..color = Colors.white);
   }
 

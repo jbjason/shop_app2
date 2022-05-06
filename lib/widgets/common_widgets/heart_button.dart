@@ -26,7 +26,7 @@ class _HeartButtonState extends State<HeartButton>
         duration: const Duration(milliseconds: 300), vsync: this);
     curve = CurvedAnimation(parent: _controller, curve: Curves.slowMiddle);
     _colorAnimation =
-        ColorTween(begin: Colors.grey[700], end: Colors.red).animate(curve);
+        ColorTween(begin: Colors.white, end: Colors.red).animate(curve);
 
     _sizeAnimation = TweenSequence(<TweenSequenceItem<double>>[
       TweenSequenceItem<double>(
