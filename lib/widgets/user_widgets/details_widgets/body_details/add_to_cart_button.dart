@@ -25,10 +25,10 @@ class AddToCartButton extends StatelessWidget {
             color: Colors.grey[300],
             borderRadius: BorderRadius.circular(10),
             boxShadow: getShadowBox(
-                Colors.white,
                 selectedColor == 0
                     ? Colors.grey[500]!
-                    : product.color[selectedColor]),
+                    : product.color[selectedColor],
+                Colors.white),
           ),
           alignment: Alignment.center,
           child: Text(
