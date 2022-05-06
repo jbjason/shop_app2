@@ -23,6 +23,7 @@ class RecommendItem extends StatelessWidget {
               children: [
                 _titlePriceContainer(),
                 // favorite & cart Icons
+                const SizedBox(height: 10),
                 Expanded(child: AddButtons(product: product)),
               ],
             ),
