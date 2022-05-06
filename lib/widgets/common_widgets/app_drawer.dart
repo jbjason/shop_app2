@@ -25,7 +25,7 @@ class AppDrawer extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.payment),
-            title: const Text('Available Offers'),
+            title: const Text('Offers'),
             onTap: () =>
                 Navigator.of(context).pushNamed(OffersScreen.routeName),
           ),
