@@ -18,43 +18,31 @@ class NavigationCBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  buttonBackGround(
-                      const Icon(CupertinoIcons.square_split_2x2_fill)),
-                  const Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.secondary.withOpacity(0.8),
-                        borderRadius: BorderRadius.circular(20)),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
-                    child: const Text('All pro.',
-                        style: TextStyle(fontSize: 11, color: Colors.white)),
-                  )
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  buttonBackGround(const Icon(CupertinoIcons.heart)),
-                  const Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.secondary.withOpacity(0.8),
-                        borderRadius: BorderRadius.circular(20)),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
-                    child: const Text('Favorites',
-                        style: TextStyle(fontSize: 11, color: Colors.white)),
-                  )
-                ],
-              ),
+              _navButtons(CupertinoIcons.square_split_2x2_fill, 'All pro.'),
+              _navButtons(CupertinoIcons.heart_slash_fill, 'Favorites'),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _navButtons(IconData _icon, String title) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        buttonBackGround(Icon(_icon, color: AppColors.secondary)),
+        const Spacer(),
+        Container(
+          decoration: BoxDecoration(
+              color: AppColors.secondary.withOpacity(0.7),
+              borderRadius: BorderRadius.circular(20)),
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
+          alignment: Alignment.bottomCenter,
+          child: Text(title,
+              style: const TextStyle(fontSize: 11, color: Colors.white)),
+        )
+      ],
     );
   }
 }

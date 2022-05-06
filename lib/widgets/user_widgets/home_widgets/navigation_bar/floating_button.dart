@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/screens/users_screen/cart_screen.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/badge.dart';
@@ -25,6 +26,7 @@ class FloatingButton extends StatelessWidget {
         BoxShape.circle,
         [],
         FloatingActionButton(
+          backgroundColor: AppColors.secondary.withOpacity(0.8),
           onPressed: () =>
               Navigator.of(context).pushNamed(CartScreen.routeName),
           child: const Icon(CupertinoIcons.shopping_cart),
