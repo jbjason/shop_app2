@@ -36,7 +36,7 @@ class _WelcomeBodyState extends State<WelcomeBody> {
     return i == 0
         ? const WelcomeBody1()
         : i == 1
-            ? const WelcomeBody2(image: 'assets/s4.jpg', text: welcomeText2)
-            : const WelcomeBody2(image: 'assets/s11.jpg', text: welcomeText3);
+            ? const WelcomeBody2(image: 'assets/s11.jpg', text: welcomeText2)
+            : const WelcomeBody2(image: 'assets/s4.jpg', text: welcomeText3);
   }
 }
