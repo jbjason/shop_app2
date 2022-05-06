@@ -22,7 +22,7 @@ class OrderScreen extends StatelessWidget {
           child: Column(
             children: [
               getAppBarTile('Your Orders', context),
-              Expanded(child: _cartList(_ordersList)),
+              Expanded(child: _orderList(_ordersList)),
             ],
           ),
         ),
@@ -30,7 +30,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _cartList(List<OrderItem> ordersList) {
+  Widget _orderList(List<OrderItem> ordersList) {
     return ordersList.isNotEmpty
         ? ListView.builder(
             itemCount: ordersList.length,
@@ -39,7 +39,7 @@ class OrderScreen extends StatelessWidget {
             },
           )
         : const Center(
-            child: Text('No items Available right now !'),
+            child: Text('No Order has done yet .add one!'),
           );
   }
 }

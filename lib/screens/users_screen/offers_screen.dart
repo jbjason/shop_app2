@@ -22,14 +22,7 @@ class _OffersScreenState extends State<OffersScreen> {
       child: Scaffold(
         body: Stack(
           children: [
-            Positioned.fill(
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/background.png'),
-                        fit: BoxFit.cover)),
-              ),
-            ),
+            _backgroundImage(),
             ValueListenableBuilder<double>(
               valueListenable: _notifierScroll,
               builder: (context, value, _) => _body(context, value),
@@ -53,7 +46,8 @@ class _OffersScreenState extends State<OffersScreen> {
         final percent = index - value;
         final rotation = percent.clamp(0.0, 1.0);
         return Padding(
-          padding: const EdgeInsets.only(top: 20,left: 10,right: 10,bottom: 5),
+          padding:
+              const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -77,6 +71,15 @@ class _OffersScreenState extends State<OffersScreen> {
       itemCount: products.length,
     );
   }
+
+  Widget _backgroundImage() => Positioned.fill(
+        child: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/background.png'),
+                  fit: BoxFit.cover)),
+        ),
+      );
 
   void _listener() {
     _notifierScroll.value = _controller.page!;
