@@ -7,8 +7,8 @@ import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/widgets/common_widgets/heart_button.dart';
 
-class AddButtons extends StatelessWidget {
-  const AddButtons({Key? key, required this.product}) : super(key: key);
+class FavoriteButtons extends StatelessWidget {
+  const FavoriteButtons({Key? key, required this.product}) : super(key: key);
   final Product product;
   @override
   Widget build(BuildContext context) {

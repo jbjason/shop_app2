@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/screens/users_screen/details_screen.dart';
-import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/add_favorite_button.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/favorite_button.dart';
 
 class RecommendItem extends StatelessWidget {
   RecommendItem({Key? key, required this.product}) : super(key: key);
@@ -24,7 +24,7 @@ class RecommendItem extends StatelessWidget {
                 _titlePriceContainer(),
                 // favorite & cart Icons
                 const SizedBox(height: 10),
-                Expanded(child: AddButtons(product: product)),
+                Expanded(child: FavoriteButtons(product: product)),
               ],
             ),
           ),
@@ -47,7 +47,7 @@ class RecommendItem extends StatelessWidget {
                 ]);
           },
           child: Hero(
-            tag: product.id,
+            tag: product.id + product.title,
             child: FadeInImage(
               placeholder: const AssetImage('assets/placeholder.png'),
               image: NetworkImage(product.imageUrl[0]),
