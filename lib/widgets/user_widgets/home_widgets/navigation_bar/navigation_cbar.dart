@@ -33,6 +33,7 @@ class NavigationCBar extends StatelessWidget {
           ? CrossAxisAlignment.start
           : CrossAxisAlignment.end,
       children: [
+        const SizedBox(height: 3),
         buttonBackGround(Icon(_icon, color: AppColors.secondary)),
         const Spacer(),
         Container(

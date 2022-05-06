@@ -28,9 +28,12 @@ class _SortByScreenState extends State<SortByScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+      body: Container(
         padding:
             const EdgeInsets.only(top: 50, bottom: 10, left: 10, right: 10),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/background.png'), fit: BoxFit.cover)),
         child: Column(
           children: [
             getAppBarTile('All Products', context),

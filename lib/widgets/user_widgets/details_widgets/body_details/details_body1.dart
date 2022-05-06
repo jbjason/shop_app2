@@ -41,8 +41,14 @@ class _DetailsBody1State extends State<DetailsBody1> {
     );
   }
 
-  Widget _titlePortion(String s) =>
-      Text(s, style: const TextStyle(fontSize: 18));
+  Widget _titlePortion(String s) => Text(
+        s,
+        style: TextStyle(
+            color: _selectedColor == 0
+                ? AppColors.textDark
+                : widget.product.color[_selectedColor],
+            fontSize: 18),
+      );
 
   Widget _detailsText() {
     if (widget.product.description.length > 190 && !_isExpanded) {
@@ -127,26 +133,26 @@ class _DetailsBody1State extends State<DetailsBody1> {
     return SizedBox(
       height: 55,
       child: ListView.builder(
-        padding: const EdgeInsets.only(top: 10,bottom: 15),
+        padding: const EdgeInsets.only(top: 10, bottom: 15),
         scrollDirection: Axis.horizontal,
         itemCount: widget.product.color.length,
-        itemBuilder: ((context, index) => InkWell(
-              onTap: () => setState(() => _selectedColor = index),
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                width: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: widget.product.color[index],
-                  border: Border.all(
-                      width: 4,
-                      color: _selectedColor == index
-                          ? Colors.white
-                          : widget.product.color[index]),
-                  boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
-                ),
-              ),
-            )),
+        itemBuilder: (context, index) => InkWell(
+          onTap: () => setState(() => _selectedColor = index),
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            width: 40,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: widget.product.color[index],
+              border: Border.all(
+                  width: 4,
+                  color: _selectedColor == index
+                      ? Colors.white
+                      : widget.product.color[index]),
+              boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
+            ),
+          ),
+        ),
       ),
     );
   }
