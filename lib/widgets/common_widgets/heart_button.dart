@@ -30,9 +30,9 @@ class _HeartButtonState extends State<HeartButton>
 
     _sizeAnimation = TweenSequence(<TweenSequenceItem<double>>[
       TweenSequenceItem<double>(
-          tween: Tween<double>(begin: 20, end: 50), weight: 50),
+          tween: Tween<double>(begin: 24, end: 50), weight: 50),
       TweenSequenceItem<double>(
-          tween: Tween<double>(begin: 50, end: 20), weight: 50)
+          tween: Tween<double>(begin: 50, end: 24), weight: 50)
     ]).animate(curve);
 
     _controller.addStatusListener((status) {

@@ -8,7 +8,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p1111',
       title: 'Red Shirt',
-      description: 'A red shirt - it is pretty red!',
+      description: detailString,
       price: 29.99,
       imageUrl: imageList1,
       size: sizeList,
