@@ -10,7 +10,7 @@ class NavigationCBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
+      margin: const EdgeInsets.only(left: 25, right: 25),
       child: CustomPaint(
         painter: NavClipper(),
         child: SizedBox(
@@ -26,7 +26,7 @@ class NavigationCBar extends StatelessWidget {
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(
-                        color: AppColors.accent.withOpacity(0.8),
+                        color: AppColors.secondary.withOpacity(0.8),
                         borderRadius: BorderRadius.circular(20)),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
@@ -42,7 +42,7 @@ class NavigationCBar extends StatelessWidget {
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(
-                        color: AppColors.accent.withOpacity(0.8),
+                        color: AppColors.secondary.withOpacity(0.8),
                         borderRadius: BorderRadius.circular(20)),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 13, vertical: 5),

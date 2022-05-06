@@ -31,7 +31,7 @@ class NavClipper extends CustomPainter {
       ..lineTo(w5 - 80, 0)
       ..cubicTo(w5 - 40, 0, w5 - 50, h5, w5 - 3, h6)
       ..lineTo(w5, h)
-      ..lineTo(w5 + 10, h)
+      ..lineTo(w5 +5, h)
       ..quadraticBezierTo(w5 + 80, h - 45, w5 + 150, h)
       ..lineTo(w, h)
       ..quadraticBezierTo(w - 60, h / 2, w, 0)
@@ -39,7 +39,7 @@ class NavClipper extends CustomPainter {
       ..cubicTo(w5 + 40, 0, w5 + 50, h5, w5 + 3, h6)
       ..lineTo(w5 - 3, h6)
       ..lineTo(w5, h)
-      ..lineTo(w5 - 10, h)
+      ..lineTo(w5 - 5, h)
       ..quadraticBezierTo(w5 - 80, h - 45, w5 - 150, h)
       ..lineTo(0, h)
       ..quadraticBezierTo(60, h / 2, 0, 0);
