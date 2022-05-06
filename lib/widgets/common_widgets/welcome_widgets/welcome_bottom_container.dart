@@ -43,13 +43,15 @@ class WelcomeBottomContainer extends StatelessWidget {
                 onTap: () =>
                     Navigator.of(context).pushNamed(AdminPanelScreen.routeName),
                 child: Row(
-                  children:  const [
+                  children: const [
                     Icon(Icons.arrow_back_outlined, size: 30),
-                    Text('Login ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: AppColors.textHighlight)),
+                    Text(
+                      'Login ',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: AppColors.textHighlight),
+                    ),
                   ],
                 ),
               ),
@@ -86,9 +88,7 @@ class WelcomeBottomContainer extends StatelessWidget {
               decoration: BoxDecoration(
                 shape:
                     isSelected == index ? BoxShape.rectangle : BoxShape.circle,
-                color: isSelected == index
-                    ? Colors.white
-                    : AppColors.secondary ,
+                color: isSelected == index ? Colors.white : AppColors.secondary,
               ),
             ),
           ),
