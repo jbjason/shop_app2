@@ -14,7 +14,7 @@ class NavigationCBar extends StatelessWidget {
       child: CustomPaint(
         painter: NavClipper(),
         child: SizedBox(
-          height: kToolbarHeight + 7,
+          height: kToolbarHeight + 4,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
