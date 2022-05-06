@@ -10,7 +10,6 @@ class WelcomeScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xFF5c677d),
         body: Stack(
           children: [
             ClipPath(
@@ -19,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
                 child: const WelcomeBody(),
                 height: size.height,
                 width: size.width,
-                margin: const EdgeInsets.all(5),
+                margin: const EdgeInsets.all(3),
                 decoration: _decoration,
               ),
             ),
@@ -36,11 +35,10 @@ class WelcomeScreen extends StatelessWidget {
   
 
   final _decoration = BoxDecoration(
-    border: Border.all(color: Colors.white.withOpacity(0.8)),
     borderRadius: BorderRadius.circular(10),
-    gradient: LinearGradient(colors: [
-      Colors.white.withOpacity(0.4),
-      Colors.white.withOpacity(0.1),
-    ]),
+     gradient: LinearGradient(colors: [
+      Colors.grey[700]!.withOpacity(0.4),
+      Colors.grey[700]!.withOpacity(0.1),
+     ]),
   );
 }
