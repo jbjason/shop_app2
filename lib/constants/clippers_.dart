@@ -20,6 +20,7 @@ class WelcomeClipper extends CustomClipper<Path> {
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }
 
+
 class NavClipper extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -27,21 +28,21 @@ class NavClipper extends CustomPainter {
     final h5 = h * .5, w5 = w * .5;
     final h6 = h * .6;
     final path = Path()
-      //..lineTo(3, 0)
-      //..quadraticBezierTo(w * .15, h, w * .3 - 5, 0)
       ..lineTo(w5 - 80, 0)
       ..cubicTo(w5 - 40, 0, w5 - 50, h5, w5 - 3, h6)
       ..lineTo(w5, h)
+      ..lineTo(w5 + 10, h)
+      ..quadraticBezierTo(w5 + 80, h - 45, w5 + 150, h)
       ..lineTo(w, h)
-      ..quadraticBezierTo(w - 50, h / 2, w, 0)
-      //..lineTo(w - 3, 0)
-      //..quadraticBezierTo(w * .85, h, w * .7 + 5, 0)
+      ..quadraticBezierTo(w - 60, h / 2, w, 0)
       ..lineTo(w5 + 80, 0)
       ..cubicTo(w5 + 40, 0, w5 + 50, h5, w5 + 3, h6)
       ..lineTo(w5 - 3, h6)
       ..lineTo(w5, h)
+      ..lineTo(w5 - 10, h)
+      ..quadraticBezierTo(w5 - 80, h - 45, w5 - 150, h)
       ..lineTo(0, h)
-      ..quadraticBezierTo(50, h / 2, 0, 0);
+      ..quadraticBezierTo(60, h / 2, 0, 0);
     canvas.drawShadow(path, Colors.black26, 10, false);
     canvas.drawPath(path, Paint()..color = Colors.white.withOpacity(0.85));
   }

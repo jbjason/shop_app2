@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/theme.dart';
 
 class NavigationCBar extends StatelessWidget {
   const NavigationCBar({Key? key}) : super(key: key);
@@ -9,29 +10,45 @@ class NavigationCBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 40, right: 40, bottom: 10),
+      margin: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
       child: CustomPaint(
         painter: NavClipper(),
         child: SizedBox(
-          height: kToolbarHeight + 4,
+          height: kToolbarHeight + 10,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   buttonBackGround(
                       const Icon(CupertinoIcons.square_split_2x2_fill)),
-                  const Text('All',style: TextStyle(fontSize: 11))
+                  const Spacer(),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: AppColors.accent.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(20)),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+                    child: const Text('All pro.',
+                        style: TextStyle(fontSize: 11, color: Colors.white)),
+                  )
                 ],
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   buttonBackGround(const Icon(CupertinoIcons.heart)),
-                  const Text('Favorites',style: TextStyle(fontSize: 11))
+                  const Spacer(),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: AppColors.accent.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(20)),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+                    child: const Text('Favorites',
+                        style: TextStyle(fontSize: 11, color: Colors.white)),
+                  )
                 ],
               ),
             ],
