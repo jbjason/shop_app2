@@ -8,9 +8,14 @@ class WelcomeClipper extends CustomClipper<Path> {
     path.lineTo(0, h * .7);
     path.quadraticBezierTo(120, h * .8, 0, h * .9);
     path.lineTo(0, h);
+    // remove previous 3 lines
+    //path.lineTo(0, h * .6);
+    //path.quadraticBezierTo(120, h * .8, 0, h );
     path.lineTo(w, h);
     path.lineTo(w, h * .9);
     path.quadraticBezierTo(w - 120, h * .8, w, h * .7);
+    // remove previous 2 lines
+    // path.quadraticBezierTo(w - 120, h * .8, w, h * .6);
     path.lineTo(w, 0);
     path.close();
     return path;
@@ -19,7 +24,6 @@ class WelcomeClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }
-
 
 class NavClipper extends CustomPainter {
   @override
@@ -31,7 +35,7 @@ class NavClipper extends CustomPainter {
       ..lineTo(w5 - 80, 0)
       ..cubicTo(w5 - 40, 0, w5 - 50, h5, w5 - 3, h6)
       ..lineTo(w5, h)
-      ..lineTo(w5 +5, h)
+      ..lineTo(w5 + 5, h)
       ..quadraticBezierTo(w5 + 80, h - 45, w5 + 150, h)
       ..lineTo(w, h)
       ..quadraticBezierTo(w - 60, h / 2, w, 0)
