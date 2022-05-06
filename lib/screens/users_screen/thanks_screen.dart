@@ -67,7 +67,7 @@ class _ThanksScreenState extends State<ThanksScreen> {
         child: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/background.png'), fit: BoxFit.contain)),
+                  image: AssetImage('assets/background.png'), fit: BoxFit.cover)),
         ),
       );
   Widget _conflettiAnimation() => Align(

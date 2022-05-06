@@ -16,8 +16,8 @@ class CustomAppBarHome1 extends StatelessWidget {
   }
 
   Widget _topButtons(BuildContext context) => Positioned(
-        top: 40,
-        left: 6,
+        top: MediaQuery.of(context).padding.top + 10,
+        left: 12,
         right: 9,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
