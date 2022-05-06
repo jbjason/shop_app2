@@ -32,8 +32,8 @@ class WelcomeBottomContainer extends StatelessWidget {
       ? Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-            Colors.white.withOpacity(0.4),
-            Colors.white.withOpacity(0.1),
+            Colors.white.withOpacity(0.3),
+            Colors.white.withOpacity(0.5),
           ])),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
