@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
-import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class HeartButton extends StatefulWidget {
@@ -27,7 +26,7 @@ class _HeartButtonState extends State<HeartButton>
         duration: const Duration(milliseconds: 300), vsync: this);
     curve = CurvedAnimation(parent: _controller, curve: Curves.slowMiddle);
     _colorAnimation =
-        ColorTween(begin: AppColors.iconDark, end: Colors.red).animate(curve);
+        ColorTween(begin: Colors.grey[850], end: Colors.red).animate(curve);
 
     _sizeAnimation = TweenSequence(<TweenSequenceItem<double>>[
       TweenSequenceItem<double>(
