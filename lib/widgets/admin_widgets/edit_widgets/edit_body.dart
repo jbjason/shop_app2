@@ -120,7 +120,7 @@ class _EditBodyState extends State<EditBody> {
     } else {
       Provider.of<Products>(context, listen: false).updateProduct(f);
     }
-    setState(() => _isLoading = true);
+    setState(() => _isLoading = false);
     Navigator.pop(context);
   }
 

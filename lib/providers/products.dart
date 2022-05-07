@@ -105,7 +105,6 @@ class Products with ChangeNotifier {
   Future<void> addProduct(Product product) async {
     final url = Uri.parse(
         "https://shop-2-5c421-default-rtdb.asia-southeast1.firebasedatabase.app/products.json");
-
     try {
       final response = await http.post(
         url,
@@ -115,11 +114,11 @@ class Products with ChangeNotifier {
           'description': product.description,
           'price': product.price,
           'imageUrl': product.imageUrl.map((e) => {'imageUrl1': e}).toList(),
-          'color': product.color.map((e) => {'color1': e}).toList(),
+          'color':
+              product.color.map((e) => {'color1': e.value.toString()}).toList(),
           'size': product.size.map((e) => {'size1': e}).toList(),
         }),
       );
-      print(json.decode(response.body));
       _items.add(Product(
         title: product.title,
         description: product.description,
