@@ -20,6 +20,7 @@ class EditSizeField extends StatelessWidget {
         const SizedBox(height: 10),
         _sizeTextField(),
         _chosenList(),
+        const SizedBox(height: 10),
       ],
     );
   }
@@ -42,33 +43,38 @@ class EditSizeField extends StatelessWidget {
         },
       );
   Widget _chosenList() => SizedBox(
-        height: 50,
+        height: 40,
         child: Row(
           children: [
             const Text('Chosen : '),
             Expanded(
               child: ListView.builder(
+                scrollDirection: Axis.horizontal,
                 itemCount: sizeList.length,
                 itemBuilder: (ctx, index) => InkWell(
                   onTap: () => deleteSize(sizeList[index]),
                   child: Container(
+                    width: 38,
                     margin: const EdgeInsets.only(right: 10),
                     padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: AppColors.accent, width: 1),
-                    ),
                     child: Stack(
                       children: [
-                        Text(
-                          sizeList[index],
-                          style:
-                              const TextStyle(overflow: TextOverflow.ellipsis),
+                        Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                  color: AppColors.accent, width: 1)),
+                          child: Text(
+                            sizeList[index],
+                            style: const TextStyle(
+                                overflow: TextOverflow.ellipsis),
+                          ),
                         ),
                         const Positioned(
-                          top: 0,
+                          bottom: 0,
                           right: 0,
-                          child: Icon(Icons.delete_sweep, size: 8),
+                          child:
+                              Icon(Icons.delete, size: 13, color: Colors.red),
                         )
                       ],
                     ),

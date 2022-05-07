@@ -60,8 +60,8 @@ class EditColorField extends StatelessWidget {
                 itemBuilder: (context, index) => InkWell(
                   onTap: () => deleteColor(colorList[index]),
                   child: Container(
-                    height: 30,
-                    width: 30,
+                    height: 35,
+                    width: 35,
                     margin: const EdgeInsets.only(right: 10),
                     decoration: BoxDecoration(
                       color: colorList[index],
@@ -69,7 +69,8 @@ class EditColorField extends StatelessWidget {
                       border: Border.all(color: Colors.white, width: 2),
                     ),
                     alignment: Alignment.topRight,
-                    child: const Icon(Icons.delete_sweep, size: 8),
+                    child:
+                        const Icon(Icons.delete, size: 13, color: Colors.red),
                   ),
                 ),
               ),

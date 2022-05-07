@@ -20,10 +20,7 @@ class AddProductButton extends StatelessWidget {
         child: const Text(
           'Add Product',
           style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.5,
-              wordSpacing: 1.5),
+              fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 1.5),
         ),
       ),
     );

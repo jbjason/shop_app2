@@ -73,13 +73,14 @@ class EditImageFields extends StatelessWidget {
           itemBuilder: (context, index) => InkWell(
             onTap: () => deleteImage(imagesList[index]),
             child: Container(
+              width: 45,
               margin: const EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(imagesList[index]), fit: BoxFit.cover),
               ),
               alignment: Alignment.topRight,
-              child: const Icon(Icons.delete_sharp, size: 8),
+              child: const Icon(Icons.delete, size: 13, color: Colors.red),
             ),
           ),
         ),
