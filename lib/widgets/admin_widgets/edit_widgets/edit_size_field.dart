@@ -69,7 +69,7 @@ class EditSizeField extends StatelessWidget {
                           child: Text(
                             sizeList[index],
                             style: const TextStyle(
-                                overflow: TextOverflow.ellipsis),
+                                fontSize: 12, overflow: TextOverflow.ellipsis),
                           ),
                         ),
                         const Positioned(

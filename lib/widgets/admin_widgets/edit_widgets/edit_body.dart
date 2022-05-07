@@ -80,7 +80,7 @@ class _EditBodyState extends State<EditBody> {
                 deleteImage: deleteImage,
                 imagesList: _imagesList),
             const SizedBox(height: 40),
-            AddProductButton(submit: submit),
+            AddProductButton(submit: submit, isEdit: widget.isEdit),
             const SizedBox(height: 20),
           ],
         ),
