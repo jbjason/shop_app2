@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/constants_2.dart';
 import 'package:shop_app2/providers/product.dart';
+import 'package:http/http.dart' as http;
 
 class Products with ChangeNotifier {
   final List<Product> _items = [
@@ -99,19 +102,38 @@ class Products with ChangeNotifier {
     return _items.firstWhere((element) => element.id == id);
   }
 
-  void addProduct(Product product) {
-    final newProduct = Product(
-      title: product.title,
-      description: product.description,
-      price: product.price,
-      imageUrl: product.imageUrl,
-      id: product.id,
-      color: product.color,
-      size: product.size,
-      category: product.category,
-    );
-    _items.add(newProduct);
-    notifyListeners();
+  Future<void> addProduct(Product product) async {
+    final url = Uri.parse(
+        "https://shop-2-5c421-default-rtdb.asia-southeast1.firebasedatabase.app/products.json");
+
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode({
+          'title': product.title,
+          'category': product.category,
+          'description': product.description,
+          'price': product.price,
+          'imageUrl': product.imageUrl.map((e) => {'imageUrl1': e}).toList(),
+          'color': product.color.map((e) => {'color1': e}).toList(),
+          'size': product.size.map((e) => {'size1': e}).toList(),
+        }),
+      );
+      print(json.decode(response.body));
+      _items.add(Product(
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        id: DateTime.now().toString(),
+        color: product.color,
+        size: product.size,
+        category: product.category,
+      ));
+      notifyListeners();
+    } catch (error) {
+      print(error);
+    }
   }
 
   void deleteProduct(String id) {
