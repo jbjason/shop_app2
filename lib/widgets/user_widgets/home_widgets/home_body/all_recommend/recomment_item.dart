@@ -47,7 +47,7 @@ class RecommendItem extends StatelessWidget {
                 ]);
           },
           child: Hero(
-            tag: product.id + product.category,
+            tag: product.id,
             child: FadeInImage(
               placeholder: const AssetImage('assets/placeholder.png'),
               image: NetworkImage(product.imageUrl[0]),

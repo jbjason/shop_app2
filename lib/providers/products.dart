@@ -6,7 +6,7 @@ import 'package:shop_app2/providers/product.dart';
 class Products with ChangeNotifier {
   final List<Product> _items = [
     Product(
-      id: 'p1111',
+      id: DateTime.now().toString(),
       title: 'Red Shirt',
       description: detailString,
       price: 29.99,
@@ -16,7 +16,7 @@ class Products with ChangeNotifier {
       category: categories[1],
     ),
     Product(
-      id: 'p22222',
+      id: DateTime.january.toString(),
       title: 'Trowser',
       description: detailString,
       price: 20.45,
@@ -26,7 +26,7 @@ class Products with ChangeNotifier {
       category: categories[1],
     ),
     Product(
-      id: 'p333',
+      id: DateTime.february.toString(),
       title: 'Yellow Scarf',
       description: detailString,
       price: 20.45,
@@ -36,7 +36,7 @@ class Products with ChangeNotifier {
       category: categories[2],
     ),
     Product(
-      id: 'p4441',
+      id: DateTime.march.toString(),
       title: 'A Pan',
       description: detailString,
       price: 20.45,
@@ -46,7 +46,7 @@ class Products with ChangeNotifier {
       category: categories[2],
     ),
     Product(
-      id: 'p55',
+      id: DateTime.april.toString(),
       title: 'Red Shirt',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
@@ -56,7 +56,7 @@ class Products with ChangeNotifier {
       category: categories[3],
     ),
     Product(
-      id: 'p666',
+      id: DateTime.may.toString(),
       title: 'Trowser',
       description: detailString,
       price: 20.45,
@@ -66,7 +66,7 @@ class Products with ChangeNotifier {
       category: categories[3],
     ),
     Product(
-      id: 'p7',
+      id: DateTime.june.toString(),
       title: 'Yellow Scarf',
       description: detailString,
       price: 20.45,
@@ -76,7 +76,7 @@ class Products with ChangeNotifier {
       category: categories[4],
     ),
     Product(
-      id: 'p889',
+      id: DateTime.july.toString(),
       title: 'A Pan',
       description: detailString,
       price: 20.45,
