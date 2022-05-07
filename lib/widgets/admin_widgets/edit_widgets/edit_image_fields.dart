@@ -5,11 +5,12 @@ class EditImageFields extends StatelessWidget {
   const EditImageFields(
       {Key? key,
       required this.controller,
-      required this.function,
+      required this.addImage,
+      required this.deleteImage,
       required this.imagesList})
       : super(key: key);
   final TextEditingController controller;
-  final void Function(String s) function;
+  final void Function(String s) addImage, deleteImage;
   final List<String> imagesList;
 
   @override
@@ -49,7 +50,7 @@ class EditImageFields extends StatelessWidget {
                   if (value.isNotEmpty ||
                       value.startsWith('http') ||
                       value.startsWith('https')) {
-                    function(value);
+                    addImage(value);
                   }
                 },
               ),
@@ -57,15 +58,22 @@ class EditImageFields extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 20),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: List.generate(
-              imagesList.length,
-              (index) => Container(
+        SizedBox(
+          height: 50,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: imagesList.length,
+            itemBuilder: (context, index) => InkWell(
+              onTap: () => deleteImage(imagesList[index]),
+              child: Container(
                 margin: const EdgeInsets.only(right: 10),
-                child: CircleAvatar(
-                    backgroundImage: NetworkImage(imagesList[index])),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(imagesList[index]),
+                      fit: BoxFit.cover),
+                ),
+                alignment: Alignment.topRight,
+                child: const Icon(Icons.delete_sharp, size: 8),
               ),
             ),
           ),

@@ -5,66 +5,78 @@ class EditSizeField extends StatelessWidget {
   const EditSizeField(
       {Key? key,
       required this.controller,
-      required this.function,
+      required this.addSize,
+      required this.deleteSize,
       required this.sizeList})
       : super(key: key);
   final TextEditingController controller;
-  final void Function(String s) function;
+  final void Function(String s) addSize, deleteSize;
   final List<String> sizeList;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextFormField(
-          controller: controller,
-          decoration: const InputDecoration(labelText: 'Size'),
-          maxLines: 1,
-          textInputAction: TextInputAction.done,
-          validator: (value) {
-            if (value!.isEmpty && sizeList.isEmpty) {
-              return 'Please provide a value';
-            }
-            return null;
-          },
-          onFieldSubmitted: (val) {
-            if (val.isNotEmpty) {
-              function(val);
-            }
-          },
-        ),
         const SizedBox(height: 10),
-        SizedBox(
-          height: 50,
-          child: Row(
-            children: [
-              const Text('Chosen : '),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Row(
-                    children: List.generate(
-                      sizeList.length,
-                      (index) => Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.accent, width: 1),
-                        ),
-                        child: Text(
+        _sizeTextField(),
+        _chosenList(),
+      ],
+    );
+  }
+
+  Widget _sizeTextField() => TextFormField(
+        controller: controller,
+        decoration: const InputDecoration(labelText: 'Size'),
+        maxLines: 1,
+        textInputAction: TextInputAction.done,
+        validator: (value) {
+          if (value!.isEmpty && sizeList.isEmpty) {
+            return 'Please provide a value';
+          }
+          return null;
+        },
+        onFieldSubmitted: (val) {
+          if (val.isNotEmpty) {
+            addSize(val);
+          }
+        },
+      );
+  Widget _chosenList() => SizedBox(
+        height: 50,
+        child: Row(
+          children: [
+            const Text('Chosen : '),
+            Expanded(
+              child: ListView.builder(
+                itemCount: sizeList.length,
+                itemBuilder: (ctx, index) => InkWell(
+                  onTap: () => deleteSize(sizeList[index]),
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: AppColors.accent, width: 1),
+                    ),
+                    child: Stack(
+                      children: [
+                        Text(
                           sizeList[index],
                           style:
                               const TextStyle(overflow: TextOverflow.ellipsis),
                         ),
-                      ),
+                        const Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Icon(Icons.delete_sweep, size: 8),
+                        )
+                      ],
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
-    );
-  }
+      );
 }

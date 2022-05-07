@@ -66,15 +66,18 @@ class _EditBodyState extends State<EditBody> {
                 controller: _detailsController, lines: 3, text: 'Details'),
             EditSizeField(
                 controller: _sizeController,
-                function: addSize,
+                addSize: addSize,
+                deleteSize: deleteSize,
                 sizeList: _sizeList),
             EditColorField(
                 allColors: _allColors,
                 colorList: _colorList,
-                function: addColor),
+                deleteColor: deleteColor,
+                addColor: addColor),
             EditImageFields(
                 controller: _imageController,
-                function: addImage,
+                addImage: addImage,
+                deleteImage: deleteImage,
                 imagesList: _imagesList),
             const SizedBox(height: 40),
             AddProductButton(submit: submit),
@@ -127,8 +130,18 @@ class _EditBodyState extends State<EditBody> {
     setState(() {});
   }
 
+  void deleteImage(String s) {
+    _imagesList.remove(s);
+    setState(() {});
+  }
+
   void addSize(String s) {
     _sizeList.add(s);
+    setState(() {});
+  }
+
+  void deleteSize(String s) {
+    _sizeList.remove(s);
     setState(() {});
   }
 
@@ -142,6 +155,11 @@ class _EditBodyState extends State<EditBody> {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Already Selcted !')));
     }
+  }
+
+  void deleteColor(Color c) {
+    _colorList.remove(c);
+    setState(() {});
   }
 
   @override
