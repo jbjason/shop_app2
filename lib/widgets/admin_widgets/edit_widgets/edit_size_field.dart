@@ -43,7 +43,7 @@ class EditSizeField extends StatelessWidget {
         },
       );
   Widget _chosenList() => SizedBox(
-        height: 45,
+        height: 47,
         child: Row(
           children: [
             const Text('Chosen :  '),
@@ -59,17 +59,17 @@ class EditSizeField extends StatelessWidget {
                     child: Stack(
                       children: [
                         Container(
-                          width: 40,
-                          height: 40,
-                          padding: const EdgeInsets.all(10),
+                          width: 45,
+                          height: 45,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
                                   color: AppColors.accent, width: 1)),
+                          alignment: Alignment.center,
                           child: Text(
                             sizeList[index],
                             style: const TextStyle(
-                                fontSize: 12, overflow: TextOverflow.ellipsis),
+                                fontSize: 9, overflow: TextOverflow.ellipsis),
                           ),
                         ),
                         const Positioned(
