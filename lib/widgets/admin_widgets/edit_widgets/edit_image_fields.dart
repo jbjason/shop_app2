@@ -76,11 +76,12 @@ class EditImageFields extends StatelessWidget {
               width: 45,
               margin: const EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
+                shape: BoxShape.circle,
                 image: DecorationImage(
                     image: NetworkImage(imagesList[index]), fit: BoxFit.cover),
               ),
-              alignment: Alignment.topRight,
-              child: const Icon(Icons.delete, size: 13, color: Colors.red),
+              alignment: Alignment.bottomRight,
+              child: const Icon(Icons.delete, size: 22, color: Colors.red),
             ),
           ),
         ),

@@ -49,7 +49,7 @@ class EditColorField extends StatelessWidget {
       );
 
   Widget _imagesReviewList() => SizedBox(
-        height: 40,
+        height: 45,
         child: Row(
           children: [
             const Text('Chosen : '),
@@ -60,17 +60,17 @@ class EditColorField extends StatelessWidget {
                 itemBuilder: (context, index) => InkWell(
                   onTap: () => deleteColor(colorList[index]),
                   child: Container(
-                    height: 35,
-                    width: 35,
-                    margin: const EdgeInsets.only(right: 10),
+                    height: 40,
+                    width: 40,
+                    margin: const EdgeInsets.only(right: 7),
                     decoration: BoxDecoration(
                       color: colorList[index],
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.white, width: 2),
                     ),
-                    alignment: Alignment.topRight,
+                    alignment: Alignment.bottomRight,
                     child:
-                        const Icon(Icons.delete, size: 13, color: Colors.red),
+                        const Icon(Icons.delete, size: 20, color: Colors.red),
                   ),
                 ),
               ),

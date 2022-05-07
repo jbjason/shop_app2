@@ -17,8 +17,8 @@ class EditSizeField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 10),
         _sizeTextField(),
+        const SizedBox(height: 10),
         _chosenList(),
         const SizedBox(height: 10),
       ],
@@ -43,10 +43,10 @@ class EditSizeField extends StatelessWidget {
         },
       );
   Widget _chosenList() => SizedBox(
-        height: 40,
+        height: 45,
         child: Row(
           children: [
-            const Text('Chosen : '),
+            const Text('Chosen :  '),
             Expanded(
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -54,12 +54,14 @@ class EditSizeField extends StatelessWidget {
                 itemBuilder: (ctx, index) => InkWell(
                   onTap: () => deleteSize(sizeList[index]),
                   child: Container(
-                    width: 38,
-                    margin: const EdgeInsets.only(right: 10),
-                    padding: const EdgeInsets.all(10),
+                    width: 50,
+                    margin: const EdgeInsets.only(right: 7),
                     child: Stack(
                       children: [
                         Container(
+                          width: 40,
+                          height: 40,
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
@@ -74,7 +76,7 @@ class EditSizeField extends StatelessWidget {
                           bottom: 0,
                           right: 0,
                           child:
-                              Icon(Icons.delete, size: 13, color: Colors.red),
+                              Icon(Icons.delete, size: 20, color: Colors.red),
                         )
                       ],
                     ),
