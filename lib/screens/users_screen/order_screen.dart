@@ -17,11 +17,11 @@ class OrderScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/cart_.png'),
-                  fit: BoxFit.contain)),
+                  image: AssetImage('assets/cart_.png'), fit: BoxFit.contain)),
           child: Column(
             children: [
               getAppBarTile('Your Orders', context),
+              const SizedBox(height: 20),
               Expanded(child: _orderList(_ordersList)),
             ],
           ),

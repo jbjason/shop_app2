@@ -18,7 +18,7 @@ class _OrderSingleItemState extends State<OrderSingleItem> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       height:
-          _expanded ? min(widget.order.products.length * 25.0 + 110, 230) : 95,
+          _expanded ? min(widget.order.products.length * 25.0 + 110, 230) : 80,
       child: Material(
         child: Column(
           children: [
