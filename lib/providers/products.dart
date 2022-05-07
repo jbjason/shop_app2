@@ -47,7 +47,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: DateTime.april.toString(),
-      title: 'Red Shirt',
+      title: 'Windows',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
       imageUrl: imageList1,
@@ -57,7 +57,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: DateTime.may.toString(),
-      title: 'Trowser',
+      title: 'Windows 7',
       description: detailString,
       price: 20.45,
       imageUrl: imageList2,
@@ -67,7 +67,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: DateTime.june.toString(),
-      title: 'Yellow Scarf',
+      title: 'Windows 10',
       description: detailString,
       price: 20.45,
       imageUrl: imageList3,
@@ -77,7 +77,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: DateTime.july.toString(),
-      title: 'A Pan',
+      title: 'Windows 8',
       description: detailString,
       price: 20.45,
       imageUrl: imageList4,

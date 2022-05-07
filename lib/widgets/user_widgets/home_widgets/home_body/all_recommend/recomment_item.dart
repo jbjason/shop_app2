@@ -46,14 +46,11 @@ class RecommendItem extends StatelessWidget {
                   MediaQuery.of(context).size.height.toString()
                 ]);
           },
-          child: Hero(
-            tag: product.id,
-            child: FadeInImage(
-              placeholder: const AssetImage('assets/placeholder.png'),
-              image: NetworkImage(product.imageUrl[0]),
-              width: 120.0,
-              fit: BoxFit.contain,
-            ),
+          child: FadeInImage(
+            placeholder: const AssetImage('assets/placeholder.png'),
+            image: NetworkImage(product.imageUrl[0]),
+            width: 120.0,
+            fit: BoxFit.contain,
           ),
         ),
       ),

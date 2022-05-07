@@ -40,7 +40,7 @@ class _ImagesPreviewState extends State<ImagesPreview> {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: widget.product.id,
+      tag: widget.product.id + widget.product.title,
       child: ClipRect(
         child: Padding(
           padding: EdgeInsets.only(

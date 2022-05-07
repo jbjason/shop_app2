@@ -44,7 +44,8 @@ class WelcomeBottomContainer extends StatelessWidget {
                     Navigator.of(context).pushNamed(AdminPanelScreen.routeName),
                 child: Row(
                   children: const [
-                    Icon(Icons.arrow_back_outlined, size: 30),
+                    Icon(Icons.arrow_back_outlined,
+                        color: AppColors.textHighlight, size: 30),
                     Text(
                       'Login ',
                       style: TextStyle(
@@ -66,8 +67,7 @@ class WelcomeBottomContainer extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                             color: AppColors.textHighlight)),
-                    Icon(Icons.arrow_forward_outlined,
-                        color: AppColors.textHighlight, size: 30)
+                    Icon(Icons.arrow_forward_outlined, size: 30)
                   ],
                 ),
               )
