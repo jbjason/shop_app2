@@ -38,6 +38,7 @@ class _AuthFormState extends State<AuthForm> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.isError) setState(() => _animation = 'fail');
     return Center(
       child: Container(
         margin: const EdgeInsets.only(left: 20, right: 20),
@@ -65,7 +66,6 @@ class _AuthFormState extends State<AuthForm> {
           callback: (_) => setState(() => _animation = 'idle'),
         ),
       );
-
   Widget _textFieldForm(BuildContext context) => Form(
         key: _formKey,
         child: Container(
@@ -90,7 +90,7 @@ class _AuthFormState extends State<AuthForm> {
     return TextFormField(
       focusNode: _emailNode,
       key: const ValueKey('email'),
-      decoration: const InputDecoration(labelText: 'Email Address'),
+      decoration: const InputDecoration(labelText: 'Email'),
       keyboardType: TextInputType.emailAddress,
       onSaved: (value) => _userEmail = value!,
       validator: (value) {
@@ -178,9 +178,6 @@ class _AuthFormState extends State<AuthForm> {
   @override
   void initState() {
     super.initState();
-    if (widget.isError) {
-      setState(() => _animation = 'fail');
-    }
     _emailNode.addListener(() => _listener(_emailNode, 'test', 'idle'));
     _userNameNode.addListener(() => _listener(_userNameNode, 'test', 'idle'));
     _passwordNode

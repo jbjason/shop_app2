@@ -48,6 +48,10 @@ class _AuthScreenState extends State<AuthScreen> {
         Navigator.of(ctx).pushNamed(HomeScreen.routeName);
       }
     } on PlatformException catch (err) {
+      setState(() {
+        _isLoading = false;
+        _isError = true;
+      });
       if (err.message != null) {
         message = err.message!;
       }
@@ -55,19 +59,15 @@ class _AuthScreenState extends State<AuthScreen> {
         SnackBar(
             content: Text(message), backgroundColor: Theme.of(ctx).errorColor),
       );
+    } catch (e) {
       setState(() {
         _isLoading = false;
         _isError = true;
       });
-    } catch (e) {
       ScaffoldMessenger.of(ctx).showSnackBar(
         SnackBar(
             content: Text(message), backgroundColor: Theme.of(ctx).errorColor),
       );
-      setState(() {
-        _isLoading = false;
-        _isError = true;
-      });
     }
   }
 }
