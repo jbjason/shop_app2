@@ -21,20 +21,14 @@ class _AuthFormState extends State<AuthForm> {
   final FocusNode _passwordNode = FocusNode();
   String _animation = 'idle';
 
-  @override
-  void initState() {
-    super.initState();
-    _emailNode.addListener(() => _listener(_emailNode, 'test', 'idle'));
-    _userNameNode.addListener(() => _listener(_userNameNode, 'test', 'idle'));
-    _passwordNode
-        .addListener(() => _listener(_passwordNode, 'hands_up', 'hands_down'));
-  }
-
-  void _listener(FocusNode f, String s1, String s2) {
-    if (f.hasFocus) {
-      setState(() => _animation = s1);
-    } else {
-      setState(() => _animation = s2);
+  void _trySubmit(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      FocusScope.of(context).unfocus();
+      _formKey.currentState!.save();
+      setState(() => _animation = 'success');
+      Future.delayed(const Duration(milliseconds: 1500));
+      widget.submitFn(_userEmail.trim(), _userPassword.trim(), _userName.trim(),
+          _isLogin, context);
     }
   }
 
@@ -88,39 +82,13 @@ class _AuthFormState extends State<AuthForm> {
         ),
       );
 
-  void _trySubmit(BuildContext context) async {
-    if (_formKey.currentState!.validate()) {
-      FocusScope.of(context).unfocus();
-      await Future.delayed(const Duration(milliseconds: 500));
-      _formKey.currentState!.save();
-      if (_userEmail.trim() == 'jb' &&
-          _userPassword.trim() == 'jason' &&
-          _userName == '') {
-        setState(() => _animation = 'success');
-      } else {
-        setState(() => _animation = 'fail');
-      }
-      //   _formKey.currentState!.save();
-      //   widget.submitFn(
-      //   _userEmail.trim(),
-      //   _userPassword.trim(),
-      //   _userName.trim(),
-      //   _isLogin,
-      //   context,
-      // );
-
-    }
-  }
-
   Widget _emailTextField() {
     return TextFormField(
       focusNode: _emailNode,
       key: const ValueKey('email'),
       decoration: const InputDecoration(labelText: 'Email Address'),
       keyboardType: TextInputType.emailAddress,
-      onSaved: (value) {
-        _userEmail = value!;
-      },
+      onSaved: (value) => _userEmail = value!,
       validator: (value) {
         if (value!.isEmpty || !value.contains('@')) {
           return 'Please enter a valid email address';
@@ -135,9 +103,7 @@ class _AuthFormState extends State<AuthForm> {
       focusNode: _userNameNode,
       key: const ValueKey('username'),
       decoration: const InputDecoration(labelText: 'Username'),
-      onSaved: (value) {
-        _userName = value!;
-      },
+      onSaved: (value) => _userName = value!,
       validator: (value) {
         if (value!.isEmpty) {
           return 'Please enter atleast 4 characters';
@@ -154,9 +120,7 @@ class _AuthFormState extends State<AuthForm> {
       decoration: const InputDecoration(labelText: 'Password'),
       style: const TextStyle(color: Colors.white),
       obscureText: true,
-      onSaved: (value) {
-        _userPassword = value!;
-      },
+      onSaved: (value) => _userPassword = value!,
       validator: (value) {
         if (value!.isEmpty || value.length <= 5) {
           return 'Please enter atleast 4 characters';
@@ -205,6 +169,26 @@ class _AuthFormState extends State<AuthForm> {
           )
       ],
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.isLoading) {
+      setState(() => _animation = 'idle');
+    }
+    _emailNode.addListener(() => _listener(_emailNode, 'test', 'idle'));
+    _userNameNode.addListener(() => _listener(_userNameNode, 'test', 'idle'));
+    _passwordNode
+        .addListener(() => _listener(_passwordNode, 'hands_up', 'hands_down'));
+  }
+
+  void _listener(FocusNode f, String s1, String s2) {
+    if (f.hasFocus) {
+      setState(() => _animation = s1);
+    } else {
+      setState(() => _animation = s2);
+    }
   }
 
   final _decoration = BoxDecoration(
