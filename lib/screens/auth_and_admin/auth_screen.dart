@@ -15,15 +15,14 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  bool _isLoading = false, _isError = false;
+  bool _isLoading = false;
   final _auth = FirebaseAuth.instance;
   String message = 'An error occured, please check ur credentials';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AuthForm(
-          submitFn: _submitAuthForm, isLoading: _isLoading, isError: _isError),
+      body: AuthForm(submitFn: _submitAuthForm, isLoading: _isLoading),
     );
   }
 
@@ -59,15 +58,10 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   void setErrorMessage(BuildContext ctx) {
-    setState(() {
-      _isLoading = false;
-      _isError = true;
-    });
+    setState(() => _isLoading = false);
     ScaffoldMessenger.of(ctx).showSnackBar(
       SnackBar(
           content: Text(message), backgroundColor: Theme.of(ctx).errorColor),
     );
-    Future.delayed(const Duration(seconds: 1))
-        .then((value) => setState(() => _isError = false));
   }
 }

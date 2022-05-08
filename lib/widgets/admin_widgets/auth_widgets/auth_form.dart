@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
 class AuthForm extends StatefulWidget {
-  const AuthForm(
-      {Key? key,
-      required this.submitFn,
-      required this.isLoading,
-      required this.isError})
+  const AuthForm({Key? key, required this.submitFn, required this.isLoading})
       : super(key: key);
-  final bool isLoading, isError;
+  final bool isLoading;
   final Function(String email, String password, String userName, bool isLogin,
       BuildContext ctx) submitFn;
 
