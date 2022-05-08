@@ -152,44 +152,29 @@ class Products with ChangeNotifier {
         "https://shop-2-5c421-default-rtdb.asia-southeast1.firebasedatabase.app/products.json");
     try {
       final response = await http.get(url);
-      final data = json.decode(response.body);
-      if (data == null) {
-        print('no enter');
-      } else {
-        final extractedData = data as Map<String, dynamic>;
-        final List<Product> loadedProducts = [];
+      final _data = json.decode(response.body);
+      if (_data != null) {
+        final extractedData = _data as Map<String, dynamic>;
         extractedData.forEach((proId, prodData) {
-          loadedProducts.add(
-            Product(
-              id: proId,
-              title: prodData['title'],
-              description: prodData['description'],
-              price: prodData['price'],
-              category: prodData['category'],
-              imageUrl: (prodData['imageUrl'] as List<dynamic>)
-                  .map((e) => e['imageUrl1'].toString())
-                  .toList(),
-              size: (prodData['size'] as List<dynamic>)
-                  .map((e) => e['size1'].toString())
-                  .toList(),
-              color: (prodData['color'] as List<dynamic>)
-                  .map((e) => Color(int.parse(e['color1'])))
-                  .toList(),
-            ),
-          );
+          _items.add(Product(
+            id: proId,
+            title: prodData['title'],
+            description: prodData['description'],
+            price: prodData['price'],
+            category: prodData['category'],
+            imageUrl: (prodData['imageUrl'] as List<dynamic>)
+                .map((e) => e['imageUrl1'].toString())
+                .toList(),
+            size: (prodData['size'] as List<dynamic>)
+                .map((e) => e['size1'].toString())
+                .toList(),
+            color: (prodData['color'] as List<dynamic>)
+                .map((e) => Color(int.parse(e['color1'])))
+                .toList(),
+          ));
         });
+        notifyListeners();
       }
-
-      // Map<String, dynamic> f = {};
-      // if (extractedData == null) {
-
-      // } else {
-      //   print('jason');
-      //   f = extractedData;
-      // }
-
-      // if (f.isEmpty) return;
-
     } catch (e) {
       print(e);
     }
