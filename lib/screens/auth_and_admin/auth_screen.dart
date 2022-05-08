@@ -40,6 +40,8 @@ class _AuthScreenState extends State<AuthScreen> {
       // setting userInfo & navigating to another page
       Provider.of<Category>(ctx, listen: false)
           .setUsersInfo(email, _authResult.user!.uid);
+      print(_authResult.user!.uid);
+      print(email);
       if (email.contains('30jb40')) {
         Navigator.of(ctx).pushNamed(AdminPanelScreen.routeName);
       } else {
