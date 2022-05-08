@@ -13,6 +13,8 @@ environment:
 dependencies:
   confetti: ^0.6.0
   cupertino_icons: ^1.0.2
+  firebase_auth: ^3.3.17
+  firebase_core: ^1.16.0
   flare_flutter: ^3.0.2
   flutter:
     sdk: flutter

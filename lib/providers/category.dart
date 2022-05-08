@@ -34,4 +34,12 @@ class Category with ChangeNotifier {
   }
 
   void updateSortedList(int i) => _isSet = i;
+
+  String userEmail = '', userId = '';
+
+  void setUsersInfo(String email, String id) {
+    userEmail = email;
+    userId = id;
+    notifyListeners();
+  }
 }
