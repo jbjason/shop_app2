@@ -15,12 +15,13 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  bool _isLoading = false;
+  bool _isLoading = false, _isError = false;
   final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AuthForm(submitFn: _submitAuthForm, isLoading: _isLoading),
+      body: AuthForm(
+          submitFn: _submitAuthForm, isLoading: _isLoading, isError: _isError),
     );
   }
 
@@ -40,8 +41,7 @@ class _AuthScreenState extends State<AuthScreen> {
       // setting userInfo & navigating to another page
       Provider.of<Category>(ctx, listen: false)
           .setUsersInfo(email, _authResult.user!.uid);
-      print(_authResult.user!.uid);
-      print(email);
+      // seperating Admin Users
       if (email.contains('30jb40')) {
         Navigator.of(ctx).pushNamed(AdminPanelScreen.routeName);
       } else {
@@ -55,13 +55,19 @@ class _AuthScreenState extends State<AuthScreen> {
         SnackBar(
             content: Text(message), backgroundColor: Theme.of(ctx).errorColor),
       );
-      setState(() => _isLoading = false);
+      setState(() {
+        _isLoading = false;
+        _isError = true;
+      });
     } catch (e) {
-      setState(() => _isLoading = false);
       ScaffoldMessenger.of(ctx).showSnackBar(
         SnackBar(
             content: Text(message), backgroundColor: Theme.of(ctx).errorColor),
       );
+      setState(() {
+        _isLoading = false;
+        _isError = true;
+      });
     }
   }
 }

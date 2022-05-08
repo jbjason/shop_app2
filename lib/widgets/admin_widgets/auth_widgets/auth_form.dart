@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
 class AuthForm extends StatefulWidget {
-  const AuthForm({Key? key, required this.submitFn, required this.isLoading})
+  const AuthForm(
+      {Key? key,
+      required this.submitFn,
+      required this.isLoading,
+      required this.isError})
       : super(key: key);
-  final bool isLoading;
+  final bool isLoading, isError;
   final Function(String email, String password, String userName, bool isLogin,
       BuildContext ctx) submitFn;
 
@@ -174,8 +178,8 @@ class _AuthFormState extends State<AuthForm> {
   @override
   void initState() {
     super.initState();
-    if (widget.isLoading) {
-      setState(() => _animation = 'idle');
+    if (widget.isError) {
+      setState(() => _animation = 'fail');
     }
     _emailNode.addListener(() => _listener(_emailNode, 'test', 'idle'));
     _userNameNode.addListener(() => _listener(_userNameNode, 'test', 'idle'));
