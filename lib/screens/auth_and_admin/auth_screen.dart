@@ -17,6 +17,8 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   bool _isLoading = false, _isError = false;
   final _auth = FirebaseAuth.instance;
+  String message = 'An error occured, please check ur credentials';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +29,6 @@ class _AuthScreenState extends State<AuthScreen> {
 
   void _submitAuthForm(String email, String password, String userName,
       bool isLogin, BuildContext ctx) async {
-    String message = 'An error occured, please check ur credentials';
     UserCredential _authResult;
     setState(() => _isLoading = true);
     try {
@@ -48,26 +49,25 @@ class _AuthScreenState extends State<AuthScreen> {
         Navigator.of(ctx).pushNamed(HomeScreen.routeName);
       }
     } on PlatformException catch (err) {
-      setState(() {
-        _isLoading = false;
-        _isError = true;
-      });
       if (err.message != null) {
         message = err.message!;
       }
-      ScaffoldMessenger.of(ctx).showSnackBar(
-        SnackBar(
-            content: Text(message), backgroundColor: Theme.of(ctx).errorColor),
-      );
+      setErrorMessage(ctx);
     } catch (e) {
-      setState(() {
-        _isLoading = false;
-        _isError = true;
-      });
-      ScaffoldMessenger.of(ctx).showSnackBar(
-        SnackBar(
-            content: Text(message), backgroundColor: Theme.of(ctx).errorColor),
-      );
+      setErrorMessage(ctx);
     }
+  }
+
+  void setErrorMessage(BuildContext ctx) {
+    setState(() {
+      _isLoading = false;
+      _isError = true;
+    });
+    ScaffoldMessenger.of(ctx).showSnackBar(
+      SnackBar(
+          content: Text(message), backgroundColor: Theme.of(ctx).errorColor),
+    );
+    Future.delayed(const Duration(seconds: 1))
+        .then((value) => setState(() => _isError = false));
   }
 }

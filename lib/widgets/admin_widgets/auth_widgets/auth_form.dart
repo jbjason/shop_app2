@@ -30,7 +30,6 @@ class _AuthFormState extends State<AuthForm> {
       FocusScope.of(context).unfocus();
       _formKey.currentState!.save();
       setState(() => _animation = 'success');
-      Future.delayed(const Duration(milliseconds: 1500));
       widget.submitFn(_userEmail.trim(), _userPassword.trim(), _userName.trim(),
           _isLogin, context);
     }
@@ -38,7 +37,6 @@ class _AuthFormState extends State<AuthForm> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.isError) setState(() => _animation = 'fail');
     return Center(
       child: Container(
         margin: const EdgeInsets.only(left: 20, right: 20),
