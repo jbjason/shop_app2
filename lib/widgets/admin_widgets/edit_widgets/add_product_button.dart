@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 
 class AddProductButton extends StatelessWidget {
-  const AddProductButton({Key? key, required this.submit, required this.isEdit})
+  const AddProductButton(
+      {Key? key,
+      required this.isLoading,
+      required this.submit,
+      required this.isEdit})
       : super(key: key);
   final Function(BuildContext ctx) submit;
   final String isEdit;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +25,11 @@ class AddProductButton extends StatelessWidget {
           color: Colors.grey[300],
         ),
         alignment: Alignment.center,
-        child: Text(isEdit.isEmpty ? 'Add Product' : 'Update Product',
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        child: isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Text(isEdit.isEmpty ? 'Add Product' : 'Update Product',
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
       ),
     );
   }

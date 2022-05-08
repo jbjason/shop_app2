@@ -50,49 +50,44 @@ class _EditBodyState extends State<EditBody> {
 
   @override
   Widget build(BuildContext context) {
-    return !_isLoading
-        ? Form(
-            key: _form,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  getAppBarTile('Edit Products', context),
-                  const SizedBox(height: 20),
-                  EditTextFields(
-                      controller: _titleController, lines: 1, text: 'Title'),
-                  EditTextFields(
-                      controller: _categoryController,
-                      lines: 1,
-                      text: 'Category'),
-                  EditTextFields(
-                      controller: _priceController, lines: 1, text: 'Price'),
-                  EditTextFields(
-                      controller: _detailsController,
-                      lines: 3,
-                      text: 'Details'),
-                  EditSizeField(
-                      controller: _sizeController,
-                      addSize: addSize,
-                      deleteSize: deleteSize,
-                      sizeList: _sizeList),
-                  EditColorField(
-                      allColors: _allColors,
-                      colorList: _colorList,
-                      deleteColor: deleteColor,
-                      addColor: addColor),
-                  EditImageFields(
-                      controller: _imageController,
-                      addImage: addImage,
-                      deleteImage: deleteImage,
-                      imagesList: _imagesList),
-                  const SizedBox(height: 40),
-                  AddProductButton(submit: submit, isEdit: widget.isEdit),
-                  const SizedBox(height: 20),
-                ],
-              ),
-            ),
-          )
-        : const Center(child: CircularProgressIndicator());
+    return Form(
+      key: _form,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            getAppBarTile('Edit Products', context),
+            const SizedBox(height: 20),
+            EditTextFields(
+                controller: _titleController, lines: 1, text: 'Title'),
+            EditTextFields(
+                controller: _categoryController, lines: 1, text: 'Category'),
+            EditTextFields(
+                controller: _priceController, lines: 1, text: 'Price'),
+            EditTextFields(
+                controller: _detailsController, lines: 3, text: 'Details'),
+            EditSizeField(
+                controller: _sizeController,
+                addSize: addSize,
+                deleteSize: deleteSize,
+                sizeList: _sizeList),
+            EditColorField(
+                allColors: _allColors,
+                colorList: _colorList,
+                deleteColor: deleteColor,
+                addColor: addColor),
+            EditImageFields(
+                controller: _imageController,
+                addImage: addImage,
+                deleteImage: deleteImage,
+                imagesList: _imagesList),
+            const SizedBox(height: 40),
+            AddProductButton(
+                submit: submit, isEdit: widget.isEdit, isLoading: _isLoading),
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
+    );
   }
 
   void submit(BuildContext context) async {
@@ -105,7 +100,7 @@ class _EditBodyState extends State<EditBody> {
     }
     _form.currentState!.save();
     setState(() => _isLoading = true);
-    //
+    // managing the product
     final f = Product(
         id: widget.isEdit.isEmpty ? DateTime.now().toString() : widget.isEdit,
         title: _titleController.text.trim(),
@@ -120,7 +115,6 @@ class _EditBodyState extends State<EditBody> {
     } else {
       Provider.of<Products>(context, listen: false).updateProduct(f);
     }
-    setState(() => _isLoading = false);
     Navigator.pop(context);
   }
 
