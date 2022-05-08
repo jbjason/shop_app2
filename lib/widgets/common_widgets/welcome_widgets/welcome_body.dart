@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_2.dart';
+import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_body1.dart';
 import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_body2.dart';
 import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_bottom_container.dart';
@@ -12,6 +14,16 @@ class WelcomeBody extends StatefulWidget {
 
 class _WelcomeBodyState extends State<WelcomeBody> {
   int _isSelected = 0;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    Provider.of<Products>(context, listen: false)
+        .fetchProducts()
+        .then((_) => setState(() => _isLoading = false));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -26,7 +38,8 @@ class _WelcomeBodyState extends State<WelcomeBody> {
           bottom: 0,
           left: 0,
           right: 0,
-          child: WelcomeBottomContainer(isSelected: _isSelected),
+          child: WelcomeBottomContainer(
+              isSelected: _isSelected, isLoading: _isLoading),
         ),
       ],
     );

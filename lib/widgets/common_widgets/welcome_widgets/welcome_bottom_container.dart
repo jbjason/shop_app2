@@ -4,11 +4,10 @@ import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
 import 'package:shop_app2/screens/users_screen/home_screen.dart';
 
 class WelcomeBottomContainer extends StatelessWidget {
-  const WelcomeBottomContainer({
-    Key? key,
-    required this.isSelected,
-  }) : super(key: key);
-
+  const WelcomeBottomContainer(
+      {Key? key, required this.isSelected, required this.isLoading})
+      : super(key: key);
+  final bool isLoading;
   final int isSelected;
 
   @override
@@ -35,44 +34,46 @@ class WelcomeBottomContainer extends StatelessWidget {
             Colors.white.withOpacity(0.3),
             Colors.white.withOpacity(0.5),
           ])),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Login button
-              InkWell(
-                onTap: () =>
-                    Navigator.of(context).pushNamed(AdminPanelScreen.routeName),
-                child: Row(
-                  children: const [
-                    Icon(Icons.arrow_back_outlined,
-                        color: AppColors.textHighlight, size: 30),
-                    Text(
-                      'Login ',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: AppColors.textHighlight),
+          child: isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Login button
+                    InkWell(
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(AdminPanelScreen.routeName),
+                      child: Row(
+                        children: const [
+                          Icon(Icons.arrow_back_outlined,
+                              color: AppColors.textHighlight, size: 30),
+                          Text(
+                            'Login ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: AppColors.textHighlight),
+                          ),
+                        ],
+                      ),
                     ),
+                    // continue button
+                    InkWell(
+                      onTap: () =>
+                          Navigator.of(context).pushNamed(HomeScreen.routeName),
+                      child: Row(
+                        children: const [
+                          Text('Continue ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: AppColors.textHighlight)),
+                          Icon(Icons.arrow_forward_outlined, size: 30)
+                        ],
+                      ),
+                    )
                   ],
                 ),
-              ),
-              // continue button
-              InkWell(
-                onTap: () =>
-                    Navigator.of(context).pushNamed(HomeScreen.routeName),
-                child: Row(
-                  children: const [
-                    Text('Continue ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: AppColors.textHighlight)),
-                    Icon(Icons.arrow_forward_outlined, size: 30)
-                  ],
-                ),
-              )
-            ],
-          ),
         )
       : Container();
 

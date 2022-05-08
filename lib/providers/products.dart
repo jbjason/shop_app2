@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/constants_2.dart';
@@ -146,5 +145,45 @@ class Products with ChangeNotifier {
         _items.indexWhere((element) => element.id == newProduct.id);
     _items[prodIndex] = newProduct;
     notifyListeners();
+  }
+
+  Future<void> fetchProducts() async {
+    final url = Uri.parse(
+        "https://shop-2-5c421-default-rtdb.asia-southeast1.firebasedatabase.app/products.json");
+    try {
+      final response = await http.get(url);
+      print(json.decode(response.body));
+      final extractedData = json.decode(response.body) as Map<String, dynamic>;
+
+      if (extractedData == null) return;
+      final List<Product> loadedProducts = [];
+      extractedData.forEach((proId, prodData) {
+        loadedProducts.add(
+          Product(
+            id: proId,
+            title: prodData['title'],
+            description: prodData['description'],
+            price: prodData['price'],
+            category: prodData['category'],
+            imageUrl: (prodData['imageUrl'] as List<dynamic>)
+                .map((e) => e['imageUrl1'].toString())
+                .toList(),
+            size: (prodData['size'] as List<dynamic>)
+                .map((e) => e['size1'].toString())
+                .toList(),
+            color: (prodData['color'] as List<dynamic>)
+                .map((e) => Color(int.parse(e['color1'])))
+                .toList(),
+          ),
+        );
+      });
+      print(loadedProducts[0].id);
+      print(loadedProducts[0].title);
+      print(loadedProducts[0].category);
+      print(loadedProducts[0].size[0]);
+      print('jb');
+    } catch (e) {
+      print(e);
+    }
   }
 }
