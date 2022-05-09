@@ -125,8 +125,8 @@ class _AuthFormState extends State<AuthForm> {
       obscureText: true,
       onSaved: (value) => _userPassword = value!,
       validator: (value) {
-        if (value!.isEmpty || value.length <= 5) {
-          return 'Please enter atleast 4 characters';
+        if (value!.isEmpty || value.length <= 7) {
+          return 'Please enter atleast 7 characters';
         }
         return null;
       },
