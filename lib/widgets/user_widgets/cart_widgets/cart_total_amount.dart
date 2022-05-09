@@ -50,7 +50,7 @@ class CartTotalAmount extends StatelessWidget {
     return TextButton(
       onPressed: () {
         final _user = FirebaseAuth.instance.currentUser;
-        if (_user != null) {
+        if (_user == null) {
           Navigator.of(context)
               .pushNamed(AuthScreen.routeName, arguments: 'cart');
         } else {
