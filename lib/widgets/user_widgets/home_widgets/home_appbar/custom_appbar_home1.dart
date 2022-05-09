@@ -1,7 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/theme.dart';
-import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/screens/users_screen/offers_screen.dart';
 
 class CustomAppBarHome1 extends StatelessWidget {
@@ -45,7 +44,7 @@ class CustomAppBarHome1 extends StatelessWidget {
             ],
             onChanged: (val) {
               if (val == 'Lougout') {
-                Provider.of<Category>(context, listen: false).logOut();
+                FirebaseAuth.instance.signOut();
               }
             },
           ),
