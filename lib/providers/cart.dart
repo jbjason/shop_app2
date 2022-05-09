@@ -5,16 +5,16 @@ class CartItem {
   final String id, title, imageUrl;
   int quantity;
   final double price;
-  List<Color> colors;
-  List<String> sizes;
+  Color color;
+  String size;
   CartItem({
     required this.id,
     required this.title,
     required this.quantity,
     required this.price,
     required this.imageUrl,
-    required this.colors,
-    required this.sizes,
+    required this.color,
+    required this.size,
   });
 }
 
@@ -55,17 +55,16 @@ class Cart with ChangeNotifier {
           title: product.title,
           imageUrl: product.imageUrl[0],
           price: product.price,
-          colors: _colors,
-          sizes: _sizes,
+          color: _colors[0],
+          size: _sizes[0],
           quantity: 1,
         ),
       );
       notifyListeners();
       return 'Added item to Cart!';
-    }else{
+    } else {
       return 'Item already in Cart !';
     }
-    
   }
 
   void update(CartItem cart, String s) {

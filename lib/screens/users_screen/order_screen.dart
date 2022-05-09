@@ -10,7 +10,7 @@ class OrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _ordersList = Provider.of<Orders>(context).orders;
+    final _userId = ModalRoute.of(context)!.settings.arguments as String;
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -22,13 +22,33 @@ class OrderScreen extends StatelessWidget {
             children: [
               getAppBarTile('Your Orders', context),
               const SizedBox(height: 20),
-              Expanded(child: _orderList(_ordersList)),
+              Expanded(child: _orderBody(context, _userId)),
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget _orderBody(BuildContext context, String userId) => FutureBuilder(
+        future: Provider.of<Orders>(context, listen: false)
+            .fetchAndSetOrders(userId),
+        builder: (ctx, dataSnapshot) {
+          if (dataSnapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            // if an error occurs
+            if (dataSnapshot.error != null) {
+              return const Center(child: Text('An error occured'));
+            } else {
+              return Consumer<Orders>(
+                builder: (ctx, orderData, child) =>
+                    _orderList(orderData.orders),
+              );
+            }
+          }
+        },
+      );
 
   Widget _orderList(List<OrderItem> ordersList) {
     return ordersList.isNotEmpty

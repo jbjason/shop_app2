@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
 import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
@@ -20,7 +21,13 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.shop),
             title: const Text('My Orders'),
-            onTap: () => Navigator.of(context).pushNamed(OrderScreen.routeName),
+            onTap: () {
+              if (FirebaseAuth.instance.currentUser != null) {
+                Navigator.of(context).pushNamed(OrderScreen.routeName);
+              } else {
+                Navigator.of(context).pushNamed(AuthScreen.routeName);
+              }
+            },
           ),
           const Divider(),
           ListTile(

@@ -75,11 +75,11 @@ class CartSingleItem extends StatelessWidget {
             height: 13,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: item.colors[0],
+              color: item.color,
             ),
           ),
           const SizedBox(width: 10),
-          Text(item.sizes[0]),
+          Text(item.size),
         ],
       ),
       trailing: Column(
@@ -119,6 +119,5 @@ class CartSingleItem extends StatelessWidget {
     borderRadius: const BorderRadius.vertical(
         top: Radius.circular(35), bottom: Radius.circular(14)),
     boxShadow: getShadowBox(Colors.grey[500]!, Colors.white),
-    
   );
 }
