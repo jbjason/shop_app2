@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
+import 'package:shop_app2/screens/users_screen/home_screen.dart';
 import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_form.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -43,6 +44,8 @@ class _AuthScreenState extends State<AuthScreen> {
       Provider.of<Category>(context, listen: false).setUserId(_user.user!.uid);
       if (email.contains('30jb40') && pageKey == 'admin') {
         Navigator.of(ctx).pushNamed(AdminPanelScreen.routeName);
+      } else if (pageKey == 'admin') {
+        Navigator.of(context).pushNamed(HomeScreen.routeName);
       } else {
         Navigator.pop(ctx);
       }
