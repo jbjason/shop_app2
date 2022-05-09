@@ -41,14 +41,14 @@ class WelcomeBottomContainer extends StatelessWidget {
                   children: [
                     // Login button
                     InkWell(
-                      onTap: () =>
-                          Navigator.of(context).pushNamed(AuthScreen.routeName),
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(AuthScreen.routeName, arguments: 'admin'),
                       child: Row(
                         children: const [
                           Icon(Icons.arrow_back_outlined,
                               color: AppColors.textHighlight, size: 30),
                           Text(
-                            'Login ',
+                            'Admin ',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,

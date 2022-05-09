@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
 class AuthForm extends StatefulWidget {
-  const AuthForm({Key? key, required this.submitFn, required this.isLoading})
+  const AuthForm(
+      {Key? key,
+      required this.submitFn,
+      required this.isLoading,
+      required this.pageKey})
       : super(key: key);
   final bool isLoading;
+  final String pageKey;
   final Function(String email, String password, String userName, bool isLogin,
-      BuildContext ctx) submitFn;
+      BuildContext ctx, String key) submitFn;
 
   @override
   _AuthFormState createState() => _AuthFormState();
@@ -27,7 +32,7 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState!.save();
       setState(() => _animation = 'success');
       widget.submitFn(_userEmail.trim(), _userPassword.trim(), _userName.trim(),
-          _isLogin, context);
+          _isLogin, context, widget.pageKey);
     }
   }
 

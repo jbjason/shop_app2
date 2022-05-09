@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
@@ -19,7 +20,7 @@ class ConfirmScreen extends StatefulWidget {
 }
 
 class _ConfirmScreenState extends State<ConfirmScreen> {
-  int value = 0;
+  bool _isLoading = false;
   final _form = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _contactController = TextEditingController();
@@ -36,14 +37,16 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
           padding: const EdgeInsets.all(20.0),
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/cart_.png'),
-                  fit: BoxFit.contain)),
+                  image: AssetImage('assets/cart_.png'), fit: BoxFit.contain)),
           child: Column(
             children: [
               getAppBarTile('Your Details', context),
               const SizedBox(height: 20),
               _textFields(),
-              ConfirmButton(width: size.width, submitFunction: submitFunction),
+              ConfirmButton(
+                  width: size.width,
+                  submitFunction: submitFunction,
+                  isLoading: _isLoading),
             ],
           ),
         ),
@@ -70,20 +73,32 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     );
   }
 
-  void submitFunction() {
+  void submitFunction() async {
     FocusManager.instance.primaryFocus?.unfocus();
     if (!_form.currentState!.validate()) return;
     _form.currentState!.save();
+    setState(() => _isLoading = true);
     _name = _nameController.text.trim();
     _email = _emailController.text.trim();
     _contact = _contactController.text.trim();
     _address = _addressController.text.trim();
     final cartItems = Provider.of<Cart>(context, listen: false);
     final total = cartItems.totalAmount;
-    Provider.of<Orders>(context, listen: false)
-        .addOrder(cartItems.items, total);
-    Navigator.of(context).pushNamed(ThanksScreen.routeName,
-        arguments: [_name, _email, _contact, _address, total.toString()]);
+    try {
+      final _id = FirebaseAuth.instance.currentUser!.uid;
+      await Provider.of<Orders>(context, listen: false)
+          .addOrder(cartItems.items, total, _id);
+      Navigator.of(context).pushNamed(ThanksScreen.routeName, arguments: [
+        _name,
+        _email,
+        _contact,
+        _address,
+        total.toString(),
+        _id
+      ]);
+    } catch (e) {
+      setState(() => _isLoading = true);
+    }
   }
 
   @override

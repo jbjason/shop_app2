@@ -40,7 +40,8 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.payment),
             title: const Text('Auth Screen'),
-            onTap: () => Navigator.of(context).pushNamed(AuthScreen.routeName),
+            onTap: () => Navigator.of(context)
+                .pushNamed(AuthScreen.routeName, arguments: 'home'),
           ),
           const Divider(),
           ListTile(

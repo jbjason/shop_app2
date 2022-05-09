@@ -39,12 +39,13 @@ class _ThanksScreenState extends State<ThanksScreen> {
     final f = ModalRoute.of(context)!.settings.arguments as List<String>;
     final String name = f[0], email = f[1], contact = f[2], address = f[3];
     final double finalAmount = double.parse(f[4]);
+    final String orderId = f[5];
     return Padding(
       padding: const EdgeInsets.all(6),
       child: Column(
         children: [
           InvoiceAndUserInfo(
-              orderId: '12345678',
+              orderId: orderId,
               size: size,
               name: name,
               email: email,
@@ -67,7 +68,8 @@ class _ThanksScreenState extends State<ThanksScreen> {
         child: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/background.png'), fit: BoxFit.cover)),
+                  image: AssetImage('assets/background.png'),
+                  fit: BoxFit.cover)),
         ),
       );
   Widget _conflettiAnimation() => Align(

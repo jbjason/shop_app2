@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/theme.dart';
+import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/screens/users_screen/offers_screen.dart';
 
 class CustomAppBarHome1 extends StatelessWidget {
@@ -16,20 +18,39 @@ class CustomAppBarHome1 extends StatelessWidget {
   }
 
   Widget _topButtons(BuildContext context) => Positioned(
-        top: MediaQuery.of(context).padding.top + 10,
-        left: 12,
-        right: 9,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // drawer open button
-            InkWell(
-                onTap: () => Scaffold.of(context).openDrawer(),
-                child: const Icon(Icons.read_more_sharp, color: Colors.white)),
-            const Icon(Icons.more_vert, color: Colors.white)
-          ],
-        ),
-      );
+      top: MediaQuery.of(context).padding.top + 10,
+      left: 0,
+      right: 0,
+      child: AppBar(
+        elevation: 4,
+        backgroundColor: Colors.transparent,
+        leading: InkWell(
+            onTap: () => Scaffold.of(context).openDrawer(),
+            child: const Icon(Icons.read_more_sharp, color: Colors.white)),
+        actions: [
+          DropdownButton(
+            icon: const Icon(Icons.more_vert, color: Colors.white),
+            items: [
+              DropdownMenuItem(
+                child: SizedBox(
+                    child: Row(
+                  children: const [
+                    Icon(Icons.exit_to_app_sharp),
+                    SizedBox(width: 8),
+                    Text('Logout'),
+                  ],
+                )),
+                value: 'Logout',
+              )
+            ],
+            onChanged: (val) {
+              if (val == 'Lougout') {
+                Provider.of<Category>(context, listen: false).logOut();
+              }
+            },
+          ),
+        ],
+      ));
 
   Widget _seeTextButton(BuildContext context) => Positioned(
         bottom: 10,
