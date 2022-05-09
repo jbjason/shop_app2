@@ -15,16 +15,23 @@ class FavoriteButtons extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(left: 80),
-      decoration: BoxDecoration(
-          color: AppColors.accent.withOpacity(0.4),
-          borderRadius: const BorderRadius.only(
+      decoration: const BoxDecoration(
+          color: AppColors.accent,
+          borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50), bottomRight: Radius.circular(50))),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          HeartButton(product: product),
-          _cartButton(context),
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+            color: AppColors.accent.withOpacity(0.4),
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(60),
+                bottomRight: Radius.circular(60))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            HeartButton(product: product),
+            _cartButton(context),
+          ],
+        ),
       ),
     );
   }
@@ -38,6 +45,5 @@ class FavoriteButtons extends StatelessWidget {
           ..showSnackBar(
               SnackBar(content: Text(s), duration: const Duration(seconds: 1)));
       },
-      child:
-          buttonBackGround(const Icon(CupertinoIcons.cart_fill)));
+      child: buttonBackGround(const Icon(CupertinoIcons.cart_fill)));
 }
