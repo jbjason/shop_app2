@@ -17,11 +17,11 @@ class CustomAppBarHome1 extends StatelessWidget {
   }
 
   Widget _topButtons(BuildContext context) => Positioned(
-      top: MediaQuery.of(context).padding.top + 10,
+      top: 0,
       left: 0,
       right: 0,
       child: AppBar(
-        elevation: 4,
+        elevation: 0,
         backgroundColor: Colors.transparent,
         leading: InkWell(
             onTap: () => Scaffold.of(context).openDrawer(),

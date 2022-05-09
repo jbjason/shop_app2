@@ -15,23 +15,16 @@ class FavoriteButtons extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(left: 80),
-      decoration: const BoxDecoration(
-          color: AppColors.accent,
-          borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+          color: AppColors.accent.withOpacity(0.3),
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(50), bottomRight: Radius.circular(50))),
-      child: Container(
-        decoration: BoxDecoration(
-            color: AppColors.accent.withOpacity(0.4),
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(60),
-                bottomRight: Radius.circular(60))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            HeartButton(product: product),
-            _cartButton(context),
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          HeartButton(product: product),
+          _cartButton(context),
+        ],
       ),
     );
   }
