@@ -23,10 +23,7 @@ class AppDrawer extends StatelessWidget {
             title: const Text('My Orders'),
             onTap: () {
               final _user = FirebaseAuth.instance.currentUser;
-              print(_user);
               if (_user != null) {
-                print(_user.uid);
-                print('jb');
                 Navigator.of(context)
                     .pushNamed(OrderScreen.routeName, arguments: _user.uid);
               } else {

@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/cart.dart';
+import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/confirm_screen.dart';
 
@@ -49,8 +50,8 @@ class CartTotalAmount extends StatelessWidget {
   Widget _confirmOrdersText(BuildContext context) {
     return TextButton(
       onPressed: () {
-        final _user = FirebaseAuth.instance.currentUser;
-        if (_user == null) {
+        final _user = Provider.of<Category>(context, listen: false).userid;
+        if (_user.isEmpty) {
           Navigator.of(context)
               .pushNamed(AuthScreen.routeName, arguments: 'cart');
         } else {

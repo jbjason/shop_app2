@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/cart.dart';
+import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/providers/orders.dart';
 import 'package:shop_app2/screens/users_screen/thanks_screen.dart';
 import 'package:shop_app2/widgets/user_widgets/confirm_widgets/confirm_button.dart';
@@ -85,7 +85,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     final cartItems = Provider.of<Cart>(context, listen: false);
     final total = cartItems.totalAmount;
     try {
-      final _id = FirebaseAuth.instance.currentUser!.uid;
+      final _id = Provider.of<Category>(context, listen: false).userid;
       await Provider.of<Orders>(context, listen: false)
           .addOrder(cartItems.items, total, _id);
       Navigator.of(context).pushNamed(ThanksScreen.routeName, arguments: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/constants_.dart';
 
 class ConfirmButton extends StatelessWidget {
   const ConfirmButton(
@@ -17,7 +18,13 @@ class ConfirmButton extends StatelessWidget {
         onTap: () => submitFunction(),
         child: !isLoading
             ? Container(
-                color: Colors.grey[300],
+                width: width,
+                height: 80,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  boxShadow: getShadowBox(Colors.grey[500]!, Colors.white),
+                  color: Colors.grey[300],
+                ),
                 alignment: Alignment.center,
                 child: const Text(
                   'Confirm Done!',

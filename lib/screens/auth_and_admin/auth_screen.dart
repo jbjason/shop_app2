@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
 import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_form.dart';
 
@@ -28,15 +30,17 @@ class _AuthScreenState extends State<AuthScreen> {
   void _submitAuthForm(String email, String password, String userName,
       bool isLogin, BuildContext ctx, String pageKey) async {
     setState(() => _isLoading = true);
+    UserCredential _user;
     try {
       if (isLogin) {
-        await _auth.signInWithEmailAndPassword(
+        _user = await _auth.signInWithEmailAndPassword(
             email: email, password: password);
       } else {
-        await _auth.createUserWithEmailAndPassword(
+        _user = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
       }
       // seperating Admin Users
+      Provider.of<Category>(context, listen: false).setUserId(_user.user!.uid);
       if (email.contains('30jb40') && pageKey == 'admin') {
         Navigator.of(ctx).pushNamed(AdminPanelScreen.routeName);
       } else {
