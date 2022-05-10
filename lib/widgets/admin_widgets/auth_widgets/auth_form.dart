@@ -8,7 +8,6 @@ class AuthForm extends StatefulWidget {
   final bool isLoading;
   final Function(String email, String password, String userName, bool isLogin,
       BuildContext ctx) submitFn;
-
   @override
   _AuthFormState createState() => _AuthFormState();
 }
@@ -51,7 +50,7 @@ class _AuthFormState extends State<AuthForm> {
               SignUpButton(
                 trySubmit: _trySubmit,
                 isLoading: widget.isLoading,
-                changeStatus: _changeLoginSignUpStatus,
+                changeStatus: _changeStatus,
                 isLogin: _isLogin,
               )
             ],
@@ -70,7 +69,7 @@ class _AuthFormState extends State<AuthForm> {
     }
   }
 
-  void _changeLoginSignUpStatus() => setState(() => _isLogin = !_isLogin);
+  void _changeStatus() => setState(() => _isLogin = !_isLogin);
 
   // Widget _buttonloginSignup(BuildContext context) {
   //   return Column(

@@ -44,7 +44,7 @@ class SignUpButton extends StatelessWidget {
               ),
         if (!isLoading)
           TextButton(
-            onPressed: () => changeStatus,
+            onPressed: () => changeStatus(),
             child: Text(
               isLogin ? 'Create new account' : 'I already have an account',
               style: const TextStyle(color: Colors.black),
