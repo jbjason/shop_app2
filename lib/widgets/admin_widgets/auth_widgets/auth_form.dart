@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flare_flutter/flare_actor.dart';
+import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_email_field.dart';
+import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_name_field.dart';
+import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_pass_field.dart';
+import 'package:shop_app2/widgets/admin_widgets/auth_widgets/flare_actor.dart';
 
+// ignore: must_be_immutable
 class AuthForm extends StatefulWidget {
-  const AuthForm(
+  AuthForm(
       {Key? key,
       required this.submitFn,
       required this.isLoading,
-      required this.pageKey})
+      required this.animation_})
       : super(key: key);
   final bool isLoading;
-  final String pageKey;
+  String animation_;
   final Function(String email, String password, String userName, bool isLogin,
-      BuildContext ctx, String key) submitFn;
+      BuildContext ctx) submitFn;
 
   @override
   _AuthFormState createState() => _AuthFormState();
@@ -20,51 +24,33 @@ class AuthForm extends StatefulWidget {
 class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
   var _isLogin = true;
-  String _userEmail = '', _userName = '', _userPassword = '';
+  String userEmail = '', userName = '', userPassword = '';
   final FocusNode _emailNode = FocusNode();
-  final FocusNode _userNameNode = FocusNode();
+  final FocusNode userNameNode = FocusNode();
   final FocusNode _passwordNode = FocusNode();
-  String _animation = 'idle';
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          FlareTeddy(animation: widget.animation_),
+          _textFieldForm(context),
+        ],
+      ),
+    );
+  }
 
   void _trySubmit(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       FocusScope.of(context).unfocus();
       _formKey.currentState!.save();
-      setState(() => _animation = 'success');
-      widget.submitFn(_userEmail.trim(), _userPassword.trim(), _userName.trim(),
-          _isLogin, context, widget.pageKey);
+      setState(() => widget.animation_ = 'success');
+      widget.submitFn(userEmail.trim(), userPassword.trim(), userName.trim(),
+          _isLogin, context);
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: const EdgeInsets.only(left: 20, right: 20),
-        decoration: _decoration,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              _flareActor(),
-              _textFieldForm(context),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _flareActor() => SizedBox(
-        height: 180,
-        width: 300,
-        child: FlareActor(
-          'assets/Teddy.flr',
-          alignment: Alignment.bottomCenter,
-          fit: BoxFit.contain,
-          animation: _animation,
-          callback: (_) => setState(() => _animation = 'idle'),
-        ),
-      );
   Widget _textFieldForm(BuildContext context) => Form(
         key: _formKey,
         child: Container(
@@ -76,62 +62,16 @@ class _AuthFormState extends State<AuthForm> {
           ),
           child: Column(
             children: [
-              _emailTextField(),
-              if (!_isLogin) _userNameTextField(),
-              _passwordTextField(),
+              AuthEmailField(emailNode: _emailNode, userEmail: userEmail),
+              if (!_isLogin)
+                AuthNameField(userName: userName, userNameNode: userNameNode),
+              AuthPassField(
+                  userPassword: userPassword, passwordNode: _passwordNode),
               _buttonloginSignup(context),
             ],
           ),
         ),
       );
-
-  Widget _emailTextField() {
-    return TextFormField(
-      focusNode: _emailNode,
-      key: const ValueKey('email'),
-      decoration: const InputDecoration(labelText: 'Email'),
-      keyboardType: TextInputType.emailAddress,
-      onSaved: (value) => _userEmail = value!,
-      validator: (value) {
-        if (value!.isEmpty || !value.contains('@')) {
-          return 'Please enter a valid email address';
-        }
-        return null;
-      },
-    );
-  }
-
-  Widget _userNameTextField() {
-    return TextFormField(
-      focusNode: _userNameNode,
-      key: const ValueKey('username'),
-      decoration: const InputDecoration(labelText: 'Username'),
-      onSaved: (value) => _userName = value!,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Please enter atleast 4 characters';
-        }
-        return null;
-      },
-    );
-  }
-
-  Widget _passwordTextField() {
-    return TextFormField(
-      focusNode: _passwordNode,
-      key: const ValueKey('password'),
-      decoration: const InputDecoration(labelText: 'Password'),
-      style: const TextStyle(color: Colors.white),
-      obscureText: true,
-      onSaved: (value) => _userPassword = value!,
-      validator: (value) {
-        if (value!.isEmpty || value.length <= 7) {
-          return 'Please enter atleast 7 characters';
-        }
-        return null;
-      },
-    );
-  }
 
   Widget _buttonloginSignup(BuildContext context) {
     return Column(
@@ -174,36 +114,20 @@ class _AuthFormState extends State<AuthForm> {
     );
   }
 
+  void _listener(FocusNode f, String s1, String s2) {
+    if (f.hasFocus) {
+      setState(() => widget.animation_ = s1);
+    } else {
+      setState(() => widget.animation_ = s2);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _emailNode.addListener(() => _listener(_emailNode, 'test', 'idle'));
-    _userNameNode.addListener(() => _listener(_userNameNode, 'test', 'idle'));
+    userNameNode.addListener(() => _listener(userNameNode, 'test', 'idle'));
     _passwordNode
         .addListener(() => _listener(_passwordNode, 'hands_up', 'hands_down'));
   }
-
-  void _listener(FocusNode f, String s1, String s2) {
-    if (f.hasFocus) {
-      setState(() => _animation = s1);
-    } else {
-      setState(() => _animation = s2);
-    }
-  }
-
-  final _decoration = BoxDecoration(
-    borderRadius: BorderRadius.circular(20),
-    gradient: const LinearGradient(
-      begin: Alignment.topRight,
-      end: Alignment.bottomLeft,
-      colors: [
-        Color(0xFF033D49),
-        Color(0xFF104F55),
-        Color(0xFF155C60),
-        Color(0xFF186568),
-        Color(0xFF1B6F72),
-        Color(0xFF1F787A),
-      ],
-    ),
-  );
 }

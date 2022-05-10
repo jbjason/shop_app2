@@ -1,68 +1,85 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app2/providers/category.dart';
-import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
-import 'package:shop_app2/screens/users_screen/home_screen.dart';
-import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_form.dart';
+import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_body.dart';
 
-class AuthScreen extends StatefulWidget {
+class AuthScreen extends StatelessWidget {
   static const routeName = '/auth-screen';
   const AuthScreen({Key? key}) : super(key: key);
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends State<AuthScreen> {
-  bool _isLoading = false;
-  final _auth = FirebaseAuth.instance;
-  String message = 'An error occured, please check ur credentials';
-
-  @override
   Widget build(BuildContext context) {
     final _pageKey = ModalRoute.of(context)!.settings.arguments as String;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: AuthForm(
-          submitFn: _submitAuthForm, isLoading: _isLoading, pageKey: _pageKey),
+      body: Container(
+        height: size.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/m3.jpg'), fit: BoxFit.cover),
+        ),
+        child: Stack(
+          children: [
+            _bottomWhite(),
+            _bottomBlue1(),
+            _bottomBlue2(),
+            _bottomWhiteLeft(),
+            _bottomBlueLeft(),
+            AuthBody(pageKey: _pageKey),
+          ],
+        ),
+      ),
     );
   }
 
-  void _submitAuthForm(String email, String password, String userName,
-      bool isLogin, BuildContext ctx, String pageKey) async {
-    setState(() => _isLoading = true);
-    UserCredential _user;
-    try {
-      if (isLogin) {
-        _user = await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
-      } else {
-        _user = await _auth.createUserWithEmailAndPassword(
-            email: email, password: password);
-      }
-      // seperating Admin Users
-      Provider.of<Category>(context, listen: false).setUserId(_user.user!.uid);
-      if (email.contains('30jb40') && pageKey == 'admin') {
-        Navigator.of(ctx).pushNamed(AdminPanelScreen.routeName);
-      } else if (pageKey == 'admin') {
-        Navigator.of(context).pushNamed(HomeScreen.routeName);
-      } else {
-        Navigator.pop(ctx);
-      }
-    } on PlatformException catch (err) {
-      if (err.message != null) {
-        message = err.message!;
-      }
-      setErrorMessage(ctx);
-    } catch (e) {
-      setErrorMessage(ctx);
-    }
-  }
-
-  void setErrorMessage(BuildContext ctx) {
-    setState(() => _isLoading = false);
-    ScaffoldMessenger.of(ctx).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: Colors.redAccent),
-    );
-  }
+  Widget _bottomWhite() => Positioned(
+        bottom: -50,
+        right: -100,
+        child: Container(
+          height: 400,
+          width: 400,
+          decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2), shape: BoxShape.circle),
+        ),
+      );
+  Widget _bottomBlue1() => Positioned(
+        bottom: -80,
+        right: 0,
+        child: Container(
+          height: 250,
+          width: 250,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 45, 45, 75).withOpacity(0.3),
+              shape: BoxShape.circle),
+        ),
+      );
+  Widget _bottomBlue2() => Positioned(
+        bottom: 80,
+        right: -80,
+        child: Container(
+          height: 200,
+          width: 200,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 45, 45, 75).withOpacity(0.2),
+              shape: BoxShape.circle),
+        ),
+      );
+  Widget _bottomWhiteLeft() => Positioned(
+        bottom: -40,
+        left: -50,
+        child: Container(
+          height: 300,
+          width: 300,
+          decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.3), shape: BoxShape.circle),
+        ),
+      );
+  Widget _bottomBlueLeft() => Positioned(
+        bottom: 80,
+        left: -80,
+        child: Container(
+          height: 200,
+          width: 200,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 45, 45, 75).withOpacity(0.2),
+              shape: BoxShape.circle),
+        ),
+      );
 }
