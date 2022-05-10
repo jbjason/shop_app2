@@ -5,7 +5,7 @@ import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/widgets/common_widgets/heart_button.dart';
+import 'package:shop_app2/widgets/common_widgets/extra_/heart_button.dart';
 
 class FavoriteButtons extends StatelessWidget {
   const FavoriteButtons({Key? key, required this.product}) : super(key: key);

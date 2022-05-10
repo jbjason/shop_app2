@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_body.dart';
-import 'package:shop_app2/widgets/common_widgets/bubbles_.dart';
+import 'package:shop_app2/widgets/common_widgets/extra_/bubbles_.dart';
 
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth-screen';

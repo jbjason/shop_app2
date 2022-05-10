@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/widgets/common_widgets/category_container.dart';
+import 'package:shop_app2/widgets/common_widgets/extra_/category_container.dart';
 import 'package:shop_app2/widgets/user_widgets/sort_by_widgets/range_amount_text.dart';
 
 class SortByBody1 extends StatefulWidget {
@@ -39,7 +39,7 @@ class _SortByBody1State extends State<SortByBody1> {
         margin: const EdgeInsets.only(bottom: 10),
         child: Text(s),
       );
- 
+
   Widget _applyButton(List<Product> products) {
     return InkWell(
       onTap: () => widget.onChangeList(highValue),
