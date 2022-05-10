@@ -71,47 +71,6 @@ class _AuthFormState extends State<AuthForm> {
 
   void _changeStatus() => setState(() => _isLogin = !_isLogin);
 
-  // Widget _buttonloginSignup(BuildContext context) {
-  //   return Column(
-  //     children: [
-  //       const SizedBox(height: 8),
-  //       widget.isLoading
-  //           ? const CircularProgressIndicator()
-  //           : Container(
-  //               width: double.infinity,
-  //               height: 70,
-  //               padding: const EdgeInsets.symmetric(
-  //                   horizontal: 30.0, vertical: 10.0),
-  //               child: ElevatedButton(
-  //                 style: ElevatedButton.styleFrom(
-  //                   primary: Colors.white70,
-  //                   shadowColor: Colors.white,
-  //                   shape: RoundedRectangleBorder(
-  //                     borderRadius: BorderRadius.circular(30),
-  //                   ),
-  //                 ),
-  //                 onPressed: () => _trySubmit(context),
-  //                 child: Text(
-  //                   _isLogin ? 'Login' : 'Signup',
-  //                   style: const TextStyle(
-  //                       color: Color(0xFF1F787A),
-  //                       fontWeight: FontWeight.bold,
-  //                       letterSpacing: 1.5),
-  //                 ),
-  //               ),
-  //             ),
-  //       if (!widget.isLoading)
-  //         TextButton(
-  //           onPressed: () => setState(() => _isLogin = !_isLogin),
-  //           child: Text(
-  //             _isLogin ? 'Create new account' : 'I already have an account',
-  //             style: const TextStyle(color: Colors.black),
-  //           ),
-  //         )
-  //     ],
-  //   );
-  // }
-
   Widget _emailField() => TextFormField(
         focusNode: _emailNode,
         key: const ValueKey('email'),
