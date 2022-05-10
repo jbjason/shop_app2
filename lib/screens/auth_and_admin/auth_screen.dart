@@ -13,7 +13,7 @@ class AuthScreen extends StatelessWidget {
         height: size.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/m3.jpg'), fit: BoxFit.cover),
+              image: AssetImage('assets/m3_.jpg'), fit: BoxFit.cover),
         ),
         child: Stack(
           children: [

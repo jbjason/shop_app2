@@ -1,8 +1,8 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_email_field.dart';
 import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_name_field.dart';
 import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_pass_field.dart';
-import 'package:shop_app2/widgets/admin_widgets/auth_widgets/flare_actor.dart';
 
 // ignore: must_be_immutable
 class AuthForm extends StatefulWidget {
@@ -34,7 +34,7 @@ class _AuthFormState extends State<AuthForm> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          FlareTeddy(animation: widget.animation_),
+          _flareTeddy(),
           _textFieldForm(context),
         ],
       ),
@@ -114,6 +114,17 @@ class _AuthFormState extends State<AuthForm> {
     );
   }
 
+  Widget _flareTeddy() => SizedBox(
+        height: 180,
+        width: 300,
+        child: FlareActor(
+          'assets/Teddy.flr',
+          alignment: Alignment.bottomCenter,
+          fit: BoxFit.contain,
+          animation: widget.animation_,
+          callback: (_) => setState(() => widget.animation_ = 'idle'),
+        ),
+      );
   void _listener(FocusNode f, String s1, String s2) {
     if (f.hasFocus) {
       setState(() => widget.animation_ = s1);
