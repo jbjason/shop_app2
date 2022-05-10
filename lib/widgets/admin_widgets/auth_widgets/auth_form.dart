@@ -1,5 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app2/widgets/admin_widgets/auth_widgets/signup_button.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({Key? key, required this.submitFn, required this.isLoading})
@@ -47,7 +48,12 @@ class _AuthFormState extends State<AuthForm> {
               _emailField(),
               if (!_isLogin) _userNameField(),
               _passField(),
-              _buttonloginSignup(context),
+              SignUpButton(
+                trySubmit: _trySubmit,
+                isLoading: widget.isLoading,
+                changeStatus: _changeLoginSignUpStatus,
+                isLogin: _isLogin,
+              )
             ],
           ),
         ),
@@ -64,46 +70,48 @@ class _AuthFormState extends State<AuthForm> {
     }
   }
 
-  Widget _buttonloginSignup(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 8),
-        widget.isLoading
-            ? const CircularProgressIndicator()
-            : Container(
-                width: double.infinity,
-                height: 70,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0, vertical: 10.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white70,
-                    shadowColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                  onPressed: () => _trySubmit(context),
-                  child: Text(
-                    _isLogin ? 'Login' : 'Signup',
-                    style: const TextStyle(
-                        color: Color(0xFF1F787A),
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.5),
-                  ),
-                ),
-              ),
-        if (!widget.isLoading)
-          TextButton(
-            onPressed: () => setState(() => _isLogin = !_isLogin),
-            child: Text(
-              _isLogin ? 'Create new account' : 'I already have an account',
-              style: const TextStyle(color: Colors.black),
-            ),
-          )
-      ],
-    );
-  }
+  void _changeLoginSignUpStatus() => setState(() => _isLogin = !_isLogin);
+
+  // Widget _buttonloginSignup(BuildContext context) {
+  //   return Column(
+  //     children: [
+  //       const SizedBox(height: 8),
+  //       widget.isLoading
+  //           ? const CircularProgressIndicator()
+  //           : Container(
+  //               width: double.infinity,
+  //               height: 70,
+  //               padding: const EdgeInsets.symmetric(
+  //                   horizontal: 30.0, vertical: 10.0),
+  //               child: ElevatedButton(
+  //                 style: ElevatedButton.styleFrom(
+  //                   primary: Colors.white70,
+  //                   shadowColor: Colors.white,
+  //                   shape: RoundedRectangleBorder(
+  //                     borderRadius: BorderRadius.circular(30),
+  //                   ),
+  //                 ),
+  //                 onPressed: () => _trySubmit(context),
+  //                 child: Text(
+  //                   _isLogin ? 'Login' : 'Signup',
+  //                   style: const TextStyle(
+  //                       color: Color(0xFF1F787A),
+  //                       fontWeight: FontWeight.bold,
+  //                       letterSpacing: 1.5),
+  //                 ),
+  //               ),
+  //             ),
+  //       if (!widget.isLoading)
+  //         TextButton(
+  //           onPressed: () => setState(() => _isLogin = !_isLogin),
+  //           child: Text(
+  //             _isLogin ? 'Create new account' : 'I already have an account',
+  //             style: const TextStyle(color: Colors.black),
+  //           ),
+  //         )
+  //     ],
+  //   );
+  // }
 
   Widget _emailField() => TextFormField(
         focusNode: _emailNode,
