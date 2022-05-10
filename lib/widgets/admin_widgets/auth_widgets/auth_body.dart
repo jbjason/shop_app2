@@ -19,7 +19,7 @@ class _AuthBodyState extends State<AuthBody> {
   bool _isLoading = false;
   final _auth = FirebaseAuth.instance;
   String message = 'An error occured, please check ur credentials';
-  String _animation = 'idle';
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -29,8 +29,7 @@ class _AuthBodyState extends State<AuthBody> {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(20),
       decoration: _decoration,
-      child: AuthForm(
-          submitFn: _submitFn, isLoading: _isLoading, animation_: _animation),
+      child: AuthForm(submitFn: _submitFn, isLoading: _isLoading),
     );
   }
 
@@ -66,10 +65,7 @@ class _AuthBodyState extends State<AuthBody> {
   }
 
   void setErrorMessage(BuildContext ctx) {
-    setState(() {
-      _isLoading = false;
-      _animation = 'fail';
-    });
+    setState(() => _isLoading = false);
     ScaffoldMessenger.of(ctx).showSnackBar(
       SnackBar(content: Text(message), backgroundColor: Colors.redAccent),
     );

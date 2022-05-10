@@ -1,16 +1,10 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class AuthForm extends StatefulWidget {
-  AuthForm(
-      {Key? key,
-      required this.submitFn,
-      required this.isLoading,
-      required this.animation_})
+  const AuthForm({Key? key, required this.submitFn, required this.isLoading})
       : super(key: key);
   final bool isLoading;
-  String animation_;
   final Function(String email, String password, String userName, bool isLogin,
       BuildContext ctx) submitFn;
 
@@ -21,6 +15,7 @@ class AuthForm extends StatefulWidget {
 class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
   var _isLogin = true;
+  String animation_ = 'idle';
   String userEmail = '', userName = '', userPassword = '';
   final FocusNode _emailNode = FocusNode();
   final FocusNode _userNameNode = FocusNode();
@@ -62,7 +57,7 @@ class _AuthFormState extends State<AuthForm> {
     if (_formKey.currentState!.validate()) {
       FocusScope.of(context).unfocus();
       _formKey.currentState!.save();
-      setState(() => widget.animation_ = 'success');
+      setState(() => animation_ = 'success');
       await Future.delayed(const Duration(seconds: 1));
       widget.submitFn(userEmail.trim(), userPassword.trim(), userName.trim(),
           _isLogin, context);
@@ -156,8 +151,8 @@ class _AuthFormState extends State<AuthForm> {
           'assets/Teddy.flr',
           alignment: Alignment.bottomCenter,
           fit: BoxFit.contain,
-          animation: widget.animation_,
-          callback: (_) => setState(() => widget.animation_ = 'idle'),
+          animation: animation_,
+          callback: (_) => setState(() => animation_ = 'idle'),
         ),
       );
 
@@ -172,9 +167,9 @@ class _AuthFormState extends State<AuthForm> {
 
   void _listener(FocusNode f, String s1, String s2) {
     if (f.hasFocus) {
-      setState(() => widget.animation_ = s1);
+      setState(() => animation_ = s1);
     } else {
-      setState(() => widget.animation_ = s2);
+      setState(() => animation_ = s2);
     }
   }
 }
