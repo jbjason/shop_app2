@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_2.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/products.dart';
+import 'package:shop_app2/widgets/common_widgets/bubbles_.dart';
 import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_body1.dart';
 import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_body2.dart';
 import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_bottom_container.dart';
@@ -28,6 +30,11 @@ class _WelcomeBodyState extends State<WelcomeBody> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        const Bubbles(
+          bigBubble: Colors.white,
+          smallBubble: AppColors.accent,
+          leftBubble: AppColors.secondary,
+        ),
         Positioned.fill(
           child: PageView.builder(
               itemCount: 3,
