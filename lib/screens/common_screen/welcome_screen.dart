@@ -13,6 +13,11 @@ class WelcomeScreen extends StatelessWidget {
       child: Scaffold(
         body: Stack(
           children: [
+            const Bubbles(
+              bigBubble: Colors.white,
+              smallBubble: Color.fromARGB(255, 45, 45, 75),
+              leftBubble: Color.fromARGB(255, 74, 107, 76),
+            ),
             ClipPath(
               clipper: WelcomeClipper(),
               child: Container(
@@ -27,11 +32,6 @@ class WelcomeScreen extends StatelessWidget {
                 top: size.height * .753, left: 0, child: swipeText('↞swipe')),
             Positioned(
                 top: size.height * .753, right: 0, child: swipeText('swipe↠')),
-            const Bubbles(
-              bigBubble: Colors.white,
-              smallBubble: Color.fromARGB(255, 45, 45, 75),
-              leftBubble: Color.fromARGB(255, 74, 107, 76),
-            ),
           ],
         ),
       ),
