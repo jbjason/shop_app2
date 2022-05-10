@@ -25,7 +25,7 @@ Widget welcomeText1() => RichText(
           _spanText(
               'marketPlace.\n', FontWeight.normal, 35, AppColors.textHighlight),
           _spanText(
-              'looking for fresh products ? Try Hello Bazar. Everything you want find in a single app.',
+              '\nlooking for fresh products ? Try Hello Bazar. Everything you want find in a single app.',
               FontWeight.normal,
               15,
               AppColors.textDark),
