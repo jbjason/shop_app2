@@ -12,9 +12,9 @@ class Bubbles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        _bottomBlue2(),
         _bottomWhite(),
         _bottomBlue1(),
-        _bottomBlue2(),
         _bottomWhiteLeft(),
         _bottomBlueLeft(),
       ],
@@ -38,7 +38,7 @@ class Bubbles extends StatelessWidget {
           height: 250,
           width: 250,
           decoration: BoxDecoration(
-              color: smallBubble.withOpacity(0.3), shape: BoxShape.circle),
+              color: smallBubble.withOpacity(0.2), shape: BoxShape.circle),
         ),
       );
   Widget _bottomBlue2() => Positioned(
@@ -48,7 +48,7 @@ class Bubbles extends StatelessWidget {
           height: 200,
           width: 200,
           decoration: BoxDecoration(
-              color: smallBubble.withOpacity(0.2), shape: BoxShape.circle),
+              color: smallBubble.withOpacity(0.4), shape: BoxShape.circle),
         ),
       );
   Widget _bottomWhiteLeft() => Positioned(

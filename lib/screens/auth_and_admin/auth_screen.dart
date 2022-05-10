@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_body.dart';
 import 'package:shop_app2/widgets/common_widgets/bubbles_.dart';
 
@@ -20,8 +21,8 @@ class AuthScreen extends StatelessWidget {
           children: [
             const Bubbles(
               bigBubble: Colors.white,
-              smallBubble: Color.fromARGB(255, 45, 45, 75),
-              leftBubble: Color.fromARGB(255, 74, 107, 76),
+              smallBubble: AppColors.accent,
+              leftBubble: AppColors.secondary,
             ),
             AuthBody(pageKey: _pageKey),
           ],

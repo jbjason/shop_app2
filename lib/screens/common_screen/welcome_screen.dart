@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/clippers_.dart';
 import 'package:shop_app2/constants/constants_2.dart';
+import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/widgets/common_widgets/bubbles_.dart';
 import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_body.dart';
 
@@ -15,8 +16,8 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             const Bubbles(
               bigBubble: Colors.white,
-              smallBubble: Color.fromARGB(255, 45, 45, 75),
-              leftBubble: Color.fromARGB(255, 74, 107, 76),
+              smallBubble: AppColors.accent,
+              leftBubble: AppColors.secondary,
             ),
             ClipPath(
               clipper: WelcomeClipper(),
