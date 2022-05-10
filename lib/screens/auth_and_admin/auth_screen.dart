@@ -72,7 +72,7 @@ class AuthScreen extends StatelessWidget {
         ),
       );
   Widget _bottomBlueLeft() => Positioned(
-        bottom: 80,
+        bottom: -30,
         left: -80,
         child: Container(
           height: 200,
