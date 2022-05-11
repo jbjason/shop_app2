@@ -38,7 +38,6 @@ class InvoiceAndUserInfo extends StatelessWidget {
   Widget _invoiceTextAndId() {
     return Container(
       padding: const EdgeInsets.all(16.0),
-      margin: const EdgeInsets.only(bottom: 15),
       color: Colors.grey[400],
       child: Row(
         children: [

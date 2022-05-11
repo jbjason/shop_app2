@@ -51,7 +51,7 @@ class _ThanksScreenState extends State<ThanksScreen> {
               address: address,
               contact: contact),
           const OrderedProductDetails(),
-          //ProductsDetails(finalProduct: finalProduct),
+          const SizedBox(height: 15),
           TotalAmountDetails(
               finalAmount: finalAmount,
               finalPoint: 23,
