@@ -43,6 +43,7 @@ class _ThanksScreenState extends State<ThanksScreen> {
       padding: const EdgeInsets.all(6),
       child: Column(
         children: [
+          // invoice details
           InvoiceAndUserInfo(
               orderId: orderId,
               size: size,
@@ -50,13 +51,16 @@ class _ThanksScreenState extends State<ThanksScreen> {
               email: email,
               address: address,
               contact: contact),
-          const OrderedProductDetails(),
           const SizedBox(height: 15),
+          // ordered Products details
+          const OrderedProductDetails(),
+          // amount details
           TotalAmountDetails(
               finalAmount: finalAmount,
               finalPoint: 23,
               finalVoucher: 2,
               width: size.width),
+          // bottom button
           BackToShopButton(width: size.width),
         ],
       ),
