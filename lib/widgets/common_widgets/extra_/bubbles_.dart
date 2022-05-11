@@ -13,9 +13,9 @@ class Bubbles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _bottomBiggerWhite(),
-        _bottomMiddleWhite(),
-        _bottomSmallWhite(),
+        _biggerWhite(),
+        _middleWhite(),
+        _smallWhite(),
         _thirdTop(),
         _secondTopColor(),
         _topColor(),
@@ -55,7 +55,7 @@ class Bubbles extends StatelessWidget {
         ),
       );
 
-  Widget _bottomSmallWhite() => Positioned(
+  Widget _smallWhite() => Positioned(
         bottom: -40,
         right: -40,
         child: Container(
@@ -65,7 +65,7 @@ class Bubbles extends StatelessWidget {
               color: bigBubble.withOpacity(0.3), shape: BoxShape.circle),
         ),
       );
-  Widget _bottomMiddleWhite() => Positioned(
+  Widget _middleWhite() => Positioned(
         bottom: -40,
         right: -40,
         child: Container(
@@ -75,7 +75,7 @@ class Bubbles extends StatelessWidget {
               color: bigBubble.withOpacity(0.27), shape: BoxShape.circle),
         ),
       );
-  Widget _bottomBiggerWhite() => Positioned(
+  Widget _biggerWhite() => Positioned(
         bottom: -40,
         right: -40,
         child: Container(
