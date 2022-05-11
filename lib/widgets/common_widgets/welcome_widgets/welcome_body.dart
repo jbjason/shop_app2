@@ -34,6 +34,7 @@ class _WelcomeBodyState extends State<WelcomeBody> {
           bigBubble: Colors.white,
           smallBubble: AppColors.accent,
           leftBubble: AppColors.secondary,
+          rightBubble: Color.fromARGB(255, 38, 46, 97),
         ),
         Positioned.fill(
           child: PageView.builder(

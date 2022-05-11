@@ -11,12 +11,9 @@ class RecommendAll extends StatelessWidget {
     final products = Provider.of<Products>(context, listen: false).items;
     final int length = products.length;
     final size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       height: length < 3 ? length * 120.0 : size.height * 0.5,
       width: size.width,
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/cart_.png'), fit: BoxFit.contain)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -4,10 +4,11 @@ class Bubbles extends StatelessWidget {
   const Bubbles(
       {Key? key,
       required this.bigBubble,
+      required this.rightBubble,
       required this.leftBubble,
       required this.smallBubble})
       : super(key: key);
-  final Color bigBubble, smallBubble, leftBubble;
+  final Color bigBubble, smallBubble, rightBubble, leftBubble;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -38,7 +39,7 @@ class Bubbles extends StatelessWidget {
           height: 250,
           width: 250,
           decoration: BoxDecoration(
-              color: Colors.indigo.withOpacity(0.2), shape: BoxShape.circle),
+              color: rightBubble.withOpacity(0.2), shape: BoxShape.circle),
         ),
       );
   Widget _bottomBlue2() => Positioned(
