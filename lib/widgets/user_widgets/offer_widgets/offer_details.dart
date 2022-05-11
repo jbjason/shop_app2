@@ -28,42 +28,42 @@ class OfferDetails extends StatelessWidget {
           children: [
             const Expanded(
               child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(detailString),
-                ),
-              ),
+                  child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(detailString))),
             ),
-            Container(
-              color: Colors.white,
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  swipeText('↞swipe'),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(50)),
-                    ),
-                    child: const Text(
-                      '*Due: 21.05.2022,Sunday',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.end,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  swipeText('swipe↠'),
-                ],
-              ),
-            ),
+            _offerDetailsTexts(),
           ],
         ),
       ),
     );
   }
+
+  Widget _offerDetailsTexts() => Container(
+        color: Colors.white,
+        height: 50,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            swipeText('↞swipe'),
+            Container(
+              alignment: Alignment.bottomCenter,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50)),
+              ),
+              child: const Text(
+                '*Due: 21.05.2022,Sunday',
+                style: TextStyle(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.end,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            swipeText('swipe↠'),
+          ],
+        ),
+      );
 }

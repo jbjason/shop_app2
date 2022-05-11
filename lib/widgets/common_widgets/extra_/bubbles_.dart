@@ -13,63 +13,76 @@ class Bubbles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _bottomBlue1(),
-        _bottomBlue2(),
-        _bottomWhite(),
-        _bottomWhiteLeft(),
-        _bottomBlueLeft(),
+        _bottomBiggerWhite(),
+        _bottomMiddleWhite(),
+        _bottomSmallWhite(),
+        _thirdTop(),
+        _secondTopColor(),
+        _topColor(),
       ],
     );
   }
 
-  Widget _bottomWhite() => Positioned(
-        bottom: -50,
-        right: -100,
+  Widget _topColor() => Positioned(
+        bottom: -40,
+        right: -40,
         child: Container(
-          height: 450,
-          width: 450,
+          height: 160,
+          width: 145,
           decoration: BoxDecoration(
-              color: bigBubble.withOpacity(0.2), shape: BoxShape.circle),
+              color: smallBubble.withOpacity(0.2), shape: BoxShape.circle),
         ),
       );
-  Widget _bottomBlue1() => Positioned(
-        bottom: -80,
+  Widget _secondTopColor() => Positioned(
+        bottom: -40,
+        right: -40,
+        child: Container(
+          height: 200,
+          width: 200,
+          decoration: BoxDecoration(
+              color: rightBubble.withOpacity(0.14), shape: BoxShape.circle),
+        ),
+      );
+
+  Widget _thirdTop() => Positioned(
+        bottom: -40,
         right: -40,
         child: Container(
           height: 250,
           width: 250,
           decoration: BoxDecoration(
-              color: rightBubble.withOpacity(0.2), shape: BoxShape.circle),
+              color: leftBubble.withOpacity(0.1), shape: BoxShape.circle),
         ),
       );
-  Widget _bottomBlue2() => Positioned(
-        bottom: 80,
-        right: -80,
-        child: Container(
-          height: 200,
-          width: 200,
-          decoration: BoxDecoration(
-              color: smallBubble.withOpacity(0.2), shape: BoxShape.circle),
-        ),
-      );
-  Widget _bottomWhiteLeft() => Positioned(
+
+  Widget _bottomSmallWhite() => Positioned(
         bottom: -40,
-        left: -50,
+        right: -40,
         child: Container(
-          height: 300,
-          width: 300,
+          height: 330,
+          width: 330,
           decoration: BoxDecoration(
               color: bigBubble.withOpacity(0.3), shape: BoxShape.circle),
         ),
       );
-  Widget _bottomBlueLeft() => Positioned(
-        bottom: -30,
-        left: -80,
+  Widget _bottomMiddleWhite() => Positioned(
+        bottom: -40,
+        right: -40,
         child: Container(
-          height: 200,
-          width: 200,
+          height: 400,
+          width: 400,
           decoration: BoxDecoration(
-              color: leftBubble.withOpacity(0.1), shape: BoxShape.circle),
+              color: bigBubble.withOpacity(0.27), shape: BoxShape.circle),
+        ),
+      );
+  Widget _bottomBiggerWhite() => Positioned(
+        bottom: -40,
+        right: -40,
+        child: Container(
+          height: 470,
+          width: 470,
+          decoration: BoxDecoration(
+              color: bigBubble.withOpacity(0.17), shape: BoxShape.circle),
         ),
       );
 }
