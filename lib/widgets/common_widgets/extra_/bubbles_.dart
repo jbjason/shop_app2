@@ -25,20 +25,20 @@ class Bubbles extends StatelessWidget {
         bottom: -50,
         right: -100,
         child: Container(
-          height: 400,
-          width: 400,
+          height: 450,
+          width: 450,
           decoration: BoxDecoration(
               color: bigBubble.withOpacity(0.2), shape: BoxShape.circle),
         ),
       );
   Widget _bottomBlue1() => Positioned(
         bottom: -80,
-        right: 0,
+        right: -40,
         child: Container(
           height: 250,
           width: 250,
           decoration: BoxDecoration(
-              color: smallBubble.withOpacity(0.2), shape: BoxShape.circle),
+              color: Colors.indigo.withOpacity(0.2), shape: BoxShape.circle),
         ),
       );
   Widget _bottomBlue2() => Positioned(
