@@ -8,9 +8,7 @@ import 'package:shop_app2/widgets/user_widgets/thanks_widgets/total_amount_detai
 
 class ThanksScreen extends StatefulWidget {
   static const routeName = '/thanks-screen';
-  const ThanksScreen({
-    Key? key,
-  }) : super(key: key);
+  const ThanksScreen({Key? key}) : super(key: key);
 
   @override
   State<ThanksScreen> createState() => _ThanksScreenState();

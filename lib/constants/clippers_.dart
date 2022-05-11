@@ -5,17 +5,17 @@ class WelcomeClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
     final w = size.width, h = size.height;
-    path.lineTo(0, h * .7);
-    path.quadraticBezierTo(120, h * .8, 0, h * .9);
-    path.lineTo(0, h);
+    // path.lineTo(0, h * .7);
+    // path.quadraticBezierTo(120, h * .8, 0, h * .9);
+    // path.lineTo(0, h);
     // remove previous 3 lines
-    //path.lineTo(0, h * .6);
-    //path.quadraticBezierTo(120, h * .8, 0, h );
+    path.lineTo(0, h * .6);
+    path.quadraticBezierTo(120, h * .8, 0, h);
     path.lineTo(w, h);
-    path.lineTo(w, h * .9);
-    path.quadraticBezierTo(w - 120, h * .8, w, h * .7);
+    // path.lineTo(w, h * .9);
+    // path.quadraticBezierTo(w - 120, h * .8, w, h * .7);
     // remove previous 2 lines
-    // path.quadraticBezierTo(w - 120, h * .8, w, h * .6);
+    path.quadraticBezierTo(w - 120, h * .8, w, h * .6);
     path.lineTo(w, 0);
     path.close();
     return path;

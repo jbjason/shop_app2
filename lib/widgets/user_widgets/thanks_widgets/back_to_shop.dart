@@ -11,7 +11,7 @@ class BackToShopButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: getButtonDecoration(
-        70,
+        80,
         width,
         BoxShape.rectangle,
         getShadowBox(Colors.grey.shade600, Colors.white),
@@ -24,6 +24,7 @@ class BackToShopButton extends StatelessWidget {
             });
           },
           child: Container(
+            padding: const EdgeInsets.all(20),
             color: Colors.grey[300],
             alignment: Alignment.center,
             child: const Text('Back to Shopping !',
