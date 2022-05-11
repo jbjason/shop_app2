@@ -11,27 +11,33 @@ class OrderedProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final order = Provider.of<Cart>(context, listen: false).items;
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10, bottom: 10,left:20,right: 10),
-        child: Column(
-          children: [
-            _titleTexts(),
-            const SizedBox(height: 10),
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                children: order
-                    .map((prod) => Row(
-                          children: [
-                            Text(prod.title, overflow: TextOverflow.ellipsis),
-                            const Spacer(),
-                            Text('${prod.quantity}x  \$${prod.price}'),
-                          ],
-                        ))
-                    .toList(),
-              ),
-            )
-          ],
+      child: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/background.png'), fit: BoxFit.cover)),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _titleTexts(),
+              const SizedBox(height: 10),
+              Expanded(
+                child: ListView(
+                  padding: const EdgeInsets.only(
+                      top: 10, bottom: 10, left: 20, right: 10),
+                  shrinkWrap: true,
+                  children: order
+                      .map((prod) => Row(
+                            children: [
+                              Text(prod.title, overflow: TextOverflow.ellipsis),
+                              const Spacer(),
+                              Text('${prod.quantity}x  \$${prod.price}'),
+                            ],
+                          ))
+                      .toList(),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
