@@ -23,7 +23,6 @@ class CustomBodyHome extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              const Color.fromARGB(255, 103, 103, 180).withOpacity(0.5),
               const Color.fromARGB(255, 62, 62, 105).withOpacity(0.6),
               const Color.fromARGB(255, 45, 45, 75),
             ],
@@ -39,7 +38,7 @@ class CustomBodyHome extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Hello Bazar',
+            Text('Hello Bazar!',
                 style: GoogleFonts.permanentMarker(
                     textStyle:
                         const TextStyle(fontSize: 32, color: Colors.white))),

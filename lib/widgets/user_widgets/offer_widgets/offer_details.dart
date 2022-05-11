@@ -20,7 +20,10 @@ class OfferDetails extends StatelessWidget {
       opacity: 1 - rotation,
       child: Container(
         height: height,
-        color: Colors.white.withOpacity(0.5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white.withOpacity(0.5),
+        ),
         child: Column(
           children: [
             const Expanded(
@@ -40,8 +43,7 @@ class OfferDetails extends StatelessWidget {
                 children: [
                   swipeText('↞swipe'),
                   Container(
-                    padding:
-                        const EdgeInsets.only(top: 15, left: 20, right: 20),
+                    alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
                       borderRadius: const BorderRadius.only(
