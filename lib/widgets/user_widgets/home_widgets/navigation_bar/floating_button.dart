@@ -8,7 +8,7 @@ import 'package:shop_app2/screens/users_screen/cart_screen.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/badge.dart';
 
 class FloatingButton extends StatelessWidget {
-  const FloatingButton({ Key? key }) : super(key: key);
+  const FloatingButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +21,15 @@ class FloatingButton extends StatelessWidget {
             color: f != 0 ? const Color(0xFFfaedcd) : Colors.transparent);
       },
       child: getButtonDecoration(
-        70,
-        70,
+        65,
+        65,
         BoxShape.circle,
         [],
         FloatingActionButton(
           backgroundColor: AppColors.secondary.withOpacity(0.8),
           onPressed: () =>
               Navigator.of(context).pushNamed(CartScreen.routeName),
-          child: const Icon(CupertinoIcons.shopping_cart),
+          child: const Icon(CupertinoIcons.shopping_cart, size: 25),
         ),
       ),
     );

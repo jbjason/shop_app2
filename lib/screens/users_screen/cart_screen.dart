@@ -23,7 +23,9 @@ class CartScreen extends StatelessWidget {
           child: Column(
             children: [
               getAppBarTile('Your Cart', context),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
+              _deleteHintText(),
+              const SizedBox(height: 10),
               Expanded(child: _cartList(cartItems.items)),
               CartTotalAmount(cartItems: cartItems),
             ],
@@ -44,4 +46,9 @@ class CartScreen extends StatelessWidget {
             child: Text('No items Available right now !'),
           );
   }
+
+  Widget _deleteHintText() => Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [Text('↞↞ Swipe left to remove !  ')],
+      );
 }
