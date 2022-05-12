@@ -9,19 +9,15 @@ class DetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _titlePortion('Details'),
-          DetailsBody1(product: product),
-          const SizedBox(height: 25),
-          _titlePortion('Related Items'),
-          const SizedBox(height: 10),
-          RelatedPlaces(product: product),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DetailsBody1(product: product),
+        const SizedBox(height: 25),
+        _titlePortion('    Related Items'),
+        const SizedBox(height: 10),
+        RelatedPlaces(product: product),
+      ],
     );
   }
 

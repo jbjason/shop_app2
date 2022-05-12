@@ -14,28 +14,40 @@ class DetailsBody1 extends StatefulWidget {
 
 class _DetailsBody1State extends State<DetailsBody1> {
   bool _isExpanded = false;
-  int _selectedSize = 0;
-  int _selectedColor = 0;
+  int _selectedSize = 0, _selectedColor = 0;
+  double _amVal = -90;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
+      clipBehavior: Clip.none,
       children: [
-        Padding(padding: const EdgeInsets.all(8.0), child: _detailsText()),
-        const SizedBox(height: 20),
-        _titlePortion('Size'),
-        const SizedBox(height: 5),
-        _sizeContainer(),
-        const SizedBox(height: 15),
-        _titlePortion('Color'),
-        const SizedBox(height: 5),
-        _colorContainer(),
-        const SizedBox(height: 35),
-        AddToCartButton(
-          product: widget.product,
-          selectedColor: _selectedColor,
-          selectedSize: _selectedSize,
+        _topAnimateCircle(),
+        _bottomAnimateCircle(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _titlePortion('Details'),
+              Padding(
+                  padding: const EdgeInsets.all(8.0), child: _detailsText()),
+              const SizedBox(height: 20),
+              _titlePortion('Size'),
+              const SizedBox(height: 5),
+              _sizeContainer(),
+              const SizedBox(height: 15),
+              _titlePortion('Color'),
+              const SizedBox(height: 5),
+              _colorContainer(),
+              const SizedBox(height: 35),
+              AddToCartButton(
+                product: widget.product,
+                selectedColor: _selectedColor,
+                selectedSize: _selectedSize,
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -137,7 +149,12 @@ class _DetailsBody1State extends State<DetailsBody1> {
         scrollDirection: Axis.horizontal,
         itemCount: widget.product.color.length,
         itemBuilder: (context, index) => InkWell(
-          onTap: () => setState(() => _selectedColor = index),
+          onTap: () {
+            setState(() {
+              _selectedColor = index;
+              _amVal = (_amVal + 19) % 2 == 0 ? (_amVal - 19) : (_amVal + 19);
+            });
+          },
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 10),
             width: 40,
@@ -156,4 +173,34 @@ class _DetailsBody1State extends State<DetailsBody1> {
       ),
     );
   }
+
+  Widget _topAnimateCircle() => AnimatedPositioned(
+      duration: const Duration(milliseconds: 700),
+      curve: Curves.easeIn,
+      top: _amVal,
+      right: _amVal,
+      child: _animateContainer('t'));
+
+  Widget _bottomAnimateCircle() => AnimatedPositioned(
+      duration: const Duration(milliseconds: 700),
+      curve: Curves.easeIn,
+      bottom: _amVal,
+      left: _amVal,
+      child: _animateContainer('b'));
+
+  Widget _animateContainer(String s) => Container(
+        height: 250,
+        width: 250,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            widget.product.color[_selectedColor]
+                .withOpacity(s == 't' ? 0.1 : 0.2),
+            widget.product.color[_selectedColor]
+                .withOpacity(s == 't' ? 0.2 : 0.3),
+            widget.product.color[_selectedColor]
+                .withOpacity(s == 't' ? 0.3 : 0.4),
+          ]),
+          shape: BoxShape.circle,
+        ),
+      );
 }
