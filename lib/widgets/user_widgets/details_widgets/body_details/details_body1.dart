@@ -15,7 +15,7 @@ class DetailsBody1 extends StatefulWidget {
 class _DetailsBody1State extends State<DetailsBody1> {
   bool _isExpanded = false;
   int _selectedSize = 0, _selectedColor = 0;
-  double _amVal = -90;
+  double _topVal = -110, _bottomVal = -80;
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +152,10 @@ class _DetailsBody1State extends State<DetailsBody1> {
           onTap: () {
             setState(() {
               _selectedColor = index;
-              _amVal = (_amVal + 19) % 2 == 0 ? (_amVal - 19) : (_amVal + 19);
+              _topVal =
+                  (_topVal + 19) % 2 == 0 ? (_topVal - 19) : (_topVal + 19);
+              _bottomVal =
+                  (_topVal + 19) % 2 == 0 ? (_topVal + 19) : (_topVal - 19);
             });
           },
           child: Container(
@@ -177,28 +180,25 @@ class _DetailsBody1State extends State<DetailsBody1> {
   Widget _topAnimateCircle() => AnimatedPositioned(
       duration: const Duration(milliseconds: 700),
       curve: Curves.easeIn,
-      top: _amVal,
-      right: _amVal,
+      top: _topVal,
+      right: _topVal,
       child: _animateContainer('t'));
 
   Widget _bottomAnimateCircle() => AnimatedPositioned(
       duration: const Duration(milliseconds: 700),
       curve: Curves.easeIn,
-      bottom: _amVal,
-      left: _amVal,
+      bottom: _bottomVal + 50,
+      left: _bottomVal - 50,
       child: _animateContainer('b'));
 
   Widget _animateContainer(String s) => Container(
-        height: 250,
-        width: 250,
+        height: 280,
+        width: 280,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            widget.product.color[_selectedColor]
-                .withOpacity(s == 't' ? 0.1 : 0.2),
-            widget.product.color[_selectedColor]
-                .withOpacity(s == 't' ? 0.2 : 0.3),
-            widget.product.color[_selectedColor]
-                .withOpacity(s == 't' ? 0.3 : 0.4),
+            widget.product.color[_selectedColor].withOpacity(0.1),
+            widget.product.color[_selectedColor].withOpacity(0.17),
+            widget.product.color[_selectedColor].withOpacity(0.23),
           ]),
           shape: BoxShape.circle,
         ),
