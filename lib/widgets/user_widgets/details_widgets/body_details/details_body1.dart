@@ -15,7 +15,7 @@ class DetailsBody1 extends StatefulWidget {
 class _DetailsBody1State extends State<DetailsBody1> {
   bool _isExpanded = false;
   int _selectedSize = 0, _selectedColor = 0;
-  double _topVal = -110, _bottomVal = -80;
+  double _topVal = -105, _bottomVal = -30;
 
   @override
   Widget build(BuildContext context) {
@@ -187,8 +187,8 @@ class _DetailsBody1State extends State<DetailsBody1> {
   Widget _bottomAnimateCircle() => AnimatedPositioned(
       duration: const Duration(milliseconds: 700),
       curve: Curves.easeIn,
-      bottom: _bottomVal + 50,
-      left: _bottomVal - 50,
+      bottom: _bottomVal,
+      left: _bottomVal,
       child: _animateContainer('b'));
 
   Widget _animateContainer(String s) => Container(
