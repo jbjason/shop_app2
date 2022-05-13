@@ -15,7 +15,7 @@ class DetailsBody1 extends StatefulWidget {
 class _DetailsBody1State extends State<DetailsBody1> {
   bool _isExpanded = false;
   int _selectedSize = 0, _selectedColor = 0;
-  double _topVal = -105, _bottomVal = -30;
+  double _topVal = -94, _bottomVal = -30;
 
   @override
   Widget build(BuildContext context) {
@@ -154,8 +154,9 @@ class _DetailsBody1State extends State<DetailsBody1> {
               _selectedColor = index;
               _topVal =
                   (_topVal + 19) % 2 == 0 ? (_topVal - 19) : (_topVal + 19);
-              _bottomVal =
-                  (_topVal + 19) % 2 == 0 ? (_topVal + 19) : (_topVal - 19);
+              _bottomVal = (_bottomVal + 19) % 2 == 0
+                  ? (_bottomVal + 19)
+                  : (_bottomVal - 19);
             });
           },
           child: Container(
@@ -188,12 +189,12 @@ class _DetailsBody1State extends State<DetailsBody1> {
       duration: const Duration(milliseconds: 700),
       curve: Curves.easeIn,
       bottom: _bottomVal,
-      left: _bottomVal,
+      left: _bottomVal - 10,
       child: _animateContainer('b'));
 
   Widget _animateContainer(String s) => Container(
-        height: 280,
-        width: 280,
+        height: s == 't' ? 280 : 220,
+        width: s == 't' ? 280 : 220,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
             widget.product.color[_selectedColor].withOpacity(0.1),
