@@ -18,7 +18,6 @@ class WelcomeScreen extends StatelessWidget {
                 child: const WelcomeBody(),
                 height: size.height,
                 width: size.width,
-                margin: const EdgeInsets.all(3),
                 decoration: _decoration,
               ),
             ),

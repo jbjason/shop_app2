@@ -25,7 +25,7 @@ class Bubbles extends StatelessWidget {
 
   Widget _topColor() => Positioned(
         bottom: -55,
-        right: -55,
+        right: -60,
         child: Container(
           height: 160,
           width: 145,
@@ -35,7 +35,7 @@ class Bubbles extends StatelessWidget {
       );
   Widget _secondTopColor() => Positioned(
         bottom: -55,
-        right: -55,
+        right: -60,
         child: Container(
           height: 200,
           width: 200,
@@ -46,7 +46,7 @@ class Bubbles extends StatelessWidget {
 
   Widget _thirdTop() => Positioned(
         bottom: -55,
-        right: -55,
+        right: -60,
         child: Container(
           height: 250,
           width: 250,
@@ -57,7 +57,7 @@ class Bubbles extends StatelessWidget {
 
   Widget _smallWhite() => Positioned(
         bottom: -55,
-        right: -55,
+        right: -60,
         child: Container(
           height: 330,
           width: 330,
@@ -67,7 +67,7 @@ class Bubbles extends StatelessWidget {
       );
   Widget _middleWhite() => Positioned(
         bottom: -55,
-        right: -55,
+        right: -60,
         child: Container(
           height: 400,
           width: 400,
@@ -77,7 +77,7 @@ class Bubbles extends StatelessWidget {
       );
   Widget _biggerWhite() => Positioned(
         bottom: -55,
-        right: -55,
+        right: -60,
         child: Container(
           height: 470,
           width: 470,
