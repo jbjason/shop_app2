@@ -197,9 +197,9 @@ class _DetailsBody1State extends State<DetailsBody1> {
         width: s == 't' ? 280 : 220,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            widget.product.color[_selectedColor].withOpacity(0.05),
-            widget.product.color[_selectedColor].withOpacity(0.1),
-            widget.product.color[_selectedColor].withOpacity(0.16),
+            widget.product.color[_selectedColor].withOpacity(0.07),
+            widget.product.color[_selectedColor].withOpacity(0.13),
+            widget.product.color[_selectedColor].withOpacity(0.18),
           ]),
           shape: BoxShape.circle,
         ),
