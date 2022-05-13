@@ -48,9 +48,8 @@ class OfferDetails extends StatelessWidget {
           children: [
             swipeText('↞swipe'),
             Container(
-              margin: const EdgeInsets.only(top: 7),
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              alignment: Alignment.bottomCenter,
+              padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 8),
+              alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: const BorderRadius.only(

@@ -15,7 +15,7 @@ class DetailsBody1 extends StatefulWidget {
 class _DetailsBody1State extends State<DetailsBody1> {
   bool _isExpanded = false;
   int _selectedSize = 0, _selectedColor = 0;
-  double _topVal = -94, _bottomVal = -30;
+  double _topVal = -94, _bottomVal = -50;
 
   @override
   Widget build(BuildContext context) {
@@ -197,9 +197,9 @@ class _DetailsBody1State extends State<DetailsBody1> {
         width: s == 't' ? 280 : 220,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
+            widget.product.color[_selectedColor].withOpacity(0.05),
             widget.product.color[_selectedColor].withOpacity(0.1),
-            widget.product.color[_selectedColor].withOpacity(0.17),
-            widget.product.color[_selectedColor].withOpacity(0.23),
+            widget.product.color[_selectedColor].withOpacity(0.16),
           ]),
           shape: BoxShape.circle,
         ),
