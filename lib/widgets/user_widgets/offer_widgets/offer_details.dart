@@ -28,9 +28,9 @@ class OfferDetails extends StatelessWidget {
           children: [
             const Expanded(
               child: SingleChildScrollView(
-                  child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(detailString))),
+                child: Padding(
+                    padding: EdgeInsets.all(10.0), child: Text(detailString)),
+              ),
             ),
             _offerDetailsTexts(),
           ],
@@ -48,15 +48,17 @@ class OfferDetails extends StatelessWidget {
           children: [
             swipeText('↞swipe'),
             Container(
+              margin: const EdgeInsets.only(top: 7),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(50),
-                    topRight: Radius.circular(50)),
+                    bottomRight: Radius.circular(50)),
               ),
               child: const Text(
-                '*Due: 21.05.2022,Sunday',
+                'Due: 21.05.2022,Sunday',
                 style: TextStyle(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.end,
                 overflow: TextOverflow.ellipsis,

@@ -15,11 +15,10 @@ class WelcomeScreen extends StatelessWidget {
             ClipPath(
               clipper: WelcomeClipper(),
               child: Container(
-                child: const WelcomeBody(),
-                height: size.height,
-                width: size.width,
-                decoration: _decoration,
-              ),
+                  child: const WelcomeBody(),
+                  height: size.height,
+                  width: size.width,
+                  decoration: _decoration),
             ),
             Positioned(
                 top: size.height * .753, left: 0, child: swipeText('↞swipe')),
