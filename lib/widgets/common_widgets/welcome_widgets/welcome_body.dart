@@ -33,8 +33,8 @@ class _WelcomeBodyState extends State<WelcomeBody> {
         const Bubbles(
           bigBubble: Colors.white,
           smallBubble: AppColors.accent,
-          leftBubble: AppColors.secondary,
-          rightBubble: AppColors.secondary,
+          secondBubble: AppColors.secondary,
+          page: 'well',
         ),
         Positioned.fill(
           child: PageView.builder(
