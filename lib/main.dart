@@ -17,7 +17,7 @@ import 'package:shop_app2/screens/users_screen/offers_screen.dart';
 import 'package:shop_app2/screens/users_screen/order_screen.dart';
 import 'package:shop_app2/screens/users_screen/sort_by_screen.dart';
 import 'package:shop_app2/screens/users_screen/thanks_screen.dart';
-import 'package:shop_app2/screens/common_screen/welcome_screen.dart';
+import 'package:shop_app2/screens/welcome_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
