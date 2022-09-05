@@ -49,8 +49,6 @@ class _ProductAllState extends State<ProductAll> {
           double value = 0;
           if (_pageController.position.haveDimensions) {
             value = i - _pageController.page!;
-            // We use 0.038 because 180*0.038 = 7 almost and we need to rotate our poster 7 degree
-            // we use clamp so that our value vary from -1 to 1
             value = (value * 0.038).clamp(-1, 1);
           }
           return AnimatedOpacity(
