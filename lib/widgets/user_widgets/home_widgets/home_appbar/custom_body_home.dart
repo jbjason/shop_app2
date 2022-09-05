@@ -16,7 +16,6 @@ class CustomBodyHome extends StatelessWidget {
       child: ClipPath(
         clipper: HomeClipper(),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: _body(context),
           alignment: Alignment.center,
           decoration: BoxDecoration(
@@ -34,32 +33,40 @@ class CustomBodyHome extends StatelessWidget {
     );
   }
 
-  Widget _body(BuildContext context) => SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBarHome1(),
-            Text('Hello Bazar!',
-                style: GoogleFonts.permanentMarker(
-                    textStyle:
-                        const TextStyle(fontSize: 32, color: Colors.white))),
-            const SizedBox(height: 10),
-            const Text('   What do u like to buy ?',
-                style: TextStyle(color: Colors.white)),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                const Expanded(child: SearchBar()),
-                InkWell(
-                  child: const Icon(Icons.settings_suggest_sharp,
-                      size: 35, color: Colors.white),
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(SortByScreen.routeName),
+  Widget _body(BuildContext context) => SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomAppBarHome1(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Column(
+                  children: [
+                    Text('Hello Bazar!',
+                        style: GoogleFonts.permanentMarker(
+                            textStyle: const TextStyle(
+                                fontSize: 32, color: Colors.white))),
+                    const SizedBox(height: 10),
+                    const Text('   What do u like to buy ?',
+                        style: TextStyle(color: Colors.white)),
+                    const SizedBox(height: 5),
+                    Row(
+                      children: [
+                        const Expanded(child: SearchBar()),
+                        InkWell(
+                          child: const Icon(Icons.settings_suggest_sharp,
+                              size: 35, color: Colors.white),
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(SortByScreen.routeName),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: 50),
-          ],
+              )
+            ],
+          ),
         ),
       );
 }

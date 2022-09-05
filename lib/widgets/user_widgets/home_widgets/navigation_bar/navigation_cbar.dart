@@ -9,19 +9,16 @@ class NavigationCBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 25, right: 25),
-      child: CustomPaint(
-        painter: NavClipper(),
-        child: SizedBox(
-          height: kToolbarHeight + 4,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _navButtons(CupertinoIcons.square_split_2x2_fill, 'All pro.'),
-              _navButtons(CupertinoIcons.heart_slash_fill, 'Favorites'),
-            ],
-          ),
+    return CustomPaint(
+      painter: NavClipper(),
+      child: SizedBox(
+        height: kToolbarHeight + 4,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _navButtons(CupertinoIcons.square_split_2x2_fill, 'All pro.'),
+            _navButtons(CupertinoIcons.heart_slash_fill, 'Favorites'),
+          ],
         ),
       ),
     );
