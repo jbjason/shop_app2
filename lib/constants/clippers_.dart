@@ -33,7 +33,7 @@ class NavClipper extends CustomPainter {
       ..lineTo(0, h);
     path.close();
     canvas.drawShadow(path, Colors.black26, 10, false);
-    canvas.drawPath(path, Paint()..color = Colors.grey[800]!);
+    canvas.drawPath(path, Paint()..color = Colors.white);
   }
 
   @override
