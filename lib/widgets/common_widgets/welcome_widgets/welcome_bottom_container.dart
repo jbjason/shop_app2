@@ -29,11 +29,14 @@ class WelcomeBottomContainer extends StatelessWidget {
 
   Widget _bottomButtons(BuildContext context, int index) => index == 2
       ? Container(
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
               gradient: LinearGradient(colors: [
-            Colors.white.withOpacity(0.3),
-            Colors.white.withOpacity(0.5),
-          ])),
+                Colors.white.withOpacity(0.8),
+                Colors.white.withOpacity(0.2),
+                Colors.white.withOpacity(0.8),
+              ])),
           child: isLoading
               ? const Center(child: CircularProgressIndicator())
               : Row(

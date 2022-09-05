@@ -15,8 +15,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _height = MediaQuery.of(context).size.height * .35;
     return Scaffold(
-      body: _homeBody(context),
+      body: _homeBody(_height),
       drawer: const AppDrawer(),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -25,27 +26,28 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _homeBody(BuildContext context) {
-    final maxHeight = MediaQuery.of(context).size.height * .35;
-    return CustomScrollView(
-      slivers: [
-        SliverPersistentHeader(
-          pinned: true,
-          delegate: HomeDelegate(
-            maxHeight: maxHeight,
-            appbars: (shrink) => Stack(
-              children: [
-                BasicAppBarHome(shrink: shrink),
-                CustomAppBarHome(height: maxHeight, disappear: (1 - shrink))
-              ],
+  Widget _homeBody(double _height) => CustomScrollView(
+        slivers: [
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: HomeDelegate(
+              maxHeight: _height,
+              appbars: (shrink) => Stack(
+                children: [
+                  BasicAppBarHome(shrink: shrink),
+                  CustomAppBarHome(disappear: (1 - shrink))
+                ],
+              ),
             ),
           ),
-        ),
-        const SliverToBoxAdapter(child: CategoryContainer(tag: 'home')),
-        const SliverToBoxAdapter(child: SizedBox(height: 10)),
-        const SliverToBoxAdapter(child: ProductAll()),
-        const SliverToBoxAdapter(child: RecommendAll())
-      ],
-    );
-  }
+          const SliverToBoxAdapter(child: CategoryContainer(tag: 'home')),
+          const SliverToBoxAdapter(child: ProductAll()),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            sliver: SliverToBoxAdapter(
+                child: Text('  Recommended', style: TextStyle(fontSize: 22))),
+          ),
+          const RecommendAll(),
+        ],
+      );
 }

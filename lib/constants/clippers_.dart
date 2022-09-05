@@ -5,16 +5,9 @@ class WelcomeClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
     final w = size.width, h = size.height;
-    // path.lineTo(0, h * .7);
-    // path.quadraticBezierTo(120, h * .8, 0, h * .9);
-    // path.lineTo(0, h);
-    // remove previous 3 lines
     path.lineTo(0, h * .6);
     path.quadraticBezierTo(120, h * .8, 0, h);
     path.lineTo(w, h);
-    // path.lineTo(w, h * .9);
-    // path.quadraticBezierTo(w - 120, h * .8, w, h * .7);
-    // remove previous 2 lines
     path.quadraticBezierTo(w - 120, h * .8, w, h * .6);
     path.lineTo(w, 0);
     path.close();
@@ -33,22 +26,14 @@ class NavClipper extends CustomPainter {
     final h6 = h * .6;
     final path = Path()
       ..lineTo(w5 - 80, 0)
-      ..cubicTo(w5 - 40, 0, w5 - 50, h5, w5 - 3, h6)
-      ..lineTo(w5, h)
-      ..lineTo(w5 + 5, h)
-      ..quadraticBezierTo(w5 + 80, h - 45, w5 + 150, h)
+      ..cubicTo(w5 - 40, 0, w5 - 50, h5, w5, h6)
+      ..cubicTo(w5 + 40, h6, w5 + 50, 0, w * .7, 0)
+      ..lineTo(w, 0)
       ..lineTo(w, h)
-      ..quadraticBezierTo(w - 60, h / 2, w, 0)
-      ..lineTo(w5 + 80, 0)
-      ..cubicTo(w5 + 40, 0, w5 + 50, h5, w5 + 3, h6)
-      ..lineTo(w5 - 3, h6)
-      ..lineTo(w5, h)
-      ..lineTo(w5 - 5, h)
-      ..quadraticBezierTo(w5 - 80, h - 45, w5 - 150, h)
-      ..lineTo(0, h)
-      ..quadraticBezierTo(60, h / 2, 0, 0);
-    //canvas.drawShadow(path, Colors.black26, 10, false);
-    canvas.drawPath(path, Paint()..color = Colors.white);
+      ..lineTo(0, h);
+    path.close();
+    canvas.drawShadow(path, Colors.black26, 10, false);
+    canvas.drawPath(path, Paint()..color = Colors.grey[800]!);
   }
 
   @override
@@ -60,11 +45,10 @@ class HomeClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final w = size.width, h = size.height;
     final path = Path();
-    path.lineTo(0, h - 105);
-    path.quadraticBezierTo(40, h - 60, 80, h - 60);
-    path.lineTo(w - 80, h - 60);
-    path.quadraticBezierTo(w, h - 60, w, h);
     path.lineTo(w, 0);
+    path.lineTo(w, h);
+    path.cubicTo(w, h * .7, 0, h * .9, 0, h * .5);
+
     path.close();
     return path;
   }

@@ -10,22 +10,15 @@ class RecommendAll extends StatelessWidget {
   Widget build(BuildContext context) {
     final products = Provider.of<Products>(context, listen: false).items;
     final int length = products.length;
-    final size = MediaQuery.of(context).size;
-    return SizedBox(
-      height: length < 3 ? length * 120.0 : size.height * 0.5,
-      width: size.width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('  Recommended', style: TextStyle(fontSize: 22)),
-          Expanded(
-            child: ListView.builder(
-                padding: const EdgeInsets.only(bottom: 50, top: 10),
-                itemCount: length,
-                itemBuilder: (context, index) =>
-                    RecommendItem(product: products[length - 1 - index])),
-          ),
-        ],
+
+    return SliverPadding(
+      padding: const EdgeInsets.only(bottom: 80),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) =>
+              RecommendItem(product: products[length - 1 - index]),
+          childCount: length,
+        ),
       ),
     );
   }

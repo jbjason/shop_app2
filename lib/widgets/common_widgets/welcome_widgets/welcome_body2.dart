@@ -28,17 +28,19 @@ class WelcomeBody2 extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Colors.white.withOpacity(0.5),
-                Colors.white.withOpacity(0.4),
-              ])
+                gradient: LinearGradient(colors: [
+              Colors.white.withOpacity(0.5),
+              Colors.white.withOpacity(0.4),
+            ])),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.aclonica(
+                textStyle: TextStyle(
+                    fontSize: _isTrue ? 30 : 13,
+                    color: AppColors.textHighlight),
+              ),
             ),
-            child: Text(text,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.aclonica(
-                    textStyle: TextStyle(
-                        fontSize: _isTrue ? 30 : 13,
-                        color: AppColors.textHighlight))),
           ),
         ),
       ],
