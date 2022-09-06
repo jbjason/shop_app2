@@ -25,22 +25,18 @@ class _DetailsBody1State extends State<DetailsBody1> {
         _topAnimateCircle(),
         _bottomAnimateCircle(),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              _colorContainer(),
+              const SizedBox(height: 7),
+              _sizeContainer(),
+              const SizedBox(height: 50),
               _titlePortion('Details'),
               Padding(
                   padding: const EdgeInsets.all(8.0), child: _detailsText()),
-              const SizedBox(height: 20),
-              _titlePortion('Size'),
-              const SizedBox(height: 5),
-              _sizeContainer(),
-              const SizedBox(height: 15),
-              _titlePortion('Color'),
-              const SizedBox(height: 5),
-              _colorContainer(),
-              const SizedBox(height: 35),
+              const SizedBox(height: 25),
               AddToCartButton(
                 product: widget.product,
                 selectedColor: _selectedColor,
@@ -99,80 +95,99 @@ class _DetailsBody1State extends State<DetailsBody1> {
 
   Widget _sizeContainer() {
     return SizedBox(
-      height: 40,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: widget.product.size.length,
-        itemBuilder: (context, index) {
-          final bool f = _selectedSize == index;
-          return InkWell(
-            onTap: () => setState(() => _selectedSize = index),
-            child: Container(
-              child: Center(
-                child: Text(
-                  widget.product.size[index],
-                  style: TextStyle(
-                    color: (f &&
-                            widget.product.color[_selectedColor]
-                                    .computeLuminance() <
-                                .5)
-                        ? widget.product.color[_selectedColor]
-                        : Colors.black,
+      height: 45,
+      child: Row(
+        children: [
+          _titlePortion('Size'),
+          const SizedBox(width: 10),
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              scrollDirection: Axis.horizontal,
+              itemCount: widget.product.size.length,
+              itemBuilder: (context, index) {
+                final bool f = _selectedSize == index;
+                return InkWell(
+                  onTap: () => setState(() => _selectedSize = index),
+                  child: Container(
+                    child: Center(
+                      child: Text(
+                        widget.product.size[index],
+                        style: TextStyle(
+                          color: (f &&
+                                  widget.product.color[_selectedColor]
+                                          .computeLuminance() <
+                                      .5)
+                              ? widget.product.color[_selectedColor]
+                              : Colors.black,
+                        ),
+                      ),
+                    ),
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey[300],
+                      border: Border.all(
+                        color: f
+                            ? widget.product.color[_selectedColor]
+                            : Colors.transparent,
+                        width: 2,
+                      ),
+                      boxShadow:
+                          getShadowBox(Colors.grey.shade400, Colors.white),
+                    ),
                   ),
-                ),
-              ),
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.grey[300],
-                border: Border.all(
-                  color: f
-                      ? widget.product.color[_selectedColor]
-                      : Colors.transparent,
-                  width: 2,
-                ),
-                boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
-              ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
 
   Widget _colorContainer() {
     return SizedBox(
-      height: 55,
-      child: ListView.builder(
-        padding: const EdgeInsets.only(top: 10, bottom: 15),
-        scrollDirection: Axis.horizontal,
-        itemCount: widget.product.color.length,
-        itemBuilder: (context, index) => InkWell(
-          onTap: () {
-            setState(() {
-              _selectedColor = index;
-              _topVal =
-                  (_topVal + 19) % 2 == 0 ? (_topVal - 19) : (_topVal + 19);
-            });
-          },
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10),
-            width: 40,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: widget.product.color[index],
-              border: Border.all(
-                  width: 4,
-                  color: _selectedColor == index
-                      ? Colors.white
-                      : widget.product.color[index]),
-              boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
+        height: 55,
+        child: Row(
+          children: [
+            _titlePortion('Color'),
+            const SizedBox(width: 10),
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.only(top: 10, bottom: 15),
+                scrollDirection: Axis.horizontal,
+                itemCount: widget.product.color.length,
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () {
+                    setState(() {
+                      _selectedColor = index;
+                      _topVal = (_topVal + 19) % 2 == 0
+                          ? (_topVal - 19)
+                          : (_topVal + 19);
+                    });
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    width: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: widget.product.color[index],
+                      border: Border.all(
+                          width: 4,
+                          color: _selectedColor == index
+                              ? Colors.white
+                              : Colors.transparent),
+                      boxShadow:
+                          getShadowBox(Colors.grey.shade500, Colors.white),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          ],
+        ));
   }
 
   Widget _topAnimateCircle() => AnimatedPositioned(

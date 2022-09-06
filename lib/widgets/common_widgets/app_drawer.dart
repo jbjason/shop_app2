@@ -43,7 +43,8 @@ class AppDrawer extends StatelessWidget {
                 Navigator.of(context)
                     .pushNamed(OrderScreen.routeName, arguments: _user.uid);
               } else {
-                Navigator.of(context).pushNamed(AuthScreen.routeName);
+                Navigator.of(context)
+                    .pushNamed(AuthScreen.routeName, arguments: '');
               }
             },
           ),

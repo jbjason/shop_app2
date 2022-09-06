@@ -42,8 +42,11 @@ class OrderScreen extends StatelessWidget {
               return const Center(child: Text('An error occured'));
             } else {
               return Consumer<Orders>(
-                builder: (ctx, orderData, child) =>
-                    _orderList(orderData.orders),
+                builder: (ctx, orderData, _) => orderData.orders.isEmpty
+                    ? const Center(
+                        child: Text('No Orders Have Done yet!'),
+                      )
+                    : _orderList(orderData.orders),
               );
             }
           }

@@ -15,7 +15,7 @@ class HomeCustomBody extends StatelessWidget {
         clipper: HomeClipper(),
         child: Container(
           child: _body(context),
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -34,7 +34,6 @@ class HomeCustomBody extends StatelessWidget {
   Widget _body(BuildContext context) => SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const HomeCustomButtons(),
               Padding(
