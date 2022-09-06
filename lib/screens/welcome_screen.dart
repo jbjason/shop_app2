@@ -10,6 +10,7 @@ class WelcomeScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
             ClipPath(
@@ -18,6 +19,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: const WelcomeBody(),
                   height: size.height,
                   width: size.width,
+                  margin: const EdgeInsets.all(2),
                   decoration: _decoration),
             ),
             Positioned(

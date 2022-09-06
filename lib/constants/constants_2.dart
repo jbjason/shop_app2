@@ -41,4 +41,4 @@ TextSpan _spanText(String s, FontWeight weight, double font, Color c) =>
     );
 
 Widget swipeText(String s) =>
-    Text(s, style: const TextStyle(fontSize: 11, color: Colors.black));
+    Text(s, style: const TextStyle(fontSize: 11, color: AppColors.accent));

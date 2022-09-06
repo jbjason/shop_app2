@@ -3,12 +3,27 @@ import 'package:flutter/material.dart';
 class WelcomeClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    final path = Path();
     final w = size.width, h = size.height;
+    final path = Path();
     path.lineTo(0, h * .6);
-    path.quadraticBezierTo(120, h * .8, 0, h);
+
+    final double px1 = 0, py1 = h * .75;
+    final double px2 = w * .17, py2 = h * .75;
+    final double px3 = w * .17, py3 = h * .81;
+    path.cubicTo(px1, py1, px2, py2, px3, py3);
+
+    final double qx1 = w * .17, qy1 = h * .85;
+    final double qx2 = 0, qy2 = h * .85;
+    final double qx3 = 0, qy3 = h;
+
+    path.cubicTo(qx1, qy1, qx2, qy2, qx3, qy3);
+    path.lineTo(0, h);
+
     path.lineTo(w, h);
-    path.quadraticBezierTo(w - 120, h * .8, w, h * .6);
+
+    path.cubicTo(w, h * .85, w * .83, h * .85, w * .83, h * .8);
+    path.cubicTo(w * .83, h * .76, w, h * .7, w, h * .6);
+    path.lineTo(w, h * .6);
     path.lineTo(w, 0);
     path.close();
     return path;
