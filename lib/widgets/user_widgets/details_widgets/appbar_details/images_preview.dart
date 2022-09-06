@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/providers/product.dart';
@@ -22,12 +21,11 @@ class _ImagesPreviewState extends State<ImagesPreview> {
   int _currentIndex = 0;
   late var pageController = PageController();
   double pageOffset = 0;
-  double viewPortion = 0.9;
 
   @override
   void initState() {
     super.initState();
-    pageController = PageController(viewportFraction: viewPortion)
+    pageController = PageController(viewportFraction: 0.9)
       ..addListener(() => setState(() => pageOffset = pageController.page!));
   }
 
@@ -71,26 +69,14 @@ class _ImagesPreviewState extends State<ImagesPreview> {
           itemCount: widget.product.imageUrl.length,
           onPageChanged: (value) => setState(() => _currentIndex = value),
           itemBuilder: (context, index) {
-            double scale = max(
-                viewPortion, (1 - (pageOffset - index).abs()) + viewPortion);
-            double angle = (pageOffset - index).abs();
-            if (angle > .5) {
-              angle = 1 - angle;
-            }
-            return Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.001)
-                ..rotateY(1.8 * angle),
-              child: Container(
-                margin: EdgeInsets.only(
-                    right: 10, top: 40 - scale * 20, bottom: 40 - scale * 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    image: NetworkImage(widget.product.imageUrl[index]),
-                    fit: BoxFit.cover,
-                  ),
+            double percent = 1 - (pageOffset - index).abs();
+            return Container(
+              margin: EdgeInsets.only(right: 10, top: 55 - percent * 50),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                image: DecorationImage(
+                  image: NetworkImage(widget.product.imageUrl[index]),
+                  fit: BoxFit.cover,
                 ),
               ),
             );
