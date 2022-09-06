@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/constants/clippers_.dart';
-import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/custom_appbar_home1.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/home_custom_buttons.dart';
 
-class CustomBodyHome extends StatelessWidget {
-  const CustomBodyHome({Key? key}) : super(key: key);
+class HomeCustomBody extends StatelessWidget {
+  const HomeCustomBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +32,12 @@ class CustomBodyHome extends StatelessWidget {
   }
 
   Widget _body(BuildContext context) => SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBarHome1(),
-            Expanded(
-              child: Padding(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HomeCustomButtons(),
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   children: [
@@ -52,8 +51,8 @@ class CustomBodyHome extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
 }

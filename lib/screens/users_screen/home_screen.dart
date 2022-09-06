@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/widgets/common_widgets/app_drawer.dart';
 import 'package:shop_app2/constants/delegates_.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/basic_appbar_home.dart';
-import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/custom_appbar_home.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/home_custom_appbar.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/floating_button.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/navigation_cbar.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_product/product_all.dart';
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
               appbars: (shrink) => Stack(
                 children: [
                   BasicAppBarHome(shrink: shrink),
-                  CustomAppBarHome(disappear: (1 - shrink))
+                  HomeCustomAppBar(disappear: (1 - shrink))
                 ],
               ),
             ),

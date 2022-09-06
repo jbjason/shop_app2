@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/theme.dart';
-import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/custom_body_home.dart';
 import 'package:shop_app2/screens/users_screen/offers_screen.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/home_custom_body.dart';
 
-class CustomAppBarHome extends StatelessWidget {
-  const CustomAppBarHome({Key? key, required this.disappear}) : super(key: key);
+class HomeCustomAppBar extends StatelessWidget {
+  const HomeCustomAppBar({Key? key, required this.disappear}) : super(key: key);
   final double disappear;
 
   @override
@@ -15,8 +15,8 @@ class CustomAppBarHome extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           // body
-          const CustomBodyHome(),
-          // menu button // clipped area Button
+          const HomeCustomBody(),
+          // see All text
           _seeTextButton(context),
         ],
       ),
