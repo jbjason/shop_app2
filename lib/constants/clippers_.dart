@@ -47,7 +47,7 @@ class HomeClipper extends CustomClipper<Path> {
     final path = Path();
     path.lineTo(w, 0);
     path.lineTo(w, h);
-    path.cubicTo(w, h * .7, 0, h * .9, 0, h * .5);
+    path.cubicTo(w, h * .7, 0, h * .9, 0, h * .55);
 
     path.close();
     return path;

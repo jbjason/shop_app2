@@ -49,7 +49,7 @@ class _ProductAllState extends State<ProductAll> {
           double value = 0;
           if (_pageController.position.haveDimensions) {
             value = i - _pageController.page!;
-            value = (value * 0.038).clamp(-1, 1);
+            value = (value * 0.05).clamp(-1, 1);
           }
           return AnimatedOpacity(
             duration: const Duration(milliseconds: 350),

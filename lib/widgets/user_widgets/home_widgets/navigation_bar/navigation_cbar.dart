@@ -12,36 +12,31 @@ class NavigationCBar extends StatelessWidget {
     return CustomPaint(
       painter: NavClipper(),
       child: SizedBox(
-        height: kToolbarHeight + 4,
+        height: kToolbarHeight,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _navButtons(CupertinoIcons.square_split_2x2_fill, 'All pro.'),
-            _navButtons(CupertinoIcons.heart_slash_fill, 'Favorites'),
+            Row(
+              children: [
+                buttonBackGround(const Icon(
+                    CupertinoIcons.square_split_2x2_fill,
+                    color: AppColors.secondary)),
+                const SizedBox(width: 6),
+                const Text('All pro.'),
+              ],
+            ),
+            const SizedBox(width: 1),
+            Row(
+              children: [
+                const Text('Favorites'),
+                const SizedBox(width: 6),
+                buttonBackGround(const Icon(CupertinoIcons.heart_slash_fill,
+                    color: AppColors.secondary)),
+              ],
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _navButtons(IconData _icon, String title) {
-    return Column(
-      crossAxisAlignment: title == 'All pro.'
-          ? CrossAxisAlignment.start
-          : CrossAxisAlignment.end,
-      children: [
-        const SizedBox(height: 3),
-        buttonBackGround(Icon(_icon, color: AppColors.secondary)),
-        const Spacer(),
-        Container(
-          decoration: BoxDecoration(
-              color: AppColors.secondary.withOpacity(0.7),
-              borderRadius: BorderRadius.circular(20)),
-          padding: const EdgeInsets.only(left: 15, right: 15, top: 2),
-          child: Text(title,
-              style: const TextStyle(fontSize: 11, color: Colors.white)),
-        )
-      ],
     );
   }
 }

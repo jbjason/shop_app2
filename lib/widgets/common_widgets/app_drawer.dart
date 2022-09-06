@@ -4,6 +4,8 @@ import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/offers_screen.dart';
 import 'package:shop_app2/screens/users_screen/order_screen.dart';
 import 'package:shop_app2/screens/users_screen/sort_by_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app2/providers/category.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -17,6 +19,7 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const SizedBox(height: 300),
           ListTile(
             leading: const Icon(Icons.payment),
             title: const Text('Offers'),
@@ -52,6 +55,16 @@ class AppDrawer extends StatelessWidget {
                 .pushNamed(AuthScreen.routeName, arguments: 'home'),
           ),
           const Divider(),
+          const Spacer(),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app_sharp),
+            title: const Text('Logout'),
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+              Provider.of<Category>(context, listen: false).setUserId('');
+            },
+          ),
         ],
       ),
     );

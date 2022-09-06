@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app2/providers/category.dart';
+import 'package:shop_app2/constants/theme.dart';
+import 'package:shop_app2/screens/users_screen/sort_by_screen.dart';
 
 class CustomAppBarHome1 extends StatelessWidget {
   const CustomAppBarHome1({Key? key}) : super(key: key);
@@ -9,7 +8,7 @@ class CustomAppBarHome1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
       child: SizedBox(
         height: kToolbarHeight,
         child: Row(
@@ -17,28 +16,53 @@ class CustomAppBarHome1 extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () => Scaffold.of(context).openDrawer(),
-              icon: const Icon(Icons.read_more_sharp, color: Colors.white),
+              icon: const Icon(Icons.menu, size: 30, color: Colors.white),
             ),
-            DropdownButton(
-              icon: const Icon(Icons.more_vert, color: Colors.white),
-              items: [
-                DropdownMenuItem(
-                    child: SizedBox(
-                      child: Row(
-                        children: const [
-                          Icon(Icons.exit_to_app_sharp),
-                          SizedBox(width: 8),
-                          Text('Logout')
-                        ],
+            InkWell(
+              onTap: () =>
+                  Navigator.of(context).pushNamed(SortByScreen.routeName),
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 2),
+                padding: const EdgeInsets.only(
+                    left: 5, right: 10, top: 7, bottom: 7),
+                width: 160,
+                decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      const BoxShadow(
+                          color: AppColors.secondary,
+                          spreadRadius: 1,
+                          blurRadius: 20),
+                      BoxShadow(
+                          color: Colors.white.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 15)
+                    ]),
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withOpacity(.7)),
+                      child: const Center(
+                        child:
+                            Icon(Icons.search_sharp, color: AppColors.accent),
                       ),
                     ),
-                    value: 'Logout')
-              ],
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Provider.of<Category>(context, listen: false).setUserId('');
-              },
-              onChanged: (_) {},
+                    const Text(
+                      'Search Product',
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: AppColors.accent,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

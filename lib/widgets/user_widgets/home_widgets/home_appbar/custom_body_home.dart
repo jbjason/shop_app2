@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/constants/clippers_.dart';
-import 'package:shop_app2/screens/users_screen/sort_by_screen.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/custom_appbar_home1.dart';
-import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/search_bar.dart';
 
 class CustomBodyHome extends StatelessWidget {
   const CustomBodyHome({Key? key}) : super(key: key);
@@ -34,13 +32,14 @@ class CustomBodyHome extends StatelessWidget {
   }
 
   Widget _body(BuildContext context) => SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomAppBarHome1(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const CustomAppBarHome1(),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   children: [
                     Text('Hello Bazar!',
@@ -48,25 +47,13 @@ class CustomBodyHome extends StatelessWidget {
                             textStyle: const TextStyle(
                                 fontSize: 32, color: Colors.white))),
                     const SizedBox(height: 10),
-                    const Text('   What do u like to buy ?',
+                    const Text('What do u like to buy ?',
                         style: TextStyle(color: Colors.white)),
-                    const SizedBox(height: 5),
-                    Row(
-                      children: [
-                        const Expanded(child: SearchBar()),
-                        InkWell(
-                          child: const Icon(Icons.settings_suggest_sharp,
-                              size: 35, color: Colors.white),
-                          onTap: () => Navigator.of(context)
-                              .pushNamed(SortByScreen.routeName),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       );
 }
