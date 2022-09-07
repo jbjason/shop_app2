@@ -26,7 +26,8 @@ class _CategoryContainerState extends State<CategoryContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
+      height: 65,
+      margin: const EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.only(left: 10),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

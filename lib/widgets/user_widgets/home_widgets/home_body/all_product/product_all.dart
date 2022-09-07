@@ -18,7 +18,7 @@ class _ProductAllState extends State<ProductAll> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 0.77, initialPage: 0);
+    _pageController = PageController(viewportFraction: 0.68, initialPage: 0);
   }
 
   @override
@@ -32,7 +32,7 @@ class _ProductAllState extends State<ProductAll> {
     final size = MediaQuery.of(context).size;
     final products = Provider.of<Category>(context).categoryList;
     return SizedBox(
-      height: size.height * .3,
+      height: size.height * .25,
       child: PageView.builder(
         controller: _pageController,
         physics: const ClampingScrollPhysics(),

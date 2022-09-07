@@ -3,6 +3,7 @@ import 'package:shop_app2/widgets/common_widgets/app_drawer.dart';
 import 'package:shop_app2/constants/delegates_.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/basic_appbar_home.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/home_custom_appbar.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/offer_widgets/home_offer.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/floating_button.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/navigation_cbar.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_product/product_all.dart';
@@ -15,9 +16,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _height = MediaQuery.of(context).size.height * .35;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: _homeBody(_height),
+      body: _homeBody(size),
       drawer: const AppDrawer(),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -26,33 +27,36 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _homeBody(double _height) => CustomScrollView(
-        slivers: [
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: HomeDelegate(
-              maxHeight: _height,
-              appbars: (shrink) => Stack(
-                children: [
-                  if (shrink >= 1) ...[
-                    HomeCustomAppBar(disappear: (1 - shrink)),
-                    BasicAppBarHome(shrink: shrink),
-                  ] else ...[
-                    BasicAppBarHome(shrink: shrink),
-                    HomeCustomAppBar(disappear: (1 - shrink)),
-                  ]
-                ],
-              ),
+  Widget _homeBody(Size size) {
+    return CustomScrollView(
+      slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: HomeDelegate(
+            maxHeight: size.height * .35,
+            appbars: (shrink) => Stack(
+              children: [
+                if (shrink >= 1) ...[
+                  HomeCustomAppBar(disappear: (1 - shrink)),
+                  BasicAppBarHome(shrink: shrink),
+                ] else ...[
+                  BasicAppBarHome(shrink: shrink),
+                  HomeCustomAppBar(disappear: (1 - shrink)),
+                ]
+              ],
             ),
           ),
-          const SliverToBoxAdapter(child: CategoryContainer(tag: 'home')),
-          const SliverToBoxAdapter(child: ProductAll()),
-          const SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-            sliver: SliverToBoxAdapter(
-                child: Text('  Recommended', style: TextStyle(fontSize: 22))),
-          ),
-          const RecommendAll(),
-        ],
-      );
+        ),
+        const SliverToBoxAdapter(child: HomeOffer()),
+        const SliverToBoxAdapter(child: CategoryContainer(tag: 'home')),
+        const SliverToBoxAdapter(child: ProductAll()),
+        const SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          sliver: SliverToBoxAdapter(
+              child: Text('  Recommended', style: TextStyle(fontSize: 22))),
+        ),
+        const RecommendAll(),
+      ],
+    );
+  }
 }

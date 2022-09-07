@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/home_screen.dart';
+import 'package:shop_app2/widgets/common_widgets/counter_container.dart';
 
 class WelcomeButtons extends StatelessWidget {
   const WelcomeButtons(
@@ -17,11 +18,11 @@ class WelcomeButtons extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // animated page counter
-          _animatedPageList(),
-          const SizedBox(height: 10),
           // login & continue button
           _bottomButtons(context, currentIndex),
+          const SizedBox(height: 10),
+          // animated page counter
+          CounterContainer(currentIndex: currentIndex, length: 2),
         ],
       ),
     );
@@ -79,26 +80,4 @@ class WelcomeButtons extends StatelessWidget {
                 ),
         )
       : Container();
-
-  Widget _animatedPageList() => SizedBox(
-        width: 100,
-        child: Row(
-          children: List.generate(
-            2,
-            (index) => AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              margin: const EdgeInsets.only(right: 7),
-              height: 13,
-              width: currentIndex == index ? 30 : 13,
-              decoration: BoxDecoration(
-                shape: currentIndex == index
-                    ? BoxShape.rectangle
-                    : BoxShape.circle,
-                color:
-                    currentIndex == index ? Colors.white : AppColors.secondary,
-              ),
-            ),
-          ),
-        ),
-      );
 }
