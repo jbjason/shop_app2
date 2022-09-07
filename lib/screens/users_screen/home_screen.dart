@@ -34,8 +34,13 @@ class HomeScreen extends StatelessWidget {
               maxHeight: _height,
               appbars: (shrink) => Stack(
                 children: [
-                  BasicAppBarHome(shrink: shrink),
-                  HomeCustomAppBar(disappear: (1 - shrink))
+                  if (shrink >= 1) ...[
+                    HomeCustomAppBar(disappear: (1 - shrink)),
+                    BasicAppBarHome(shrink: shrink),
+                  ] else ...[
+                    BasicAppBarHome(shrink: shrink),
+                    HomeCustomAppBar(disappear: (1 - shrink)),
+                  ]
                 ],
               ),
             ),

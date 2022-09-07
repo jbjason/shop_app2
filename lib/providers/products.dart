@@ -130,7 +130,7 @@ class Products with ChangeNotifier {
       ));
       notifyListeners();
     } catch (e) {
-      throw Exception(e);
+      print(e);
     }
   }
 
@@ -176,7 +176,7 @@ class Products with ChangeNotifier {
         notifyListeners();
       }
     } catch (e) {
-      throw Exception(e);
+      print(e);
     }
   }
 }

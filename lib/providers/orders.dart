@@ -88,7 +88,7 @@ class Orders with ChangeNotifier {
       );
       notifyListeners();
     } catch (e) {
-      throw Exception(e);
+      print(e);
     }
   }
 }
