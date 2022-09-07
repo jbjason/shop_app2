@@ -39,8 +39,11 @@ class _HomeOfferState extends State<HomeOffer> {
           Positioned(
             bottom: 10,
             left: size.width * .5 - 75,
-            child:
-                CounterContainer(currentIndex: _currentIndex.value, length: 5),
+            child: ValueListenableBuilder(
+              valueListenable: _currentIndex,
+              builder: (context, int index, _) =>
+                  CounterContainer(currentIndex: index, length: 5),
+            ),
           ),
         ],
       ),
