@@ -129,8 +129,8 @@ class Products with ChangeNotifier {
         category: product.category,
       ));
       notifyListeners();
-    } catch (error) {
-      print(error);
+    } catch (e) {
+      throw Exception(e);
     }
   }
 
@@ -176,7 +176,7 @@ class Products with ChangeNotifier {
         notifyListeners();
       }
     } catch (e) {
-      print(e);
+      throw Exception(e);
     }
   }
 }

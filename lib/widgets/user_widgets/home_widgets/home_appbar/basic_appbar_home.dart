@@ -1,8 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/screens/users_screen/sort_by_screen.dart';
 
 class BasicAppBarHome extends StatelessWidget {
