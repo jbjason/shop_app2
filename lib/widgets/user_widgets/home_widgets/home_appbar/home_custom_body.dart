@@ -33,6 +33,7 @@ class HomeCustomBody extends StatelessWidget {
 
   Widget _body(BuildContext context) => SafeArea(
         child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             children: [
               const HomeCustomButtons(),

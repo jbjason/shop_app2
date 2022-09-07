@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/constants/theme.dart';
 
-const String welcomeText3 = 'Welcome to\n"Hello Bazar"';
+const String welcomeText3 =
+    'looking for fresh products ? Try Hello Bazar. Everything you want find in a single app.';
 
 const String detailString =
     'Providers allow you to not only expose a value, but also create, listen, and dispose of it.\n\nTo expose a newly created object, use the default constructor of a provider. Do not use the .value constructor if you want to create an object, or you may otherwise have undesired side effects.\n\nSee this StackOverflow answer which explains why using the .value constructor to create values is undesired.\nProviders allow you to not only expose a value, but also create, listen, and dispose of it.\n\nTo expose a newly created object, use the default constructor of a provider. Do not use the .value constructor if you want to create an object, or you may otherwise have undesired side effects.\n\nSee this StackOverflow answer which explains why using the .value constructor to create values is undesired.';
@@ -22,11 +23,6 @@ Widget welcomeText1() => RichText(
           _spanText('imaginative ', FontWeight.bold, 35, Colors.white),
           _spanText(
               'marketPlace.\n', FontWeight.normal, 35, AppColors.textHighlight),
-          _spanText(
-              '\nlooking for fresh products ? Try Hello Bazar. Everything you want find in a single app.',
-              FontWeight.normal,
-              15,
-              AppColors.textDark),
         ],
       ),
     );

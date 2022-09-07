@@ -21,7 +21,7 @@ class CounterContainer extends StatelessWidget {
             decoration: BoxDecoration(
               shape:
                   currentIndex == index ? BoxShape.rectangle : BoxShape.circle,
-              color: currentIndex == index ? AppColors.secondary : Colors.white,
+              color: currentIndex == index ? Colors.white : AppColors.secondary,
             ),
           ),
         ),

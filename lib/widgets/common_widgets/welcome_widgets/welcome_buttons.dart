@@ -22,7 +22,8 @@ class WelcomeButtons extends StatelessWidget {
           _bottomButtons(context, currentIndex),
           const SizedBox(height: 10),
           // animated page counter
-          CounterContainer(currentIndex: currentIndex, length: 2),
+          Center(
+              child: CounterContainer(currentIndex: currentIndex, length: 2)),
         ],
       ),
     );

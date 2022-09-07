@@ -21,7 +21,7 @@ class WelcomePage2 extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: size.height * .7,
+          top: size.height * .65,
           left: 0,
           right: 0,
           child: Container(
@@ -36,7 +36,7 @@ class WelcomePage2 extends StatelessWidget {
               textAlign: TextAlign.center,
               style: GoogleFonts.aclonica(
                 textStyle: const TextStyle(
-                    fontSize: 30, color: AppColors.textHighlight),
+                    fontSize: 15, color: AppColors.textHighlight),
               ),
             ),
           ),

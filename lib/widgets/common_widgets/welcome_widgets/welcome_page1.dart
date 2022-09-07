@@ -22,7 +22,7 @@ class WelcomePage1 extends StatelessWidget {
           child: _image(10 * pi / 180, 'assets/s4.jpg', size),
         ),
         Positioned(
-          top: size.height * .53,
+          top: size.height * .6,
           left: 60,
           right: 40,
           child: welcomeText1(),
