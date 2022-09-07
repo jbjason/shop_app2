@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app2/constants/constants_2.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/common_widgets/bubbles_.dart';
-import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_body1.dart';
-import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_body2.dart';
-import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_bottom_container.dart';
+import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_buttons.dart';
+import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_page1.dart';
+import 'package:shop_app2/widgets/common_widgets/welcome_widgets/welcome_page2.dart';
 
 class WelcomeBody extends StatefulWidget {
   const WelcomeBody({Key? key}) : super(key: key);
@@ -15,14 +14,14 @@ class WelcomeBody extends StatefulWidget {
 }
 
 class _WelcomeBodyState extends State<WelcomeBody> {
-  int _isSelected = 0;
-  bool _isLoading = true;
+  final _currentIndex = ValueNotifier<int>(0);
+  final _isLoading = ValueNotifier<bool>(true);
 
   @override
   void initState() {
-    Provider.of<Products>(context, listen: false)
-        .fetchProducts()
-        .then((_) => setState(() => _isLoading = false));
+    Provider.of<Products>(context, listen: false).fetchProducts().then((_) {
+      return _isLoading.value = false;
+    });
     super.initState();
   }
 
@@ -38,26 +37,28 @@ class _WelcomeBodyState extends State<WelcomeBody> {
         ),
         Positioned.fill(
           child: PageView.builder(
-              itemCount: 3,
-              onPageChanged: (index) => setState(() => _isSelected = index),
-              itemBuilder: (context, i) => _getChild(i)),
+            itemCount: 2,
+            onPageChanged: (index) => _currentIndex.value = index,
+            itemBuilder: (context, i) {
+              return i == 0 ? const WelcomePage1() : const WelcomePage2();
+            },
+          ),
         ),
+        // counter & continue, admin buttons
         Positioned(
           bottom: 0,
           left: 0,
           right: 0,
-          child: WelcomeBottomContainer(
-              isSelected: _isSelected, isLoading: _isLoading),
+          child: ValueListenableBuilder(
+            valueListenable: _isLoading,
+            builder: (context, bool isLoading, _) => ValueListenableBuilder(
+              valueListenable: _currentIndex,
+              builder: (context, int _index, _) =>
+                  WelcomeButtons(currentIndex: _index, isLoading: isLoading),
+            ),
+          ),
         ),
       ],
     );
-  }
-
-  Widget _getChild(int i) {
-    return i == 0
-        ? const WelcomeBody1()
-        : i == 1
-            ? const WelcomeBody2(image: 'assets/s11.jpg', text: welcomeText2)
-            : const WelcomeBody2(image: 'assets/s4.jpg', text: welcomeText3);
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/category.dart';
+import 'package:shop_app2/screens/users_screen/sort_by_screen.dart';
 
 class BasicAppBarHome extends StatelessWidget {
   const BasicAppBarHome({Key? key, required this.shrink}) : super(key: key);
@@ -22,29 +23,12 @@ class BasicAppBarHome extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 1, 1, 17),
         elevation: 10,
         actions: [
-          const Icon(Icons.search),
-          const SizedBox(width: 12),
-          DropdownButton(
-            icon: const Icon(Icons.more_vert, color: Colors.white),
-            items: [
-              DropdownMenuItem(
-                child: SizedBox(
-                    child: Row(
-                  children: const [
-                    Icon(Icons.exit_to_app_sharp),
-                    SizedBox(width: 8),
-                    Text('Logout'),
-                  ],
-                )),
-                value: 'Logout',
-              )
-            ],
-            onTap: () {
-              FirebaseAuth.instance.signOut();
-              Provider.of<Category>(context, listen: false).setUserId('');
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(SortByScreen.routeName);
             },
-            onChanged: (_) {},
-          ),
+            icon: const Icon(Icons.search),
+          )
         ],
       ),
     );

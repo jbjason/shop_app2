@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_2.dart';
 import 'package:shop_app2/constants/theme.dart';
 
-class WelcomeBody1 extends StatelessWidget {
-  const WelcomeBody1({
+class WelcomePage1 extends StatelessWidget {
+  const WelcomePage1({
     Key? key,
   }) : super(key: key);
   @override
@@ -38,7 +38,7 @@ class WelcomeBody1 extends StatelessWidget {
           height: size.height * .4,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: AppColors.secondary,width: 3),
+              border: Border.all(color: AppColors.secondary, width: 3),
               image:
                   DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
         ),

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shop_app2/constants/constants_2.dart';
 import 'package:shop_app2/constants/theme.dart';
 
-class WelcomeBody2 extends StatelessWidget {
-  const WelcomeBody2({Key? key, required this.image, required this.text})
-      : super(key: key);
-  final String image, text;
+class WelcomePage2 extends StatelessWidget {
+  const WelcomePage2({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final bool _isTrue = text.contains('Welcome to') ? true : false;
     final size = MediaQuery.of(context).size;
     return Stack(
       children: [
@@ -16,8 +15,8 @@ class WelcomeBody2 extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              image:
-                  DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+              image: const DecorationImage(
+                  image: AssetImage('assets/s4.jpg'), fit: BoxFit.cover),
             ),
           ),
         ),
@@ -33,12 +32,11 @@ class WelcomeBody2 extends StatelessWidget {
               Colors.white.withOpacity(0.4),
             ])),
             child: Text(
-              text,
+              welcomeText3,
               textAlign: TextAlign.center,
               style: GoogleFonts.aclonica(
-                textStyle: TextStyle(
-                    fontSize: _isTrue ? 30 : 13,
-                    color: AppColors.textHighlight),
+                textStyle: const TextStyle(
+                    fontSize: 30, color: AppColors.textHighlight),
               ),
             ),
           ),

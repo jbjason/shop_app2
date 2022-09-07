@@ -12,6 +12,7 @@ class DetailsBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // body
         DetailsBody1(product: product),
         const SizedBox(height: 25),
         _titlePortion('    Related Items'),

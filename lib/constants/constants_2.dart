@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app2/constants/theme.dart';
 
-const String welcomeText2 =
-    'There are vast variety collections of products of top Brands & Categories. As bangaldesh\'s online shopping landscape is expanding every year. ';
 const String welcomeText3 = 'Welcome to\n"Hello Bazar"';
 
 const String detailString =
@@ -40,5 +38,6 @@ TextSpan _spanText(String s, FontWeight weight, double font, Color c) =>
           textStyle: TextStyle(fontSize: font, color: c, wordSpacing: 3)),
     );
 
-Widget swipeText(String s) =>
-    Text(s, style: const TextStyle(fontSize: 11, color: AppColors.accent));
+Widget swipeText(String s) => Text(s,
+    style: const TextStyle(
+        fontSize: 11, color: AppColors.accent, fontWeight: FontWeight.w700));

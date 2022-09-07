@@ -3,12 +3,12 @@ import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/home_screen.dart';
 
-class WelcomeBottomContainer extends StatelessWidget {
-  const WelcomeBottomContainer(
-      {Key? key, required this.isSelected, required this.isLoading})
+class WelcomeButtons extends StatelessWidget {
+  const WelcomeButtons(
+      {Key? key, required this.currentIndex, required this.isLoading})
       : super(key: key);
   final bool isLoading;
-  final int isSelected;
+  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,13 @@ class WelcomeBottomContainer extends StatelessWidget {
           _animatedPageList(),
           const SizedBox(height: 10),
           // login & continue button
-          _bottomButtons(context, isSelected),
+          _bottomButtons(context, currentIndex),
         ],
       ),
     );
   }
 
-  Widget _bottomButtons(BuildContext context, int index) => index == 2
+  Widget _bottomButtons(BuildContext context, int index) => index == 1
       ? Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -84,16 +84,18 @@ class WelcomeBottomContainer extends StatelessWidget {
         width: 100,
         child: Row(
           children: List.generate(
-            3,
+            2,
             (index) => AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               margin: const EdgeInsets.only(right: 7),
               height: 13,
-              width: isSelected == index ? 30 : 13,
+              width: currentIndex == index ? 30 : 13,
               decoration: BoxDecoration(
-                shape:
-                    isSelected == index ? BoxShape.rectangle : BoxShape.circle,
-                color: isSelected == index ? Colors.white : AppColors.secondary,
+                shape: currentIndex == index
+                    ? BoxShape.rectangle
+                    : BoxShape.circle,
+                color:
+                    currentIndex == index ? Colors.white : AppColors.secondary,
               ),
             ),
           ),
