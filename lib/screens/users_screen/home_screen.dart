@@ -8,7 +8,6 @@ import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/float
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/navigation_cbar.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_product/product_all.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/recommend_all.dart';
-import 'package:shop_app2/widgets/common_widgets/category_container.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home-screen';
@@ -48,7 +47,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const SliverToBoxAdapter(child: HomeOffer()),
-        SliverToBoxAdapter(child: CategoryContainer(selectedCategory: (_) {})),
         const SliverToBoxAdapter(child: ProductAll()),
         const SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),

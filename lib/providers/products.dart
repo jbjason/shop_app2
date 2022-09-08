@@ -96,17 +96,26 @@ class Products with ChangeNotifier {
       category: categories[4],
     ),
   ];
+  List<Product> _allProducts = [];
+  List<Product> get items => [..._items];
+  List<Product> get allProducts => [..._allProducts];
 
-  List<Product> get items {
-    return [..._items];
+  Product findById(String id) {
+    return _items.firstWhere((element) => element.id == id);
   }
 
   List<Product> get favoriteItems {
     return _items.where((element) => element.isFavorite).toList();
   }
 
-  Product findById(String id) {
-    return _items.firstWhere((element) => element.id == id);
+  void setAllProducts(String category) {
+    if (category == "All") {
+      _allProducts = items;
+    } else {
+      _allProducts =
+          _items.where((element) => element.category == category).toList();
+    }
+    notifyListeners();
   }
 
   Future<void> addProduct(Product product) async {

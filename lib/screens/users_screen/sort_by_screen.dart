@@ -158,7 +158,9 @@ class _SortByScreenState extends State<SortByScreen> {
               element.price <= highValue &&
               element.category == _selectedCategory;
         }).toList();
-        setState(() => _suggestions = _list);
+        _suggestions = _list;
+        _isExpand = false;
+        setState(() {});
       },
       child: Container(
         width: 200,
