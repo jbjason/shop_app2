@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/screens/users_screen/details_screen.dart';
-import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_product/product_item1.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_pro_category/pro_item_title_heart.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({Key? key, required this.product}) : super(key: key);
+class ProAllItem extends StatelessWidget {
+  const ProAllItem({Key? key, required this.product}) : super(key: key);
   final Product product;
 
   @override
@@ -26,7 +26,7 @@ class ProductItem extends StatelessWidget {
         child: AnimatedContainer(
           duration: kThemeAnimationDuration,
           margin: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 18),
-          child: ProductItem1(product: product),
+          child: ProItemTitleHeart(product: product),
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(product.imageUrl[0]), fit: BoxFit.cover),

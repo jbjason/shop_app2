@@ -4,15 +4,15 @@ import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/common_widgets/category_container.dart';
 import 'dart:math' as math;
-import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_product/product_item.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_pro_category/pro_all_item.dart';
 
-class ProductAll extends StatefulWidget {
-  const ProductAll({Key? key}) : super(key: key);
+class CategoryProductAll extends StatefulWidget {
+  const CategoryProductAll({Key? key}) : super(key: key);
   @override
-  State<ProductAll> createState() => _ProductAllState();
+  State<CategoryProductAll> createState() => _CategoryProductAllState();
 }
 
-class _ProductAllState extends State<ProductAll> {
+class _CategoryProductAllState extends State<CategoryProductAll> {
   final _currentIndex = ValueNotifier<int>(0);
   late PageController _pageController;
   final _currentCategory = ValueNotifier<String>('All');
@@ -22,12 +22,6 @@ class _ProductAllState extends State<ProductAll> {
     super.initState();
     _pageController = PageController(viewportFraction: 0.68, initialPage: 0);
     Provider.of<Products>(context, listen: false).setAllProducts('All');
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _pageController.dispose();
   }
 
   @override
@@ -71,9 +65,14 @@ class _ProductAllState extends State<ProductAll> {
             opacity: _currentIndex.value == i ? 1 : 0.5,
             child: Transform.rotate(
               angle: math.pi * value,
-              child: ProductItem(product: product),
+              child: ProAllItem(product: product),
             ),
           );
         },
       );
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
 }

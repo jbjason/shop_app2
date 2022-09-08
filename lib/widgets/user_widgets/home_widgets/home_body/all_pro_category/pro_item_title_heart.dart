@@ -3,8 +3,8 @@ import 'package:shop_app2/constants/constants_.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/widgets/common_widgets/heart_button.dart';
 
-class ProductItem1 extends StatelessWidget {
-  const ProductItem1({Key? key, required this.product}) : super(key: key);
+class ProItemTitleHeart extends StatelessWidget {
+  const ProItemTitleHeart({Key? key, required this.product}) : super(key: key);
   final Product product;
   @override
   Widget build(BuildContext context) {
