@@ -23,9 +23,9 @@ class WelcomeScreen extends StatelessWidget {
                   decoration: _decoration),
             ),
             Positioned(
-                top: size.height * .753, left: 0, child: swipeText('↞swipe')),
+                top: size.height * .76, left: 0, child: swipeText('↞swipe')),
             Positioned(
-                top: size.height * .753, right: 0, child: swipeText('swipe↠')),
+                top: size.height * .76, right: 0, child: swipeText('swipe↠')),
           ],
         ),
       ),

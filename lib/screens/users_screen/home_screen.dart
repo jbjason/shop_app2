@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/widgets/common_widgets/app_drawer.dart';
-import 'package:shop_app2/constants/delegates_.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_delegate.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/basic_appbar_home.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/home_custom_appbar.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/offer_widgets/home_offer.dart';
@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
         SliverPersistentHeader(
           pinned: true,
           delegate: HomeDelegate(
-            maxHeight: size.height * .35,
+            maxHeight: size.height * .32,
             appbars: (shrink) => Stack(
               children: [
                 if (shrink >= 1) ...[

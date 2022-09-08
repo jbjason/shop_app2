@@ -58,7 +58,7 @@ class _CategoryContainerState extends State<CategoryContainer> {
                   right: index == categories.length - 1 ? 10 : 5),
               decoration: BoxDecoration(
                   color: f
-                      ? AppColors.accent.withOpacity(0.7)
+                      ? AppColors.accent.withOpacity(0.5)
                       : Colors.transparent,
                   borderRadius: BorderRadius.only(
                     topRight: const Radius.circular(10),

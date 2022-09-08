@@ -15,7 +15,7 @@ class _HomeOfferState extends State<HomeOffer> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: size.height * .14,
+      height: size.height * .12,
       child: Stack(
         children: [
           PageView.builder(
@@ -38,7 +38,7 @@ class _HomeOfferState extends State<HomeOffer> {
           ),
           Positioned(
             bottom: 10,
-            left: size.width * .5 - 75,
+            left: size.width * .5 - 50,
             child: ValueListenableBuilder(
               valueListenable: _currentIndex,
               builder: (context, int index, _) =>

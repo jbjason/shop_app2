@@ -16,14 +16,16 @@ class WelcomeButtons extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // login & continue button
           _bottomButtons(context, currentIndex),
           const SizedBox(height: 10),
           // animated page counter
-          Center(
-              child: CounterContainer(currentIndex: currentIndex, length: 2)),
+          Align(
+            alignment: const Alignment(.5, 0),
+            child: CounterContainer(currentIndex: currentIndex, length: 2),
+          ),
         ],
       ),
     );

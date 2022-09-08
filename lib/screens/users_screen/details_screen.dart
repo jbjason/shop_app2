@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app2/constants/delegates_.dart';
+import 'package:shop_app2/widgets/user_widgets/details_widgets/details_delegate.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/user_widgets/details_widgets/body_details/comments.dart';

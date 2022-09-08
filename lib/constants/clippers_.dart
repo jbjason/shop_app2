@@ -8,11 +8,11 @@ class WelcomeClipper extends CustomClipper<Path> {
     path.lineTo(0, h * .6);
 
     final double px1 = 0, py1 = h * .75;
-    final double px2 = w * .17, py2 = h * .75;
-    final double px3 = w * .17, py3 = h * .81;
+    final double px2 = w * .14, py2 = h * .75;
+    final double px3 = w * .14, py3 = h * .81;
     path.cubicTo(px1, py1, px2, py2, px3, py3);
 
-    final double qx1 = w * .17, qy1 = h * .85;
+    final double qx1 = w * .14, qy1 = h * .85;
     final double qx2 = 0, qy2 = h * .85;
     final double qx3 = 0, qy3 = h;
 
@@ -21,8 +21,16 @@ class WelcomeClipper extends CustomClipper<Path> {
 
     path.lineTo(w, h);
 
-    path.cubicTo(w, h * .85, w * .83, h * .85, w * .83, h * .8);
-    path.cubicTo(w * .83, h * .76, w, h * .7, w, h * .6);
+    final double rx1 = w, ry1 = h * .85;
+    final double rx2 = w * .86, ry2 = h * .85;
+    final double rx3 = w * .86, ry3 = h * .8;
+    path.cubicTo(rx1, ry1, rx2, ry2, rx3, ry3);
+
+    final double sx1 = w * .86, sy1 = h * .76;
+    final double sx2 = w, sy2 = h * .7;
+    final double sx3 = w, sy3 = h * .6;
+    path.cubicTo(sx1, sy1, sx2, sy2, sx3, sy3);
+
     path.lineTo(w, h * .6);
     path.lineTo(w, 0);
     path.close();

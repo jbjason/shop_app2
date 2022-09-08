@@ -18,14 +18,16 @@ const String middleText3 =
 Widget welcomeText1() => RichText(
       text: TextSpan(
         children: [
-          _spanText('Welcome to the world\'s most ', FontWeight.normal, 35,
+          _spanText('Welcome to the world\'s most ', FontWeight.normal, 22,
               AppColors.textHighlight),
-          _spanText('imaginative ', FontWeight.bold, 35, Colors.white),
-          _spanText(
-              'marketPlace.\n', FontWeight.normal, 35, AppColors.textHighlight),
+          _spanText('imaginative ', FontWeight.w900, 35, Colors.white),
+          _spanText('marketPlace.\n\n\n', FontWeight.normal, 22,
+              AppColors.textHighlight),
         ],
       ),
     );
+Widget welcomeText1HighLight() => RichText(
+    text: _spanText('"Hello Bazar"', FontWeight.bold, 50, AppColors.accent));
 
 TextSpan _spanText(String s, FontWeight weight, double font, Color c) =>
     TextSpan(
@@ -35,5 +37,6 @@ TextSpan _spanText(String s, FontWeight weight, double font, Color c) =>
     );
 
 Widget swipeText(String s) => Text(s,
+    textAlign: TextAlign.center,
     style: const TextStyle(
         fontSize: 11, color: AppColors.accent, fontWeight: FontWeight.w700));
