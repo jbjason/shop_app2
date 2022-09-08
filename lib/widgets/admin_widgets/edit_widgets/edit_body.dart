@@ -19,6 +19,7 @@ class EditBody extends StatefulWidget {
 class _EditBodyState extends State<EditBody> {
   final _form = GlobalKey<FormState>();
   final _titleController = TextEditingController();
+  final _subtitleController = TextEditingController();
   final _categoryController = TextEditingController();
   final _priceController = TextEditingController();
   final _detailsController = TextEditingController();
@@ -36,6 +37,7 @@ class _EditBodyState extends State<EditBody> {
       final product =
           Provider.of<Products>(context, listen: false).findById(widget.isEdit);
       _titleController.text = product.title;
+      _subtitleController.text = product.subtitle;
       _categoryController.text = product.category;
       _priceController.text = product.price.toString();
       _detailsController.text = product.description;
@@ -59,6 +61,8 @@ class _EditBodyState extends State<EditBody> {
             const SizedBox(height: 20),
             EditTextFields(
                 controller: _titleController, lines: 1, text: 'Title'),
+            EditTextFields(
+                controller: _titleController, lines: 1, text: 'Subtitle'),
             EditTextFields(
                 controller: _categoryController, lines: 1, text: 'Category'),
             EditTextFields(
@@ -104,6 +108,7 @@ class _EditBodyState extends State<EditBody> {
     final f = Product(
         id: widget.isEdit.isEmpty ? DateTime.now().toString() : widget.isEdit,
         title: _titleController.text.trim(),
+        subtitle: _subtitleController.text.trim(),
         description: _detailsController.text.trim(),
         category: _categoryController.text.trim(),
         price: double.parse(_priceController.text.trim()),

@@ -27,7 +27,7 @@ class WelcomePage1 extends StatelessWidget {
           child: welcomeText1HighLight(),
         ),
         Positioned(
-          top: size.height * .69,
+          top: size.height * .7,
           left: size.width * .147,
           right: size.width * .1,
           child: welcomeText1(),

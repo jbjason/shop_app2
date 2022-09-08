@@ -10,6 +10,7 @@ class Products with ChangeNotifier {
     Product(
       id: DateTime.now().toString(),
       title: 'Red Shirt',
+      subtitle: 'লাল শার্ট',
       description: detailString,
       price: 29.99,
       imageUrl: imageList1,
@@ -20,6 +21,7 @@ class Products with ChangeNotifier {
     Product(
       id: DateTime.january.toString(),
       title: 'Trowser',
+      subtitle: 'ট্রাউজার',
       description: detailString,
       price: 20.45,
       imageUrl: imageList2,
@@ -30,6 +32,7 @@ class Products with ChangeNotifier {
     Product(
       id: DateTime.february.toString(),
       title: 'Yellow Scarf',
+      subtitle: 'হলুদ স্কার্ফ',
       description: detailString,
       price: 20.45,
       imageUrl: imageList3,
@@ -40,6 +43,7 @@ class Products with ChangeNotifier {
     Product(
       id: DateTime.march.toString(),
       title: 'A Pan',
+      subtitle: 'কড়াই',
       description: detailString,
       price: 20.45,
       imageUrl: imageList4,
@@ -49,7 +53,8 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: DateTime.april.toString(),
-      title: 'Windows',
+      title: 'Samsung S9',
+      subtitle: 'স্যামসাং S9',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
       imageUrl: imageList1,
@@ -59,7 +64,8 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: DateTime.may.toString(),
-      title: 'Windows 7',
+      title: 'iPhone 7',
+      subtitle: 'আইফোন 7',
       description: detailString,
       price: 20.45,
       imageUrl: imageList2,
@@ -69,7 +75,8 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: DateTime.june.toString(),
-      title: 'Windows 10',
+      title: 'Samsung M32',
+      subtitle: 'স্যামসাং M32',
       description: detailString,
       price: 20.45,
       imageUrl: imageList3,
@@ -79,7 +86,8 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: DateTime.july.toString(),
-      title: 'Windows 8',
+      title: 'Oppo 3.0',
+      subtitle: 'রেডমি 3.0',
       description: detailString,
       price: 20.45,
       imageUrl: imageList4,
@@ -109,6 +117,7 @@ class Products with ChangeNotifier {
         url,
         body: json.encode({
           'title': product.title,
+          'subtitle': product.subtitle,
           'category': product.category,
           'description': product.description,
           'price': product.price,
@@ -120,6 +129,7 @@ class Products with ChangeNotifier {
       );
       _items.add(Product(
         title: product.title,
+        subtitle: product.subtitle,
         description: product.description,
         price: product.price,
         imageUrl: product.imageUrl,
@@ -159,6 +169,7 @@ class Products with ChangeNotifier {
           _items.add(Product(
             id: proId,
             title: prodData['title'],
+            subtitle: prodData['subtitle'],
             description: prodData['description'],
             price: prodData['price'],
             category: prodData['category'],
