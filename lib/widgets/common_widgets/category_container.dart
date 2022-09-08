@@ -5,8 +5,11 @@ import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/category.dart';
 
 class CategoryContainer extends StatefulWidget {
-  const CategoryContainer({Key? key, required this.tag}) : super(key: key);
+  const CategoryContainer(
+      {Key? key, required this.selectedCategory, required this.tag})
+      : super(key: key);
   final String tag;
+  final Function(String category) selectedCategory;
   @override
   State<CategoryContainer> createState() => _CategoryContainerState();
 }
@@ -37,12 +40,13 @@ class _CategoryContainerState extends State<CategoryContainer> {
           return InkWell(
             onTap: () {
               setState(() => selectedIndex = index);
-              final f = Provider.of<Category>(context, listen: false);
-              if (widget.tag.toLowerCase() == 'home') {
-                f.updateCategoryList(selectedIndex);
-              } else {
-                f.updateSortedList(selectedIndex);
-              }
+              // final f = Provider.of<Category>(context, listen: false);
+              // if (widget.tag.toLowerCase() == 'home') {
+              //   f.updateCategoryList(selectedIndex);
+              // } else {
+              //   f.updateSortedList(selectedIndex);
+              // }
+              widget.selectedCategory(categories[selectedIndex]);
             },
             child: Container(
               child: Text(
