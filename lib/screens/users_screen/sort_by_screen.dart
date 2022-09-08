@@ -67,8 +67,7 @@ class _SortByScreenState extends State<SortByScreen> {
               elevation: 15,
               child: ListView(
                 children: [
-                  CategoryContainer(
-                      tag: 'sort', selectedCategory: _onCategoryChange),
+                  CategoryContainer(selectedCategory: _onCategoryChange),
                   const RangeAmountText(),
                   _pointBar(),
                   _applyButton(),
