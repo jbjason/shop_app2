@@ -23,7 +23,6 @@ class AuthScreen extends StatelessWidget {
               bigBubble: Colors.white,
               smallBubble: AppColors.accent,
               secondBubble: AppColors.secondary,
-              page: 'auth',
             ),
             AuthBody(pageKey: _pageKey),
           ],

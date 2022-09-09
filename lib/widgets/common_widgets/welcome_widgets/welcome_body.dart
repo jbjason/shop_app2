@@ -19,9 +19,9 @@ class _WelcomeBodyState extends State<WelcomeBody> {
 
   @override
   void initState() {
-    Provider.of<Products>(context, listen: false).fetchProducts().then((_) {
-      return _isLoading.value = false;
-    });
+    Provider.of<Products>(context, listen: false)
+        .fetchProducts()
+        .then((_) => _isLoading.value = false);
     super.initState();
   }
 
@@ -33,7 +33,6 @@ class _WelcomeBodyState extends State<WelcomeBody> {
           bigBubble: Colors.white,
           smallBubble: AppColors.accent,
           secondBubble: AppColors.secondary,
-          page: 'well',
         ),
         Positioned.fill(
           child: PageView.builder(

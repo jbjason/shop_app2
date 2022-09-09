@@ -15,8 +15,8 @@ class RecommendAll extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 80),
       sliver: SliverList(
         delegate: SliverChildBuilderDelegate(
-          (context, index) =>
-              RecommendItem(product: products[length - 1 - index]),
+          (context, index) => RecommendItem(
+              product: products[length - 1 - index], subtitleKey: ''),
           childCount: length,
         ),
       ),

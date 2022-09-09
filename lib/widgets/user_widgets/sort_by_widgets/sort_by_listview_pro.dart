@@ -15,8 +15,8 @@ class SortByListViewPro extends StatelessWidget {
       child: ListView.builder(
         padding: const EdgeInsets.only(top: 20),
         itemCount: _suggestions.length,
-        itemBuilder: ((context, index) =>
-            RecommendItem(product: _suggestions[index])),
+        itemBuilder: ((context, index) => RecommendItem(
+            product: _suggestions[index], subtitleKey: 'subtitle')),
       ),
     );
   }

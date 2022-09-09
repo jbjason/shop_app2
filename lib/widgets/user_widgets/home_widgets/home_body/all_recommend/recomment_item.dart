@@ -5,8 +5,11 @@ import 'package:shop_app2/screens/users_screen/details_screen.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/favorite_button.dart';
 
 class RecommendItem extends StatelessWidget {
-  RecommendItem({Key? key, required this.product}) : super(key: key);
+  RecommendItem({Key? key, required this.product, required this.subtitleKey})
+      : super(key: key);
   final Product product;
+  final String subtitleKey;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -81,6 +84,11 @@ class RecommendItem extends StatelessWidget {
             const Icon(Icons.location_on_sharp, size: 10.0),
             Text('${product.isReview} reviews',
                 style: const TextStyle(fontSize: 11)),
+            const Spacer(),
+            //bangla Subtitle
+            subtitleKey == 'subtitle'
+                ? Text(product.subtitle)
+                : const SizedBox(),
           ]),
           // ratings
           _buildRatingStars(product.isRating.toInt()),
@@ -95,7 +103,7 @@ class RecommendItem extends StatelessWidget {
       stars += '⭐ ';
     }
     stars.trim();
-    return Text(stars, style: const TextStyle(fontSize: 8));
+    return Text(stars, style: const TextStyle(fontSize: 5));
   }
 
   final _decoration = BoxDecoration(

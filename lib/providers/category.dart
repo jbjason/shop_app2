@@ -5,10 +5,18 @@ class Category with ChangeNotifier {
   List<Product> _items = [];
   void update(List<Product> items) => _items = [...items];
 
-  List<Product> _categoryList = [];
-  List<Product> get categoryList => [..._categoryList];
+  List<Product> _allProducts = [];
+  List<Product> get allProducts => [..._allProducts];
 
-  void setCategoryList() => _categoryList = [..._items];
+  void setAllProducts(String category) {
+    if (category == "All") {
+      _allProducts = _items;
+    } else {
+      _allProducts =
+          _items.where((element) => element.category == category).toList();
+    }
+    notifyListeners();
+  }
 
   String _userid = '';
   String get userid => _userid;

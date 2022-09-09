@@ -20,11 +20,19 @@ class BasicAppBarHome extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 1, 1, 17),
         elevation: 10,
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(SortByScreen.routeName);
-            },
-            icon: const Icon(Icons.search),
+          SizedBox(
+            width: 160,
+            child: Row(
+              children: [
+                const Spacer(),
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(SortByScreen.routeName);
+                  },
+                  icon: const Icon(Icons.search),
+                ),
+              ],
+            ),
           )
         ],
       ),

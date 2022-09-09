@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/providers/product.dart';
-import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/common_widgets/category_container.dart';
 import 'dart:math' as math;
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_pro_category/pro_all_item.dart';
@@ -21,13 +21,12 @@ class _CategoryProductAllState extends State<CategoryProductAll> {
   void initState() {
     super.initState();
     _pageController = PageController(viewportFraction: 0.68, initialPage: 0);
-    Provider.of<Products>(context, listen: false).setAllProducts('All');
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final products = Provider.of<Products>(context).allProducts;
+    final products = Provider.of<Category>(context).allProducts;
     return Column(
       children: [
         CategoryContainer(selectedCategory: _onCategorySelect),
@@ -48,7 +47,7 @@ class _CategoryProductAllState extends State<CategoryProductAll> {
 
   void _onCategorySelect(String s) {
     _currentCategory.value = s;
-    Provider.of<Products>(context, listen: false)
+    Provider.of<Category>(context, listen: false)
         .setAllProducts(_currentCategory.value);
   }
 
