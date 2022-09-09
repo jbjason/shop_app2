@@ -3,9 +3,12 @@ import 'package:shop_app2/providers/product.dart';
 
 class Category with ChangeNotifier {
   List<Product> _items = [];
-  void update(List<Product> items) => _items = [...items];
-
   List<Product> _allProducts = [];
+  void update(List<Product> items) {
+    _items = [...items];
+    _allProducts = _items;
+  }
+
   List<Product> get allProducts => [..._allProducts];
 
   void setAllProducts(String category) {

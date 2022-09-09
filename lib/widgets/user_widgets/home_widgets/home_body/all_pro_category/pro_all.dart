@@ -69,6 +69,7 @@ class _CategoryProductAllState extends State<CategoryProductAll> {
           );
         },
       );
+
   @override
   void dispose() {
     super.dispose();
