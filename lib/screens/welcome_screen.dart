@@ -19,7 +19,6 @@ class WelcomeScreen extends StatelessWidget {
                   child: const WelcomeBody(),
                   height: size.height,
                   width: size.width,
-                  margin: const EdgeInsets.all(2),
                   decoration: _decoration),
             ),
             Positioned(
@@ -33,6 +32,8 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   final _decoration = BoxDecoration(
+    border: Border.all(width: 3, color: Colors.white),
+    borderRadius: BorderRadius.circular(40),
     gradient: LinearGradient(colors: [
       Colors.grey[700]!.withOpacity(0.6),
       Colors.grey[700]!.withOpacity(0.2),

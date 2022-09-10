@@ -14,7 +14,7 @@ class WelcomePage2 extends StatelessWidget {
         Positioned.fill(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(40),
               image: const DecorationImage(
                   image: AssetImage('assets/s4.jpg'), fit: BoxFit.cover),
             ),
