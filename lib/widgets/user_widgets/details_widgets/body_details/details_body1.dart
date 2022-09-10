@@ -200,7 +200,7 @@ class _DetailsBody1State extends State<DetailsBody1> {
   Widget _bottomAnimateCircle() => AnimatedPositioned(
       duration: const Duration(milliseconds: 700),
       curve: Curves.easeIn,
-      bottom: _topVal,
+      top: -(_topVal + 10),
       left: _topVal - 10,
       child: _animateContainer('b'));
 

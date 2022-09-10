@@ -20,13 +20,13 @@ class ImagesPreview extends StatefulWidget {
 class _ImagesPreviewState extends State<ImagesPreview> {
   int _currentIndex = 0;
   late var pageController = PageController();
-  double pageOffset = 0;
+  final _pageOffset = ValueNotifier<double>(0);
 
   @override
   void initState() {
     super.initState();
     pageController = PageController(viewportFraction: 0.9)
-      ..addListener(() => setState(() => pageOffset = pageController.page!));
+      ..addListener(() => _pageOffset.value = pageController.page!);
   }
 
   @override
@@ -68,19 +68,21 @@ class _ImagesPreviewState extends State<ImagesPreview> {
           controller: pageController,
           itemCount: widget.product.imageUrl.length,
           onPageChanged: (value) => setState(() => _currentIndex = value),
-          itemBuilder: (context, index) {
-            double percent = 1 - (pageOffset - index).abs();
-            return Container(
-              margin: EdgeInsets.only(right: 10, top: 55 - percent * 50),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  image: NetworkImage(widget.product.imageUrl[index]),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            );
-          },
+          itemBuilder: (context, index) => ValueListenableBuilder(
+              valueListenable: _pageOffset,
+              builder: (context, double pageOffVal, _) {
+                double percent = 1 - (pageOffVal - index).abs();
+                return Container(
+                  margin: EdgeInsets.only(right: 10, top: 55 - percent * 50),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: NetworkImage(widget.product.imageUrl[index]),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              }),
         ),
       );
 
