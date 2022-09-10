@@ -18,7 +18,7 @@ class ImagesPreview extends StatefulWidget {
 }
 
 class _ImagesPreviewState extends State<ImagesPreview> {
-  int _currentIndex = 0;
+  final _currentIndex = ValueNotifier<int>(0);
   late var pageController = PageController();
   final _pageOffset = ValueNotifier<double>(0);
 
@@ -67,7 +67,7 @@ class _ImagesPreviewState extends State<ImagesPreview> {
         child: PageView.builder(
           controller: pageController,
           itemCount: widget.product.imageUrl.length,
-          onPageChanged: (value) => setState(() => _currentIndex = value),
+          onPageChanged: (value) => _currentIndex.value = value,
           itemBuilder: (context, index) => ValueListenableBuilder(
               valueListenable: _pageOffset,
               builder: (context, double pageOffVal, _) {
@@ -90,15 +90,18 @@ class _ImagesPreviewState extends State<ImagesPreview> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(
           widget.product.imageUrl.length,
-          (index) => AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            height: 4,
-            width: index == _currentIndex ? 23 : 10,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              color: index == _currentIndex ? Colors.black87 : Colors.black12,
+          (i) => ValueListenableBuilder(
+            valueListenable: _currentIndex,
+            builder: (context, int currentIndex, _) => AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              height: 4,
+              width: i == currentIndex ? 23 : 10,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                color: i == currentIndex ? Colors.black87 : Colors.black12,
+              ),
+              margin: const EdgeInsets.symmetric(horizontal: 5),
             ),
-            margin: const EdgeInsets.symmetric(horizontal: 5),
           ),
         ),
       );
