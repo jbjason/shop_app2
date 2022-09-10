@@ -9,7 +9,7 @@ class HomeOffer extends StatefulWidget {
 }
 
 class _HomeOfferState extends State<HomeOffer> {
-  final _controller = PageController(initialPage: 1, viewportFraction: .8);
+  final _controller = PageController(initialPage: 2, viewportFraction: .8);
   final _currentIndex = ValueNotifier<int>(1);
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _HomeOfferState extends State<HomeOffer> {
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(width: 1, color: AppColors.accent),
                   image: DecorationImage(
-                    image: AssetImage('assets/offer$i.jpg'),
+                    image: AssetImage('assets/offer/offer$i.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),

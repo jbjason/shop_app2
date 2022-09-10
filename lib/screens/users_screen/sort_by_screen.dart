@@ -18,10 +18,10 @@ class SortByScreen extends StatefulWidget {
 }
 
 class _SortByScreenState extends State<SortByScreen> {
+  final _controller = TextEditingController();
   final _isExpand = ValueNotifier<bool>(false);
   final highValue = ValueNotifier<double>(1000);
   List<Product> _availableProducts = [], _suggestions = [];
-  final _controller = TextEditingController();
   String _selectedCategory = 'All';
 
   @override

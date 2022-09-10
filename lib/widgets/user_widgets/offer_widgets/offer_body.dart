@@ -40,7 +40,7 @@ class OfferBody extends StatelessWidget {
               ..rotateY(1.78 * fixRotation) // 1.8
               ..translate(-rotation * size.width * 0.8)
               ..scale(1 + rotation),
-            child: Image.network(
+            child: Image.asset(
               image,
               fit: BoxFit.cover,
               height: size.height * .5,

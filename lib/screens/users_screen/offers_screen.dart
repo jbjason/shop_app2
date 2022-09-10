@@ -13,7 +13,7 @@ class OffersScreen extends StatefulWidget {
 }
 
 class _OffersScreenState extends State<OffersScreen> {
-  final _controller = PageController();
+  final _controller = PageController(initialPage: 2);
   final _notifierScroll = ValueNotifier(0.0);
 
   @override
@@ -42,6 +42,7 @@ class _OffersScreenState extends State<OffersScreen> {
     final size = MediaQuery.of(context).size;
     return PageView.builder(
       controller: _controller,
+      itemCount: 5,
       itemBuilder: (context, index) {
         final percent = index - value;
         final rotation = percent.clamp(0.0, 1.0);
@@ -56,7 +57,7 @@ class _OffersScreenState extends State<OffersScreen> {
               OfferBody(
                   rotation: rotation,
                   size: size,
-                  image: products[index].imageUrl[0]),
+                  image: 'assets/offer/offer$index.jpg'),
               SizedBox(height: size.height * .05),
               OfferDetails(
                 rotation: rotation,
@@ -68,7 +69,6 @@ class _OffersScreenState extends State<OffersScreen> {
           ),
         );
       },
-      itemCount: products.length,
     );
   }
 

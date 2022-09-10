@@ -27,6 +27,7 @@ class SortByTextFieldSortIcon extends StatelessWidget {
                 prefixIcon: const Icon(Icons.search),
                 labelText: 'Search here',
                 fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(vertical: 2),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
                   borderSide:

@@ -4,7 +4,7 @@ import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_pro_ca
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_delegate.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/basic_appbar_home.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_appbar/home_custom_appbar.dart';
-import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/offer_widgets/home_offer.dart';
+import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/home_offer/home_offer.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/floating_button.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/navigation_bar/navigation_cbar.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/recommend_all.dart';
