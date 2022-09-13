@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/providers/products.dart';
-import 'package:shop_app2/screens/auth_and_admin/edit_product_screen.dart';
+import 'package:shop_app2/screens/admin_screen/edit_product_screen.dart';
 
 class AdminProductItem extends StatelessWidget {
   const AdminProductItem({Key? key, required this.product}) : super(key: key);

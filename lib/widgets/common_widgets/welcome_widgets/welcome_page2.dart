@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shop_app2/constants/constants_2.dart';
+import 'package:shop_app2/constants/constants_welcome.dart';
 import 'package:shop_app2/constants/theme.dart';
 
 class WelcomePage2 extends StatelessWidget {

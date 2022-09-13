@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/providers/cart.dart';
 import 'package:shop_app2/providers/category.dart';
-import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
+import 'package:shop_app2/screens/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/confirm_screen.dart';
 
 class CartTotalAmount extends StatelessWidget {

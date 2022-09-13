@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/theme.dart';
 import 'package:shop_app2/providers/category.dart';
-import 'package:shop_app2/screens/auth_and_admin/admin_panel_screen.dart';
+import 'package:shop_app2/screens/admin_screen/admin_panel_screen.dart';
 import 'package:shop_app2/screens/users_screen/home_screen.dart';
-import 'package:shop_app2/widgets/admin_widgets/auth_widgets/auth_form.dart';
+import 'package:shop_app2/widgets/auth_widgets/auth_form.dart';
 
 class AuthBody extends StatefulWidget {
   const AuthBody({Key? key, required this.pageKey}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/constants_others.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/user_widgets/offer_widgets/offer_body.dart';
 import 'package:shop_app2/widgets/user_widgets/offer_widgets/offer_details.dart';
@@ -13,7 +13,7 @@ class OffersScreen extends StatefulWidget {
 }
 
 class _OffersScreenState extends State<OffersScreen> {
-  final _controller = PageController(initialPage: 2);
+  final _controller = PageController();
   final _notifierScroll = ValueNotifier(0.0);
 
   @override

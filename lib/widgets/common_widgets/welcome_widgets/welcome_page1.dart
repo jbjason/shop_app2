@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:shop_app2/constants/constants_2.dart';
+import 'package:shop_app2/constants/constants_welcome.dart';
 import 'package:shop_app2/constants/theme.dart';
 
 class WelcomePage1 extends StatelessWidget {

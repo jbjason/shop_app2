@@ -1,6 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app2/widgets/admin_widgets/auth_widgets/signup_button.dart';
+import 'package:shop_app2/widgets/auth_widgets/signup_button.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({Key? key, required this.submitFn, required this.isLoading})

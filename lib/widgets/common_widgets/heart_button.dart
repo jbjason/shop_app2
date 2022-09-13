@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/constants_others.dart';
 import 'package:shop_app2/providers/product.dart';
 
 class HeartButton extends StatefulWidget {

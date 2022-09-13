@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/constants_others.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/screens/users_screen/details_screen.dart';
 import 'package:shop_app2/widgets/user_widgets/home_widgets/home_body/all_recommend/favorite_button.dart';

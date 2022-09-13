@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/clippers_.dart';
-import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/constants_others.dart';
 import 'package:shop_app2/constants/theme.dart';
 
 class NavigationCBar extends StatelessWidget {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app2/constants/constants_.dart';
+import 'package:shop_app2/constants/constants_others.dart';
 import 'package:shop_app2/providers/product.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/widgets/admin_widgets/edit_widgets/add_product_button.dart';
@@ -116,7 +117,7 @@ class _EditBodyState extends State<EditBody> {
         color: _colorList,
         size: _sizeList);
     if (widget.isEdit.isEmpty) {
-      await Provider.of<Products>(context, listen: false).addProduct(f);
+      Provider.of<Products>(context, listen: false).addProduct(f);
     } else {
       Provider.of<Products>(context, listen: false).updateProduct(f);
     }

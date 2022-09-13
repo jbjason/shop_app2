@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app2/constants/theme.dart';
-import 'package:shop_app2/screens/auth_and_admin/auth_screen.dart';
+import 'package:shop_app2/screens/auth_screen.dart';
 import 'package:shop_app2/screens/users_screen/home_screen.dart';
 import 'package:shop_app2/widgets/common_widgets/counter_container.dart';
 
