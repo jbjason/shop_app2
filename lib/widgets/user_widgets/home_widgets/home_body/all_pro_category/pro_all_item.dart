@@ -31,7 +31,7 @@ class ProAllItem extends StatelessWidget {
             image: DecorationImage(
                 image: NetworkImage(product.imageUrl[0]), fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(40),
-            boxShadow: getShadowBox(Colors.grey.shade600, Colors.white),
+            boxShadow: getShadowBox(Colors.grey[300]!, Colors.white),
           ),
         ),
       );

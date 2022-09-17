@@ -34,6 +34,7 @@ class _CategoryProductAllState extends State<CategoryProductAll> {
           height: size.height * .25,
           child: PageView.builder(
             controller: _pageController,
+            clipBehavior: Clip.none,
             physics: const ClampingScrollPhysics(),
             onPageChanged: (value) => _currentIndex.value = value,
             itemCount: products.length,

@@ -113,6 +113,6 @@ class RecommendItem extends StatelessWidget {
         topLeft: Radius.circular(10),
         bottomLeft: Radius.circular(10),
         bottomRight: Radius.circular(50)),
-    boxShadow: getShadowBox(Colors.grey.shade500, Colors.white),
+    boxShadow: getShadowBox(Colors.grey[300]!, Colors.white),
   );
 }

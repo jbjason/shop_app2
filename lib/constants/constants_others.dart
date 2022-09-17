@@ -44,17 +44,17 @@ Widget getAppBarTile(String s, BuildContext context) => SizedBox(
       ),
     );
 
-List<BoxShadow> getShadowBox(Color upper, Color lower) => [
-      BoxShadow(
-        color: upper,
-        offset: const Offset(4, 4),
-        blurRadius: 15,
-        spreadRadius: 5,
-      ),
+List<BoxShadow> getShadowBox(Color lower, Color upper) => [
       BoxShadow(
         color: lower,
-        offset: const Offset(-4, -4),
+        offset: const Offset(5, 5),
         blurRadius: 15,
+        spreadRadius: 1,
+      ),
+      BoxShadow(
+        color: upper,
+        offset: const Offset(-5, -5),
+        blurRadius: 25,
         spreadRadius: 1,
       ),
     ];

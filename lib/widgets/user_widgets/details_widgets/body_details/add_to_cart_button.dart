@@ -13,7 +13,8 @@ class AddToCartButton extends StatelessWidget {
       required this.selectedSize})
       : super(key: key);
   final Product product;
-  final int selectedColor, selectedSize;
+  final int selectedSize;
+  final int selectedColor;
   @override
   Widget build(BuildContext context) {
     return Center(

@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/constants_others.dart';
 
 class OfferBody extends StatelessWidget {
   final double rotation;
@@ -21,17 +22,8 @@ class OfferBody extends StatelessWidget {
           Container(
             height: size.height * .5,
             width: size.width * .65,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black,
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                  offset: Offset(5.0, 5.0),
-                ),
-              ],
-            ),
+            decoration: BoxDecoration(
+                boxShadow: getShadowBox(Colors.grey[300]!, Colors.white)),
           ),
           Transform(
             alignment: Alignment.centerLeft,
