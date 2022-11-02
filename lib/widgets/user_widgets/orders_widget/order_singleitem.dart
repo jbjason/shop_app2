@@ -17,9 +17,11 @@ class _OrderSingleItemState extends State<OrderSingleItem> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       height:
-          _expanded ? min(widget.order.products.length * 25.0 + 110, 230) : 80,
+          _expanded ? min(widget.order.products.length * 25.0 + 110, 230) : 85,
       child: Material(
+        borderRadius: BorderRadius.circular(8.0),
         child: Column(
           children: [
             _ordersReceipt(),

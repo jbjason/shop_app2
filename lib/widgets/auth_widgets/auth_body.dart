@@ -47,7 +47,7 @@ class _AuthBodyState extends State<AuthBody> {
       }
       // seperating Admin Users
       Provider.of<Category>(context, listen: false).setUserId(_user.user!.uid);
-      if (email.contains('30jb40') && widget.pageKey == 'admin') {
+      if (email.contains('jb') && widget.pageKey == 'admin') {
         Navigator.of(ctx).pushNamed(AdminPanelScreen.routeName);
       } else if (widget.pageKey == 'admin') {
         Navigator.of(context).pushNamed(HomeScreen.routeName);

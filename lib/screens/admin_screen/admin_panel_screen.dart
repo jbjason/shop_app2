@@ -1,7 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app2/constants/constants_others.dart';
+import 'package:shop_app2/providers/category.dart';
 import 'package:shop_app2/providers/products.dart';
 import 'package:shop_app2/screens/admin_screen/edit_product_screen.dart';
 import 'package:shop_app2/widgets/admin_widgets/admin_panel_widgets/admin_product_item.dart';
@@ -21,7 +22,7 @@ class AdminPanelScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  getAppBarTile('Admin Panel', context),
+                  _logoutButton(context),
                   InkWell(
                     onTap: () => Navigator.of(context)
                         .pushNamed(EditProductScreen.routeName, arguments: ''),
@@ -44,4 +45,29 @@ class AdminPanelScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget _logoutButton(BuildContext context) => SizedBox(
+        height: 40,
+        child: Row(
+          children: [
+            IconButton(
+              icon: const Icon(CupertinoIcons.back),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Provider.of<Category>(context, listen: false).setUserId('');
+                int count = 0;
+                Navigator.popUntil(context, (route) {
+                  return count++ == 2;
+                });
+              },
+            ),
+            const SizedBox(width: 10),
+            const Text('Admin Panel',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    overflow: TextOverflow.ellipsis))
+          ],
+        ),
+      );
 }

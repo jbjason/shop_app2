@@ -26,13 +26,15 @@ class Orders with ChangeNotifier {
 
   Future<void> fetchAndSetOrders(String userId) async {
     final url = Uri.parse(
-        "https://flutter-update-67f54.firebaseio.com/orders/$userId.json");
+        "https://shop-2-5c421-default-rtdb.asia-southeast1.firebasedatabase.app/orders/$userId.json");
     final response = await http.get(url);
     final _data = json.decode(response.body);
     if (_data != null) {
       final extractedData = _data as Map<String, dynamic>;
       final List<OrderItem> loadedOrders = [];
       extractedData.forEach((orderId, orderData) {
+        print('jb fetch');
+        print(orderId);
         loadedOrders.add(OrderItem(
           id: orderId,
           amount: orderData['amount'],
@@ -73,6 +75,7 @@ class Orders with ChangeNotifier {
                     'quantity': cp.quantity,
                     'price': cp.price,
                     'size': cp.size,
+                    'imageUrl': cp.imageUrl,
                     'color': cp.color.value.toString(),
                   },
                 )
