@@ -22,7 +22,7 @@ Widget getButtonDecoration(double height, double width, BoxShape _shape,
       ),
       boxShadow: _shadow,
     ),
-    child: Padding(padding: const EdgeInsets.all(10), child: child),
+    child: Padding(padding: const EdgeInsets.all(7), child: child),
   );
 }
 

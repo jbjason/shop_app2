@@ -25,7 +25,7 @@ class ProAllItem extends StatelessWidget {
         tag: product.id + product.title,
         child: AnimatedContainer(
           duration: kThemeAnimationDuration,
-          margin: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 18),
+          margin: const EdgeInsets.only(left: 8, right: 8, top: 10),
           child: ProItemTitleHeart(product: product),
           decoration: BoxDecoration(
             image: DecorationImage(

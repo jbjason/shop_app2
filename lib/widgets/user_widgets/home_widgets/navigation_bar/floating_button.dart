@@ -26,10 +26,11 @@ class FloatingButton extends StatelessWidget {
         BoxShape.circle,
         [],
         FloatingActionButton(
-          backgroundColor: AppColors.accent.withOpacity(0.8),
+          backgroundColor: AppColors.accent,
           onPressed: () =>
               Navigator.of(context).pushNamed(CartScreen.routeName),
-          child: const Icon(CupertinoIcons.shopping_cart, size: 25),
+          child: const Icon(CupertinoIcons.shopping_cart,
+              color: Colors.white, size: 25),
         ),
       ),
     );

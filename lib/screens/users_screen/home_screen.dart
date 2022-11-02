@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
         const SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           sliver: SliverToBoxAdapter(
-              child: Text('  Recommended', style: TextStyle(fontSize: 22))),
+              child: Text('  Recommended', style: TextStyle(fontSize: 18))),
         ),
         const RecommendAll(),
       ],

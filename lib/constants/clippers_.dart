@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app2/constants/theme.dart';
 
 class WelcomeClipper extends CustomClipper<Path> {
   @override
@@ -55,8 +56,8 @@ class NavClipper extends CustomPainter {
       ..lineTo(w, h)
       ..lineTo(0, h);
     path.close();
-    canvas.drawShadow(path, Colors.black26, 10, false);
-    canvas.drawPath(path, Paint()..color = Colors.white);
+    canvas.drawShadow(path, Colors.white, 10, false);
+    canvas.drawPath(path, Paint()..color = AppColors.accent.withOpacity(0.85));
   }
 
   @override

@@ -31,7 +31,7 @@ class _CategoryProductAllState extends State<CategoryProductAll> {
       children: [
         CategoryContainer(selectedCategory: _onCategorySelect),
         SizedBox(
-          height: size.height * .25,
+          height: size.height * .23,
           child: PageView.builder(
             controller: _pageController,
             clipBehavior: Clip.none,
