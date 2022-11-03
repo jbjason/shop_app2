@@ -71,7 +71,7 @@ class InvoiceAndUserInfo extends StatelessWidget {
             const SizedBox(height: 20),
             Text('Name : $name', overflow: TextOverflow.ellipsis),
             const SizedBox(height: 8),
-            Text('email : $contact'),
+            Text('email : $email'),
             const SizedBox(height: 8),
             Text('Contact : $contact'),
             const SizedBox(height: 8),
