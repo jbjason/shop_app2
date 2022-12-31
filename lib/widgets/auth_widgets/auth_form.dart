@@ -5,9 +5,9 @@ import 'package:shop_app2/widgets/auth_widgets/signup_button.dart';
 class AuthForm extends StatefulWidget {
   const AuthForm({Key? key, required this.submitFn, required this.isLoading})
       : super(key: key);
-  final bool isLoading;
+  final ValueNotifier<bool> isLoading;
   final Function(String email, String password, String userName, bool isLogin,
-      BuildContext ctx) submitFn;
+      BuildContext ctx, ValueNotifier<bool> isLoad) submitFn;
   @override
   _AuthFormState createState() => _AuthFormState();
 }
@@ -65,7 +65,7 @@ class _AuthFormState extends State<AuthForm> {
       setState(() => animation_ = 'success');
       await Future.delayed(const Duration(seconds: 1));
       widget.submitFn(userEmail.trim(), userPassword.trim(), userName.trim(),
-          _isLogin, context);
+          _isLogin, context, widget.isLoading);
     }
   }
 

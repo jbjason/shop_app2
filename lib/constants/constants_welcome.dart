@@ -12,6 +12,14 @@ const String middleText2 =
 const String middleText3 =
     'Our assortment includes 100% original products from leading electronics, fashion, beauty, and lifestyle brands. Especially for shoppers who do not have debit cards or credit cards, Hello Bazar provides a facility of online shopping with cash on delivery to your home.';
 
+// Auth Decoration
+final authDecoration = BoxDecoration(
+  gradient: LinearGradient(colors: [
+    AppColors.secondary.withOpacity(0.5),
+    AppColors.secondary.withOpacity(0.2),
+    AppColors.secondary.withOpacity(0.1)
+  ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+);
 Widget welcomeText1() => RichText(
       text: TextSpan(
         children: [
