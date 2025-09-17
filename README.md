@@ -1,4 +1,4 @@
-# HELLO BAAZAR
+# HELLO BAAZARR
  
 # User Panel
 <img width=30% height=14% src="https://user-images.githubusercontent.com/62088928/199611957-d664bf1c-b0fc-4924-9364-832f684be139.jpg">   <img width=30% height=14% src="https://user-images.githubusercontent.com/62088928/199612014-fcede28f-2cd5-4841-a50e-c886d73507ee.jpg">
